@@ -53,7 +53,6 @@
                           @foreach($restaurant->categories as $category)
                             <span class="badge rounded-pill bg-primary">{{$category->name}}</span>
                           @endforeach
-                        
                         </div>
 
                         <div  class="d-flex justify-content-end">

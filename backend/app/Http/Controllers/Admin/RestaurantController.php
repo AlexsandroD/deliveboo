@@ -1,6 +1,8 @@
 <?php
 
 namespace App\Http\Controllers\Admin;
+
+use App\Category;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
@@ -35,7 +37,8 @@ class RestaurantController extends Controller
      */
     public function create()
     {
-        return view('admin.restaurants.create');
+        $categories=Category::all();
+        return view('admin.restaurants.create', compact('categories'));
     }
 
     /**
@@ -57,6 +60,7 @@ class RestaurantController extends Controller
             "post_code" =>"required|string|max:5",
             "phone" =>"required|string|max:15|unique:restaurants,phone",
             "image_cover" =>  "nullable|mimes:jpg,jpeg,png|max:2048",
+            "categories" => "sometimes|exists:categories,id",
         ]);
 
         $data = $request->all();
@@ -67,6 +71,9 @@ class RestaurantController extends Controller
 
         $newRestaurant->user_id = Auth::id();
         $newRestaurant->save();
+        if (isset($data["categories"])) {
+            $newRestaurant->categories()->attach($data["categories"]);
+        }
 
         return redirect()->route('restaurants.index');
     }
