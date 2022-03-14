@@ -72,7 +72,7 @@ class RestaurantController extends Controller
         $newRestaurant->user_id = Auth::id();
 
         if( isset($data['image_cover']) ) {
-            $path_image = Storage::put("uploads",$data['image_cover']);
+            $path_image = Storage::put("uploads/restaurant_images",$data['image_cover']);
             $newRestaurant->image_cover = $path_image;
         }
 
@@ -139,7 +139,7 @@ class RestaurantController extends Controller
 
         if( isset($data['image_cover']) ) {
             Storage::delete($restaurant->image_cover);
-            $path_image = Storage::put("uploads",$data['image_cover']);
+            $path_image = Storage::put("uploads/restaurant_images",$data['image_cover']);
             $restaurant->image_cover = $path_image;
         }
 

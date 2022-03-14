@@ -66,7 +66,7 @@ class DishController extends Controller
         $newDish->restaurant_id = $restaurants_id;
 
         if( isset($data['image']) ) {
-            $path_image = Storage::put("uploads",$data['image']);
+            $path_image = Storage::put("uploads/dish_images",$data['image']);
             $newDish->image = $path_image;
         }
 
@@ -133,7 +133,7 @@ class DishController extends Controller
 
         if( isset($data['image']) ) {
             Storage::delete($dish->image);
-            $path_image = Storage::put("uploads",$data['image']);
+            $path_image = Storage::put("uploads/dish_images",$data['image']);
             $dish->image = $path_image;
         }
 
