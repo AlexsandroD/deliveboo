@@ -1,6 +1,8 @@
 <?php
 
 namespace App\Http\Controllers\Admin;
+
+use App\Category;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
@@ -35,7 +37,8 @@ class RestaurantController extends Controller
      */
     public function create()
     {
-        return view('admin.restaurants.create');
+        $categories=Category::all();
+        return view('admin.restaurants.create', compact('categories'));
     }
 
     /**
@@ -50,13 +53,14 @@ class RestaurantController extends Controller
         $request->validate([
             "name" => "required|string|max:110",
             "description" => "nullable|string",
-            "email" =>'required|string|max:100|unique:restaurants,email',
+            "email" => 'required|string|max:100|unique:restaurants,email',
             "address" => "required|string|max:255|unique:restaurants,address",
             "city" => "required|string|max:100",
             "country" => "required|string|max:255",
-            "post_code" =>"required|string|max:5",
-            "phone" =>"required|string|max:15|unique:restaurants,phone",
-            "image_cover" =>  "nullable|mimes:jpg,jpeg,png|max:2048",
+            "post_code" => "required|string|max:5",
+            "phone" => "required|string|max:15|unique:restaurants,phone",
+            "image_cover" => "nullable|mimes:jpg,jpeg,png|max:2048",
+            "categories" => "sometimes|exists:categories,id",
         ]);
 
         $data = $request->all();
@@ -66,7 +70,16 @@ class RestaurantController extends Controller
         $newRestaurant->slug = Str::of(strtr( $data['name'].' '.$data['address'], $this->unwanted_array ))->slug('-');
 
         $newRestaurant->user_id = Auth::id();
+
+        if( isset($data['image_cover']) ) {
+            $path_image = Storage::put("uploads/restaurant_images",$data['image_cover']);
+            $newRestaurant->image_cover = $path_image;
+        }
+
         $newRestaurant->save();
+        if (isset($data["categories"])) {
+            $newRestaurant->categories()->attach($data["categories"]);
+        }
 
         return redirect()->route('restaurants.index');
     }
@@ -90,7 +103,8 @@ class RestaurantController extends Controller
      */
     public function edit(Restaurant $restaurant)
     {
-        return view('admin.restaurants.edit', compact('restaurant'));
+        $categories=Category::all();
+        return view('admin.restaurants.edit', compact('restaurant', 'categories'));
     }
 
     /**
@@ -112,6 +126,7 @@ class RestaurantController extends Controller
         "post_code" =>"required|string|max:5",
         "phone" =>"required|string|max:15|unique:restaurants,phone,".$restaurant->id,
         "image_cover" =>  "nullable|mimes:jpg,jpeg,png|max:2048",
+        "categories" => "sometimes|exists:categories,id",
         ]);
 
         $data = $request->all();
@@ -122,15 +137,21 @@ class RestaurantController extends Controller
             $restaurant->slug = Str::of(strtr( $data['name'].' '.$data['address'], $this->unwanted_array ))->slug('-');
         }
 
-        // if( isset($data['image']) ) {
-        //     Storage::delete($post->image);
-        //     $path_image = Storage::put("uploads",$data['image']);
-        //     $post->image = $path_image;
-        // }
+        if( isset($data['image_cover']) ) {
+            Storage::delete($restaurant->image_cover);
+            $path_image = Storage::put("uploads/restaurant_images",$data['image_cover']);
+            $restaurant->image_cover = $path_image;
+        }
 
         $restaurant->fill($data);
 
         $restaurant->save();
+
+        if (isset($data["categories"])) {
+            $restaurant->categories()->sync($data["categories"]);
+        } else {
+            $restaurant->categories()->detach();
+        }
 
         return redirect()->route('restaurants.index');
     }
@@ -143,9 +164,13 @@ class RestaurantController extends Controller
      */
     public function destroy(Restaurant $restaurant)
     {
-        //  if($post->image){
-        //     Storage::delete($post->image);
-        // }
+        foreach ($restaurant->dishes as $dish) {
+            Storage::delete($dish->image);
+        }
+
+        if($restaurant->image_cover){
+            Storage::delete($restaurant->image_cover);
+        }
 
         $restaurant->delete();
 

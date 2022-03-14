@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Dish;
 use App\Restaurant;
+use Illuminate\Support\Facades\Storage;
 
 class DishController extends Controller
 {
@@ -63,6 +64,12 @@ class DishController extends Controller
         $newDish->fill($data);
         $newDish->visible = isset($data["visible"]);
         $newDish->restaurant_id = $restaurants_id;
+
+        if( isset($data['image']) ) {
+            $path_image = Storage::put("uploads/dish_images",$data['image']);
+            $newDish->image = $path_image;
+        }
+
         $newDish->save();
 
         // redirect
@@ -117,12 +124,19 @@ class DishController extends Controller
     {
         // validation
         $request->validate($this->validationRule);
-
         // add data
         $data = $request->all();
-
+        
+        if( isset($data['image']) ) {
+            Storage::delete($dish->image);
+            $path_image = Storage::put("uploads/dish_images",$data['image']);
+            $dish->image = $path_image;
+        }
+        
         $dish->fill($data);
         $dish->visible = isset($data["visible"]);
+        
+
         $dish->save();
 
         // redirect
@@ -137,6 +151,7 @@ class DishController extends Controller
      */
     public function destroy(Dish $dish)
     {
+        
         $dish->deleted=true;
         $dish->save();
         return redirect()->route("dishes.index");

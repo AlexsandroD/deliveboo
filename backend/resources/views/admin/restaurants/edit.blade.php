@@ -5,7 +5,7 @@
 
         <h1 class="text-center mb-3">Add new restaurant</h1>
 
-        <form action="{{route('restaurants.update', $restaurant->id)}}" method="Post" class="mb-5">
+        <form action="{{route('restaurants.update', $restaurant->id)}}" method="Post" class="mb-5" enctype="multipart/form-data">
             @csrf
             @method('PUT')
             {{-- restaurant name --}}
@@ -81,11 +81,33 @@
                 @enderror
             </div>
 
+            {{-- categories checkbox --}}
+            <label class="d-block">Categories</label>
+            @foreach ($categories as $category)
+                <div class="form-check form-check-inline @error('categories') is-invalid @enderror">
+                    @if (old("categories"))
+                        <input class="form-check-input" type="checkbox" id="{{$category->name}}" value="{{$category->id}}" name="categories[]" {{in_array($category->id, old("categories", [])) ? 'checked' : ''}}>
+                    @else
+                        <input class="form-check-input" type="checkbox" id="{{$category->name}}" value="{{$category->id}}" name="categories[]" {{$restaurant->categories->contains($category) ? 'checked' : ''}}>
+                    @endif
+                    <label class="form-check-label" for="{{$category->name}}">{{$category->name}}</label>
+                </div>
+            @endforeach
+            @error('categories')
+                <div class="alert alert-danger">{{ $message }}</div>
+            @enderror
 
-                  {{-- !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! --}}
-            {{-- immaggine da aggiunger dopo test funzionamento form  --}}
-                  {{-- !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! --}}
-
+            {{-- add image upolad --}}
+            <div class="form-group">
+                @if($restaurant->imgage_cover != NULL)
+                    <img class="img-thumbnail float-right" src="{{ asset('storage/' . $restaurant->image_cover) }}" alt="{{$restaurant->name}} image">
+                @endif
+                <label for="image">Media</label>
+                <input class="form-control @error('image_cover') is-invalid @enderror" id="image" type="file" name="image_cover" value="{{ old('image_cover', $restaurant->image_cover) }}">
+                @error('image_cover')
+                <small class="text-danger">{{ $message }}</small>
+                @enderror
+            </div>
 
             {{-- submit button --}}
             <button type="submit" class="btn btn-primary">Update restaurant</button>
