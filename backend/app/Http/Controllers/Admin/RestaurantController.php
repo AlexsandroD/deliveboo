@@ -97,7 +97,8 @@ class RestaurantController extends Controller
      */
     public function edit(Restaurant $restaurant)
     {
-        return view('admin.restaurants.edit', compact('restaurant'));
+        $categories=Category::all();
+        return view('admin.restaurants.edit', compact('restaurant', 'categories'));
     }
 
     /**
@@ -119,6 +120,7 @@ class RestaurantController extends Controller
         "post_code" =>"required|string|max:5",
         "phone" =>"required|string|max:15|unique:restaurants,phone,".$restaurant->id,
         "image_cover" =>  "nullable|mimes:jpg,jpeg,png|max:2048",
+        "categories" => "sometimes|exists:categories,id",
         ]);
 
         $data = $request->all();
@@ -138,6 +140,12 @@ class RestaurantController extends Controller
         $restaurant->fill($data);
 
         $restaurant->save();
+
+        if (isset($data["categories"])) {
+            $restaurant->categories()->sync($data["categories"]);
+        } else {
+            $restaurant->categories()->detach();
+        }
 
         return redirect()->route('restaurants.index');
     }
