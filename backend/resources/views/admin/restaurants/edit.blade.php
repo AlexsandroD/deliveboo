@@ -5,7 +5,7 @@
 
         <h1 class="text-center mb-3">Add new restaurant</h1>
 
-        <form action="{{route('restaurants.update', $restaurant->id)}}" method="Post" class="mb-5">
+        <form action="{{route('restaurants.update', $restaurant->id)}}" method="Post" class="mb-5" enctype="multipart/form-data">
             @csrf
             @method('PUT')
             {{-- restaurant name --}}
@@ -97,10 +97,17 @@
                 <div class="alert alert-danger">{{ $message }}</div>
             @enderror
 
-                  {{-- !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! --}}
-            {{-- immaggine da aggiunger dopo test funzionamento form  --}}
-                  {{-- !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! --}}
-
+            {{-- add image upolad --}}
+            <div class="form-group">
+                @if($restaurant->imgage_cover != NULL)
+                    <img class="img-thumbnail float-right" src="{{ asset('storage/' . $restaurant->image_cover) }}" alt="{{$restaurant->name}} image">
+                @endif
+                <label for="image">Media</label>
+                <input class="form-control @error('image_cover') is-invalid @enderror" id="image" type="file" name="image_cover" value="{{ old('image_cover', $restaurant->image_cover) }}">
+                @error('image_cover')
+                <small class="text-danger">{{ $message }}</small>
+                @enderror
+            </div>
 
             {{-- submit button --}}
             <button type="submit" class="btn btn-primary">Update restaurant</button>

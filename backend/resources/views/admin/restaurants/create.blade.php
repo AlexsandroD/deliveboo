@@ -5,7 +5,7 @@
 
         <h1 class="text-center mb-3">Add new restaurant</h1>
 
-        <form action="{{route('restaurants.store')}}" method="Post" class="mb-5">
+        <form action="{{route('restaurants.store')}}" method="Post" class="mb-5" enctype="multipart/form-data">
             @csrf
 
             {{-- restaurant name --}}
@@ -93,10 +93,14 @@
                 <div class="alert alert-danger">{{ $message }}</div>
             @enderror
 
-                  {{-- !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! --}}
-            {{-- immaggine da aggiunger dopo test funzionamento form  --}}
-                  {{-- !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! --}}
-
+            {{-- add image upolad --}}
+            <div class="form-group">
+                <label for="image">aggiungi immagine</label>
+                <input type="file" class="form-control-file" id="image" name="image_cover">
+                @error('image_cover')
+                    <small class="text-danger">{{ $message }}</small>
+                @enderror
+            </div>
 
             {{-- submit button --}}
             <button type="submit" class="btn btn-primary">Add restaurant</button>
