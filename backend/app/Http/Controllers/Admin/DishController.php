@@ -27,7 +27,7 @@ class DishController extends Controller
     {
         $restaurant = Restaurant::select('id')->where('user_id', Auth::id())->first();
         $restaurants_id = $restaurant->id;
-        $dishes = Dish::where('restaurant_id', $restaurants_id)->get();
+        $dishes = Dish::where('restaurant_id', $restaurants_id)->where('deleted',false)->get();
         return view("admin.dishes.index", compact("dishes"));
     }
 
@@ -80,7 +80,7 @@ class DishController extends Controller
         $restaurant = Restaurant::select('id')->where('user_id', Auth::id())->first();
         $restaurants_id = $restaurant->id;
 
-        if($dish->restaurant_id === $restaurants_id){
+        if($dish->restaurant_id === $restaurants_id && $dish->deleted == false){
             return view("admin.dishes.show", compact("dish"));
         }else{
             return redirect()->route("dishes.index");
@@ -98,7 +98,7 @@ class DishController extends Controller
         $restaurant = Restaurant::select('id')->where('user_id', Auth::id())->first();
         $restaurants_id = $restaurant->id;
 
-        if($dish->restaurant_id === $restaurants_id){
+        if($dish->restaurant_id === $restaurants_id && $dish->deleted == false){
             return view("admin.dishes.edit", compact("dish"));
         }else{
             return redirect()->route("dishes.index");
@@ -137,7 +137,8 @@ class DishController extends Controller
      */
     public function destroy(Dish $dish)
     {
-        $dish->delete();
+        $dish->deleted=true;
+        $dish->save();
         return redirect()->route("dishes.index");
     }
 }
