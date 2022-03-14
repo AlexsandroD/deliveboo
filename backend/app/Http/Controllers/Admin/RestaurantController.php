@@ -164,6 +164,10 @@ class RestaurantController extends Controller
      */
     public function destroy(Restaurant $restaurant)
     {
+        foreach ($restaurant->dishes as $dish) {
+            Storage::delete($dish->image);
+        }
+
         if($restaurant->image_cover){
             Storage::delete($restaurant->image_cover);
         }

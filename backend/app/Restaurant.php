@@ -19,5 +19,5 @@ class Restaurant extends Model
         return $this->hasMany('App\Dish');
     }
 
-    protected $guarded = ['slug','user_id'];
+    protected $guarded = ['slug','user_id','image_cover'];
 }

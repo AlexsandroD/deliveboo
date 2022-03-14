@@ -14,5 +14,5 @@ class Dish extends Model
         return $this->belongsTo('App\Restaurant');
     }
 
-    protected $guarded = ['restaurant_id'];
+    protected $guarded = ['restaurant_id', 'image'];
 }

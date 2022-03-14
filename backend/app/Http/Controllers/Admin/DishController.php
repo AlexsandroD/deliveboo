@@ -124,18 +124,18 @@ class DishController extends Controller
     {
         // validation
         $request->validate($this->validationRule);
-
         // add data
         $data = $request->all();
-
-        $dish->fill($data);
-        $dish->visible = isset($data["visible"]);
-
+        
         if( isset($data['image']) ) {
             Storage::delete($dish->image);
             $path_image = Storage::put("uploads/dish_images",$data['image']);
             $dish->image = $path_image;
         }
+        
+        $dish->fill($data);
+        $dish->visible = isset($data["visible"]);
+        
 
         $dish->save();
 
