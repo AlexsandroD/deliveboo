@@ -50,6 +50,10 @@
                               <i class="fa-solid fa-phone"></i> {{$restaurant->phone}}
                             </li>
                           </ul>
+                          @foreach($restaurant->categories as $category)
+                            <span class="badge rounded-pill bg-primary">{{$category->name}}</span>
+                          @endforeach
+                        
                         </div>
 
                         <div  class="d-flex justify-content-end">
