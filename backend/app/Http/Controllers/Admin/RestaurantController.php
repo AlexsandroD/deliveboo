@@ -92,7 +92,7 @@ class RestaurantController extends Controller
      */
     public function show($id)
     {
-        // La pagina index in questo applicativo funge da SHOW
+        return abort(404);
     }
 
     /**
@@ -103,8 +103,16 @@ class RestaurantController extends Controller
      */
     public function edit(Restaurant $restaurant)
     {
-        $categories=Category::all();
-        return view('admin.restaurants.edit', compact('restaurant', 'categories'));
+        $check_restaurant = Restaurant::select('id')->where('user_id', Auth::id())->first();
+        $check_id = $check_restaurant->id;
+
+        if($restaurant->id === $check_id){
+            $categories=Category::all();
+            return view('admin.restaurants.edit', compact('restaurant', 'categories'));
+        }else{
+            return abort(404);
+        }
+        
     }
 
     /**
