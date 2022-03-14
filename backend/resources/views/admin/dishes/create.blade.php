@@ -5,7 +5,7 @@
 
         <h1 class="text-center mb-3">Add new dish</h1>
 
-        <form action="{{route('dishes.store')}}" method="POST" class="mb-5">
+        <form action="{{route('dishes.store')}}" method="POST" class="mb-5" enctype="multipart/form-data">
             @csrf
 
             {{-- dish name --}}
@@ -41,6 +41,15 @@
                 <label class="form-check-label" for="visible">Publish</label>
                 @error('visible')
                     <div class="alert alert-danger">{{ $message }}</div>
+                @enderror
+            </div>
+
+            {{-- add image upolad --}}
+            <div class="form-group">
+                <label for="image">aggiungi immagine</label>
+                <input type="file" class="form-control-file" id="image" name="image">
+                @error('image')
+                    <small class="text-danger">{{ $message }}</small>
                 @enderror
             </div>
 

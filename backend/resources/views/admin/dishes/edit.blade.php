@@ -5,7 +5,7 @@
 
         <h1 class="text-center mb-3">Edit dish</h1>
 
-        <form action="{{route('dishes.update', $dish->id)}}" method="POST" class="mb-5">
+        <form action="{{route('dishes.update', $dish->id)}}" method="POST" class="mb-5" enctype="multipart/form-data">
             @csrf
             @method("PUT")
 
@@ -42,6 +42,18 @@
                 <label class="form-check-label" for="visible">Publish</label>
                 @error('visible')
                     <div class="alert alert-danger">{{ $message }}</div>
+                @enderror
+            </div>
+
+            {{-- add image upolad --}}
+            <div class="form-group">
+                @if($dish->image != NULL)
+                    <img class="img-thumbnail float-right" src="{{ asset('storage/' . $dish->image) }}" alt="{{$dish->name}} image">
+                @endif
+                <label for="image">Media</label>
+                <input class="form-control @error('image') is-invalid @enderror" id="image" type="file" name="image" value="{{ old('image', $dish->image) }}">
+                @error('image')
+                <small class="text-danger">{{ $message }}</small>
                 @enderror
             </div>
 
