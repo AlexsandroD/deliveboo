@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Dish;
 use App\Restaurant;
+use Illuminate\Support\Facades\Storage;
 
 class DishController extends Controller
 {
@@ -27,7 +28,7 @@ class DishController extends Controller
     {
         $restaurant = Restaurant::select('id')->where('user_id', Auth::id())->first();
         $restaurants_id = $restaurant->id;
-        $dishes = Dish::where('restaurant_id', $restaurants_id)->get();
+        $dishes = Dish::where('restaurant_id', $restaurants_id)->where('deleted',false)->get();
         return view("admin.dishes.index", compact("dishes"));
     }
 
@@ -63,6 +64,12 @@ class DishController extends Controller
         $newDish->fill($data);
         $newDish->visible = isset($data["visible"]);
         $newDish->restaurant_id = $restaurants_id;
+
+        if( isset($data['image']) ) {
+            $path_image = Storage::put("uploads/dish_images",$data['image']);
+            $newDish->image = $path_image;
+        }
+
         $newDish->save();
 
         // redirect
@@ -77,7 +84,14 @@ class DishController extends Controller
      */
     public function show(Dish $dish)
     {
-        return view("admin.dishes.show", compact("dish"));
+        $restaurant = Restaurant::select('id')->where('user_id', Auth::id())->first();
+        $restaurants_id = $restaurant->id;
+
+        if($dish->restaurant_id === $restaurants_id && $dish->deleted == false){
+            return view("admin.dishes.show", compact("dish"));
+        }else{
+            return redirect()->route("dishes.index");
+        }
     }
 
     /**
@@ -88,7 +102,15 @@ class DishController extends Controller
      */
     public function edit(Dish $dish)
     {
-        return view("admin.dishes.edit", compact("dish"));
+        $restaurant = Restaurant::select('id')->where('user_id', Auth::id())->first();
+        $restaurants_id = $restaurant->id;
+
+        if($dish->restaurant_id === $restaurants_id && $dish->deleted == false){
+            return view("admin.dishes.edit", compact("dish"));
+        }else{
+            return redirect()->route("dishes.index");
+        }
+
     }
 
     /**
@@ -102,12 +124,19 @@ class DishController extends Controller
     {
         // validation
         $request->validate($this->validationRule);
-
         // add data
         $data = $request->all();
-
+        
+        if( isset($data['image']) ) {
+            Storage::delete($dish->image);
+            $path_image = Storage::put("uploads/dish_images",$data['image']);
+            $dish->image = $path_image;
+        }
+        
         $dish->fill($data);
         $dish->visible = isset($data["visible"]);
+        
+
         $dish->save();
 
         // redirect
@@ -122,7 +151,9 @@ class DishController extends Controller
      */
     public function destroy(Dish $dish)
     {
-        $dish->delete();
+        
+        $dish->deleted=true;
+        $dish->save();
         return redirect()->route("dishes.index");
     }
 }
