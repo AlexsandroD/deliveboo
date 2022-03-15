@@ -1,6 +1,5 @@
 <template>
   <div class="container">
-      <button @click="variables.categoriesValue.length > 0 ?  restaurantsFilter() : getRestaurant() ">filtro</button>
       <div class="row">
           <div class="col" v-for="restaurant in restaurants" :key="restaurant.id">
             <router-link :to="{ name: 'restaurant-menu', params: { slug:restaurant.slug } }">
@@ -29,7 +28,11 @@ export default {
         }
     },
     created(){
-       this.getRestaurant();
+       if (this.variables.categoriesValue.length > 0) {
+            this.restaurantsFilter();
+        } else {
+            this.getRestaurant();
+        }
     },
 
     methods:{
@@ -48,15 +51,25 @@ export default {
             const axios = require('axios').default;
             axios.get('http://127.0.0.1:8000/api/filters',{
                 params:{
-                     categories: this.variables.categoriesValue,
+                    categories: this.variables.categoriesValue,
                 }  
             })
             .then((response) => {
                 this.restaurants = response.data;
-        }) 
+            }) 
         },
 
     
+    },
+
+    watch: {
+        'variables.categoriesValue'() {
+            if (this.variables.categoriesValue.length > 0) {
+                this.restaurantsFilter();
+            } else {
+                this.getRestaurant();
+            }
+        }
     }
 
 }
