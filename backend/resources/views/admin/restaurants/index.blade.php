@@ -2,7 +2,7 @@
 
 @section('content')
 
-    <div class="container">
+    <div class="container index-restaurant">
 
         <div class="card benvenuto mb-3">
           @if(!$restaurant)
