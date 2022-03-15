@@ -6,7 +6,7 @@
                 <ul class="edit-container">
               
                     <li v-for="category in categories" :key="category.id">
-                        <input class="form-check-input" type="checkbox" :id="category.name" :value="category.id">
+                        <input class="form-check-input" type="checkbox" v-model="variables.categoriesValue" :id="category.name" :value="category.id">
                         <label class="form-check-label" :for="category.name">{{category.name}}</label>
                     </li>
                
@@ -16,11 +16,13 @@
 </template>
 
 <script>
+import variables from "../../variables";
 export default {
     name:"Categories",
     data(){
         return{
             categories:[],
+            variables,
         }
     },
     created(){
