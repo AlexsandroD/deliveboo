@@ -34,7 +34,7 @@
                                         <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span></button>
                                     </div>
                                     <div class="modal-footer">
-                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Chiudi</button>
                                         {{-- delete form --}}
                                         <form action="{{route('dishes.destroy', $dish->id)}}" method="POST">
                                             @csrf
@@ -51,7 +51,7 @@
             @endforeach
 
             <a href="{{route('dishes.create')}}" class="card col-4">
-                crea nuovo piatto
+                Crea nuovo piatto
             </a>
 
         </div>
