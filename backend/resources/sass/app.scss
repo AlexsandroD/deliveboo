@@ -12,17 +12,19 @@
 @import '~@fortawesome/fontawesome-free/scss/regular';
 @import '~@fortawesome/fontawesome-free/scss/solid';
 @import '~@fortawesome/fontawesome-free/scss/brands';
-@import url("https://use.fontawesome.com/releases/v5.13.0/css/all.css");
-
+// @import url("https://use.fontawesome.com/releases/v5.13.0/css/all.css");
 
 // OUR STYLE
 
-// restaurant
-@import '/restaurant/index';
+// macro
+@import '/macro/header';
+@import '/macro/footer';
 
 // components
 @import '/components/categories-checks';
 
+// restaurant
+@import '/restaurant/index';
 
 
 

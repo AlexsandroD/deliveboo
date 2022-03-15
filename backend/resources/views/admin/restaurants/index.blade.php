@@ -28,7 +28,7 @@
                 {{-- restaurant info --}}
                 <div class="col-md-8">
                     <div class="card-body">
-                        {{-- title container --}}
+                        {{-- title/description container --}}
                         <div class="card-title-container">
                           <h2 class="card-title">{{$restaurant->name}}</h2>
                         </div>
@@ -36,9 +36,16 @@
                         <div class="card-info-container">
                           {{-- description --}}
                           <p class="card-text description">{{$restaurant->description}}</p>
+
                           {{-- contacts --}}
                           <h3>Informazioni</h3>
                           <ul class="contacts-container">
+                            {{-- categories --}}
+                            <li class="badges">
+                              @foreach($restaurant->categories as $category)
+                                <span class="badge rounded-pill">{{$category->name}}</span>
+                              @endforeach
+                            </li>
                             <li class="card-text">
                               <i class="fa-solid fa-envelope"></i> {{$restaurant->email}}
                             </li>
@@ -50,20 +57,13 @@
                               <i class="fa-solid fa-phone"></i> {{$restaurant->phone}}
                             </li>
                           </ul>
-                          @foreach($restaurant->categories as $category)
-                            <span class="badge rounded-pill bg-primary">{{$category->name}}</span>
-                          @endforeach
-                        </div>
-
-                        <div  class="d-flex justify-content-end">
-
-                            {{-- dishes list button --}}
-                            <a href="{{route('dishes.index')}}"><button type="button" class="btn btn-primary">Lista piatti</button></a>
-
+                          
+                          {{-- buttons container --}}
+                          <div class="btn-container text-right">
                             {{-- edit button --}}
-                            <a href="{{ route('restaurants.edit', $restaurant->id) }}" class="ml-3"><button type="button" class="btn btn-warning">Modifica</button></a>
+                            <a href="{{ route('restaurants.edit', $restaurant->id) }}" class="ml-3"><button type="button" class="btn btn_edit">Modifica</button></a>
                             {{-- modal delete button --}}
-                            <button type="button" class="btn btn-danger ml-3" data-toggle="modal" data-target="#deleteModal">Elimina</button>
+                            <button type="button" class="btn btn_delete ml-3" data-toggle="modal" data-target="#deleteModal">Elimina</button>
                             
                             {{-- modal --}}
                             <div class="modal fade" id="deleteModal" tabindex="-1">
@@ -85,9 +85,8 @@
                                     </div>
                                 </div>
                             </div>
-
+                          </div>
                         </div>
-
                     </div>
                 </div>
             </div>

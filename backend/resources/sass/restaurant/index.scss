@@ -10,49 +10,9 @@
   color: $_white;
 }
 
-// -- HEADER --
-header {
-
-  nav {
-
-    // logo
-    img {
-      width: 6.25rem;
-    }
-
-    // hamburger menu
-    button.navbar-toggler {
-      background-color: $_primary;
-
-      padding: .5rem 1rem;
-      border: none;
-
-      i {
-        font-size: .9rem;
-
-        color: $white;
-      }
-    }
-
-    // dropdown
-    #dropdown {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-
-      margin: 0;
-      padding: 1rem 0;
-      
-      li {
-        @include flex-center;
-
-        list-style: none;
-
-        i {
-          color: $_primary;
-        }
-      }
-    }
-  }
+@mixin delivebooColors2 {
+  background-color: $_white;
+  color: $_primary;
 }
 
 // -- MAIN --
@@ -127,7 +87,19 @@ main {
             padding: .4rem .8rem;
             border-radius: 1rem;
 
-            li {
+            li.badges {
+              padding: .2rem 0;
+              list-style: none;
+  
+              span.badge {
+                @include delivebooColors2;
+  
+                padding: .6em 1em;
+                border: 1px solid $_primary;
+              }
+            }
+
+            li.card-text {
               list-style: none;
 
               padding: .6rem 0;
@@ -139,6 +111,31 @@ main {
                 color: $_primary;
               }
             } 
+          }
+
+          div.btn-container {
+
+            .btn_edit {
+              @include delivebooColors2;
+              border: 1px solid $_primary;
+
+              transition: .2s linear;
+
+              &:hover {
+                @include delivebooColors;
+              }
+            }
+
+            .btn_delete {
+              @include delivebooColors;
+              border: 1px solid $_primary;
+
+              transition: .2s linear;
+
+              &:hover {
+                background-color: $_darkerPrimaryHover;
+              }
+            }
           }
         }
       }

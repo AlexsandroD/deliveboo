@@ -24,6 +24,7 @@
 
 <body>
     <div id="app">
+      {{-- header --}}
         <header>
             <nav class="navbar navbar-expand-md navbar-light bg-white">
                 <div class="container">
@@ -33,29 +34,29 @@
                     </a>
                     {{-- hamburger button --}}
                     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
-                      <i class="fa-solid fa-user"></i>
+                    <i class="fa-solid fa-house-user"></i>
                     </button>
 
                     {{-- dropdown menu --}}
                     <div class="collapse navbar-collapse" id="navbarSupportedContent">
                           <ul id="dropdown" class="my-navbar-collapse">
-                            {{-- tile 1 --}}
+                            {{-- bottone menù --}}
                             <li>
-                                <a href="#">
+                                <a href="{{route('dishes.index')}}">
                                     <span>
                                         <i class="fas fa-utensils responsive-i" aria-hidden="true"></i>
                                     </span>
                                 </a>
                             </li>
-                            {{-- tile 2 --}}
+                            {{-- bottone ordini --}}
                             <li>
-                                <a href="#">
+                                <a href="{{route('orders.index')}}">
                                     <span>
                                         <i class="fa-solid fa-basket-shopping"></i>
                                     </span>
                                 </a>
                             </li>
-                            {{-- tile 3 --}}
+                            {{-- bottone statistiche --}}
                             <li>
                                 <a href="#">
                                     <span>
@@ -63,7 +64,7 @@
                                     </span>
                                 </a>
                             </li>
-                            {{-- tile 4 - logout --}}
+                            {{-- bottone logout --}}
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                     {{-- {{ Auth::user()->name }} --}}
@@ -88,6 +89,7 @@
             </nav>
         </header>
 
+        {{-- main --}}
         <main class="py-4">
             @yield('content')
         </main>
