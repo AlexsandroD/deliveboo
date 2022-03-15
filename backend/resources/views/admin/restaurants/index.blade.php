@@ -16,7 +16,7 @@
             </div>
     
             @if(!$restaurant)
-                <a href="{{ route('restaurants.create') }}"><button type="button" class="btn">Crea ristorante</button></a>
+                <a href="{{ route('restaurants.create') }}"><button type="button" class="btn"><i class="fa-solid fa-circle-plus"></i></button></a>
             @else
             {{-- restaurant card --}}
             <div class="col px-0 restaurant">

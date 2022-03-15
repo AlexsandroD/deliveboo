@@ -18,7 +18,8 @@
 // -- HEADER --
 header {
 
-  nav {
+  nav.navbar-light {
+    padding: 1rem 0;
 
     #logout_md {
       display: none;
@@ -31,7 +32,7 @@ header {
 
     // logo
     img {
-      width: 6.25rem;
+      width: 8rem;
     }
 
     // hamburger menu
@@ -42,7 +43,7 @@ header {
       border: none;
 
       i {
-        font-size: 1.1rem;
+        font-size: 1.4rem;
 
         color: $white;
       }
@@ -93,13 +94,13 @@ header {
   header {
 
     nav.navbar-light {
-      padding: .8rem 1rem;
+      padding: 1rem 1.2rem;
 
       // icona deliveboo
       a.navbar-brand {
         
         img {
-          width: 8rem;
+          width: 9rem;
         }
       }
       

@@ -20195,70 +20195,74 @@ readers do not read off random characters that represent icons */
   content: "\F63F";
 }
 
-header nav #logout_md {
+header nav.navbar-light {
+  padding: 1rem 0;
+}
+
+header nav.navbar-light #logout_md {
   display: none;
 }
 
-header nav #logout_md .btn_logout {
+header nav.navbar-light #logout_md .btn_logout {
   background-color: #2E3333;
   color: #FFF;
 }
 
-header nav img {
-  width: 6.25rem;
+header nav.navbar-light img {
+  width: 8rem;
 }
 
-header nav button.navbar-toggler {
+header nav.navbar-light button.navbar-toggler {
   background-color: #00CCBC;
   padding: 0.5rem 0.8rem;
   border: none;
 }
 
-header nav button.navbar-toggler i {
-  font-size: 1.1rem;
+header nav.navbar-light button.navbar-toggler i {
+  font-size: 1.4rem;
   color: #fff;
 }
 
-header nav #dropdown {
+header nav.navbar-light #dropdown {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   margin: 0;
   padding: 1rem 0;
 }
 
-header nav #dropdown a {
+header nav.navbar-light #dropdown a {
   border-radius: 1rem;
   margin: 0 1rem;
   padding: 0.4rem 0;
 }
 
-header nav #dropdown a:nth-child(1) {
+header nav.navbar-light #dropdown a:nth-child(1) {
   background-color: #FE483B;
 }
 
-header nav #dropdown a:nth-child(2) {
+header nav.navbar-light #dropdown a:nth-child(2) {
   background-color: #FF8100;
 }
 
-header nav #dropdown a:nth-child(3) {
+header nav.navbar-light #dropdown a:nth-child(3) {
   background-color: #C01D64;
 }
 
-header nav #dropdown a:nth-child(4) {
+header nav.navbar-light #dropdown a:nth-child(4) {
   background-color: #2E3333;
 }
 
-header nav #dropdown a button.btn i {
+header nav.navbar-light #dropdown a button.btn i {
   color: #FFF;
 }
 
 @media screen and (min-width: 992px) {
   header nav.navbar-light {
-    padding: 0.8rem 1rem;
+    padding: 1rem 1.2rem;
   }
 
   header nav.navbar-light a.navbar-brand img {
-    width: 8rem;
+    width: 9rem;
   }
 
   header nav.navbar-light button.navbar-toggler {
