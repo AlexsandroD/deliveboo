@@ -82,20 +82,24 @@
             </div>
 
             {{-- categories checkbox --}}
-            <label class="d-block">Categories</label>
-            @foreach ($categories as $category)
-                <div class="form-check form-check-inline @error('categories') is-invalid @enderror">
-                    @if (old("categories"))
-                        <input class="form-check-input" type="checkbox" id="{{$category->name}}" value="{{$category->id}}" name="categories[]" {{in_array($category->id, old("categories", [])) ? 'checked' : ''}}>
-                    @else
-                        <input class="form-check-input" type="checkbox" id="{{$category->name}}" value="{{$category->id}}" name="categories[]" {{$restaurant->categories->contains($category) ? 'checked' : ''}}>
-                    @endif
-                    <label class="form-check-label" for="{{$category->name}}">{{$category->name}}</label>
-                </div>
-            @endforeach
-            @error('categories')
-                <div class="alert alert-danger">{{ $message }}</div>
-            @enderror
+            <div class="form-group">
+                <h2 class="d-block">Categories</h2>
+                <ul class="edit-container">
+                @foreach ($categories as $category)
+                    <li @error('categories') is-invalid @enderror">
+                        @if (old("categories"))
+                            <input class="form-check-input" type="checkbox" id="{{$category->name}}" value="{{$category->id}}" name="categories[]" {{in_array($category->id, old("categories", [])) ? 'checked' : ''}}>
+                        @else
+                            <input class="form-check-input" type="checkbox" id="{{$category->name}}" value="{{$category->id}}" name="categories[]" {{$restaurant->categories->contains($category) ? 'checked' : ''}}>
+                        @endif
+                        <label class="form-check-label" for="{{$category->name}}">{{$category->name}}</label>
+                    </li>
+                @endforeach
+                </ul>
+                @error('categories')
+                    <div class="alert alert-danger">{{ $message }}</div>
+                @enderror
+            </div>
 
             {{-- add image upolad --}}
             <div class="form-group">
