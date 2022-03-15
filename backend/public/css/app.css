@@ -20359,6 +20359,30 @@ main {
   background-color: #F9FAFA;
 }
 
+main div.index-restaurant div#restaurantless-add {
+  width: 100%;
+  height: 8rem;
+  border: 2px dashed #00CCBC;
+  border-radius: 1rem;
+}
+
+main div.index-restaurant div#restaurantless-add a {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+main div.index-restaurant div#restaurantless-add a i {
+  font-size: 1.8rem;
+  color: #00CCBC;
+}
+
+main div.index-restaurant div#restaurantless-add a i:hover {
+  color: #00C2B3;
+}
+
 main div.index-restaurant div.benvenuto {
   background-color: #00CCBC;
   color: #FFF;
@@ -20376,7 +20400,6 @@ main div.index-restaurant div.restaurant {
   border: none;
   border-top-left-radius: 1rem;
   border-top-right-radius: 1rem;
-  background-color: #FFF;
 }
 
 main div.index-restaurant div.restaurant img.restaurant-cover {
@@ -20388,7 +20411,11 @@ main div.index-restaurant div.restaurant img.restaurant-cover {
   border-top-right-radius: 1rem;
 }
 
-main div.index-restaurant div.restaurant div.card-header {
+main div.index-restaurant div.restaurant div.card_header {
+  background-color: #FFF;
+}
+
+main div.index-restaurant div.restaurant div.card_header div.restaurant-name {
   background-color: #FFF;
   color: #2E3333;
   padding: 0;
@@ -20396,26 +20423,27 @@ main div.index-restaurant div.restaurant div.card-header {
   border-top-right-radius: 1rem;
 }
 
-main div.index-restaurant div.restaurant div.card-header div.card-title-container {
+main div.index-restaurant div.restaurant div.card_header div.restaurant-name div.card-title-container {
   background-color: #00CCBC;
   color: #FFF;
   padding: 1.2rem 1.25rem;
 }
 
-main div.index-restaurant div.restaurant div.card-header div.card-title-container h2 {
+main div.index-restaurant div.restaurant div.card_header div.restaurant-name div.card-title-container h2 {
   font-size: 1.6rem;
   margin: 0;
 }
 
-main div.index-restaurant div.restaurant div.card-header div.card-description-container {
+main div.index-restaurant div.restaurant div.card_header div.restaurant-name div.restaurant-description {
   padding: 1.25rem 1rem 0;
 }
 
-main div.index-restaurant div.restaurant div.card-header div.card-description-container p.description {
+main div.index-restaurant div.restaurant div.card_header div.restaurant-name div.restaurant-description p.description {
   color: #434848;
 }
 
 main div.index-restaurant div.restaurant div.card-body {
+  background-color: #FFF;
   padding: 2rem;
   border-bottom-left-radius: 1rem;
   border-bottom-right-radius: 1rem;
@@ -20487,11 +20515,11 @@ main div.index-restaurant .aside {
     border-bottom-right-radius: 1rem;
   }
 
-  main div.index-restaurant div.restaurant div.card-header div.card-title-container {
+  main div.index-restaurant div.restaurant div.card_header div.card-title-container {
     border-top-right-radius: 1rem;
   }
 
-  main div.index-restaurant div.restaurant div.card-header div.card-description-container p.description {
+  main div.index-restaurant div.restaurant div.card_header div.card-description-container p.description {
     overflow: hidden;
     text-overflow: ellipsis;
     display: -webkit-box;
@@ -20527,9 +20555,11 @@ main div.index-restaurant .aside {
   }
 
   main div.index-restaurant aside.aside div#user-info {
+    background-color: #FFF;
     padding: 1rem;
     margin-bottom: 1rem;
-    background-color: #FFF;
+    border-bottom-left-radius: 1rem;
+    border-bottom-right-radius: 1rem;
   }
 
   main div.index-restaurant aside.aside div#user-info ul {
