@@ -3,14 +3,15 @@
       <button @click="variables.categoriesValue.length > 0 ?  restaurantsFilter() : getRestaurant() ">filtro</button>
       <div class="row">
           <div class="col" v-for="restaurant in restaurants" :key="restaurant.id">
-            <div class="card">
-            <img class="card-img-top" src="" alt="Card image cap">
-                <div class="card-body">
-                    <h5 class="card-title">{{ restaurant.name }}</h5>
-                    <p class="card-text">{{ restaurant.phone }}</p>
-                    <a href="#" class="btn btn-primary"></a>
+            <router-link :to="{ name: 'restaurant-menu', params: { slug:restaurant.slug } }">
+                <div class="card">
+                <img class="card-img-top" src="" alt="Card image cap">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ restaurant.name }}</h5>
+                        <p class="card-text">{{ restaurant.phone }}</p>
+                    </div>
                 </div>
-            </div>
+            </router-link>
           </div>
       </div>
   </div>

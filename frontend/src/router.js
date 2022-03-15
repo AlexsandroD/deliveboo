@@ -4,7 +4,7 @@ import VueRouter from "vue-router";
 Vue.use(VueRouter);
 
 import Home from "./components/pages/Home.vue";
-import Banana from "./components/pages/Banana.vue";
+import RestaurantMenu from "./components/pages/RestaurantMenu.vue";
 
 
 const router = new VueRouter({
@@ -17,9 +17,9 @@ const router = new VueRouter({
         },
 
         {
-            path: "/banana",
-            name: "banana",
-            component: Banana
+            path: "/:slug",
+            name: "restaurant-menu",
+            component: RestaurantMenu
         },
     ]
     

@@ -24,4 +24,11 @@ class RestaurantController extends Controller
 
         return response()->json($restaurants);
     }
+
+    public function show($slug){
+        $restaurant = Restaurant::where('slug',$slug)->with(['dishes'=> function($query){
+            $query->where('deleted',0);
+        }])->first();
+        return response()->json($restaurant);
+    }
 }
