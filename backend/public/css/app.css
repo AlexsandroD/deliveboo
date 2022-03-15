@@ -20232,7 +20232,7 @@ main {
   background-color: #F9FAFA;
 }
 
-main div.benvenuto {
+main div.index-restaurant div.benvenuto {
   background-color: #00CCBC;
   color: #FFF;
   padding: 0.8rem 1.25rem;
@@ -20240,18 +20240,18 @@ main div.benvenuto {
   border-radius: 1rem;
 }
 
-main div.benvenuto h3 {
+main div.index-restaurant div.benvenuto h3 {
   font-size: 1rem;
   margin: 0;
 }
 
-main div.restaurant {
+main div.index-restaurant div.restaurant {
   border: none;
   border-top-left-radius: 1rem;
   border-top-right-radius: 1rem;
 }
 
-main div.restaurant img.restaurant-cover {
+main div.index-restaurant div.restaurant img.restaurant-cover {
   width: 100%;
   height: 10rem;
   -o-object-fit: cover;
@@ -20260,46 +20260,46 @@ main div.restaurant img.restaurant-cover {
   border-top-right-radius: 1rem;
 }
 
-main div.restaurant div.card-body {
+main div.index-restaurant div.restaurant div.card-body {
   color: #2E3333;
   padding: 0;
 }
 
-main div.restaurant div.card-body div.card-title-container {
+main div.index-restaurant div.restaurant div.card-body div.card-title-container {
   background-color: #00CCBC;
   color: #FFF;
   padding: 1.2rem 1.25rem;
 }
 
-main div.restaurant div.card-body div.card-title-container h2 {
+main div.index-restaurant div.restaurant div.card-body div.card-title-container h2 {
   font-size: 1.6rem;
   margin: 0;
 }
 
-main div.restaurant div.card-body div.card-info-container {
+main div.index-restaurant div.restaurant div.card-body div.card-info-container {
   padding: 1.25rem 1rem;
 }
 
-main div.restaurant div.card-body div.card-info-container p.description {
+main div.index-restaurant div.restaurant div.card-body div.card-info-container p.description {
   color: #434848;
 }
 
-main div.restaurant div.card-body div.card-info-container h3 {
+main div.index-restaurant div.restaurant div.card-body div.card-info-container h3 {
   font-size: 1.2rem;
 }
 
-main div.restaurant div.card-body div.card-info-container ul.contacts-container {
+main div.index-restaurant div.restaurant div.card-body div.card-info-container ul.contacts-container {
   background-color: #F9FAFA;
   padding: 0.4rem 0.8rem;
   border-radius: 1rem;
 }
 
-main div.restaurant div.card-body div.card-info-container ul.contacts-container li {
+main div.index-restaurant div.restaurant div.card-body div.card-info-container ul.contacts-container li {
   list-style: none;
   padding: 0.6rem 0;
 }
 
-main div.restaurant div.card-body div.card-info-container ul.contacts-container li i {
+main div.index-restaurant div.restaurant div.card-body div.card-info-container ul.contacts-container li i {
   width: 1.6rem;
   font-size: 1rem;
   color: #00CCBC;
@@ -20340,7 +20340,7 @@ ul.edit-container li label {
 
 ul.edit-container li label {
   cursor: pointer;
-  padding: 8px 22px;
+  padding: 8px 12px;
 }
 
 ul.edit-container li label::before {

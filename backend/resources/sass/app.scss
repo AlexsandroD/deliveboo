@@ -14,11 +14,19 @@
 @import '~@fortawesome/fontawesome-free/scss/brands';
 @import url("https://use.fontawesome.com/releases/v5.13.0/css/all.css");
 
-// Our Style
-@import '/restaurant/index';
-@import '/restaurant/edit';
 
-// commons
+// OUR STYLE
+
+// restaurant
+@import '/restaurant/index';
+
+// components
+@import '/components/categories-checks';
+
+
+
+
+// COMMONS
 * {
   font-family: 'IBM Plex Sans', sans-serif;
 }
