@@ -15,6 +15,7 @@ class RestaurantController extends Controller
 
     public function filterCategory(Request $request){
         $data = $request->all();
+
         $restaurants = Restaurant::select('address','city','country','description','email','image_cover','name','phone','post_code','restaurant_id as id','slug')
         ->join('category_restaurant','restaurants.id','=','category_restaurant.restaurant_id')
         ->whereIn('category_restaurant.category_id',$data['categories'])

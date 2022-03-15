@@ -1,6 +1,18 @@
 <template>
   <div class="container">
-      <button @click="restaurantsFilter()">KTM</button>
+      <button @click="variables.categoriesValue.length > 0 ?  restaurantsFilter() : getRestaurant() ">filtro</button>
+      <div class="row">
+          <div class="col" v-for="restaurant in restaurants" :key="restaurant.id">
+            <div class="card">
+            <img class="card-img-top" src="" alt="Card image cap">
+                <div class="card-body">
+                    <h5 class="card-title">{{ restaurant.name }}</h5>
+                    <p class="card-text">{{ restaurant.phone }}</p>
+                    <a href="#" class="btn btn-primary"></a>
+                </div>
+            </div>
+          </div>
+      </div>
   </div>
 </template>
 
@@ -12,6 +24,7 @@ export default {
         return{
             variables,
             restaurants:[],
+
         }
     },
     created(){
