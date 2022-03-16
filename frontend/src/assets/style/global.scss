@@ -1,0 +1,21 @@
+// imports 
+
+@import url('https://fonts.googleapis.com/css?family=Nunito');
+@import '~bootstrap/scss/bootstrap.scss';
+@import "./variables";
+
+
+// fonts family
+
+* {
+  font-family: 'IBM Plex Sans', sans-serif;
+}
+
+// reset
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+

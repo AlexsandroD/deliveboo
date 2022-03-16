@@ -174,7 +174,7 @@
                 @if($restaurant->imgage_cover != NULL)
                     <img class="img-thumbnail float-right" src="{{ asset('storage/' . $restaurant->image_cover) }}" alt="{{$restaurant->name}} image">
                 @endif
-                <label for="image">Media</label>
+                <label for="image">Immagine</label>
                 <input class="form-control @error('image_cover') is-invalid @enderror" id="image" type="file" name="image_cover" value="{{ old('image_cover', $restaurant->image_cover) }}">
                 @error('image_cover')
                 <small class="text-danger">{{ $message }}</small>
