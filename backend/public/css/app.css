@@ -20275,12 +20275,9 @@ header nav.navbar-light #dropdown a button.btn i {
 
 ul.edit-container {
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
   flex-wrap: wrap;
-}
-
-ul.edit-container {
   list-style: none;
   padding: 0.6rem 0 0;
 }
@@ -20297,6 +20294,7 @@ ul.edit-container li label {
   background-color: #FFF;
   color: #00CCBC;
   margin: 3px 0px;
+  padding: 8px 12px;
   border: 2px solid #00CCBC;
   border-radius: 25px;
   -webkit-touch-callout: none;
@@ -20305,11 +20303,7 @@ ul.edit-container li label {
   -ms-user-select: none;
   -webkit-tap-highlight-color: transparent;
   transition: all 0.2s;
-}
-
-ul.edit-container li label {
   cursor: pointer;
-  padding: 8px 12px;
 }
 
 ul.edit-container li label::before {
@@ -20328,11 +20322,10 @@ ul.edit-container li label::before {
   transition: transform 0.3s ease-in-out;
 }
 
-ul.edit-container li input[type=checkbox]:checked + label::before {
-  content: "\F00C";
-  color: #FFF;
-  transform: rotate(-360deg);
-  transition: transform 0.3s ease-in-out;
+ul.edit-container li input[type=checkbox] {
+  display: absolute;
+  position: absolute;
+  opacity: 0;
 }
 
 ul.edit-container li input[type=checkbox]:checked + label {
@@ -20342,13 +20335,11 @@ ul.edit-container li input[type=checkbox]:checked + label {
   transition: all 0.2s;
 }
 
-ul.edit-container li input[type=checkbox] {
-  display: absolute;
-}
-
-ul.edit-container li input[type=checkbox] {
-  position: absolute;
-  opacity: 0;
+ul.edit-container li input[type=checkbox]:checked + label::before {
+  content: "\F00C";
+  color: #FFF;
+  transform: rotate(-360deg);
+  transition: transform 0.3s ease-in-out;
 }
 
 .modal-dialog {
@@ -20386,6 +20377,10 @@ ul.edit-container li input[type=checkbox] {
 
 .modal-dialog .modal-content .modal-footer {
   border: 0;
+}
+
+.btn:focus {
+  box-shadow: none;
 }
 
 .btn_border {

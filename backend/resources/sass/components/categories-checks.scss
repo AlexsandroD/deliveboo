@@ -1,91 +1,81 @@
 // lista categories
 ul.edit-container {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    flex-wrap: wrap;
-}
+  @include flex-center;
+  flex-wrap: wrap;
 
-ul.edit-container {
-    list-style: none;
-
-    padding: .6rem 0 0;
-}
-
-ul.edit-container li{
-  display: inline;
-}
-
-ul.edit-container li label{
-    display: inline-block;
-    width: 8.5rem;
-    
-    user-select: none;
-    white-space: nowrap;
-    
-    @include delivebooColors3;
-
-    margin: 3px 0px;
-    border: 2px solid $_primary;
-    border-radius: 25px;
-
-    -webkit-touch-callout: none;
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    -webkit-tap-highlight-color: transparent;
-    transition: all .2s;
-}
-
-ul.edit-container li label {
-    cursor: pointer;
-
-    padding: 8px 12px;
-}
-
-ul.edit-container li label::before {
-    width: 1.2rem;
-    display: inline-block;
-
-    font-style: normal;
-    font-variant: normal;
-    text-rendering: auto;
-    -webkit-font-smoothing: antialiased;
-    font-family: "Font Awesome 6 Free";
-    font-weight: 900;
-    font-size: 12px;
-    content: "\f067";
-
-    color: $_primary;
-
-    padding: 2px 6px 2px 2px;
-
-    transition: transform .3s ease-in-out;
-}
-
-ul.edit-container li input[type="checkbox"]:checked + label::before {
-    content: "\f00c";
-
-    color: $_white;
-
-    transform: rotate(-360deg);
-    transition: transform .3s ease-in-out;
-}
-
-ul.edit-container li input[type="checkbox"]:checked + label {
-  background-color: $_primary;
-  color: #fff;
-
-  border: 2px solid $_darkerPrimaryHover;
+  list-style: none;
   
-  transition: all .2s;
-}
+  padding: .6rem 0 0;
 
-ul.edit-container li input[type="checkbox"] {
-  display: absolute;
-}
+  li{
+    display: inline;
 
-ul.edit-container li input[type="checkbox"] {
-  position: absolute;
-  opacity: 0;
+    label{
+      display: inline-block;
+      width: 8.5rem;
+      
+      user-select: none;
+      white-space: nowrap;
+      
+      @include delivebooColors3;
+  
+      margin: 3px 0px;
+      padding: 8px 12px;
+      border: 2px solid $_primary;
+      border-radius: 25px;
+  
+      -webkit-touch-callout: none;
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      -ms-user-select: none;
+      -webkit-tap-highlight-color: transparent;
+      transition: all .2s;
+      
+      cursor: pointer;
+
+      &::before {
+          width: 1.2rem;
+          display: inline-block;
+      
+          font-style: normal;
+          font-variant: normal;
+          text-rendering: auto;
+          -webkit-font-smoothing: antialiased;
+          font-family: "Font Awesome 6 Free";
+          font-weight: 900;
+          font-size: 12px;
+          content: "\f067";
+      
+          color: $_primary;
+      
+          padding: 2px 6px 2px 2px;
+      
+          transition: transform .3s ease-in-out;
+        }
+    }
+
+    input[type="checkbox"] {
+      display: absolute;
+      position: absolute;
+      opacity: 0;
+    
+      &:checked + label {
+        background-color: $_primary;
+        color: #fff;
+      
+        border: 2px solid $_darkerPrimaryHover;
+        
+        transition: all .2s;
+      }
+
+      &:checked + label::before {
+        content: "\f00c";
+    
+        color: $_white;
+    
+        transform: rotate(-360deg);
+        transition: transform .3s ease-in-out;
+      }
+    }
+  }
 }

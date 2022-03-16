@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="container create-container">
+    <div class="container-md create-container">
 
         <h1 class="m-0">Crea il tuo ristorante</h1>
         <p class="under-title mb-3">( I campi segnalati con * sono obbligatori )</p>
@@ -161,7 +161,7 @@
 
             <div class="text-right mt-4">
               {{-- back button --}}
-              <a href="{{url()->previous()}}"><button type="button" class="btn btn-dark mr-2">Indietro</button></a>
+              <a href="{{route('restaurants.index')}}"><button type="button" class="btn btn-dark mr-2">Indietro</button></a>
               
               {{-- submit button --}}
               <button type="submit" class="btn btn_filled">Crea</button>
