@@ -24,70 +24,96 @@
 
 <body>
     <div id="app">
+      {{-- header --}}
         <header>
-            <nav class="navbar navbar-expand-md navbar-light bg-white">
+            <nav class="navbar navbar-light bg-white">
                 <div class="container">
                     {{-- logo --}}
-                    <a class="navbar-brand" href="{{ url('/') }}">
+                    <a class="navbar-brand" href="{{ url('localhost:8080') }}">
                       <img src="{{ asset('images/logo-scritta-color.png') }}" alt="logo deliveboo a colori">
                     </a>
+
+                    @if($restaurant)
+                    {{-- logout button for md+ screen --}}
+                    <a id="logout_md" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre><button type="button" class="btn btn_logout">Logout</button></a>
+                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="logout_md">
+                        <a class="dropdown-item" href="{{ route('logout') }}"
+                        onclick="event.preventDefault();
+                                      document.getElementById('logout-form').submit();">
+                          {{ __('Logout') }}
+                        </a>
+                        <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                          @csrf
+                        </form>
+                    </div>
+
                     {{-- hamburger button --}}
                     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
-                      <i class="fa-solid fa-user"></i>
+                    <i class="fa-solid fa-house-user"></i>
                     </button>
-
+                    
                     {{-- dropdown menu --}}
                     <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                          <ul id="dropdown" class="my-navbar-collapse">
-                            {{-- tile 1 --}}
-                            <li>
-                                <a href="#">
-                                    <span>
-                                        <i class="fas fa-utensils responsive-i" aria-hidden="true"></i>
-                                    </span>
-                                </a>
-                            </li>
-                            {{-- tile 2 --}}
-                            <li>
-                                <a href="#">
-                                    <span>
-                                        <i class="fa-solid fa-basket-shopping"></i>
-                                    </span>
-                                </a>
-                            </li>
-                            {{-- tile 3 --}}
-                            <li>
-                                <a href="#">
-                                    <span>
-                                        <i class="fa fa-bar-chart responsive-i" aria-hidden="true"></i>
-                                    </span>
-                                </a>
-                            </li>
-                            {{-- tile 4 - logout --}}
-                            <li class="nav-item dropdown">
-                                <a id="navbarDropdown" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                    {{-- {{ Auth::user()->name }} --}}
-                                    <i class="fa-solid fa-right-from-bracket"></i>
+                          <div id="dropdown" class="my-navbar-collapse">
+                            {{-- bottone menù --}}
+                            <a href="{{route('dishes.index')}}" class="text-center">
+                                <button class="btn">
+                                    <i class="fas fa-utensils responsive-i" aria-hidden="true"></i>
+                                </button>
+                            </a>
+                            {{-- bottone ordini --}}
+                            <a href="{{route('orders.index')}}" class="text-center">
+                                <button class="btn">
+                                    <i class="fa-solid fa-basket-shopping"></i>
+                                </button>
+                            </a>
+                            {{-- bottone statistiche --}}
+                            <a href="#" class="text-center">
+                                <button class="btn">
+                                    <i class="fa fa-bar-chart responsive-i" aria-hidden="true"></i>
+                                </button>
+                            </a>
+                            {{-- bottone logout --}}
+                            <a id="btn_dropdown_logout" class="text-center" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                              {{-- {{ Auth::user()->name }} --}}
+                              <button class="btn">
+                                <i class="fa-solid fa-right-from-bracket"></i>
+                              </button>
+                            </a>
+                            @else
+                            <a href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre><button type="button" class="btn btn_logout">Logout</button></a>
+                            <div class="dropdown-menu dropdown-menu-right">
+                              <a class="dropdown-item" href="{{ route('logout') }}"
+                        onclick="event.preventDefault();
+                                      document.getElementById('logout-form').submit();">
+                          {{ __('Logout') }}
+                              </a>
+                            <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                              @csrf
+                            </form>
+                            </div>
+                            @endif
+
+
+                            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="btn_dropdown_logout">
+                                <a class="dropdown-item" href="{{ route('logout') }}"
+                                  onclick="event.preventDefault();
+                                                document.getElementById('logout-form').submit();">
+                                    {{ __('Logout') }}
                                 </a>
 
-                                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="{{ route('logout') }}"
-                                      onclick="event.preventDefault();
-                                                    document.getElementById('logout-form').submit();">
-                                        {{ __('Logout') }}
-                                    </a>
+                                <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                    @csrf
+                                </form>
+                            </div>
 
-                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                                        @csrf
-                                    </form>
-                                </div>
-                            </li>
-                        </ul>
+                        </div>
                     </div>
                 </div>
             </nav>
         </header>
 
+        {{-- main --}}
         <main class="py-4">
             @yield('content')
         </main>
