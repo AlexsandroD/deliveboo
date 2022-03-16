@@ -1,12 +1,12 @@
 <template>
     <main>
-        <router-view></router-view>
+        <router-view :key="$route.path"></router-view>
     </main>
 </template>
 
 <script>
 export default {
-    name: 'Main'
+    name: 'Main',
 }
 </script>
 

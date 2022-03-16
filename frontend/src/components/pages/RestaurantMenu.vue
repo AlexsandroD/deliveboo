@@ -48,7 +48,7 @@
                         <p>Modal body text goes here.</p>
                       </div>
                       <div class="modal-footer">
-                       <router-link :to="{ name: 'restaurant-menu', params: { slug:restaurant.slug } }">
+                       <router-link :to="{ name: 'restaurant-menu', params: { slug:storageSlug } }">
                         <button type="button" class="btn btn-secondary" @click="cartError = false">Torna al Ristorante</button>
                        </router-link>
                         <button type="button" class="btn btn-primary" @click="emptyCart()">Svuota carrello</button>
@@ -59,7 +59,6 @@
               </div>
             </transition>
         </div>
-        <button @click="cartError = true">Click</button>
       </div>
 
         <!-- /// modale cart  -->
@@ -74,7 +73,7 @@ export default {
         restaurant:{},
         cart:[],
         cartError:false,
-
+        storageSlug:null,
       }
     },
 
@@ -89,12 +88,13 @@ export default {
     mounted(){
       if(localStorage.getItem('cart') != null){
         this.cart = JSON.parse(localStorage.getItem('cart'));
+        this.storageSlug=localStorage.getItem('restaurantSlug');
       }
+
     },
 
     methods:{
       addCartItem(dishId){
-        console.log(this.cart.length);
         if(this.cart.length < 1){
           localStorage.setItem('restaurantId',this.restaurant.id);
           localStorage.setItem('restaurantSlug', this.restaurant.slug);
@@ -135,6 +135,7 @@ export default {
 
           if(this.cart.length < 1){
             localStorage.removeItem('restaurantId');
+            localStorage.removeItem('restaurantSlug');
           }
       },
 
