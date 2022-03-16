@@ -1,0 +1,37 @@
+.modal-dialog{
+  margin: 20vh auto;
+
+  .modal-content {
+    border-radius: 1rem;
+    border: 1px solid $_darkerPrimaryHover;
+  
+    .modal-header {
+      padding: 1.4rem 1.6rem;
+      border: 0;
+  
+      h5.modal-title {
+        font-size: 1.2rem;
+        font-weight: 400;
+  
+        color: $_black;
+  
+        strong {
+          color: $_primary;
+        }
+      }
+  
+      button {
+        padding: .2em .6em;
+  
+        span {
+          font-size: 2rem;
+          color: $_primary;
+        }
+      }
+    }
+  
+    .modal-footer {
+      border: 0;
+    }
+  }
+}

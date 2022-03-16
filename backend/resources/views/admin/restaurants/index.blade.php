@@ -69,9 +69,9 @@
                         {{-- buttons container --}}
                         <div class="btn-container text-right">
                           {{-- edit button --}}
-                          <a href="{{ route('restaurants.edit', $restaurant->id) }}" class="ml-3"><button type="button" class="btn btn_edit">Modifica</button></a>
+                          <a href="{{ route('restaurants.edit', $restaurant->id) }}" class="ml-3"><button type="button" class="btn btn_border">Modifica</button></a>
                           {{-- modal delete button --}}
-                          <button type="button" class="btn btn_delete ml-3" data-toggle="modal" data-target="#deleteModal">Elimina</button>
+                          <button type="button" class="btn btn_filled ml-3" data-toggle="modal" data-target="#deleteModal">Elimina</button>
                           
                           {{-- modal --}}
                           <div class="modal fade" id="deleteModal" tabindex="-1">
@@ -82,12 +82,12 @@
                                           <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span></button>
                                       </div>
                                       <div class="modal-footer">
-                                          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                          <button type="button" class="btn btn_border" data-dismiss="modal">Close</button>
                                           {{-- delete form --}}
                                           <form action="{{route('restaurants.destroy', $restaurant->id)}}" method="POST">
                                               @csrf
                                               @method('DELETE')
-                                              <input type="submit" class="btn btn-danger" value="Delete">
+                                              <input type="submit" class="btn btn_filled" value="Delete">
                                           </form>
                                       </div>
                                   </div>
