@@ -1,0 +1,101 @@
+// -- HEADER --
+header {
+
+  nav.navbar-light {
+    padding: 1rem 0;
+
+    #logout_md {
+      display: none;
+    }
+
+    // logo
+    img {
+      width: 8rem;
+    }
+
+    // hamburger menu
+    button.navbar-toggler {
+      background-color: $_primary;
+
+      padding: .5rem .8rem;
+      border: none;
+
+      i {
+        font-size: 1.4rem;
+
+        color: $white;
+      }
+    }
+
+    // dropdown
+    #dropdown {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+
+      margin: 0;
+      padding: 1rem 0;
+
+      a {
+        border-radius: 1rem;
+        margin: 0 1rem;
+        padding: .4rem 0;
+
+        &:nth-child(1){
+          background-color: $_tomato;
+        }
+
+        &:nth-child(2){
+          background-color: $_orange;
+        }
+
+        &:nth-child(3){
+          background-color: $_cherry;
+        }
+
+        &:nth-child(4){
+          background-color: $_black;
+        }
+      
+        button.btn {
+
+          i {
+            color: $_white;
+          }
+        }
+      }
+    }
+  }
+}
+
+// MEDIA QUERIES
+@media screen and (min-width: 992px) {
+  header {
+
+    nav.navbar-light {
+      padding: 1rem 1.2rem;
+
+      // icona deliveboo
+      a.navbar-brand {
+        
+        img {
+          width: 9rem;
+        }
+      }
+      
+      // hamburger button
+      button.navbar-toggler {
+        display: none;
+      }
+
+      // bottone lg logout
+      #logout_md {
+        display: block;
+      }
+
+      #navbarSupportedContent {
+        display: none;
+      }
+
+    }
+  }
+}

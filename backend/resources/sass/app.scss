@@ -1,9 +1,6 @@
 // Fonts
 @import url('https://fonts.googleapis.com/css?family=Nunito');
 
-// Variables
-@import 'variables';
-
 // Bootstrap
 @import '~bootstrap/scss/bootstrap';
 
@@ -12,22 +9,40 @@
 @import '~@fortawesome/fontawesome-free/scss/regular';
 @import '~@fortawesome/fontawesome-free/scss/solid';
 @import '~@fortawesome/fontawesome-free/scss/brands';
-@import url("https://use.fontawesome.com/releases/v5.13.0/css/all.css");
+// @import url("https://use.fontawesome.com/releases/v5.13.0/css/all.css");
 
+// -----------------------------------------------
 
 // OUR STYLE
 
-// restaurant
-@import '/restaurant/index';
+// Variables
+@import 'variables';
+
+// Mixins
+@import 'mixins';
+
+// macro
+@import '/macro/header';
+@import '/macro/footer';
 
 // components
 @import '/components/categories-checks';
+@import '/components/modal-delete';
+@import '/components/buttons';
+@import '/components/add-image-input';
 
+// restaurant
+@import '/restaurant/index';
+@import '/restaurant/create';
 
-
+// ------------------------------------------------
 
 // COMMONS
 * {
   font-family: 'IBM Plex Sans', sans-serif;
+}
+
+body {
+  background-color: $_whiteSmoke;
 }
 

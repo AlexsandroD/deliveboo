@@ -1,0 +1,55 @@
+// BUTTONS
+.btn:focus {
+  box-shadow: none;
+}
+
+.btn_border {
+  @include delivebooColors2;
+  border: 1px solid $_primary;
+
+  transition: .2s linear;
+  outline: none;
+
+  &:hover {
+    @include delivebooColors;
+  }
+}
+
+.btn_filled {
+  @include delivebooColors;
+  border: 1px solid $_primary;
+
+  user-select: none;
+  transition: .2s linear;
+
+  &:hover {
+    background-color: $_darkerPrimaryHover;
+    color: $_white;
+  }
+}
+
+.btn_logout {
+  background-color: $_black;
+  color: $_white;
+
+  user-select: none;
+  transition: .2s linear;
+
+  &:hover {
+    background-color: $_darkGrey;
+  }
+}
+
+.btn_delete {
+  background-color: $_tomato;
+  color: $_white;
+
+  user-select: none;
+  transition: .2s linear;
+
+  &:hover {
+    background-color: $_darkerRedHover;
+    color: $_white;
+  }
+}
+
