@@ -73,6 +73,9 @@ export default Vue.observable({
 
       emptyCart(){
         this.cart=[];
+        this.restaurantId = null;
+        this.restaurantSlug = null;
+        this.restaurantName = null;
         localStorage.clear();
         this.cartError = false;
       }
