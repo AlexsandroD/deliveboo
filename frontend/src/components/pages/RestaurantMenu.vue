@@ -16,8 +16,8 @@
               <img v-else src="https://images.prismic.io/dbhq-deliveroo-riders-website/748bbe8d-ef6f-4f0c-8fda-1bed4928b9eb_hero%402x.png?auto=compress,format" :alt="dish.name"> -->
               <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
               <button @click="removeCartItem(dish.id)">meno</button>
-
-              <span>{{cart.filter(e => e.dishId == dish.id).length > 0 ? cart.find(x => x.dishId == dish.id).quantity : 0}}</span>
+              <span v-if="cart != null">{{cart.filter(e => e.dishId == dish.id).length > 0 ? cart.find(x => x.dishId == dish.id).quantity : 0}}</span>
+              <span v-else>0</span>
               <button @click="addCartItem(dish.id)">piú</button>
             </div>
           </div>
@@ -25,12 +25,44 @@
       </div>
       <div class="row">
         <div class="col">
+        
             <h3>Carrello</h3>
             <p></p>
 
         </div>
+
+      </div>
+        <!-- modale cart  -->
+        <div id="app">
+          <div v-if="cartError">
+            <transition name="modal">
+              <div class="modal-mask">
+                <div class="modal-wrapper">
+                  <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <h5 class="modal-title">Modal title</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" @click="cartError=false" aria-label="Close"></button>
+                      </div>
+                      <div class="modal-body">
+                        <p>Modal body text goes here.</p>
+                      </div>
+                      <div class="modal-footer">
+                       <router-link :to="{ name: 'restaurant-menu', params: { slug:restaurant.slug } }">
+                        <button type="button" class="btn btn-secondary" @click="cartError = false">Torna al Ristorante</button>
+                       </router-link>
+                        <button type="button" class="btn btn-primary" @click="emptyCart()">Svuota carrello</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </transition>
+        </div>
+        <button @click="cartError = true">Click</button>
       </div>
 
+        <!-- /// modale cart  -->
   </div>
 </template>
 
@@ -41,8 +73,8 @@ export default {
       return{
         restaurant:{},
         cart:[],
+        cartError:false,
 
-         
       }
     },
 
@@ -55,27 +87,36 @@ export default {
     },
 
     mounted(){
-      this.cart = JSON.parse(localStorage.getItem('cart'));
+      if(localStorage.getItem('cart') != null){
+        this.cart = JSON.parse(localStorage.getItem('cart'));
+      }
     },
 
     methods:{
       addCartItem(dishId){
+        console.log(this.cart.length);
         if(this.cart.length < 1){
           localStorage.setItem('restaurantId',this.restaurant.id);
+          localStorage.setItem('restaurantSlug', this.restaurant.slug);
         }
-        if (this.cart.filter(e => e.dishId === dishId).length > 0) {
-          let objIndex = this.cart.findIndex((obj => obj.dishId == dishId));
-          this.cart[objIndex].quantity += 1;
-        }else{
-          let dish = {
-            'dishId' : dishId,
-            'quantity': 1,
-          }
-          this.cart.push(dish);
-        }
+        if(this.restaurant.id == localStorage.getItem('restaurantId') ){
 
-        localStorage.setItem('cart', JSON.stringify(this.cart));
-        
+          if (this.cart.filter(e => e.dishId === dishId).length > 0) {
+            let objIndex = this.cart.findIndex((obj => obj.dishId == dishId));
+            this.cart[objIndex].quantity += 1;
+          }else{
+            let dish = {
+              'dishId' : dishId,
+              'quantity': 1,
+            }
+            this.cart.push(dish);
+          }
+  
+          localStorage.setItem('cart', JSON.stringify(this.cart));
+          
+        }else{
+          this.cartError = true;
+        }
       },
       removeCartItem(dishId){
           if (this.cart.filter(e => e.dishId === dishId).length > 0) {
@@ -97,10 +138,31 @@ export default {
           }
       },
 
+      emptyCart(){
+        this.cart=[];
+        localStorage.clear();
+        this.cartError = false;
+      }
+
     }
 }
 </script>
 
-<style>
+<style lang="scss" scoped>
+  .modal-mask {
+  position: fixed;
+  z-index: 9998;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, .5);
+  display: table;
+  transition: opacity .3s ease;
+  }
 
+  .modal-wrapper {
+    display: table-cell;
+    vertical-align: middle;
+  }
 </style>
