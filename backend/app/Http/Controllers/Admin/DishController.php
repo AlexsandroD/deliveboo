@@ -29,7 +29,7 @@ class DishController extends Controller
         $restaurant = Restaurant::select('id')->where('user_id', Auth::id())->first();
         $restaurants_id = $restaurant->id;
         $dishes = Dish::where('restaurant_id', $restaurants_id)->where('deleted',false)->get();
-        return view("admin.dishes.index", compact("dishes"));
+        return view("admin.dishes.index", compact("dishes","restaurant"));
     }
 
     /**

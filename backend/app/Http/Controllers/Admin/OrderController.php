@@ -19,7 +19,7 @@ class OrderController extends Controller
         $restaurant = Restaurant::select('id')->where('user_id', Auth::id())->first();
         $restaurants_id = $restaurant->id;
         $orders = Order::where('restaurant_id', $restaurants_id)->with('dishes')->get();
-        return view("admin.orders.index", compact("orders"));
+        return view("admin.orders.index", compact("orders", "restaurant"));
     }
 
     /**

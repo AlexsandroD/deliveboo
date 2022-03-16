@@ -43,6 +43,6 @@ class LoginController extends Controller
 
     public function logout(Request $request){
       $this->performLogout($request);
-      return redirect('localhost:8080');
+      return redirect()->away('http://localhost:8080');
     }
 }
