@@ -18,6 +18,9 @@
 // Variables
 @import 'variables';
 
+// Mixins
+@import 'mixins';
+
 // macro
 @import '/macro/header';
 @import '/macro/footer';
@@ -26,14 +29,20 @@
 @import '/components/categories-checks';
 @import '/components/modal-delete';
 @import '/components/buttons';
+@import '/components/add-image-input';
 
 // restaurant
 @import '/restaurant/index';
+@import '/restaurant/create';
 
 // ------------------------------------------------
 
 // COMMONS
 * {
   font-family: 'IBM Plex Sans', sans-serif;
+}
+
+body {
+  background-color: $_whiteSmoke;
 }
 

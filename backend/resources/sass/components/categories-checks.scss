@@ -1,13 +1,7 @@
-// MIXINS
-@mixin delivebooColors {
-  background-color: $_white;
-  color: $_primary;
-}
-
 // lista categories
 ul.edit-container {
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
     flex-wrap: wrap;
 }
@@ -15,7 +9,7 @@ ul.edit-container {
 ul.edit-container {
     list-style: none;
 
-    padding: 20px 0;
+    padding: .6rem 0 0;
 }
 
 ul.edit-container li{
@@ -24,11 +18,12 @@ ul.edit-container li{
 
 ul.edit-container li label{
     display: inline-block;
+    width: 8.5rem;
     
     user-select: none;
     white-space: nowrap;
     
-    @include delivebooColors;
+    @include delivebooColors3;
 
     margin: 3px 0px;
     border: 2px solid $_primary;

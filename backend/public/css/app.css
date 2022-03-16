@@ -20203,11 +20203,6 @@ header nav.navbar-light #logout_md {
   display: none;
 }
 
-header nav.navbar-light #logout_md .btn_logout {
-  background-color: #2E3333;
-  color: #FFF;
-}
-
 header nav.navbar-light img {
   width: 8rem;
 }
@@ -20280,14 +20275,14 @@ header nav.navbar-light #dropdown a button.btn i {
 
 ul.edit-container {
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
   flex-wrap: wrap;
 }
 
 ul.edit-container {
   list-style: none;
-  padding: 20px 0;
+  padding: 0.6rem 0 0;
 }
 
 ul.edit-container li {
@@ -20296,6 +20291,7 @@ ul.edit-container li {
 
 ul.edit-container li label {
   display: inline-block;
+  width: 8.5rem;
   user-select: none;
   white-space: nowrap;
   background-color: #FFF;
@@ -20397,6 +20393,7 @@ ul.edit-container li input[type=checkbox] {
   color: #00CCBC;
   border: 1px solid #00CCBC;
   transition: 0.2s linear;
+  outline: none;
 }
 
 .btn_border:hover {
@@ -20408,6 +20405,10 @@ ul.edit-container li input[type=checkbox] {
   background-color: #00CCBC;
   color: #FFF;
   border: 1px solid #00CCBC;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
   transition: 0.2s linear;
 }
 
@@ -20416,8 +20417,86 @@ ul.edit-container li input[type=checkbox] {
   color: #FFF;
 }
 
-main {
-  background-color: #F9FAFA;
+.btn_logout {
+  background-color: #2E3333;
+  color: #FFF;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+  transition: 0.2s linear;
+}
+
+.btn_logout:hover {
+  background-color: #434848;
+}
+
+.btn_delete {
+  background-color: #FE483B;
+  color: #FFF;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+  transition: 0.2s linear;
+}
+
+.btn_delete:hover {
+  background-color: #b82f26;
+  color: #FFF;
+}
+
+.file-upload {
+  background-color: #FFF;
+  padding: 1.2rem;
+  border: 1px solid #00CCBC;
+  border-radius: 1rem;
+}
+
+.file-upload .file-upload-content {
+  display: none;
+  text-align: center;
+}
+
+.file-upload .file-upload-content .file-upload-image {
+  max-height: 200px;
+  max-width: 200px;
+  margin: auto;
+  padding: 1.2rem;
+}
+
+.file-upload .image-upload-wrap {
+  position: relative;
+  margin-top: 0.6rem;
+  border: 1px dashed #00CCBC;
+  border-radius: 1rem;
+}
+
+.file-upload .image-upload-wrap .file-upload-input {
+  position: absolute;
+  top: 0;
+  left: 0;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  cursor: pointer;
+  outline: none;
+  opacity: 0;
+}
+
+.file-upload .image-upload-wrap .drag-text {
+  height: 10rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.file-upload .image-upload-wrap .drag-text h3 {
+  font-weight: 100;
+  font-size: 1.2rem;
+  color: #00CCBC;
 }
 
 main div.index-restaurant div#restaurantless-add {
@@ -20667,7 +20746,54 @@ main div.index-restaurant .aside {
   }
 }
 
+.create-container h1 {
+  font-size: 2rem;
+}
+
+.create-container p.under-title {
+  font-size: 1rem;
+  font-weight: 400;
+  color: #00CCBC;
+}
+
+.create-container .form-group i {
+  width: 1.2rem;
+  text-align: center;
+  color: #00CCBC;
+}
+
+.create-container .form-group input.form-control,
+.create-container .form-group textarea.form-control,
+.create-container .form-group input.form-control-file {
+  border: 1px solid #00CCBC;
+  border-radius: 1rem;
+}
+
+.create-container .form-group input.form-control::-moz-placeholder, .create-container .form-group textarea.form-control::-moz-placeholder, .create-container .form-group input.form-control-file::-moz-placeholder {
+  color: #53C5B9;
+}
+
+.create-container .form-group input.form-control:-ms-input-placeholder, .create-container .form-group textarea.form-control:-ms-input-placeholder, .create-container .form-group input.form-control-file:-ms-input-placeholder {
+  color: #53C5B9;
+}
+
+.create-container .form-group input.form-control::placeholder,
+.create-container .form-group textarea.form-control::placeholder,
+.create-container .form-group input.form-control-file::placeholder {
+  color: #53C5B9;
+}
+
+.create-container .form-group input.form-control:active,
+.create-container .form-group textarea.form-control:active,
+.create-container .form-group input.form-control-file:active {
+  outline: none;
+}
+
 * {
   font-family: "IBM Plex Sans", sans-serif;
+}
+
+body {
+  background-color: #F9FAFA;
 }
 

@@ -1,20 +1,3 @@
-// MIXINS
-@mixin flex-center {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-@mixin delivebooColors {
-  background-color: $_primary;
-  color: $_white;
-}
-
-@mixin delivebooColors2 {
-  background-color: $_white;
-  color: $_primary;
-}
-
 // -- HEADER --
 header {
 
@@ -23,11 +6,6 @@ header {
 
     #logout_md {
       display: none;
-
-      .btn_logout {
-        background-color: $_black;
-        color: $_white;
-      }
     }
 
     // logo

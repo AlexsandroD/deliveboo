@@ -37,8 +37,10 @@ class RestaurantController extends Controller
      */
     public function create()
     {
+        // aggiungo restaurant = false per permettere al layout di nascondere i tasti di modifica ristorante
+        $restaurant = false;
         $categories=Category::all();
-        return view('admin.restaurants.create', compact('categories'));
+        return view('admin.restaurants.create', compact('restaurant','categories'));
     }
 
     /**
