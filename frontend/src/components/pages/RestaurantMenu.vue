@@ -18,20 +18,12 @@
               <button @click="removeCartItem(dish.id)">meno</button>
               <span v-if="cart != null">{{cart.filter(e => e.dishId == dish.id).length > 0 ? cart.find(x => x.dishId == dish.id).quantity : 0}}</span>
               <span v-else>0</span>
-              <button @click="addCartItem(dish.id)">piú</button>
+              <button @click="addCartItem(dish.id,dish.name,dish.price)">piú</button>
             </div>
           </div>
         </div>
       </div>
-      <div class="row">
-        <div class="col">
-        
-            <h3>Carrello</h3>
-            <p></p>
-
-        </div>
-
-      </div>
+    
         <!-- modale cart  -->
         <div id="app">
           <div v-if="cartError">
@@ -62,18 +54,28 @@
       </div>
 
         <!-- /// modale cart  -->
+
+        <!-- cart  -->
+          <Cart />
+        <!-- // cart  -->
   </div>
 </template>
 
 <script>
+import Cart from '../sections/Cart.vue';
+import variables from '../../variables';
 export default {
     name:"RestaurantMenu",
+    components:{
+      Cart,
+    },
     data(){
       return{
         restaurant:{},
         cart:[],
         cartError:false,
         storageSlug:null,
+        variables,
       }
     },
 
@@ -93,11 +95,16 @@ export default {
 
     },
 
+   
+
     methods:{
-      addCartItem(dishId){
+      addCartItem(dishId,dishName,dishPrice){
         if(this.cart.length < 1){
           localStorage.setItem('restaurantId',this.restaurant.id);
           localStorage.setItem('restaurantSlug', this.restaurant.slug);
+          localStorage.setItem('restaurantName', this.restaurant.name);
+          
+
         }
         if(this.restaurant.id == localStorage.getItem('restaurantId') ){
 
@@ -108,6 +115,8 @@ export default {
             let dish = {
               'dishId' : dishId,
               'quantity': 1,
+              'name': dishName,
+              'dishPrice':dishPrice,
             }
             this.cart.push(dish);
           }
@@ -136,6 +145,7 @@ export default {
           if(this.cart.length < 1){
             localStorage.removeItem('restaurantId');
             localStorage.removeItem('restaurantSlug');
+            localStorage.removeItem('restaurantName');
           }
       },
 
