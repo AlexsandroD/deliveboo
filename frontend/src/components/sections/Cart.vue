@@ -10,7 +10,6 @@
       </ul>
       <p v-if="cartLogic.restaurantId == cartLogic.newRestaurantId">totale:{{returnTotal()}}</p>
       <p v-else>carrello vuoto</p>
-
   </div>
 </template>
 
