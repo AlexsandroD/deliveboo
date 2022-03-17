@@ -74,7 +74,6 @@ export default {
             })
             .then((response) => {
                 this.restaurants = response.data.data;
-                this.variables.totalPage = response.data.last_page;
             }) 
         },
 

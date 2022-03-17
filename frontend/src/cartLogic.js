@@ -3,8 +3,10 @@ import Vue from 'vue';
 export default Vue.observable({
     restaurantName:null,
     restaurantId:null,
+    newRestaurantId:null,
     restaurantSlug:null,
     cartError:false,
+    totalPrice:0,
     cart:[],
 
     mountedCart(){
@@ -68,6 +70,7 @@ export default Vue.observable({
             this.restaurantId = null;
             this.restaurantSlug = null;
             this.restaurantName = null;
+            this.totalPrice=0;
           }
       },
 
@@ -76,6 +79,7 @@ export default Vue.observable({
         this.restaurantId = null;
         this.restaurantSlug = null;
         this.restaurantName = null;
+        this.totalPrice=0;
         localStorage.clear();
         this.cartError = false;
       }
