@@ -73,9 +73,6 @@ export default {
     data(){
       return{
         restaurant:{},
-        cart:[],
-        cartError:false,
-        storageSlug:null,
         cartLogic,
       }
     },
