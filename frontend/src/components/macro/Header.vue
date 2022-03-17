@@ -2,7 +2,13 @@
   <header>
      <a class="btn btn-primary" href=" http://127.0.0.1:8000/admin" role="button">Admin</a>
      <ul>
-       <li>{{ cartLogic.totalPrice }}</li>
+       
+       <li>
+         <router-link 
+         :to="{ name: 'restaurant-menu', params: { slug:cartLogic.restaurantSlug } }">
+           {{ cartLogic.totalPrice }}
+          </router-link>
+        </li>
      </ul>
   </header>
 </template>
@@ -15,6 +21,9 @@ export default {
       return{
         cartLogic,
       }
+    },
+    mounted(){
+        this.cartLogic.mountedCart();
     }
 }
 </script>

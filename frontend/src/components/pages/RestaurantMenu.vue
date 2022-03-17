@@ -72,7 +72,7 @@
 
 <script>
 import Cart from '../sections/Cart.vue';
-import cartLogic from '../../cartLogic';
+import cartLogic from "../../cartLogic";
 
 export default {
     name:"RestaurantMenu",

@@ -33,6 +33,7 @@
 <script>
 import variables from "../../variables";
 
+
 export default {
     name:"Restaurants",
     data(){
@@ -48,6 +49,7 @@ export default {
         } else {
             this.getRestaurant();
         }
+      
     },
 
   
