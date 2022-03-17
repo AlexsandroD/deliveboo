@@ -4,8 +4,8 @@
           <div class="col" v-for="restaurant in restaurants" :key="restaurant.id">
             <router-link :to="{ name: 'restaurant-menu', params: { slug:restaurant.slug } }">
                 <div class="card">
-                <img v-if="restaurant.image_cover" class="card-img-top" :src="'http://127.0.0.1:8000/storage/' + restaurant.image_cover" :alt="restaurant.name">
-                <img v-else src="https://www.wecanjob.it/moduli/output_immagine.php?id=8444" :alt="restaurant.name">
+                <img v-if="restaurant.image_cover" class="card-img-top"  :src="'http://127.0.0.1:8000/storage/' + restaurant.image_cover" style="width:200px" :alt="restaurant.name">
+                <img v-else src="https://www.wecanjob.it/moduli/output_immagine.php?id=8444"  style="width:200px" :alt="restaurant.name">
                     <div class="card-body">
                         <h5 class="card-title">{{ restaurant.name }}</h5>
                         <p class="card-text">{{ restaurant.phone }}</p>

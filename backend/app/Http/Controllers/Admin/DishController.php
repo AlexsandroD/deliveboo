@@ -39,7 +39,8 @@ class DishController extends Controller
      */
     public function create()
     {
-        return view("admin.dishes.create");
+        $restaurant = false;
+        return view("admin.dishes.create",compact("restaurant"));
     }
 
     /**
@@ -88,7 +89,7 @@ class DishController extends Controller
         $restaurants_id = $restaurant->id;
 
         if($dish->restaurant_id === $restaurants_id && $dish->deleted == false){
-            return view("admin.dishes.show", compact("dish"));
+            return view("admin.dishes.show", compact("dish",'restaurant'));
         }else{
             return redirect()->route("dishes.index");
         }
@@ -106,7 +107,7 @@ class DishController extends Controller
         $restaurants_id = $restaurant->id;
 
         if($dish->restaurant_id === $restaurants_id && $dish->deleted == false){
-            return view("admin.dishes.edit", compact("dish"));
+            return view("admin.dishes.edit", compact("dish","restaurant"));
         }else{
             return redirect()->route("dishes.index");
         }
@@ -126,16 +127,16 @@ class DishController extends Controller
         $request->validate($this->validationRule);
         // add data
         $data = $request->all();
-        
+
         if( isset($data['image']) ) {
             Storage::delete($dish->image);
             $path_image = Storage::put("uploads/dish_images",$data['image']);
             $dish->image = $path_image;
         }
-        
+
         $dish->fill($data);
         $dish->visible = isset($data["visible"]);
-        
+
 
         $dish->save();
 
@@ -151,7 +152,7 @@ class DishController extends Controller
      */
     public function destroy(Dish $dish)
     {
-        
+
         $dish->deleted=true;
         $dish->save();
         return redirect()->route("dishes.index");
