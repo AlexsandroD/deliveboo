@@ -12,7 +12,7 @@ use Illuminate\Support\Facades\DB;
 class RestaurantController extends Controller
 {
     public function index(){
-        $restaurants = Restaurant::all();
+        $restaurants = Restaurant::paginate(10);
         return response()->json($restaurants);
     }
 
@@ -23,7 +23,7 @@ class RestaurantController extends Controller
         ->join('category_restaurant','restaurants.id','=','category_restaurant.restaurant_id')
         ->whereIn('category_restaurant.category_id',$data['categories'])
         ->distinct()
-        ->get();
+        ->paginate(10);
 
         return response()->json($restaurants);
     }
