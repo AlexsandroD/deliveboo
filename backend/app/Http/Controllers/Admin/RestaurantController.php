@@ -62,7 +62,7 @@ class RestaurantController extends Controller
             "post_code" => "required|string|max:5",
             "phone" => "required|string|max:15|unique:restaurants,phone",
             "image_cover" => "nullable|mimes:jpg,jpeg,png|max:2048",
-            "categories" => "sometimes|exists:categories,id",
+            "categories" => "required|exists:categories,id",
         ]);
 
         $data = $request->all();
@@ -114,7 +114,7 @@ class RestaurantController extends Controller
         }else{
             return abort(404);
         }
-        
+
     }
 
     /**
@@ -136,7 +136,7 @@ class RestaurantController extends Controller
         "post_code" =>"required|string|max:5",
         "phone" =>"required|string|max:15|unique:restaurants,phone,".$restaurant->id,
         "image_cover" =>  "nullable|mimes:jpg,jpeg,png|max:2048",
-        "categories" => "sometimes|exists:categories,id",
+        "categories" => "required|exists:categories,id",
         ]);
 
         $data = $request->all();

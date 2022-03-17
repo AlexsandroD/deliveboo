@@ -20,14 +20,14 @@
 
             {{-- categories checkbox --}}
             <div class="form-group">
-              <p class="mb-0"><i class="fa-solid fa-utensils"></i> Modifica categorie</p>
+              <p class="mb-0"><i class="fa-solid fa-utensils"></i> Modifica categorie *</p>
               <ul class="edit-container">
               @foreach ($categories as $category)
                   <li @error('categories') is-invalid @enderror">
                       @if (old("categories"))
-                          <input class="form-check-input" type="checkbox" id="{{$category->name}}" value="{{$category->id}}" name="categories[]" {{in_array($category->id, old("categories", [])) ? 'checked' : ''}}>
+                          <input class="form-check-input checkBox_validate" type="checkbox" id="{{$category->name}}" value="{{$category->id}}" name="categories[]" {{in_array($category->id, old("categories", [])) ? 'checked' : ''}}>
                       @else
-                          <input class="form-check-input" type="checkbox" id="{{$category->name}}" value="{{$category->id}}" name="categories[]" {{$restaurant->categories->contains($category) ? 'checked' : ''}}>
+                          <input class="form-check-input checkBox_validate" type="checkbox" id="{{$category->name}}" value="{{$category->id}}" name="categories[]" {{$restaurant->categories->contains($category) ? 'checked' : ''}}>
                       @endif
                       <label class="form-check-label" for="{{$category->name}}">{{$category->name}}</label>
                   </li>
@@ -105,7 +105,7 @@
             {{-- add image upload --}}
             <div class="form-group">
               <label for="image"><i class="fa-solid fa-image"></i> Modifica l'immagine di copertina</label>
-              
+
               <div class="file-upload text-center">
                   <button class="btn btn_filled" type="button" onclick="$('.file-upload-input').trigger( 'click' )">Carica immagine</button>
                   <div class="image-upload-wrap">
@@ -157,17 +157,17 @@
                   $('.image-upload-wrap').show();
                   $("#image").val(null);
                 }
-                $('.image-upload-wrap').bind('dragover', function () {
-                    $('.image-upload-wrap').addClass('image-dropping');
-                  });
-                  $('.image-upload-wrap').bind('dragleave', function () {
-                    $('.image-upload-wrap').removeClass('image-dropping');
-                  });
+                // $('.image-upload-wrap').bind('dragover', function () {
+                //     $('.image-upload-wrap').addClass('image-dropping');
+                //   });
+                //   $('.image-upload-wrap').bind('dragleave', function () {
+                //     $('.image-upload-wrap').removeClass('image-dropping');
+                //   });
               </script>
               <script class="jsbin" src="https://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
             </div>
 
-              <div class="text-right mt-4">  
+              <div class="text-right mt-4">
                 {{-- back button --}}
                 <a href="{{route('restaurants.index')}}"><button type="button" class="btn btn-dark mr-2">Indietro</button></a>
 
@@ -177,4 +177,42 @@
         </form>
 
     </div>
+
+    <script>
+
+    let categories = document.getElementsByClassName('checkBox_validate');
+
+
+    function init(){
+
+        for(let i = 0; i <categories.length; i++){
+            categories[i].addEventListener('change',checkValidity);
+        }
+        checkValidity();
+
+    }
+
+
+    function validateCheckBox(){
+
+       for(let i = 0; i < categories.length; i++){
+           if(categories[i].checked){
+                return true;
+            }
+       }
+        return false;
+    }
+
+    function checkValidity(){
+        if(!validateCheckBox()){
+            categories[1].setCustomValidity('Seleziona almeno una categoria');
+        }else{
+            categories[1].setCustomValidity('');
+        }
+    }
+
+
+    init()
+
+</script>
 @endsection
