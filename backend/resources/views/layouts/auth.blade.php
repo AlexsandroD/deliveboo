@@ -29,7 +29,7 @@
             <nav class="navbar navbar-light bg-white">
                 <div class="container">
                     {{-- logo --}}
-                    <a class="navbar-brand" href="{{ url('/') }}">
+                    <a class="navbar-brand" href="http://localhost:8080">
                       <img src="{{ asset('images/logo-scritta-color.png') }}" alt="logo deliveboo a colori">
                     </a>
                 </div>
