@@ -8,7 +8,7 @@
               {{ returnDishTotal(dish.dishPrice,dish.quantity) }}
           </li>
       </ul>
-      <p v-if="cartLogic.restaurantId == cartLogic.newRestaurantId">totale:{{returnTotal()}}</p>
+      <p v-if="cartLogic.restaurantId == cartLogic.newRestaurantId">totale:{{cartLogic.totalPrice}}</p>
       <p v-else>carrello vuoto</p>
   </div>
 </template>
@@ -23,20 +23,13 @@ export default {
         }
     },
 
+
     methods:{
         returnDishTotal(price,quantity){
         console.log(price,quantity);
           return  (price * quantity).toFixed(2);
         },
 
-        returnTotal(){
-            let cartTotal = 0;
-            for(let i = 0; i < this.cartLogic.cart.length; i++){
-              cartTotal += (this.cartLogic.cart[i].dishPrice *  this.cartLogic.cart[i].quantity);            
-            }
-            this.cartLogic.totalPrice = cartTotal.toFixed(2);
-            return cartTotal.toFixed(2);
-        }
     }
   
     

@@ -6,13 +6,17 @@ export default Vue.observable({
     newRestaurantId:null,
     restaurantSlug:null,
     cartError:false,
-    totalPrice:0,
+    totalPrice:null,
     cart:[],
 
     mountedCart(){
         if(localStorage.getItem('cart') != null){
             this.cart = JSON.parse(localStorage.getItem('cart'));
             this.restaurantSlug=localStorage.getItem('restaurantSlug');
+            this.restaurantId=localStorage.getItem('restaurantId');
+            this.restaurantName=localStorage.getItem('restaurantName');
+            this.totalPrice=localStorage.getItem('totalPrice');
+            this.returnTotal();
         }
     },
 
@@ -21,11 +25,9 @@ export default Vue.observable({
           localStorage.setItem('restaurantId',restaurantId);
           localStorage.setItem('restaurantSlug', restaurantSlug);
           localStorage.setItem('restaurantName', restaurantName);
-
           this.restaurantId = restaurantId;
           this.restaurantSlug = restaurantSlug;
-          this.restaurantName = restaurantName;
-
+          this.restaurantName = restaurantName;          
         }
         if(restaurantId == localStorage.getItem('restaurantId') ){
 
@@ -47,6 +49,7 @@ export default Vue.observable({
         }else{
           this.cartError = true;
         }
+          this.returnTotal();
       },
           removeCartItem(dishId){
           if (this.cart.filter(e => e.dishId === dishId).length > 0) {
@@ -62,7 +65,7 @@ export default Vue.observable({
           }
 
           localStorage.setItem('cart', JSON.stringify(this.cart));
-
+          this.returnTotal();
           if(this.cart.length < 1){
             localStorage.removeItem('restaurantId');
             localStorage.removeItem('restaurantSlug');
@@ -82,5 +85,14 @@ export default Vue.observable({
         this.totalPrice=0;
         localStorage.clear();
         this.cartError = false;
-      }
+      },
+
+      returnTotal(){
+            this.totalPrice = 0;
+            for(let i = 0; i < this.cart.length; i++){
+              this.totalPrice += (this.cart[i].dishPrice *  this.cart[i].quantity);            
+            }
+            this.totalPrice = this.totalPrice.toFixed(2);
+            localStorage.setItem('totalPrice',this.totalPrice);
+        }
 });
