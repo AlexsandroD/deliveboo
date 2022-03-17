@@ -43,7 +43,7 @@
                             <label for="vat" class="col-md-4 col-form-label text-md-right">Partita IVA *</label>
 
                             <div class="col-md-6">
-                                <input id="vat" type="text" class="form-control @error('vat') is-invalid @enderror" name="vat" required pattern="[0-9]{11}" autocomplete="on" placeholder="Inserisci 11 cifre" value="{{ old('vat') }}">
+                                <input id="vat" type="text" class="form-control @error('vat') is-invalid @enderror" name="vat" required pattern="[0-9]{11}" autocomplete="on" maxlength="11" placeholder="Inserisci 11 cifre" value="{{ old('vat') }}">
 
                                 @error('vat')
                                     <span class="invalid-feedback" role="alert">
@@ -52,7 +52,7 @@
                                 @enderror
                             </div>
                         </div>
-                        
+
                         <div class="form-group row">
                             <label for="email" class="col-md-4 col-form-label text-md-right">Email *</label>
 
@@ -87,14 +87,14 @@
                             <label for="password-confirm" class="col-md-4 col-form-label text-md-right">Conferma Password</label>
 
                             <div class="col-md-6">
-                                <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password" >
+                                <input id="password-confirm"  type="password" class="form-control" name="password_confirmation" required autocomplete="new-password" >
                             </div>
                         </div>
 
                         <div class="form-group row mb-0">
                             <div class="col-md-6 offset-md-4">
-                                <button type="submit" class="btn btn-primary">
-                                    {{ __('Register') }}
+                                <button id type="submit" class="btn btn-primary">
+                                   Registrati
                                 </button>
                             </div>
                         </div>
@@ -104,4 +104,24 @@
         </div>
     </div>
 </div>
+
+<script>
+
+    let password = document.getElementById('password');
+    let passwordCheck = document.getElementById('password-confirm');
+
+    function validatePassword(){
+
+        if(password.value != passwordCheck.value) {
+            passwordCheck.setCustomValidity("Le password non corrispondono");
+        }
+
+    }
+
+    password.onchange = validatePassword;
+    passwordCheck.onkeyup = validatePassword;
+
+
+</script>
+
 @endsection
