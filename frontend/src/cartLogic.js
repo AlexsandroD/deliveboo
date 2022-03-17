@@ -13,6 +13,9 @@ export default Vue.observable({
         if(localStorage.getItem('cart') != null){
             this.cart = JSON.parse(localStorage.getItem('cart'));
             this.restaurantSlug=localStorage.getItem('restaurantSlug');
+            this.restaurantId=localStorage.getItem('restaurantId');
+            this.restaurantName=localStorage.getItem('restaurantName');
+
         }
     },
 
