@@ -20195,6 +20195,21 @@ readers do not read off random characters that represent icons */
   content: "\F63F";
 }
 
+header .dropdown_menu {
+  position: absolute;
+  top: 75%;
+  right: 2rem;
+  left: unset;
+  min-width: unset;
+  background-color: #2E3333;
+  padding: 0.4em;
+  border-radius: 1rem;
+}
+
+header .dropdown_menu i {
+  color: #FFF;
+}
+
 header nav.navbar-light {
   padding: 1rem 0;
 }
@@ -20424,6 +20439,7 @@ ul.edit-container li input[type=checkbox]:checked + label::before {
 
 .btn_logout:hover {
   background-color: #434848;
+  color: #FFF;
 }
 
 .btn_delete {

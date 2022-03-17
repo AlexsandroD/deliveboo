@@ -1,6 +1,24 @@
 // -- HEADER --
 header {
 
+  .dropdown_menu {
+    position: absolute;
+    top: 75%;
+    right: 2rem;
+    left: unset;
+
+    min-width: unset;
+
+    background-color: $_black;
+
+    padding: .4em;
+    border-radius: 1rem;
+
+    i {
+      color: $_white;
+    }
+  }
+
   nav.navbar-light {
     padding: 1rem 0;
 
