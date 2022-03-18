@@ -64,6 +64,11 @@
 
         <!-- /// modale cart  -->
 
+        <router-link :to="{ name: 'home'}">
+            <button type="button" class="btn btn-secondary">Torna all'elenco Ristoranti</button>
+        </router-link>
+
+
         <!-- cart  -->
           <Cart />
         <!-- // cart  -->
