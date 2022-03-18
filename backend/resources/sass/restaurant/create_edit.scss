@@ -9,29 +9,4 @@
     font-weight: 400;
     color: $_primary;
   }
-
-  .form-group {
-
-    i {
-      width: 1.2rem;
-      text-align: center;
-
-      color: $_primary;
-    }
-
-    input.form-control,
-    textarea.form-control,
-    input.form-control-file {
-      border: 1px solid $_primary;
-      border-radius: 1rem;
-  
-      &::placeholder {
-        color: $_brighterPrimaryHover;
-      }
-
-      &:active {
-        outline: none;
-      }
-    }
-  }
 }
