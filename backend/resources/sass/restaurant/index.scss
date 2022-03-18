@@ -28,25 +28,26 @@ main {
       }
     }
 
-    // card benvenuto
-    div.benvenuto {
-      @include delivebooColors;
-
-      padding: .8rem 1.25rem;
-      border: none;
-      border-radius: 1rem;
-
-      h3 {
-        font-size: 1rem;
-        margin: 0;
-      }
-    }
-
+    
     // card ristorante
     div.restaurant {
       border: none;
       border-top-left-radius: 1rem;
       border-top-right-radius: 1rem;
+      
+      // card benvenuto
+      div.benvenuto {
+        @include delivebooColors;
+  
+        padding: .8rem 1.25rem;
+        border: none;
+        border-radius: 1rem;
+  
+        h3 {
+          font-size: 1rem;
+          margin: 0;
+        }
+      }
       
       // immagine ristorante
       img.restaurant-cover {
@@ -61,6 +62,7 @@ main {
 
       div.card_header {
         background-color: $_white;
+        border-radius: 1rem;
 
         // info ristorante
         div.restaurant-name {
