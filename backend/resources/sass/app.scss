@@ -30,6 +30,10 @@
 @import '/components/modal-delete';
 @import '/components/buttons';
 @import '/components/add-image-input';
+@import '/components/form-inputs';
+
+// auth
+@import '/auth/register_login';
 
 // restaurant
 @import '/restaurant/index';
@@ -40,9 +44,17 @@
 // COMMONS
 * {
   font-family: 'IBM Plex Sans', sans-serif;
+
+  &::selection {
+    background-color: #00ccbb50;
+  }
 }
 
 body {
   background-color: $_whiteSmoke;
+
+  label, img {
+    user-select: none;
+  }
 }
 

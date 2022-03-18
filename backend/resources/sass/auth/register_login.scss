@@ -1,0 +1,26 @@
+.auth-container {
+
+  .card {
+    border: 1px solid $_primary;
+    border-radius: 1rem;
+
+    background-color: #fff;
+
+    .card_header {
+      @include delivebooColors;
+
+      font-size: 1.2rem;
+  
+      padding: 1rem 1.3rem;
+      border-top-left-radius: 1rem;
+      border-top-right-radius: 1rem;
+    }
+
+    .card_body {
+      padding: 1rem 1.4rem;
+
+
+    }
+  }
+
+}

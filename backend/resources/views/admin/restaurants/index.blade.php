@@ -131,7 +131,7 @@
               {{-- partita iva utente --}}
               <li>
                 <div>
-                  <i class="fa-solid fa-file-invoice-dollar"></i>
+                  <i class="fa-solid fa-briefcase"></i>
                   <span>Partita iva</span>
                 </div>
                 <span class="info">
