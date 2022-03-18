@@ -16,13 +16,18 @@
       <button v-if="cartLogic.restaurantId == cartLogic.newRestaurantId || cartLogic.cart.length > 0" @click="cartLogic.emptyCart()">Svuota carrello</button>
       <p v-if="cartLogic.restaurantId == cartLogic.newRestaurantId">totale:{{cartLogic.totalPrice}}</p>
       <p v-else>carrello vuoto</p>
+      <Checkout />
   </div>
 </template>
 
 <script>
+import Checkout from "./Checkout.vue";
 import cartLogic from "../../cartLogic";
 export default {
     name:'Cart',
+    components:{
+        Checkout,
+    },
     data(){
         return{
             cartLogic,

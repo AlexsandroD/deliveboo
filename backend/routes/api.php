@@ -18,6 +18,8 @@ Route::get('/categories', 'Api\CategoryController@index');
 Route::get('/restaurants', 'Api\RestaurantController@index');
 Route::get('/filters', 'Api\RestaurantController@filterCategory');
 Route::get('/restaurants/{slug}', 'Api\RestaurantController@show');
+Route::get('/orders-token', 'Api\OrderController@token');
+
 
 
 
