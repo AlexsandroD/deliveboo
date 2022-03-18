@@ -1,7 +1,23 @@
 <template>
   <div class="container">
       <!-- parte dati ristorante -->
-    
+      <div class="card mb-3">
+          <div class="row g-0">
+            <div class="col-md-4">
+              <img v-if="restaurant.image_cover" class="card-img-top"  :src="'http://127.0.0.1:8000/storage/' + restaurant.image_cover" style="width:200px" :alt="restaurant.name">
+              <img v-else src="https://www.wecanjob.it/moduli/output_immagine.php?id=8444"  style="width:200px" :alt="restaurant.name">
+            </div>
+            <div class="col-md-8">
+              <div class="card-body">
+                <h5 class="card-title">{{restaurant.name}}</h5>
+                <p class="card-text">{{ restaurant.description }}</p>
+                <p class="card-text">{{ restaurant.email }}</p>
+                <p class="card-text">{{ restaurant.address}}, {{ restaurant.city }}, {{ restaurant.post_code }}, {{ restaurant.country}}</p>
+                <p class="card-text">{{ restaurant.phone }}</p>
+              </div>
+            </div>
+          </div>
+      </div>
 
 
 
@@ -12,9 +28,10 @@
           <div v-if="dish.visible" class="card"  style="width: 18rem;">
             <div class="card-body">
               <h5 class="card-title">{{dish.name}}</h5>
-              <!-- <img v-if="dish.image" :src="'http://127.0.0.1:8000/storage/'+dish.image" :alt="dish.name">
-              <img v-else src="https://images.prismic.io/dbhq-deliveroo-riders-website/748bbe8d-ef6f-4f0c-8fda-1bed4928b9eb_hero%402x.png?auto=compress,format" :alt="dish.name"> -->
-              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+              <img v-if="dish.image" class="card-img-top"  :src="'http://127.0.0.1:8000/storage/' + dish.image" style="width:200px" :alt="dish.name">
+              <img v-else src="https://www.wecanjob.it/moduli/output_immagine.php?id=8444"  style="width:200px" :alt="dish.name">
+              <p class="card-text">{{ dish.description }}</p>
+              <p class="card-text">&euro;{{ dish.price }}</p>
               <button @click="cartLogic.removeCartItem(dish.id)">meno</button>
               <span v-if="cartLogic.cart != null">{{cartLogic.cart.filter(e => e.dishId == dish.id).length > 0 ? cartLogic.cart.find(x => x.dishId == dish.id).quantity : 0}}</span>
               <span v-else>0</span>
@@ -63,6 +80,11 @@
       </div>
 
         <!-- /// modale cart  -->
+
+        <router-link :to="{ name: 'home'}">
+            <button type="button" class="btn btn-secondary">Torna all'elenco Ristoranti</button>
+        </router-link>
+
 
         <!-- cart  -->
           <Cart />
