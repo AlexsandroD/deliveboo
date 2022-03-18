@@ -17,6 +17,21 @@ class OrderController extends Controller
 
     public function payment(Request $request, Gateway $gateway){
         $data = $request->all();
-        return response()->json($data);
+        $payment = $gateway->transaction()->sale([
+            "amount" => $data["totalPrice"],
+            "paymentMethodNonce"=>$data["nonce"],
+            "options"=>[
+                "submitForSettlement"=> true
+            ],
+        ]);
+
+        if($payment->success){
+            // aggiunata ordine se successful
+
+        }else{
+            // risultato negativo
+        }
+
+        return response()->json($payment);
     }
 }
