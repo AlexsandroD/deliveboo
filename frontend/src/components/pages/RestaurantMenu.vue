@@ -9,7 +9,7 @@
 
       <div class="row">
         <div class="col" v-for="dish in restaurant.dishes" :key="dish.id">
-          <div class="card" style="width: 18rem;">
+          <div v-if="dish.visible" class="card"  style="width: 18rem;">
             <div class="card-body">
               <h5 class="card-title">{{dish.name}}</h5>
               <!-- <img v-if="dish.image" :src="'http://127.0.0.1:8000/storage/'+dish.image" :alt="dish.name">
@@ -19,6 +19,15 @@
               <span v-if="cartLogic.cart != null">{{cartLogic.cart.filter(e => e.dishId == dish.id).length > 0 ? cartLogic.cart.find(x => x.dishId == dish.id).quantity : 0}}</span>
               <span v-else>0</span>
               <button @click="cartLogic.addCartItem(dish.id,dish.name,dish.price,restaurant.id,restaurant.slug,restaurant.name)">piú</button>
+            </div>
+          </div>
+           <div v-else class="card" disabled  style="width: 18rem;">
+            <div class="card-body">
+              <h5 class="card-title">{{dish.name}}</h5>
+              <!-- <img v-if="dish.image" :src="'http://127.0.0.1:8000/storage/'+dish.image" :alt="dish.name">
+              <img v-else src="https://images.prismic.io/dbhq-deliveroo-riders-website/748bbe8d-ef6f-4f0c-8fda-1bed4928b9eb_hero%402x.png?auto=compress,format" :alt="dish.name"> -->
+              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+              <p>Terminato</p>
             </div>
           </div>
         </div>
@@ -63,7 +72,7 @@
 
 <script>
 import Cart from '../sections/Cart.vue';
-import cartLogic from '../../cartLogic';
+import cartLogic from "../../cartLogic";
 
 export default {
     name:"RestaurantMenu",
@@ -82,6 +91,7 @@ export default {
             axios.get(`http://127.0.0.1:8000/api/restaurants/${this.$route.params.slug}`)
             .then((response) => {
             this.restaurant = response.data;
+            this.cartLogic.newRestaurantId = this.restaurant.id; 
             })
     },
 
