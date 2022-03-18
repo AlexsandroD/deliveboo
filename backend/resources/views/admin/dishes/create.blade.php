@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="container-md create-container">
+    <div class="container create-container">
 
         <h1 class="m-0">Crea un nuovo piatto</h1>
         <p class="under-title mb-3">( I campi segnalati con * sono obbligatori )</p>
@@ -104,7 +104,7 @@
                       {{ old('visible') ? 'checked' : '' }} checked>
 
                   <label class="form-check-label ml-2" for="visible">
-                      Visibile
+                      Pubblico
                   </label>
                   @error('visible')
                       <div class="alert alert-danger">{{ $message }}</div>

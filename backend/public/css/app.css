@@ -20909,6 +20909,7 @@ main div.index-restaurant div.restaurant div.card-body ul.contacts-container li.
 }
 
 .dish-container .dishes-grid div.card a figure {
+  position: relative;
   overflow: hidden;
   border-top-right-radius: 1rem;
   border-top-left-radius: 1rem;
@@ -20923,6 +20924,35 @@ main div.index-restaurant div.restaurant div.card-body ul.contacts-container li.
   border-top-right-radius: 1rem;
   transform: scale(1);
   transition: 0.6s ease-in-out;
+}
+
+.dish-container .dishes-grid div.card a figure div.status {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  font-size: 0.8rem;
+  padding: 0.2rem 0.2rem 0.2rem 0.6rem;
+  border-top-left-radius: 1rem;
+}
+
+.dish-container .dishes-grid div.card a figure div.status.public {
+  color: #FFF;
+  background-color: #00CCBC;
+}
+
+.dish-container .dishes-grid div.card a figure div.status.private {
+  color: #FFF;
+  background-color: #434848;
+}
+
+.dish-container .dishes-grid div.card a h5.card-title {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  /* number of lines to show */
+  line-clamp: 1;
+  -webkit-box-orient: vertical;
 }
 
 .dish-container .dishes-grid div.card a p.description {
@@ -20946,6 +20976,152 @@ main div.index-restaurant div.restaurant div.card-body ul.contacts-container li.
   .dish-container .dishes-grid {
     grid-template-columns: repeat(3, 32%);
     gap: 2%;
+  }
+}
+
+div.dish {
+  border: none;
+  border-top-left-radius: 1rem;
+  border-top-right-radius: 1rem;
+}
+
+div.dish .image_container img.dish-cover {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+  border-top-left-radius: 1rem;
+  border-top-right-radius: 1rem;
+}
+
+div.dish .image_container div.status {
+  position: absolute;
+  left: 0;
+  top: 0;
+  font-size: 1.2rem;
+  padding: 0.4em 1em;
+  border-top-left-radius: 1rem;
+  border-bottom-right-radius: 1rem;
+}
+
+div.dish .image_container div.status.public {
+  color: #FFF;
+  background-color: #00CCBC;
+}
+
+div.dish .image_container div.status.private {
+  color: #FFF;
+  background-color: #434848;
+}
+
+div.dish div.card_header {
+  background-color: #FFF;
+  border-radius: 1rem;
+}
+
+div.dish div.card_header div.card-title-container {
+  background-color: #00CCBC;
+  color: #FFF;
+  padding: 1.2rem 1.25rem;
+}
+
+div.dish div.card_header div.card-title-container h2 {
+  font-size: 1.6rem;
+  margin: 0;
+}
+
+div.dish div.dish-info {
+  padding: 1.5rem 1.2rem;
+}
+
+div.dish div.dish-info div.dish-description {
+  background-color: #F9FAFA;
+  padding: 1rem;
+  border-radius: 1rem;
+}
+
+div.dish div.dish-info div.dish-description h5 {
+  font-size: 1.1rem;
+  font-weight: 400;
+  color: #00CCBC;
+}
+
+div.dish div.dish-info div.dish-description h5 i {
+  width: 1rem;
+  font-size: 1rem;
+}
+
+div.dish div.dish-info div.dish-description p.description {
+  color: #434848;
+}
+
+div.card-body {
+  background-color: #FFF;
+  padding: 2rem;
+  border-bottom-left-radius: 1rem;
+  border-bottom-right-radius: 1rem;
+}
+
+div.card-body h3 {
+  font-size: 1.2rem;
+}
+
+div.card-body ul.contacts-container {
+  background-color: #F9FAFA;
+  padding: 0.4rem 0.8rem;
+  border-radius: 1rem;
+}
+
+div.card-body ul.contacts-container li.badges {
+  padding: 0.2rem 0;
+  list-style: none;
+}
+
+div.card-body ul.contacts-container li.badges span.badge {
+  background-color: #FFF;
+  color: #00CCBC;
+  padding: 0.6em 1em;
+  border: 1px solid #00CCBC;
+}
+
+div.card-body ul.contacts-container li.card-text {
+  list-style: none;
+  padding: 0.6rem 0;
+}
+
+div.card-body ul.contacts-container li.card-text i {
+  width: 1.6rem;
+  font-size: 1rem;
+  color: #00CCBC;
+}
+
+@media (min-width: 992px) {
+  div.dish .image_container img.dish-cover {
+    border-top-right-radius: 0;
+    border-bottom-left-radius: 1rem;
+  }
+
+  div.dish div.card_header div.card-title-container {
+    border-top-right-radius: 1rem;
+  }
+
+  div.dish div.card_header div.card-description-container p.description {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    /* number of lines to show */
+    line-clamp: 3;
+    -webkit-box-orient: vertical;
+  }
+
+  div.dish div.card_header div.card-body h3 {
+    font-size: 1.6rem;
+  }
+
+  div.dish div.card_header div.card-body ul.contacts-container li.badges span.badge {
+    font-size: 0.7rem;
+    padding: 0.8em 1.2em;
   }
 }
 

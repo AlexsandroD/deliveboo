@@ -1,0 +1,180 @@
+// card piatto
+div.dish {
+    border: none;
+    border-top-left-radius: 1rem;
+    border-top-right-radius: 1rem;
+
+    .image_container {
+        // immagine piatto
+        img.dish-cover {
+            width: 100%;
+            height: 100%;
+
+            object-fit: cover;
+
+            border-top-left-radius: 1rem;
+            border-top-right-radius: 1rem;
+        }
+
+        div.status {
+            position: absolute;
+            left: 0;
+            top: 0;
+
+            font-size: 1.2rem;
+
+            padding: 0.4em 1em;
+            border-top-left-radius: 1rem;
+            border-bottom-right-radius: 1rem;
+
+            &.public {
+                color: $_white;
+                background-color: $_primary;
+            }
+
+            &.private {
+                color: $_white;
+                background-color: $_darkGrey;
+            }
+        }
+    }
+
+    div.card_header {
+        background-color: $_white;
+        border-radius: 1rem;
+
+        // info piatto
+
+        div.card-title-container {
+            @include delivebooColors;
+            padding: 1.2rem 1.25rem;
+
+            h2 {
+                font-size: 1.6rem;
+
+                margin: 0;
+            }
+        }
+    }
+
+    // info-body
+    div.dish-info {
+        padding: 1.5rem 1.2rem;
+
+        div.dish-description {
+            background-color: $_whiteSmoke;
+
+            padding: 1rem;
+            border-radius: 1rem;
+
+            h5 {
+                font-size: 1.1rem;
+                font-weight: 400;
+                color: $_primary;
+
+                i {
+                    width: 1rem;
+
+                    font-size: 1rem;
+                }
+            }
+
+            p.description {
+                color: $_darkGrey;
+            }
+        }
+    }
+}
+
+div.card-body {
+    background-color: $_white;
+
+    padding: 2rem;
+    border-bottom-left-radius: 1rem;
+    border-bottom-right-radius: 1rem;
+
+    h3 {
+        font-size: 1.2rem;
+    }
+
+    ul.contacts-container {
+        background-color: $_whiteSmoke;
+
+        padding: 0.4rem 0.8rem;
+        border-radius: 1rem;
+
+        li.badges {
+            padding: 0.2rem 0;
+            list-style: none;
+
+            span.badge {
+                @include delivebooColors2;
+
+                padding: 0.6em 1em;
+                border: 1px solid $_primary;
+            }
+        }
+
+        li.card-text {
+            list-style: none;
+
+            padding: 0.6rem 0;
+
+            i {
+                width: 1.6rem;
+
+                font-size: 1rem;
+                color: $_primary;
+            }
+        }
+    }
+}
+
+//00000000 MEDIA QUERIES 00000000
+@media (min-width: 992px) {
+    // card piatto
+    div.dish {
+        .image_container {
+            // immagine piatto
+            img.dish-cover {
+                border-top-right-radius: 0;
+                border-bottom-left-radius: 1rem;
+            }
+          }
+          
+          // info piatto
+          div.card_header {
+              div.card-title-container {
+                  border-top-right-radius: 1rem;
+              }
+
+              // info-body
+              div.card-description-container {
+                  p.description {
+                      overflow: hidden;
+                      text-overflow: ellipsis;
+                      display: -webkit-box;
+                      -webkit-line-clamp: 3; /* number of lines to show */
+                      line-clamp: 3;
+                      -webkit-box-orient: vertical;
+                  }
+              }
+
+            div.card-body {
+                h3 {
+                    font-size: 1.6rem;
+                }
+
+                ul.contacts-container {
+                    li.badges {
+                        span.badge {
+                            font-size: 0.7rem;
+
+                            padding: 0.8em 1.2em;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

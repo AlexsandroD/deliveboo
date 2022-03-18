@@ -65,6 +65,7 @@
         }
   
         figure {
+          position: relative;
           overflow: hidden;
           
           border-top-right-radius: 1rem;
@@ -83,6 +84,38 @@
             -webkit-transition: .6s ease-in-out;
             transition: .6s ease-in-out;
           }
+  
+            div.status {
+            position: absolute;
+            right: 0;
+            bottom: 0;
+
+            font-size: .8rem;
+
+            
+            padding: .2rem .2rem .2rem .6rem;
+            border-top-left-radius: 1rem;
+
+            &.public {
+              color: $_white;
+              background-color: $_primary;
+            }
+
+            &.private {
+              color: $_white;
+              background-color: $_darkGrey;
+            }
+          }
+
+        }
+
+        h5.card-title {
+          overflow: hidden;
+          text-overflow: ellipsis;
+          display: -webkit-box;
+          -webkit-line-clamp: 1; /* number of lines to show */
+                  line-clamp: 1; 
+          -webkit-box-orient: vertical;
         }
   
         p.description {

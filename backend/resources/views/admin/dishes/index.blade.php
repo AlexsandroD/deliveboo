@@ -23,10 +23,25 @@
                             <a href="{{ route('dishes.show', $dish->id) }}">
                                 <figure class="mb-0">
                                     <img class="dish_cover" src="{{ asset('images/placeholder.svg') }}" alt="">
+                                    @if($dish->visible)
+                                    <div class="status public">
+                                      Disponibile
+                                    </div>
+                                    @else
+                                    <div class="status private">
+                                      Esaurito
+                                    </div>
+                                    @endif
                                 </figure>
                                 <div class="card-body py-3">
                                     <h5 class="card-title mb-2">{{ $dish->name }}</h5>
-                                    <p class="card-text description mb-2">{{ $dish->description }}</p>
+                                    <p class="card-text description mb-2">
+                                      @if($dish->description)
+                                      {{ $dish->description }}
+                                      @else
+                                      Nessuna descrizione
+                                      @endif
+                                    </p>
                                     <span class="card-text price">{{ $dish->price }} &euro;</span>
                                 </div>
                             </a>
