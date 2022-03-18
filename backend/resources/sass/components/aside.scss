@@ -1,0 +1,83 @@
+aside.aside {
+  display: none;
+
+  border-radius: 1rem;
+
+  color: $_black;
+
+  h3.user-title {
+    @include delivebooColors;
+    font-size: .9rem;
+
+    margin: 0;
+    padding: 0.8rem 1.25rem;
+    border-top-left-radius: 1rem;
+    border-top-right-radius: 1rem;
+  }
+
+  div#user-info {
+    background-color: $_white;
+    
+    padding: 1rem;
+    margin-bottom: 1rem;
+    border-bottom-left-radius: 1rem;
+    border-bottom-right-radius: 1rem;
+
+    ul {
+      list-style: none;
+
+      background-color: $_whiteSmoke;
+
+      padding: 0 1rem;
+      margin: 0;
+      border-radius: 1rem;
+
+      li {
+        color: $_primary;
+
+        padding: .4rem 0;
+
+        i {
+          width: 1rem;
+          font-size: .8rem;
+        }
+
+        span.label {
+          font-size: .9rem;
+
+        }
+
+        span.info {
+          font-size: .8rem;
+          color: $_black;
+        }
+      }
+    }
+  }
+
+  div#btn-container {
+    display: flex;
+    flex-direction: column;
+
+    a {
+      margin-bottom: 1rem;
+      border-radius: 1rem;
+
+      button {
+        color: $_white;
+
+        i {
+          width: 1.4rem;
+        }
+      }
+    }
+  }
+}
+
+//00000000 MEDIA QUERIES 00000000
+@media(min-width:992px) {
+
+  aside.aside {
+    display: block;
+  }
+}

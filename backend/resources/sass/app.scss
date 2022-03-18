@@ -26,11 +26,13 @@
 @import '/macro/footer';
 
 // components
-@import '/components/categories-checks';
-@import '/components/modal-delete';
-@import '/components/buttons';
 @import '/components/add-image-input';
+@import '/components/aside';
+@import '/components/buttons';
+@import '/components/categories-checks';
 @import '/components/form-inputs';
+@import '/components/modal-delete';
+
 
 // auth
 @import '/auth/register_login';
@@ -38,6 +40,9 @@
 // restaurant
 @import '/restaurant/index';
 @import '/restaurant/create_edit';
+
+// dishes
+@import '/dishes/index';
 
 // ------------------------------------------------
 

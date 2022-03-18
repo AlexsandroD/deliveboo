@@ -48,32 +48,16 @@ header {
     // dropdown
     #dropdown {
       display: grid;
-      grid-template-columns: repeat(4, 1fr);
+      grid-template-columns: repeat(5, 1fr);
 
       margin: 0;
-      padding: 1rem 0;
+      padding: 1.4rem 1rem 0;
 
       a {
         border-radius: 1rem;
-        margin: 0 1rem;
+        margin: 0 .8rem;
         padding: .4rem 0;
 
-        &:nth-child(1){
-          background-color: $_tomato;
-        }
-
-        &:nth-child(2){
-          background-color: $_orange;
-        }
-
-        &:nth-child(3){
-          background-color: $_cherry;
-        }
-
-        &:nth-child(4){
-          background-color: $_black;
-        }
-      
         button.btn {
 
           i {
