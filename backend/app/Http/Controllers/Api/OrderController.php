@@ -14,4 +14,9 @@ class OrderController extends Controller
         $token = $gateway->clientToken()->generate();
         return response()->json($token);
     }
+
+    public function payment(Request $request, Gateway $gateway){
+        $data = $request->all();
+        return response()->json($data);
+    }
 }
