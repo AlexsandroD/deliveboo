@@ -104,7 +104,7 @@
                       {{ old('visible') ? 'checked' : '' }} checked>
 
                   <label class="form-check-label ml-2" for="visible">
-                      Pubblico
+                      Disponibile
                   </label>
                   @error('visible')
                       <div class="alert alert-danger">{{ $message }}</div>
@@ -116,9 +116,7 @@
             <div class="text-right mt-4">
               
               {{-- back button --}}
-              <a href="{{route('restaurants.index')}}"><button type="button" class="btn mr-2 restaurant-color"><i class="fa-solid fa-house-chimney-user"></i></button></a>
-
-              <a href="{{ route('dishes.index') }}"><button type="button" class="btn mr-2 menu-color"><i class="fas fa-utensils responsive-i" aria-hidden="true"></i></button></a>
+              <a href="{{route('dishes.index')}}"><button type="button" class="btn btn-dark mr-2">Indietro</button></a>
               
               {{-- submit button --}}
               <button type="submit" class="btn btn_filled">Crea</button>

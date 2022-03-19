@@ -122,12 +122,18 @@
 
               {{-- container bottoni --}}
               <div id="btn-container">
-                  {{-- bottone menu --}}
+                  {{-- bottone ristorante --}}
                   <a href="{{ route('restaurants.index') }}" class="text-center restaurant-color">
                       <button class="btn">
                           <i class="fa-solid fa-house-chimney-user"></i> Ristorante
                       </button>
                   </a>
+                  {{-- bottone menu --}}
+                  <a href="{{ route('dishes.index') }}" class="text-center menu-color">
+                    <button class="btn">
+                        <i class="fa-solid fa-house-chimney-user"></i> Menù
+                    </button>
+                </a>
                   {{-- bottone ordini --}}
                   <a href="{{ route('orders.index') }}" class="text-center orders-color">
                       <button class="btn">
