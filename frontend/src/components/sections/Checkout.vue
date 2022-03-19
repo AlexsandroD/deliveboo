@@ -1,69 +1,80 @@
 <template>
 
-    <form @submit.prevent="payWithCreditCard()">
+    <div>
 
-        <!-- carte valide di test
-        Visa: 4111 1111 1111 1111
-        Mastercard: 5555 5555 5555 4444
-        Amex: 3714 496353 9843
-        CVV: uno qualsiasi
-        Data scadenza: entro i prossimi 180 anni -->
+        <!-- form pagamento -->
+        <form @submit.prevent="payWithCreditCard()" v-if="paymentSuccess == false && paymentError == false">
+
+            <!-- carte valide di test
+            Visa: 4111 1111 1111 1111
+            Mastercard: 5555 5555 5555 4444
+            Amex: 3714 496353 9843
+            CVV: uno qualsiasi
+            Data scadenza: entro i prossimi 180 anni -->
 
 
-        <!-- nome -->
-        <label for="name" class="text-gold">Nome *</label>
-        <input v-model="name" type="text" id="name" class="form-control" placeholder="Inserisci il tuo nome" required maxlength="80">
+            <!-- nome -->
+            <label for="name" class="text-gold">Nome *</label>
+            <input v-model="name" type="text" id="name" class="form-control" placeholder="Inserisci il tuo nome" required maxlength="80">
 
-        <!-- cognome -->
-        <label for="surname" class="text-gold">Cognome *</label>
-        <input v-model="surname" type="text" id="surname" class="form-control" placeholder="Inserisci il tuo cognome" required maxlength="80">
+            <!-- cognome -->
+            <label for="surname" class="text-gold">Cognome *</label>
+            <input v-model="surname" type="text" id="surname" class="form-control" placeholder="Inserisci il tuo cognome" required maxlength="80">
 
-        <!-- email -->
-        <label for="email" class="text-gold">Email *</label>
-        <input v-model="email" type="email" id="email" class="form-control" placeholder="Inserisci la tua email" required maxlength="100">
+            <!-- email -->
+            <label for="email" class="text-gold">Email *</label>
+            <input v-model="email" type="email" id="email" class="form-control" placeholder="Inserisci la tua email" required maxlength="100">
 
-        <!-- indirizzo -->
-        <label for="address" class="text-gold">Indirizzo *</label>
-        <input v-model="address" type="text" id="address" class="form-control" placeholder="Inserisci il tuo indirizzo" required maxlength="255">
+            <!-- indirizzo -->
+            <label for="address" class="text-gold">Indirizzo *</label>
+            <input v-model="address" type="text" id="address" class="form-control" placeholder="Inserisci il tuo indirizzo" required maxlength="255">
 
-        <!-- telefono -->
-        <label for="phone" class="text-gold">Telefono *</label>
-        <input v-model="phone" type="tel" id="phone" class="form-control" placeholder="Inserisci il tuo numero di telefono" pattern="[0-9]{10,15}" minlength="10" maxlength="15" required>
+            <!-- telefono -->
+            <label for="phone" class="text-gold">Telefono *</label>
+            <input v-model="phone" type="tel" id="phone" class="form-control" placeholder="Inserisci il tuo numero di telefono" pattern="[0-9]{10,15}" minlength="10" maxlength="15" required>
 
-        <!-- commento -->
-        <label for="comment" class="form-label">Commento</label>
-        <textarea v-model="comment" class="form-control" id="comment" rows="3" placeholder="Inserisci un commento"></textarea>
+            <!-- commento -->
+            <label for="comment" class="form-label">Commento</label>
+            <textarea v-model="comment" class="form-control" id="comment" rows="3" placeholder="Inserisci un commento"></textarea>
 
-        <!-- prezzo totale -->
-        <label for="total_price" class="text-gold my-2">Prezzo totale: &euro;{{cartLogic.totalPrice}}</label>
+            <!-- prezzo totale -->
+            <label for="total_price" class="text-gold my-2">Prezzo totale: &euro;{{cartLogic.totalPrice}}</label>
 
-        <hr>
+            <hr>
 
-        <!-- numero carta -->
-        <label class="text-gold col-12 p-0">Numero carta di credito *</label>
-        <div id="creditCardNumber" class="form-control" required></div>
-        <div v-if="errorNumber">Numero carta non valido</div>
+            <!-- numero carta -->
+            <label class="text-gold col-12 p-0">Numero carta di credito *</label>
+            <div id="creditCardNumber" class="form-control" required></div>
+            <div v-if="errorNumber">Numero carta non valido</div>
 
-        <div class="row my-2">
-            <div class="col-6">
-                <!-- data scadenza -->
-                <label class="text-gold">Data scadenza *</label>
-                <div id="expireDate" class="form-control"></div>
-                <div v-if="errorExpirationDate">Data scadenza non valida</div>
+            <div class="row my-2">
+                <div class="col-6">
+                    <!-- data scadenza -->
+                    <label class="text-gold">Data scadenza *</label>
+                    <div id="expireDate" class="form-control"></div>
+                    <div v-if="errorExpirationDate">Data scadenza non valida</div>
+                </div>
+                <div class="col-6">
+                    <!-- cvv -->
+                    <label class="text-gold">CVV *</label>
+                    <div id="cvv" class="form-control"></div>
+                    <div v-if="errorCvv">CVV non valido</div>
+                </div>
             </div>
-            <div class="col-6">
-                <!-- cvv -->
-                <label class="text-gold">CVV *</label>
-                <div id="cvv" class="form-control"></div>
-                <div v-if="errorCvv">CVV non valido</div>
-            </div>
+
+            <div v-if="errorEmpty">Campi carta vuoti!</div>
+
+            <input id="nonce" name="payment_method_nonce" hidden>
+            <button type="submit" class="btn-gold btn-block mt-4">Conferma e paga</button>
+        </form>
+
+        <!-- risposta pagamento -->
+        <div v-else>
+            <p v-if="paymentSuccess">Pagamento avvenuto con successo. Riceverai una mail con il riepilogo dell'ordine.</p>
+            <p v-if="paymentError">Pagamento fallito, riprovare più tardi.</p>
         </div>
 
-        <div v-if="errorEmpty">Campi carta vuoti!</div>
-
-        <input id="nonce" name="payment_method_nonce" hidden>
-        <button type="submit" class="btn-gold btn-block mt-4">Conferma e paga</button>
-    </form>
+    </div>
 
 </template>
 
@@ -88,6 +99,8 @@ export default {
             errorNumber:false,
             errorExpirationDate:false,
             errorCvv:false,
+            paymentSuccess:false,
+            paymentError:false,
         }
     },
 
@@ -148,7 +161,7 @@ export default {
                     this.errorNumber = false;
                     this.errorExpirationDate = false;
                     this.errorCvv = false;
-                    
+
                     form.submit();
                 })
                 .catch(err => {
@@ -198,16 +211,16 @@ export default {
                     nonce:this.nonce,
                     }
                 })
-            .then((response) => {
-                console.log(response);
+            .then(() => {
 
-                // controllo se risposta postiviva o negativa
-                // se positiva messaggio ordine avvenuto con successo
-                // se negativa messaggio di errore
+                this.paymentSuccess = true;
+
+                this.cartLogic.emptyCart();
+
 
             })
-            .catch((error) => {
-                console.log(error);
+            .catch(() => {
+                this.paymentError = true;
             })
             
         }

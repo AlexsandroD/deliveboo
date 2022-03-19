@@ -49,12 +49,15 @@ class OrderController extends Controller
         ]);
 
         if($payment->success){
-            // aggiunata ordine se successful
+            // aggiunata ordine se success
 
         }else{
-            // risultato negativo
+            return response()->json([
+                "success" => false,
+                "errors" => 'Payment error'
+            ], 400);
         }
 
-        return response()->json($payment);
+        return response()->json(["success" => true,], 200);
     }
 }
