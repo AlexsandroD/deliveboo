@@ -37,7 +37,6 @@ export default {
 
     methods:{
         returnDishTotal(price,quantity){
-        console.log(price,quantity);
           return  (price * quantity).toFixed(2);
         },
 

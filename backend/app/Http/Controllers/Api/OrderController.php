@@ -2,11 +2,12 @@
 
 namespace App\Http\Controllers\Api;
 
+use Illuminate\Support\Facades\Validator;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Braintree\Gateway;
 use App\Order;
-
+use Illuminate\Validation\ValidationRuleParser;
 
 class OrderController extends Controller
 {
@@ -17,6 +18,27 @@ class OrderController extends Controller
 
     public function payment(Request $request, Gateway $gateway){
         $data = $request->all();
+
+        // validazione dati ricevuti
+        $validator = Validator::make($data, [
+            'name' => 'required|string|max:80',
+            'surname' => 'required|string|max:80',
+            'email' => 'required|string|max:100',
+            'address' => 'required|string|max:255',
+            'phone' => 'required|string|max:15',
+            'comment' => 'nullable|string|max:150',
+            'restaurantId' => 'required|exists:restaurants,id',
+            'totalPrice' => 'required|numeric|max:9999',
+        ]);
+
+        if ($validator->fails()) {
+            return response()->json([
+                "success" => false,
+                "errors" => $validator->errors()
+            ], 400);
+        }
+
+
         $payment = $gateway->transaction()->sale([
             "amount" => $data["totalPrice"],
             "paymentMethodNonce"=>$data["nonce"],
