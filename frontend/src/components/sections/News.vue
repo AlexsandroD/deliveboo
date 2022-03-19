@@ -1,8 +1,12 @@
 <template>
     <div class="news-section">
-        <h2>Novitá della nostra cucina</h2>
-        <DelForWork />
-        <DelNewsApp />
+        <div class="news_main">
+            <h2>Novitá della nostra cucina</h2>
+            <div class="news_container">
+                <DelForWork />
+                <DelNewsApp />
+            </div>
+        </div>
     </div>
 </template>
 
@@ -26,6 +30,24 @@ export default {
 
     .news-section{
         background-color:$_whiteSmoke;
-        margin: 0 auto;
+
+        .news_main {
+            width: 60%;
+            margin: 0 auto;
+            padding: 50px 0 80px;
+            h2{
+                font-size: 2rem;
+                font-weight: bold;
+                margin: 0 0 35px;
+            }
+            .news_container{
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                
+            }
+
+        }
     }
 </style>

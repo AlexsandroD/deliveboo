@@ -3,8 +3,8 @@
         
      
       <div class="text">
-          <h2>Deliveroo for work</h2>
-          <p>CLienti o colleghi affamati? il nostro team Corporate ti puó aiutare.</p>
+          <h2>Hai giá la nostra App?</h2>
+          <p>Scaricala ora - disponibile su Apple store e Google Play!</p>
         <ul>
             <li><a href="https://www.apple.com/it/app-store"><img src="../../assets/images/end_page/ios-app-store.svg" alt="Apple_store"></a></li>
             <li><a href="https://play.google.com"><img src="../../assets/images/end_page/android-app-store.svg" alt="Google_play_store"></a></li>
@@ -33,6 +33,7 @@ export default {
         min-height: 200px;
         margin: auto;
         grid: auto-flow / 1fr 1fr;
+        margin: 20px 0;
       
   
             .img_top{
@@ -80,7 +81,7 @@ export default {
                     font-weight: thin;
                    
                     img{
-                    width: 100%;
+                    width: 135px;
 
                     }
                 }
@@ -111,8 +112,7 @@ export default {
 
     @media screen and (min-width: 650px) {
         .container{
-            width: 80%;
-            min-height: 240px;
+            min-height: 210px;
         }
         
     }

@@ -28,8 +28,9 @@ export default {
         background-color:$_white;
         width: 100%;
         min-height: 200px;
-        margin: auto;
         grid: auto-flow / 1fr 1fr;
+        margin: 20px 0;
+
       
   
             .img_top{
@@ -52,6 +53,7 @@ export default {
             
             h2{
                 font-size: 2rem;
+                font-weight: bold;
                 margin: 10px 0px;
             }
             p{
@@ -80,7 +82,6 @@ export default {
 
     @media screen and (min-width: 650px) {
         .container{
-            width: 80%;
             min-height: 240px;
         }
         
