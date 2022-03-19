@@ -1,6 +1,15 @@
 <template>
 
     <form @submit.prevent="payWithCreditCard()">
+
+        <!-- carte valide di test
+        Visa: 4111 1111 1111 1111
+        Mastercard: 5555 5555 5555 4444
+        Amex: 3714 496353 9843
+        CVV: uno qualsiasi
+        Data scadenza: entro i prossimi 180 anni -->
+
+
         <!-- nome -->
         <label for="name" class="text-gold">Nome *</label>
         <input v-model="name" type="text" id="name" class="form-control" placeholder="Inserisci il tuo nome" required maxlength="80">
@@ -53,7 +62,7 @@
         <div v-if="errorEmpty">Campi carta vuoti!</div>
 
         <input id="nonce" name="payment_method_nonce" hidden>
-        <button type="submit" class="btn-gold btn-block mt-4">Confirm and Pay</button>
+        <button type="submit" class="btn-gold btn-block mt-4">Conferma e paga</button>
     </form>
 
 </template>
@@ -128,20 +137,19 @@ export default {
 
         payWithCreditCard() {
 
-            
             this.hostedFieldInstance.tokenize()
                 .then(payload => {
                     this.nonce = payload.nonce;
                     document.querySelector('#nonce').value = payload.nonce;
                     let form = document.querySelector('#payment-form');
-                    form.submit();
+                    this.sendOrder();
 
                     this.errorEmpty = false;
                     this.errorNumber = false;
                     this.errorExpirationDate = false;
                     this.errorCvv = false;
-
-                    this.sendOrder();
+                    
+                    form.submit();
                 })
                 .catch(err => {
 
@@ -169,6 +177,8 @@ export default {
                 }
 
             })
+
+            
         },
 
         sendOrder() {
@@ -195,6 +205,9 @@ export default {
                 // se positiva messaggio ordine avvenuto con successo
                 // se negativa messaggio di errore
 
+            })
+            .catch((error) => {
+                console.log(error);
             })
             
         }

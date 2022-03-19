@@ -16,7 +16,27 @@
       <button v-if="cartLogic.restaurantId == cartLogic.newRestaurantId || cartLogic.cart.length > 0" @click="cartLogic.emptyCart()">Svuota carrello</button>
       <p v-if="cartLogic.restaurantId == cartLogic.newRestaurantId">totale:{{cartLogic.totalPrice}}</p>
       <p v-else>carrello vuoto</p>
-      <Checkout />
+
+        <div>
+            <b-button v-b-modal.payment-modal ok-disabled.false v-if="cartLogic.restaurantId == cartLogic.newRestaurantId || cartLogic.cart.length > 0">Paga</b-button>
+
+            <b-modal id="payment-modal" size="lg">
+                <template #modal-header="{ close }">
+                    <h5>Procedi con il pagamento</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" @click="close()"></button>
+                </template>
+
+                <template #default>
+                    <Checkout/>
+                </template>
+
+                <template #modal-footer="{ cancel }">
+                    <b-button size="sm" variant="danger" @click="cancel()">
+                        Chiudi
+                    </b-button>
+                </template>
+            </b-modal>
+        </div>
   </div>
 </template>
 

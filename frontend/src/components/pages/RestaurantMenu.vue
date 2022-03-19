@@ -1,5 +1,6 @@
 <template>
   <div class="container">
+    
       <!-- parte dati ristorante -->
       <div class="card mb-3">
           <div class="row g-0">

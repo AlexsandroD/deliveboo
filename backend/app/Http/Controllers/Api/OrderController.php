@@ -31,6 +31,7 @@ class OrderController extends Controller
             'totalPrice' => 'required|numeric|max:9999',
         ]);
 
+
         if ($validator->fails()) {
             return response()->json([
                 "success" => false,
