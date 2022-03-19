@@ -1,19 +1,22 @@
 <template>
   <div class="container">
         
-      <div class="img_top"></div>
      
       <div class="text">
           <h2>Deliveroo for work</h2>
           <p>CLienti o colleghi affamati? il nostro team Corporate ti puó aiutare.</p>
-          <a class="btn" href="">Contattaci</a>
+        <ul>
+            <li><a href="https://www.apple.com/it/app-store"><img src="../../assets/images/end_page/ios-app-store.svg" alt="Apple_store"></a></li>
+            <li><a href="https://play.google.com"><img src="../../assets/images/end_page/android-app-store.svg" alt="Google_play_store"></a></li>
+        </ul>
       </div>
+      <div class="img_top"></div>
   </div>
 </template>
 
 <script>
 export default {
-    name:'DelForWork'
+    name:'DelNewsApp',
 }
 </script>
 
@@ -33,12 +36,12 @@ export default {
       
   
             .img_top{
-                background-image: url('../../assets/images/cards/business.4fa3b853.jpg');
+                background-image: url('../../assets/images/cards/deliveroo-app.svg');
                 background-size:cover;
                 background-position: center;
                 background-repeat: no-repeat;
-                 -webkit-clip-path: polygon(0 0, 0 100%, 93% 100%, 100% 0);
-                 clip-path: polygon(0 0, 0 100%, 95% 100%, 100% 0);
+                 -webkit-clip-path: polygon(5% 0, 100% 0, 100% 100%, 0 100%);
+               clip-path: polygon(5% 0, 100% 0, 100% 100%, 0 100%);
             }
            
         
@@ -58,6 +61,34 @@ export default {
                 margin: 10px 0px;
                 font-size: 1rem;
             }
+
+             ul{
+                display: flex;
+                align-items: center;
+                list-style: none;
+               
+                
+                li{
+                   
+                h2{
+                    font-weight: bold;
+                    font-size: 18px;
+                }
+                a{
+                    color: $_white;
+                    text-decoration: none;
+                    font-weight: thin;
+                   
+                    img{
+                    width: 100%;
+
+                    }
+                }
+                a:hover{
+                    color: $_darkerPrimaryHover;
+                }
+        }
+      }
             
         }
 
