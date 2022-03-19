@@ -16,11 +16,12 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+@import "../../assets/style/global.scss";
 
     @media screen and (min-width: 100px) {
      .container{
         display:grid;
-        background-color: rgb(249, 250, 250);
+        background-color: $_whiteSmoke;
         width: 100%;
         min-height: 200px;
         margin: auto;
@@ -58,7 +59,7 @@ export default {
             text-align: center;
             width: 100px;
             border-radius:5px;
-            background-color:rgb(0, 204, 188);
+            background-color:$_darkerPrimaryHover;
             color: white;
             padding: 10px;
             margin-top: 10px;
