@@ -31,7 +31,8 @@ class OrderController extends Controller
             'totalPrice' => 'required|numeric|max:9999',
         ]);
 
-
+        
+        
         if ($validator->fails()) {
             return response()->json([
                 "success" => false,
@@ -39,7 +40,9 @@ class OrderController extends Controller
             ], 400);
         }
 
-
+        
+        
+        
         $payment = $gateway->transaction()->sale([
             "amount" => $data["totalPrice"],
             "paymentMethodNonce"=>$data["nonce"],
@@ -47,9 +50,39 @@ class OrderController extends Controller
                 "submitForSettlement"=> true
             ],
         ]);
-
+        
+        // $dishes = json_decode($data['cart']);
+        
         if($payment->success){
-            // aggiunata ordine se success
+
+            $newOrder = new Order;
+            $newOrder->customer_name = $data['name'];
+            $newOrder->customer_surname = $data['surname'];
+            $newOrder->customer_email = $data['email'];
+            $newOrder->customer_address = $data['address'];
+            $newOrder->customer_city = 'Roma';
+            $newOrder->customer_country = 'Italia';
+            $newOrder->customer_post_code = '00100';
+            $newOrder->customer_phone = $data['phone'];
+            if(isset($data['comment'])) {
+                $newOrder->customer_comment = $data['comment'];
+            }
+            $newOrder->accepted = false;
+            $newOrder->tot_price = $data['totalPrice'];
+            $newOrder->payment_token = $data['token'];
+            $newOrder->restaurant_id = $data['restaurantId'];
+            $newOrder->save();
+
+            foreach($data['cart'] as $item) {
+                $dish = json_decode($item, true);
+                $newOrder->dishes()->attach($dish['dishId'],[
+                    'quantity' => $dish['quantity']
+                ]);
+            }
+
+            // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+            // invio della mail
+            // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
         }else{
             return response()->json([
@@ -58,6 +91,6 @@ class OrderController extends Controller
             ], 400);
         }
 
-        return response()->json(["success" => true,], 200);
+        return response()->json(["success" => true], 200);
     }
 }
