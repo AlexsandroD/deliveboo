@@ -2,6 +2,7 @@
   <div class="container">
       <div class="row">
           <div class="col" v-for="restaurant in restaurants" :key="restaurant.id">
+              
             <router-link :to="{ name: 'restaurant-menu', params: { slug:restaurant.slug } }">
                 <div class="card">
                 <img v-if="restaurant.image_cover" class="card-img-top"  :src="'http://127.0.0.1:8000/storage/' + restaurant.image_cover" style="width:200px" :alt="restaurant.name">
@@ -104,6 +105,7 @@ export default {
 
 </script>
 
-<style>
+<style lang = "scss" scoped>
+@import '../../assets/style/variables.scss';
 
 </style>
