@@ -32,7 +32,7 @@ export default {
         background-color:$_whiteSmoke;
 
         .news_main {
-            width: 60%;
+            width: 100%;
             margin: 0 auto;
             padding: 50px 0 80px;
             h2{
@@ -49,5 +49,12 @@ export default {
             }
 
         }
+    }
+    @media screen and (min-width: 720px){
+         .news-section{
+        .news_main {
+            width: 70%;
+        }  
+       }
     }
 </style>
