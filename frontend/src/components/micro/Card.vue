@@ -11,21 +11,21 @@
       </div>
 
       <div class="card--orange">
-          <div class="top_image--image-2"></div>
-         <div class="text">
+        <div class="top_image--image-2"></div>
+        <div class="text">
             <h2>Ristoranti</h2>
             <p>Diventa partner di Deliveroo e raggiungi sempre più clienti. Ci occupiamo noi della consegna, così che la tua unica preoccupazione sia continuare a preparare il miglior cibo.</p>
             <a class="btn" href="">Diventa nostro partner</a>
-          </div>
+        </div>
       </div>
 
       <div class="card--grey">
-            <div class="top_image--image-3"></div>
-            <div class="text">
-                <h2>Lavora con noi</h2>
-                <p>La nostra missione è trasformare il modo in cui le persone mangiano. È un obiettivo ambizioso, come noi, e ci servono persone che ci aiutino a raggiungerlo.</p>
-                <a class="btn" href="">Scopri di piú</a>
-             </div>
+        <div class="top_image--image-3"></div>
+        <div class="text">
+            <h2>Lavora con noi</h2>
+            <p>La nostra missione è trasformare il modo in cui le persone mangiano. È un obiettivo ambizioso, come noi, e ci servono persone che ci aiutino a raggiungerlo.</p>
+            <a class="btn" href="">Scopri di piú</a>
+            </div>
       </div>
 
   </div>
