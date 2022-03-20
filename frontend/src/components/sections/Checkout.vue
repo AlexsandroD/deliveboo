@@ -209,6 +209,7 @@ export default {
                     restaurantId:this.cartLogic.restaurantId,
                     totalPrice:this.cartLogic.totalPrice,
                     nonce:this.nonce,
+                    restaurantName:this.cartLogic.restaurantName
                     }
                 })
             .then(() => {

@@ -8,6 +8,8 @@ use Illuminate\Http\Request;
 use Braintree\Gateway;
 use App\Order;
 use Illuminate\Validation\ValidationRuleParser;
+use App\Mail\NewOrderMail;
+use Illuminate\Support\Facades\Mail;
 
 class OrderController extends Controller
 {
@@ -51,8 +53,6 @@ class OrderController extends Controller
             ],
         ]);
         
-        // $dishes = json_decode($data['cart']);
-        
         if($payment->success){
 
             $newOrder = new Order;
@@ -80,9 +80,8 @@ class OrderController extends Controller
                 ]);
             }
 
-            // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-            // invio della mail
-            // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+            // invio mail
+            Mail::to($data['email'])->send(new NewOrderMail($data));
 
         }else{
             return response()->json([
