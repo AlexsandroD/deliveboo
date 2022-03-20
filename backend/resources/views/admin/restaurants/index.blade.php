@@ -24,7 +24,11 @@
               <div class="row no-gutters card_header">
                   {{-- restaurant image--}}
                   <div class="col-md-5">
-                      <img class="restaurant-cover" src="{{asset("images/copertina-test.jpeg")}}" alt="copertina test">
+                    @if($restaurant->image_cover)
+
+                    @else 
+                      <img class="restaurant-cover" src="{{asset("/images/placeholder.svg")}}" alt="copertina test">
+                    @endif
                   </div>
   
                   {{-- restaurant info --}}
@@ -37,7 +41,11 @@
                           {{-- information container --}}
                           <div class="restaurant-description">
                             {{-- description --}}
+                            @if($restaurant->description)
                             <p class="card-text description">{{$restaurant->description}}</p>
+                            @else 
+                            <p class="card-text description">Nessuna descrizione</p>
+                            @endif
                           </div>
                       </div>
                   </div>
@@ -145,19 +153,19 @@
           @if($restaurant)
           <div id="btn-container">
             {{-- bottone menu --}}
-            <a href="{{route('dishes.index')}}" class="text-center">
+            <a href="{{route('dishes.index')}}" class="text-center menu-color">
                 <button class="btn">
                     <i class="fas fa-utensils responsive-i" aria-hidden="true"></i> Menù
                 </button>
             </a>
             {{-- bottone ordini --}}
-            <a href="{{route('orders.index')}}" class="text-center">
+            <a href="{{route('orders.index')}}" class="text-center orders-color">
                 <button class="btn">
                     <i class="fa-solid fa-basket-shopping"></i> Ordini
                 </button>
             </a>
             {{-- bottone statistiche --}}
-            <a href="#" class="text-center">
+            <a href="#" class="text-center stats-color">
                 <button class="btn">
                     <i class="fa fa-bar-chart responsive-i" aria-hidden="true"></i> Statistiche
                 </button>

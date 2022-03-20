@@ -1,63 +1,119 @@
 @extends('layouts.app')
 
 @section('content')
-
-    <div class="container">
-
-        <h1 class="text-center mb-3">Lista piatti</h1>
+    <div class="container dish-container">
 
         <div class="row">
-            
-            @foreach ($dishes as $dish)
-                <div class="card col-4">
-                    {{-- <img src="..." class="card-img-top" alt="..."> --}}
-                    IMMAGINE BELLA
-                    <div class="card-body">
-                        <h5 class="card-title">{{$dish->name}}</h5>
-                        <p class="card-text">{{$dish->description}}</p>
-                        <p class="card-text">Prezzo: &euro;{{$dish->price}}</p>
 
-                        {{-- show button --}}
-                        <a href="{{ route('dishes.show', $dish->id) }}"><button type="button" class="btn btn-info">Info</button></a>
-                        {{-- edit button --}}
-                        <a href="{{ route('dishes.edit', $dish->id) }}"><button type="button" class="btn btn-warning">Modifica</button></a>
+            {{-- dish col --}}
+            <div class="col-lg-9">
+                <h1 class="text-center mb-3">Menù</h1>
 
-                        {{-- modal delete button --}}
-                        <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#deleteModal-{{$dish->id}}">Elimina</button>
-
-                        {{-- modal --}}
-                        <div class="modal fade" id="deleteModal-{{$dish->id}}" tabindex="-1">
-                            <div class="modal-dialog">
-                                <div class="modal-content">
-                                    <div class="modal-header">
-                                        <h5 class="modal-title">Sei sicuro di voler eliminare <strong>{{$dish->name}}</strong>?</h5>
-                                        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span></button>
-                                    </div>
-                                    <div class="modal-footer">
-                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Chiudi</button>
-                                        {{-- delete form --}}
-                                        <form action="{{route('dishes.destroy', $dish->id)}}" method="POST">
-                                            @csrf
-                                            @method('DELETE')
-                                            <input type="submit" class="btn btn-danger" value="Delete">
-                                        </form>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
+                {{-- card add plate --}}
+                <div class="dishes-grid">
+                    <div class="card">
+                        <a class="add-plate" href="{{ route('dishes.create') }}">
+                            <i class="fa-solid fa-circle-plus"></i>
+                        </a>
                     </div>
+
+                    {{-- plate cards --}}
+                    @foreach ($dishes as $dish)
+                        <div class="card">
+                            <a href="{{ route('dishes.show', $dish->id) }}">
+                                <figure class="mb-0">
+                                    <img class="dish_cover" src="{{ asset('images/placeholder.svg') }}" alt="">
+                                    @if($dish->visible)
+                                    <div class="status public">
+                                      Disponibile
+                                    </div>
+                                    @else
+                                    <div class="status private">
+                                      Esaurito
+                                    </div>
+                                    @endif
+                                </figure>
+                                <div class="card-body py-3">
+                                    <h5 class="card-title mb-2">{{ $dish->name }}</h5>
+                                    <p class="card-text description mb-2">
+                                      @if($dish->description)
+                                      {{ $dish->description }}
+                                      @else
+                                      Nessuna descrizione
+                                      @endif
+                                    </p>
+                                    <span class="card-text price">{{ $dish->price }} &euro;</span>
+                                </div>
+                            </a>
+                        </div>
+                    @endforeach
                 </div>
-            @endforeach
+            </div>
 
-            <a href="{{route('dishes.create')}}" class="card col-4">
-                Crea nuovo piatto
-            </a>
+            {{-- aside lg --}}
+            <aside class="col-lg-3 px-0 aside">
 
+                {{-- card utente --}}
+                <h3 class="user-title">
+                    Utente connesso
+                </h3>
+                <div id="user-info">
+                    <ul>
+                        {{-- nome utente --}}
+                        <li>
+                            <div>
+                                <i class="fa-solid fa-user-large"></i>
+                                <span>Nome utente</span>
+                            </div>
+                            <span class="info">
+                                {{ Auth::user()->name }} {{ Auth::user()->surname }}
+                            </span>
+                        </li>
+                        {{-- email utente --}}
+                        <li>
+                            <div>
+                                <i class="fa-solid fa-envelope"></i>
+                                <span>Email</span>
+                            </div>
+                            <span class="info">
+                                {{ Auth::user()->email }}
+                            </span>
+                        </li>
+                        {{-- partita iva utente --}}
+                        <li>
+                            <div>
+                                <i class="fa-solid fa-briefcase"></i>
+                                <span>Partita iva</span>
+                            </div>
+                            <span class="info">
+                                {{ Auth::user()->vat }}
+                            </span>
+                        </li>
+                    </ul>
+                </div>
+
+                {{-- container bottoni --}}
+                <div id="btn-container">
+                    {{-- bottone menu --}}
+                    <a href="{{ route('restaurants.index') }}" class="text-center restaurant-color">
+                        <button class="btn">
+                            <i class="fa-solid fa-house-chimney-user"></i> Ristorante
+                        </button>
+                    </a>
+                    {{-- bottone ordini --}}
+                    <a href="{{ route('orders.index') }}" class="text-center orders-color">
+                        <button class="btn">
+                            <i class="fa-solid fa-basket-shopping"></i> Ordini
+                        </button>
+                    </a>
+                    {{-- bottone statistiche --}}
+                    <a href="#" class="text-center stats-color">
+                        <button class="btn">
+                            <i class="fa fa-bar-chart responsive-i" aria-hidden="true"></i> Statistiche
+                        </button>
+                    </a>
+                </div>
+            </aside>
         </div>
-
-        <a href="{{route("restaurants.index")}}" class="d-block mt-5"><button type="button" class="btn btn-dark">Torna al ristorante</button></a>
-
     </div>
-
 @endsection

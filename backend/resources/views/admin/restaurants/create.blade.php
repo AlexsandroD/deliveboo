@@ -92,7 +92,7 @@
             {{-- restaurant phone --}}
             <div class="form-group">
                 <label for="phone"><i class="fa-solid fa-phone"></i> Telefono *</label>
-                <input type="tel" class="form-control @error('phone') is-invalid @enderror" id="phone" name="phone" placeholder="Inserisci un numero di telefono"  pattern="[0-9]{10,15}" required value="{{old('phone')}}">
+                <input type="tel" class="form-control @error('phone') is-invalid @enderror" id="phone" name="phone" placeholder="Inserisci un numero di telefono"  pattern="[0-9]{10,15}" maxlength="15" required value="{{old('phone')}}">
                 @error('phone')
                     <div class="alert alert-danger">{{ $message }}</div>
                 @enderror

@@ -1,0 +1,153 @@
+.dish-container {
+
+  h1 {
+    font-size: 1rem;
+
+    color: $white;
+    background-color: $_tomato;
+
+    padding: .7rem 0;
+    border-radius: 1rem;
+  }
+
+  .dishes-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 49%);
+    gap: 2%;
+
+    div.card {
+      background-color: transparent;
+      border: none;
+  
+      a {
+        color: $_black;
+        background-color: $_white;
+        
+        border-radius: 1rem;
+        border: 1px solid transparent;
+
+        -webkit-transition: .3s linear;
+        transition: .3s linear;
+  
+        &.add-plate {
+          width: 100%;
+          height: 14.625rem;
+  
+          @include flex-center;
+  
+          background-color: $_whiteSmoke;
+  
+          border: 1px dashed $_primary;
+          
+          &:hover i {
+            font-size: 2.4rem;
+            color: $_brighterPrimaryHover;
+          }
+  
+          i {
+            font-size: 2.2rem;
+  
+            color: $_primary;
+  
+            -webkit-transition: .4s linear;
+            transition: .4s linear;
+          }
+        }
+  
+        &:hover {
+          text-decoration: none;
+          border: 1px solid $_primary;
+        }
+  
+        &:hover figure img.dish_cover {
+          -webkit-transform: scale(1.2);
+          transform: scale(1.2);
+        }
+  
+        figure {
+          position: relative;
+          overflow: hidden;
+          
+          border-top-right-radius: 1rem;
+          border-top-left-radius: 1rem;
+  
+          img.dish_cover {
+            height: 6rem;
+            width: 100%;
+            object-fit: cover;
+            
+            border-top-left-radius: 1rem;
+            border-top-right-radius: 1rem;
+            
+            -webkit-transform: scale(1);
+            transform: scale(1);
+            -webkit-transition: .6s ease-in-out;
+            transition: .6s ease-in-out;
+          }
+  
+            div.status {
+            position: absolute;
+            right: 0;
+            bottom: 0;
+
+            font-size: .8rem;
+
+            
+            padding: .2rem .2rem .2rem .6rem;
+            border-top-left-radius: 1rem;
+
+            &.public {
+              color: $_white;
+              background-color: $_primary;
+            }
+
+            &.private {
+              color: $_white;
+              background-color: $_darkGrey;
+            }
+          }
+
+        }
+
+        h5.card-title {
+          overflow: hidden;
+          text-overflow: ellipsis;
+          display: -webkit-box;
+          -webkit-line-clamp: 1; /* number of lines to show */
+                  line-clamp: 1; 
+          -webkit-box-orient: vertical;
+        }
+  
+        p.description {
+          height: 2.5rem;
+
+          font-size: .8rem;
+
+          color: $_grey;
+
+          overflow: hidden;
+          text-overflow: ellipsis;
+          display: -webkit-box;
+          -webkit-line-clamp: 2; /* number of lines to show */
+                  line-clamp: 2; 
+          -webkit-box-orient: vertical;
+        }
+  
+        span.price {
+          color: $_primary;
+        }
+      }
+    }
+  }
+}
+
+// MEDIA QUERIES
+@media(min-width:992px) {
+  .dish-container {
+
+    .dishes-grid {
+      grid-template-columns: repeat(3, 32%);
+      gap: 2%;
+    }
+  }
+}

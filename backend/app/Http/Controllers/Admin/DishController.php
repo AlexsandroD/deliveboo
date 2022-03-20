@@ -39,7 +39,7 @@ class DishController extends Controller
      */
     public function create()
     {
-        $restaurant = false;
+        $restaurant = true;
         return view("admin.dishes.create",compact("restaurant"));
     }
 
