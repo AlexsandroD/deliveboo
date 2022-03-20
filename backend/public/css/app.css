@@ -20237,17 +20237,29 @@ header nav.navbar-light #dropdown {
   display: grid;
   grid-template-columns: repeat(5, 1fr);
   margin: 0;
-  padding: 1.4rem 1rem 0;
+  padding-top: 1.4rem;
 }
 
 header nav.navbar-light #dropdown a {
   border-radius: 1rem;
-  margin: 0 0.8rem;
-  padding: 0.4rem 0;
+  margin: 0 0.1rem;
+  padding: 0.2rem 0;
 }
 
 header nav.navbar-light #dropdown a button.btn i {
+  font-size: 0.8rem;
   color: #FFF;
+}
+
+@media screen and (min-width: 576px) {
+  header nav.navbar-light #dropdown a {
+    margin: 0 0.8rem;
+    padding: 0.4rem 0;
+  }
+
+  header nav.navbar-light #dropdown a button.btn i {
+    font-size: 1rem;
+  }
 }
 
 @media screen and (min-width: 992px) {

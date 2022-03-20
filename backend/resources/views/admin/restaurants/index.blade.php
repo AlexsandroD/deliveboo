@@ -37,7 +37,11 @@
                           {{-- information container --}}
                           <div class="restaurant-description">
                             {{-- description --}}
+                            @if($restaurant->description)
                             <p class="card-text description">{{$restaurant->description}}</p>
+                            @else 
+                            <p class="card-text description">Nessuna descrizione</p>
+                            @endif
                           </div>
                       </div>
                   </div>

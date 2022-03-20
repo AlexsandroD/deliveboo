@@ -33,7 +33,11 @@
                             <div class="dish-description">
                                 {{-- descrizione --}}
                                 <h5><i class="fa-solid fa-comment-dots"></i> Descrizione</h5>
+                                @if($dish->description)
                                 <p class="card-text description">{{ $dish->description }}</p>
+                                @else 
+                                <p class="card-text description">Nessuna descrizione</p>
+                                @endif
                                 {{-- prezzo --}}
                                 <h5><i class="fa-solid fa-euro-sign"></i> Prezzo</h5>
                                 <span class="price">{{ $dish->price }}&euro;</span>
@@ -131,7 +135,7 @@
                   {{-- bottone menu --}}
                   <a href="{{ route('dishes.index') }}" class="text-center menu-color">
                     <button class="btn">
-                        <i class="fa-solid fa-house-chimney-user"></i> Menù
+                      <i class="fas fa-utensils responsive-i" aria-hidden="true"></i> Menù
                     </button>
                 </a>
                   {{-- bottone ordini --}}
