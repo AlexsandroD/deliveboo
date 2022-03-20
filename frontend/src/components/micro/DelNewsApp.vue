@@ -52,7 +52,7 @@ export default {
             display: flex;
             flex-direction: column;
             justify-content: center;
-            padding: 10px;
+            padding: 5px;
             
             h2{
                 font-size: 2rem;
@@ -63,14 +63,14 @@ export default {
                 font-size: 1rem;
             }
 
-             ul{
-                display: flex;
+            ul{
+                display: block;
                 align-items: center;
                 list-style: none;
-               
+            
                 
                 li{
-                   
+                
                 h2{
                     font-weight: bold;
                     font-size: 18px;
@@ -79,7 +79,7 @@ export default {
                     color: $_white;
                     text-decoration: none;
                     font-weight: thin;
-                   
+                
                     img{
                     width: 135px;
 
@@ -88,9 +88,9 @@ export default {
                 a:hover{
                     color: $_darkerPrimaryHover;
                 }
-        }
-      }
-            
+                }
+            }
+                
         }
 
 
@@ -113,6 +113,12 @@ export default {
     @media screen and (min-width: 650px) {
         .container{
             min-height: 210px;
+            .text{
+             padding: 10px;
+            }
+            ul{
+             display: flex;
+            }
         }
         
     }

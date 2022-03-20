@@ -32,15 +32,15 @@ export default {
         margin: 20px 0;
 
       
-  
-            .img_top{
-                background-image: url('../../assets/images/cards/business.4fa3b853.jpg');
-                background-size:cover;
-                background-position: center;
-                background-repeat: no-repeat;
-                 -webkit-clip-path: polygon(0 0, 0 100%, 93% 100%, 100% 0);
-                 clip-path: polygon(0 0, 0 100%, 95% 100%, 100% 0);
-            }
+
+        .img_top{
+            background-image: url('../../assets/images/cards/business.4fa3b853.jpg');
+            background-size:cover;
+            background-position: center;
+            background-repeat: no-repeat;
+                -webkit-clip-path: polygon(0 0, 0 100%, 93% 100%, 100% 0);
+                clip-path: polygon(0 0, 0 100%, 95% 100%, 100% 0);
+        }
            
         
         }
@@ -49,7 +49,7 @@ export default {
             display: flex;
             flex-direction: column;
             justify-content: center;
-            padding: 10px;
+         
             
             h2{
                 font-size: 2rem;
@@ -83,6 +83,9 @@ export default {
     @media screen and (min-width: 650px) {
         .container{
             min-height: 240px;
+            .text{
+                padding: 10px;
+            }
         }
         
     }
