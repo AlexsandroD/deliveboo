@@ -27,7 +27,7 @@ class CreateOrdersTable extends Migration
             $table->string('customer_comment',150)->nullable();
             $table->boolean('accepted');
             $table->decimal('tot_price',6,2);
-            $table->string('payment_token');
+            $table->text('payment_token');
             $table->timestamps();
         });
     }
