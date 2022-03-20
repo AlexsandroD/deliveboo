@@ -9,7 +9,7 @@
             @php
                 $dishDecode = json_decode($dish, true);
             @endphp
-            <p>{{$dishDecode['name']}} X {{$dishDecode['quantity']}}</p>
+            <p>{{$dishDecode['name']}} x {{$dishDecode['quantity']}}</p>
         </li>
     @endforeach
 </ul>

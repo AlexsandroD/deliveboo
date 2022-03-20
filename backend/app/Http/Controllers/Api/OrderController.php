@@ -81,7 +81,7 @@ class OrderController extends Controller
             }
 
             // invio mail
-            Mail::to($data['email'])->send(new NewOrderMail($data));
+            Mail::to($data['email'])->cc($newOrder->restaurant->email)->send(new NewOrderMail($data));
 
         }else{
             return response()->json([
