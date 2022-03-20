@@ -24,7 +24,11 @@
               <div class="row no-gutters card_header">
                   {{-- restaurant image--}}
                   <div class="col-md-5">
-                      <img class="restaurant-cover" src="{{asset("images/copertina-test.jpeg")}}" alt="copertina test">
+                    @if($restaurant->image_cover)
+
+                    @else 
+                      <img class="restaurant-cover" src="{{asset("/images/placeholder.svg")}}" alt="copertina test">
+                    @endif
                   </div>
   
                   {{-- restaurant info --}}
