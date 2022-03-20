@@ -22,7 +22,11 @@
                         <div class="card">
                             <a href="{{ route('dishes.show', $dish->id) }}">
                                 <figure class="mb-0">
-                                    <img class="dish_cover" src="{{ asset('images/placeholder.svg') }}" alt="">
+                                    @if ($dish->image)
+                                        <img class="dish_cover" src="{{asset("storage/".$dish->image)}}" alt="{{$dish->name}}">
+                                    @else
+                                        <img class="dish_cover" src="{{ asset('images/placeholder.svg') }}" alt="{{$dish->name}}">
+                                    @endif
                                     @if($dish->visible)
                                     <div class="status public">
                                       Disponibile

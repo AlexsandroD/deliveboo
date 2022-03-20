@@ -25,9 +25,9 @@
                   {{-- restaurant image--}}
                   <div class="col-md-5">
                     @if($restaurant->image_cover)
-
+                      <img class="restaurant-cover" src="{{asset("storage/".$restaurant->image_cover)}}" alt="{{$restaurant->name}}">
                     @else 
-                      <img class="restaurant-cover" src="{{asset("/images/placeholder.svg")}}" alt="copertina test">
+                      <img class="restaurant-cover" src="{{asset("/images/placeholder.svg")}}" alt="{{$restaurant->name}}">
                     @endif
                   </div>
   

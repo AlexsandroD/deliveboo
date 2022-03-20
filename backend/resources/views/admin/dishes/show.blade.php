@@ -9,8 +9,12 @@
                 <div class="row no-gutters card_header">
                     {{-- dish image --}}
                     <div class="col-lg-6 image_container">
-                        <img class="dish-cover" src="{{ asset('images/copertina-test.jpeg') }}"
-                            alt="immagine copertina piatto">
+                        @if ($dish->image)
+                            <img class="dish_cover" src="{{asset("storage/".$dish->image)}}" alt="{{$dish->name}}">
+                        @else
+                            <img class="dish_cover" src="{{ asset('images/placeholder.svg') }}" alt="{{$dish->name}}">
+                        @endif
+                        
                         @if ($dish->visible)
                             <div class="status public">
                                 Disponibile
