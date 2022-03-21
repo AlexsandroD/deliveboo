@@ -20,7 +20,6 @@ export default {
 <style lang="scss" scoped>
 @import "../../assets/style/global.scss";
 
-    @media screen and (min-width: 100px) {
      
      .col{
         display:grid;
@@ -43,7 +42,7 @@ export default {
         }
            
         
-        }
+
 
         .text{
             display: flex;
@@ -80,7 +79,7 @@ export default {
     
     
 
-    @media screen and (min-width: 650px) {
+    @media screen and (min-width: 572px) {
         .col{
             min-height: 240px;
             .text{
