@@ -74,6 +74,12 @@
             <p v-if="paymentError">Pagamento fallito, riprovare più tardi.</p>
         </div>
 
+
+        <div class="text-end mb-2 braintree_logo">
+            <strong class="me-2">Powered by</strong>
+            <img src="../../assets/images/braintree/braintree-logo-black.png" alt="braintree logo">
+        </div>
+
     </div>
 
 </template>
@@ -232,5 +238,13 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+
+.braintree_logo {
+    font-size: .75rem;
+
+    img{
+        width: 100px;
+    }
+}
 
 </style>
