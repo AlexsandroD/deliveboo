@@ -1,5 +1,5 @@
 <template>
-  <div class="container">
+  <div class="col">
         
       <div class="img_top"></div>
      
@@ -22,7 +22,7 @@ export default {
 
     @media screen and (min-width: 100px) {
      
-     .container{
+     .col{
         display:grid;
         position: relative;
         background-color:$_white;
@@ -81,7 +81,7 @@ export default {
     
 
     @media screen and (min-width: 650px) {
-        .container{
+        .col{
             min-height: 240px;
             .text{
                 padding: 10px;

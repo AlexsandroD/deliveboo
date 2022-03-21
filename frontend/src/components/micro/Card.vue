@@ -1,6 +1,5 @@
 <template>
   <div class="col">
-
       <div class="card--tomato">
           <div class="top_image--image-1"></div>
           <div class="text">
@@ -48,6 +47,7 @@ export default {
 
         .card{
             
+            overflow: hidden;
             &--tomato{
                 @extend .card;
                 background-color:$_tomato;
@@ -121,7 +121,7 @@ export default {
         .col {
         display: grid;
         grid: auto-flow / 1fr 1fr 1fr;
-        column-gap:25px;
+        column-gap:20px;
         }
     }
 </style>
