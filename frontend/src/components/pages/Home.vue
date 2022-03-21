@@ -4,7 +4,6 @@
         <Restaurants />
         <News />
         <WorkWith />
-
     </div>
 </template>
 

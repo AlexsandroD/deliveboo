@@ -1,6 +1,7 @@
 <template>
+
   <div class="container">
-    
+     
       <!-- parte dati ristorante -->
       <div class="card mb-3">
           <div class="row g-0">
@@ -66,6 +67,7 @@
           <Cart />
         <!-- // cart  -->
   </div>
+
 </template>
 
 <script>
@@ -103,6 +105,9 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+@import "../../assets/style/_variables.scss";
+ 
+
   .modal-mask {
   position: fixed;
   z-index: 9998;

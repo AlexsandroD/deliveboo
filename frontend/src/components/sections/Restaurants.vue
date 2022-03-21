@@ -1,4 +1,5 @@
 <template>
+<div class="my_container">
   <div class="container">
       <div class="row  row-cols-1 row-cols-sm-2 row-cols-md-4 row-cols-lg-5 " >
           <CardRestaurant v-for="restaurant in restaurants" :key="restaurant.id" :restaurant="restaurant" />
@@ -17,6 +18,8 @@
         </div>
       </div>
   </div>
+</div>
+
 </template>
 
 <script>
@@ -102,7 +105,9 @@ export default {
 <style lang = "scss" scoped>
 @import '../../assets/style/variables.scss';
 
-
+    .my_container{
+        background-color:$_pink;
+    }
 
 
 </style>
