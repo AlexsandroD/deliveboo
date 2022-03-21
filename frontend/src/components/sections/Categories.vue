@@ -1,5 +1,8 @@
 <template>
 <div class="container">
+    <div class="title">
+        <h1>Cosa stai cercando?</h1>
+    </div>
     <!-- Check boxes  -->
     <!-- <div class="form-group"> -->
     
@@ -8,7 +11,7 @@
             <input id="search" class="search" type="text" v-model="inputIncludes" @click.enter="find()" placeholder=" Cerca o inizia una nuova chat">
         </div> -->
     <!-- <h2 class="d-block">Cosa stai cercando?</h2> -->
-    <b-form-group>     
+    <b-form-group>
         <ul class="edit-container">
         
             <li v-for="category in categories" :key="category.id">
@@ -62,16 +65,21 @@ export default {
 
 <style lang = "scss" scoped>
 @import '../../assets/style/variables.scss';
-.edit-container{
-    
-    list-style: none;
-    display: flex;
-    flex-direction: column;
-    height: 90px;
-    flex-wrap: wrap;
-    li{
-    /* display: flex; */
-    
+.container{
+    .title{
+        color: $_darkerPrimaryHover;
+        /* text-shadow: 2px 2px 4px black; */
+        padding: 20px  0px 5px 0;
+    }
+    .edit-container{
+        list-style: none;
+        display: flex;
+        flex-direction: column;
+        height: 90px;
+        flex-wrap: wrap;
+        li{
+        /* display: flex; */  
+        }
     }
 }
 </style>

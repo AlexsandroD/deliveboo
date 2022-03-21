@@ -1,4 +1,5 @@
 <template>
+<!-- <div> -->
 <div class="container">
     <div class="logo">
         <a href="http://127.0.0.1:8080/">
@@ -16,6 +17,8 @@
     <a class="btn btn-primary" href=" http://127.0.0.1:8000/admin" role="button">Admin</a>
     </div>
 </div>
+
+<!-- </div> -->
 </template>
 
 <script>
@@ -36,6 +39,8 @@ export default {
 <style lang = "scss" scoped>
 @import '../../assets/style/variables.scss';
 .container{
+    box-shadow: inset 0px 67px 53px -33px rgba(50, 50, 50, 0.75);
+    z-index: 1;
     display: flex;
     height: 80px;
     align-items: center;
