@@ -1,26 +1,14 @@
 <template>
   <div class="container">
-      <div class="row">
-          <div class="col" v-for="restaurant in restaurants" :key="restaurant.id">
-              
-            <router-link :to="{ name: 'restaurant-menu', params: { slug:restaurant.slug } }">
-                <div class="card">
-                <img v-if="restaurant.image_cover" class="card-img-top"  :src="'http://127.0.0.1:8000/storage/' + restaurant.image_cover" style="width:200px" :alt="restaurant.name">
-                <img v-else src="https://www.wecanjob.it/moduli/output_immagine.php?id=8444"  style="width:200px" :alt="restaurant.name">
-                    <div class="card-body">
-                        <h5 class="card-title">{{ restaurant.name }}</h5>
-                        <p class="card-text">{{ restaurant.phone }}</p>
-                    </div>
-                </div>
-            </router-link>
-          </div>
+      <div class="row  row-cols-1 row-cols-sm-2 row-cols-md-4 row-cols-lg-5 " >
+          <CardRestaurant v-for="restaurant in restaurants" :key="restaurant.id" :restaurant="restaurant" />
       </div>
       <div class="row">
           <div class="overflow-auto">
             <div class="mt-3">
             <b-pagination
                 v-model="variables.page"
-                :total-rows='variables.totalPage'
+                :total-rows='variables.totalPages'
                 :per-page="1"
                 first-number
                 last-number
@@ -32,11 +20,16 @@
 </template>
 
 <script>
+import CardRestaurant from "../micro/CardRestaurant";
 import variables from "../../variables";
 
 
 export default {
     name:"Restaurants",
+    components:{
+        CardRestaurant,
+
+    },
     data(){
         return{
             variables,
@@ -62,7 +55,7 @@ export default {
             axios.get(`http://127.0.0.1:8000/api/restaurants?page=${this.variables.page}`)
             .then((response) => {
                 this.restaurants = response.data.data;
-                this.variables.totalPage = response.data.last_page;
+                this.variables.totalPages = response.data.last_page;
              })
         },
 
@@ -77,6 +70,7 @@ export default {
             })
             .then((response) => {
                 this.restaurants = response.data.data;
+                this.variables.totalPages = response.data.last_page;
             }) 
         },
 
@@ -85,7 +79,7 @@ export default {
 
     watch: {
         'variables.categoriesValue'() {
-            this.variables.page = 1;
+            this.variables.pages = 1;
             if (this.variables.categoriesValue.length > 0) {
                 this.restaurantsFilter();
             } else {
@@ -107,5 +101,8 @@ export default {
 
 <style lang = "scss" scoped>
 @import '../../assets/style/variables.scss';
+
+
+
 
 </style>

@@ -1,16 +1,10 @@
 <template>
     <main>
-        <!-- <Hero /> -->
-        <!-- <Categories/> -->
-        <div>
-            <router-view :key="$route.path"></router-view>
-        </div>
+        <router-view :key="$route.path"></router-view>
     </main>
 </template>
 
 <script>
-// import Hero from "../sections/Hero.vue";
-// import Categories from "../sections/Categories.vue";
 export default {
     name: 'Main',
     components:{

@@ -122,13 +122,16 @@
     </div>
 
     <script>
-        let password = document.getElementById('password');
-        let passwordCheck = document.getElementById('password-confirm');
-
-        function validatePassword() {
+      let password = document.getElementById('password');
+      let passwordCheck = document.getElementById('password-confirm');
+      
+      function validatePassword() {
+        console.log(password.value, passwordCheck.value);
 
             if (password.value != passwordCheck.value) {
                 passwordCheck.setCustomValidity("Le password non corrispondono");
+            } else {
+              passwordCheck.setCustomValidity("");
             }
 
         }

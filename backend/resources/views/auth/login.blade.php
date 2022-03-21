@@ -42,11 +42,16 @@
                         <div class="form-group row py-md-2">
                             <div class="col-md-6 offset-md-4">
                                 <div class="form-check d-flex align-items-center">
-                                    <input type="checkbox" name="remember" id="remember" class="mr-2" {{ old('remember') ? 'checked' : '' }}>
+                                    <input type="checkbox" name="remember" id="remember" class="mr-2 @error('remember') is-invalid @enderror" {{ old('remember') ? 'checked' : '' }}>
 
                                     <label class="form-check-label" for="remember">
                                         Ricordami
                                     </label>
+                                    @error('remember')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                    @enderror
                                 </div>
                             </div>
                         </div>

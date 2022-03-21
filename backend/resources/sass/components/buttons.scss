@@ -1,4 +1,8 @@
 // BUTTONS
+.btn:hover {
+  color: $_white;
+}
+
 .btn:focus {
   box-shadow: none;
 }
@@ -52,5 +56,30 @@
     background-color: $_darkerRedHover;
     color: $_white;
   }
+}
+
+.restaurant-color {
+  background-color: $_orange;
+  color: $_white;
+}
+
+.menu-color {
+  background-color: $_tomato;
+  color: $_white;
+}
+
+.orders-color {
+  background-color: $_cherry;
+  color: $_white;
+}
+
+.stats-color {
+  background-color: $_avgRating;
+  color: $_white;
+}
+
+.logout-color {
+  background-color: $_black;
+  color: $_white;
 }
 
