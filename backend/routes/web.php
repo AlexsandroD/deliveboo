@@ -21,6 +21,7 @@ Route::prefix("admin")->namespace("Admin")->middleware("auth")->group(function()
      Route::resource('restaurants', 'RestaurantController');
      Route::resource('dishes', 'DishController');
      Route::resource('orders', 'OrderController');
+     Route::get('/statistics', 'StatisticController@index')->name('statistics');
 });
 
 
