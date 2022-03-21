@@ -15,7 +15,7 @@ class StatisticController extends Controller
         $restaurant = Restaurant::select('id')->where('user_id', Auth::id())->first();
         $restaurants_id = $restaurant->id;
 
-        $orders = Order::where('restaurant_id',13)
+        $ordersRevenue = Order::where('restaurant_id', $restaurants_id)
         ->where(DB::raw("YEAR(created_at)"), date("Y"))
         ->selectRaw("SUM(tot_price) AS total")
         ->selectRaw("YEAR(created_at) AS year")
@@ -23,6 +23,22 @@ class StatisticController extends Controller
         ->groupby("year","month")
         ->get();
 
-        return view('admin.statistics.index', compact('orders','restaurant'));
+        $ordersCount = Order::where('restaurant_id', $restaurants_id)
+        ->where(DB::raw("YEAR(created_at)"), date("Y"))
+        ->selectRaw("COUNT(restaurant_id) AS orderTotal")
+        ->selectRaw("YEAR(created_at) AS year")
+        ->selectRaw("MONTH(created_at) AS month")
+        ->groupby("year","month")
+        ->get();
+
+        $dishesRank = Order::select('dishes.name','dishes.deleted',DB::raw("SUM(dish_order.quantity) as total"))
+        ->join('dish_order','orders.id','=','dish_order.order_id')
+        ->join('dishes','dish_order.dish_id','=','dishes.id')
+        ->where('orders.restaurant_id','=',$restaurants_id)
+        ->groupBy('dishes.name','dishes.deleted')
+        ->orderByRaw('SUM(dish_order.quantity) desc')
+        ->get();
+
+        return view('admin.statistics.index', compact('ordersRevenue','ordersCount','dishesRank','restaurant'));
     }
 }
