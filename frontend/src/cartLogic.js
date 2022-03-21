@@ -6,6 +6,7 @@ export default Vue.observable({
     newRestaurantId:null,
     restaurantSlug:null,
     cartError:false,
+    qtyError:false,
     totalPrice:0,
     cart:[],
 
@@ -21,6 +22,7 @@ export default Vue.observable({
     },
 
       addCartItem(dishId,dishName,dishPrice,restaurantId,restaurantSlug,restaurantName){
+
         if(this.cart.length < 1){
           localStorage.setItem('restaurantId',restaurantId);
           localStorage.setItem('restaurantSlug', restaurantSlug);
@@ -29,19 +31,36 @@ export default Vue.observable({
           this.restaurantSlug = restaurantSlug;
           this.restaurantName = restaurantName;          
         }
+
         if(restaurantId == localStorage.getItem('restaurantId') ){
 
           if (this.cart.filter(e => e.dishId === dishId).length > 0) {
             let objIndex = this.cart.findIndex((obj => obj.dishId == dishId));
-            this.cart[objIndex].quantity += 1;
-          }else{
-            let dish = {
-              'dishId' : dishId,
-              'quantity': 1,
-              'name': dishName,
-              'dishPrice':dishPrice,
+
+            if(parseFloat(this.totalPrice) + parseFloat(this.cart[objIndex].dishPrice) < 9999.99) {
+              this.cart[objIndex].quantity += 1;
+              this.qtyError = false;
+            } else {
+              this.qtyError = true;
             }
-            this.cart.push(dish);
+
+          }else{
+            
+            if ((parseFloat(this.totalPrice) + parseFloat(dishPrice)) < 9999.99) {
+
+              let dish = {
+                'dishId' : dishId,
+                'quantity': 1,
+                'name': dishName,
+                'dishPrice':dishPrice,
+              }
+              this.cart.push(dish);
+              this.qtyError = false;
+
+            } else {
+              this.qtyError = true;
+            }
+
           }
   
           localStorage.setItem('cart', JSON.stringify(this.cart));
@@ -51,21 +70,23 @@ export default Vue.observable({
         }
           this.returnTotal();
       },
+
           removeCartItem(dishId){
           if (this.cart.filter(e => e.dishId === dishId).length > 0) {
           
             let objIndex = this.cart.findIndex((obj => obj.dishId == dishId));
           
-
             if(this.cart[objIndex].quantity > 1){
               this.cart[objIndex].quantity -= 1;
             }else{
               this.cart.splice(objIndex,1);
             }
+
           }
 
           localStorage.setItem('cart', JSON.stringify(this.cart));
           this.returnTotal();
+
           if(this.cart.length < 1){
             localStorage.removeItem('restaurantId');
             localStorage.removeItem('restaurantSlug');
@@ -75,6 +96,8 @@ export default Vue.observable({
             this.restaurantName = null;
             this.totalPrice=0;
           }
+
+          this.qtyError = false;
       },
 
       emptyCart(){
@@ -85,6 +108,7 @@ export default Vue.observable({
         this.totalPrice=0;
         localStorage.clear();
         this.cartError = false;
+        this.qtyError = false;
       },
 
       returnTotal(){
@@ -94,5 +118,6 @@ export default Vue.observable({
             }
             this.totalPrice = this.totalPrice.toFixed(2);
             localStorage.setItem('totalPrice',this.totalPrice);
-        }
+      },
+      
 });

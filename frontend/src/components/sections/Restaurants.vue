@@ -19,7 +19,7 @@
             <div class="mt-3">
             <b-pagination
                 v-model="variables.page"
-                :total-rows='variables.totalPage'
+                :total-rows='variables.totalPages'
                 :per-page="1"
                 first-number
                 last-number
@@ -61,7 +61,7 @@ export default {
             axios.get(`http://127.0.0.1:8000/api/restaurants?page=${this.variables.page}`)
             .then((response) => {
                 this.restaurants = response.data.data;
-                this.variables.totalPage = response.data.last_page;
+                this.variables.totalPages = response.data.last_page;
              })
         },
 
@@ -76,6 +76,7 @@ export default {
             })
             .then((response) => {
                 this.restaurants = response.data.data;
+                this.variables.totalPages = response.data.last_page;
             }) 
         },
 
@@ -84,7 +85,7 @@ export default {
 
     watch: {
         'variables.categoriesValue'() {
-            this.variables.page = 1;
+            this.variables.pages = 1;
             if (this.variables.categoriesValue.length > 0) {
                 this.restaurantsFilter();
             } else {

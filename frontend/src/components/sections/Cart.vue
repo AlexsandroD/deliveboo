@@ -16,7 +16,9 @@
       <button v-if="cartLogic.restaurantId == cartLogic.newRestaurantId || cartLogic.cart.length > 0" @click="cartLogic.emptyCart()">Svuota carrello</button>
       <p v-if="cartLogic.restaurantId == cartLogic.newRestaurantId">totale:{{cartLogic.totalPrice}}</p>
       <p v-else>carrello vuoto</p>
+      <p v-if="cartLogic.qtyError">Il totale massimo consentito deve essere inferiore 9999.99</p>
 
+        <!-- pagamento -->
         <div>
             <b-button v-b-modal.payment-modal ok-disabled.false v-if="cartLogic.restaurantId == cartLogic.newRestaurantId || cartLogic.cart.length > 0">Paga</b-button>
 
