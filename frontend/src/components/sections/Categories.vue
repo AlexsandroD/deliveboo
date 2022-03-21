@@ -78,19 +78,110 @@ export default {
 @import '../../assets/style/variables.scss';
 .container{
     .title{
-        color: $_darkerPrimaryHover;
+        color: $_blue;
         /* text-shadow: 2px 2px 4px black; */
-        padding: 20px  0px 5px 0;
+        padding: 20px 0;
     }
-    .edit-container{
+    /* .edit-container{
         list-style: none;
         display: flex;
         flex-direction: column;
         height: 90px;
         flex-wrap: wrap;
         li{
-        /* display: flex; */  
+        display: flex;
         }
+    } */
+
+  p.under-title {
+    font-size: 1rem;
+    font-weight: 400;
+    color: $_primary;
+  }
+/* lista categories */
+    .edit-container{
+        display: flex;
+        justify-content: center;
     }
+        ul.edit-container {
+        /* @include flex-center; */
+        flex-wrap: wrap;
+        
+        list-style: none;
+        
+        padding: .6rem 0 0;
+        
+        li{
+            display: inline;
+            color: $_primary;
+            label{
+            display: inline-block;
+            width: 8.5rem;
+            
+            user-select: none;
+            white-space: nowrap;
+        
+            margin: 3px 0px;
+            padding: 8px 12px;
+            border: 2px solid $_primary;
+            border-radius: 25px;
+        
+            -webkit-touch-callout: none;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            -webkit-tap-highlight-color: transparent;
+            transition: all .2s;
+            
+            cursor: pointer;
+        
+            &::before {
+                width: 1.2rem;
+                display: inline-block;
+            
+                font-style: normal;
+                font-variant: normal;
+                text-rendering: auto;
+                -webkit-font-smoothing: antialiased;
+                font-family: "Font Awesome 6 Free";
+                font-weight: 900;
+                font-size: 12px;
+                content: "\f067";
+            
+                color: $_primary;
+            
+                padding: 2px 6px 2px 2px;
+            
+                transition: transform .3s ease-in-out;
+                }
+            }
+        
+            input[type="checkbox"] {
+            display: absolute;
+            position: absolute;
+            opacity: 0;
+            
+            &:checked + label {
+                background-color: $_primary;
+                color: #fff;
+            
+                border: 2px solid $_darkerPrimaryHover;
+                
+                transition: all .2s;
+            }
+        
+            &:checked + label::before {
+                content: "\f00c";
+            
+                color: $_white;
+            
+                transform: rotate(-360deg);
+                transition: transform .3s ease-in-out;
+            }
+            }
+        }
+
+    }
+    
 }
 </style>

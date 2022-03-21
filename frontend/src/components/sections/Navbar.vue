@@ -51,11 +51,13 @@ export default {
     data(){
       return{
         cartLogic,
+        // navbar,
       }
     },
     mounted(){
         this.cartLogic.mountedCart();
-    }
+    },
+
 }
 </script>
 
