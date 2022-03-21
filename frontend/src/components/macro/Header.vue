@@ -1,33 +1,42 @@
 <template>
   <header>
-     <a class="btn btn-primary" href=" http://127.0.0.1:8000/admin" role="button">Admin</a>
-     <ul>
-       
-       <li>
-         <router-link 
-         :to="{ name: 'restaurant-menu', params: { slug:cartLogic.restaurantSlug } }">
-           {{ cartLogic.totalPrice }}
-          </router-link>
-        </li>
-     </ul>
+    <Navbar />
+    <Hero />
   </header>
 </template>
 
 <script>
-import cartLogic from "../../cartLogic";
+// import cartLogic from "../../cartLogic";
+import Navbar from "../sections/Navbar.vue";
+import Hero from "../sections/Hero.vue";
+
 export default {
     name: 'Header',
-    data(){
-      return{
-        cartLogic,
-      }
+    components:{
+      Navbar,
+      Hero,
     },
-    mounted(){
-        this.cartLogic.mountedCart();
-    }
+    // data(){
+    //   return{
+    //     cartLogic,
+    //   }
+    // },
+    // mounted(){
+    //     this.cartLogic.mountedCart();
+    // }
 }
 </script>
 
-<style>
-
+<style lang = "scss" scoped>
+@import '../../assets/style/variables.scss';
+header{
+  /* background-image: url('../../assets/images/bg/background_homepage.svg');
+  background-size: cover; */
+  width: 100%;
+  .categories{
+    background-color: white;
+    border-radius: 5px;
+    box-shadow: 1px 1px gray;
+  }
+}
 </style>

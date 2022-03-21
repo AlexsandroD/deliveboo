@@ -5,12 +5,16 @@
 </template>
 
 <script>
-
 export default {
     name: 'Main',
+    components:{
+    //   Hero,
+    //   Categories,
+    },
 }
 </script>
 
-<style>
+<style lang = "scss" scoped>
+@import '../../assets/style/variables.scss';
 
 </style>
