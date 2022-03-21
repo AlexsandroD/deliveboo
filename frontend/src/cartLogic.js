@@ -6,7 +6,7 @@ export default Vue.observable({
     newRestaurantId:null,
     restaurantSlug:null,
     cartError:false,
-    totalPrice:null,
+    totalPrice:0,
     cart:[],
 
     mountedCart(){
@@ -90,7 +90,7 @@ export default Vue.observable({
       returnTotal(){
             this.totalPrice = 0;
             for(let i = 0; i < this.cart.length; i++){
-              this.totalPrice += (this.cart[i].dishPrice *  this.cart[i].quantity);            
+              this.totalPrice += (this.cart[i].dishPrice * this.cart[i].quantity);            
             }
             this.totalPrice = this.totalPrice.toFixed(2);
             localStorage.setItem('totalPrice',this.totalPrice);

@@ -1,5 +1,6 @@
 <template>
   <div class="container">
+    
       <!-- parte dati ristorante -->
       <div class="card mb-3">
           <div class="row g-0">
@@ -41,9 +42,9 @@
            <div v-else class="card" disabled  style="width: 18rem;">
             <div class="card-body">
               <h5 class="card-title">{{dish.name}}</h5>
-              <!-- <img v-if="dish.image" :src="'http://127.0.0.1:8000/storage/'+dish.image" :alt="dish.name">
-              <img v-else src="https://images.prismic.io/dbhq-deliveroo-riders-website/748bbe8d-ef6f-4f0c-8fda-1bed4928b9eb_hero%402x.png?auto=compress,format" :alt="dish.name"> -->
-              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+              <img v-if="dish.image" class="card-img-top"  :src="'http://127.0.0.1:8000/storage/' + dish.image" style="width:200px" :alt="dish.name">
+              <img v-else src="https://www.wecanjob.it/moduli/output_immagine.php?id=8444"  style="width:200px" :alt="dish.name">
+              <p class="card-text">{{ dish.description }}</p>
               <p>Terminato</p>
             </div>
           </div>
@@ -51,7 +52,6 @@
       </div>
     
         <!-- modale cart  -->
-        <div id="app">
           <div v-if="cartLogic.cartError">
             <transition name="modal">
               <div class="modal-mask">
@@ -59,15 +59,15 @@
                   <div class="modal-dialog" role="document">
                     <div class="modal-content">
                       <div class="modal-header">
-                        <h5 class="modal-title">Modal title</h5>
+                        <h5 class="modal-title">Vuoi creare un nuovo carrello?</h5>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" @click="cartLogic.cartError=false" aria-label="Close"></button>
                       </div>
                       <div class="modal-body">
-                        <p>Modal body text goes here.</p>
+                        <p>Il carrello già esistente da <strong>{{cartLogic.restaurantName}}</strong> verrà eliminato.</p>
                       </div>
                       <div class="modal-footer">
                        <router-link :to="{ name: 'restaurant-menu', params: { slug:cartLogic.restaurantSlug } }">
-                        <button type="button" class="btn btn-secondary" @click="cartLogic.cartError = false">Torna al Ristorante</button>
+                        <button type="button" class="btn btn-secondary" @click="cartLogic.cartError = false">Vai al carrello</button>
                        </router-link>
                         <button type="button" class="btn btn-primary" @click="cartLogic.emptyCart()">Svuota carrello</button>
                       </div>
@@ -77,7 +77,6 @@
               </div>
             </transition>
         </div>
-      </div>
 
         <!-- /// modale cart  -->
 

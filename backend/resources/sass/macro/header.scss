@@ -48,35 +48,20 @@ header {
     // dropdown
     #dropdown {
       display: grid;
-      grid-template-columns: repeat(4, 1fr);
+      grid-template-columns: repeat(5, 1fr);
 
       margin: 0;
-      padding: 1rem 0;
+      padding-top: 1.4rem;
 
       a {
         border-radius: 1rem;
-        margin: 0 1rem;
-        padding: .4rem 0;
+        margin: 0 .1rem;
+        padding: .2rem 0;
 
-        &:nth-child(1){
-          background-color: $_tomato;
-        }
-
-        &:nth-child(2){
-          background-color: $_orange;
-        }
-
-        &:nth-child(3){
-          background-color: $_cherry;
-        }
-
-        &:nth-child(4){
-          background-color: $_black;
-        }
-      
         button.btn {
 
           i {
+            font-size: .8rem;
             color: $_white;
           }
         }
@@ -86,6 +71,30 @@ header {
 }
 
 // MEDIA QUERIES
+@media screen and (min-width: 576px) {
+
+  header {
+
+    nav.navbar-light {
+
+      #dropdown {
+
+        a {
+          margin: 0 .8rem;
+          padding: .4rem 0;
+
+          button.btn {
+
+            i {
+              font-size: 1rem;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
 @media screen and (min-width: 992px) {
   header {
 
