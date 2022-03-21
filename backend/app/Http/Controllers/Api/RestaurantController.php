@@ -20,12 +20,6 @@ class RestaurantController extends Controller
     public function filterCategory(Request $request){
         $data = $request->all();
 
-        // $restaurants = Restaurant::select('address','city','country','description','email','image_cover','name','phone','post_code','restaurant_id as id','slug')
-        // ->join('category_restaurant','restaurants.id','=','category_restaurant.restaurant_id')
-        // ->whereIn('category_restaurant.category_id',$data['categories'])
-        // ->distinct()
-        // ->paginate(10);
-
         $totalRestaurants = Restaurant::select('address','city','country','description','email','image_cover','name','phone','post_code','restaurant_id as id','slug')
         ->join('category_restaurant','restaurants.id','=','category_restaurant.restaurant_id')
         ->whereIn('category_restaurant.category_id',$data['categories'])
@@ -45,17 +39,6 @@ class RestaurantController extends Controller
             'path' => $request->url(),
             'query' => $request->query()
         ]);
-
-        // $totalRestaurant = Restaurant::select('name')
-        // ->join('category_restaurant','restaurants.id','=','category_restaurant.restaurant_id')
-        // ->whereIn('category_restaurant.category_id',$data['categories'])
-        // ->distinct()->get();
-
-        // if($totalRestaurant % 10 == 0) {
-        //     $fixPages = true;
-        // } else {
-        //     $fixPages = false;
-        // }
 
         return response()->json($restaurants);
     }
