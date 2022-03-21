@@ -11,7 +11,8 @@
             <input id="search" class="search" type="text" v-model="inputIncludes" @click.enter="find()" placeholder=" Cerca o inizia una nuova chat">
         </div> -->
     <!-- <h2 class="d-block">Cosa stai cercando?</h2> -->
-    <b-form-group>
+
+    <!-- <b-form-group>
         <ul class="edit-container">
         
             <li v-for="category in categories" :key="category.id">
@@ -20,7 +21,17 @@
             </li>
         
         </ul>
-    </b-form-group>
+    </b-form-group> -->
+
+    <!-- categories checkbox -->
+    <div class="form-group">
+        <ul class="edit-container" >
+            <li  v-for="category in categories" :key="category.id">
+                <input class="form-check-input" type="checkbox" v-model="variables.categoriesValue" :id="category.name" :value="category.id">
+                <label class="form-check-label" :for="category.name">{{category.name}}</label>
+            </li>
+        </ul>
+    </div>
 </div>
 </template>
 
