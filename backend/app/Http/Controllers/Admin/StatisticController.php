@@ -16,11 +16,13 @@ class StatisticController extends Controller
         $restaurants_id = $restaurant->id;
 
         $orders = Order::where('restaurant_id',13)
+        ->where(DB::raw("YEAR(created_at)"), date("Y"))
         ->selectRaw("SUM(tot_price) AS total")
-        ->selectRaw("CONCAT(YEAR(created_at), '-', MONTH(created_at)) AS date")
-        ->groupby("date")
+        ->selectRaw("YEAR(created_at) AS year")
+        ->selectRaw("MONTH(created_at) AS month")
+        ->groupby("year","month")
         ->get();
 
-        dump($orders);
+        return view('admin.statistics.index', compact('orders','restaurant'));
     }
 }
