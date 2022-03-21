@@ -1,6 +1,6 @@
 <template>
   <div class="container">
-      <div class="row row-cols-5">
+      <div class="row  row-cols-1 row-cols-sm-2 row-cols-md-4 row-cols-lg-5 " >
           <CardRestaurant v-for="restaurant in restaurants" :key="restaurant.id" :restaurant="restaurant" />
       </div>
       <div class="row">

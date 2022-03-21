@@ -1,5 +1,5 @@
 <template>
-    <div class="col  my-2">  
+    <div class="col my-2">  
             <router-link class="link" :to="{ name: 'restaurant-menu', params: { slug:restaurant.slug } }">
                 <div class="card h-100">
                     <div class="overflow-hidden img-wrapper">
@@ -41,6 +41,7 @@ export default {
 }
 
 .card{
+    min-width: 100px;
     min-height:300px;
     transition: 0.2s;
 }
