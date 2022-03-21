@@ -134,9 +134,17 @@ export default {
 }
 
 .card:hover{
--webkit-box-shadow: 5px 5px 6px -1px rgba(0,0,0,0.4); 
-box-shadow: 5px 5px 6px -1px rgba(0,0,0,0.4);
-    transform: scale(1.0, 1.1);
+    -webkit-box-shadow: 5px 5px 6px -1px rgba(0,0,0,0.4); 
+    box-shadow: 5px 5px 6px -1px rgba(0,0,0,0.4);
+    position:relative;
+    animation: card 0.2s linear forwards;
+    
+   
+}
+
+@keyframes card {
+    from { top: 0px;}
+    to{ top:-10px}
 }
 
 img{
