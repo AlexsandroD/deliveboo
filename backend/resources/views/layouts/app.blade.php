@@ -56,9 +56,7 @@
                             aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                             <i class="fa-solid fa-house-user"></i>
                         </button>
-                </div>
                 {{-- dropdown menu --}}
-                <div class="container">
                     <div class="collapse navbar-collapse" id="navbarSupportedContent">
                         <div id="dropdown" class="my-navbar-collapse">
                             {{-- bottone ristorante --}}
