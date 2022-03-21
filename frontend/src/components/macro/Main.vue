@@ -1,10 +1,6 @@
 <template>
     <main>
-        <!-- <Hero /> -->
-        <!-- <Categories/> -->
-        <div>
-            <router-view :key="$route.path"></router-view>
-        </div>
+        <router-view :key="$route.path"></router-view>
     </main>
 </template>
 

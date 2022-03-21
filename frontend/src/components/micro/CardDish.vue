@@ -6,7 +6,7 @@
                         <img v-if="restaurant.image_cover" class="card-img-top my_class"  :src="'http://127.0.0.1:8000/storage/' + restaurant.image_cover"  :alt="restaurant.name">
                         <img v-else src="https://www.wecanjob.it/moduli/output_immagine.php?id=8444" class="card-img-top my_class" :alt="restaurant.name">
                     </div>
-                    <div class="card-body p-2">
+                    <div class="mcard-body p-2">
                         <h5 class="card-title fw-bold my-1">{{ restaurant.name }}</h5>
                         <p>{{restaurant.address}}</p>
                         <p class="card-text">{{ restaurant.phone }}</p>
