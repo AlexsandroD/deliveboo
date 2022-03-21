@@ -165,7 +165,7 @@
                 </button>
             </a>
             {{-- bottone statistiche --}}
-            <a href="#" class="text-center stats-color">
+            <a href="{{route('statistics')}}" class="text-center stats-color">
                 <button class="btn">
                     <i class="fa fa-bar-chart responsive-i" aria-hidden="true"></i> Statistiche
                 </button>

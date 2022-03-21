@@ -21128,6 +21128,54 @@ div.card-body ul.contacts-container li.card-text i {
   }
 }
 
+div.index-statistics div.statistic {
+  border: none;
+  border-top-left-radius: 1rem;
+  border-top-right-radius: 1rem;
+}
+
+div.index-statistics div.statistic div.benvenuto-statistic {
+  color: #FFF;
+  background-color: #007E8A;
+  padding: 0.8rem 1.25rem;
+  border: none;
+  border-radius: 1rem;
+}
+
+div.index-statistics div.statistic div.benvenuto-statistic h1 {
+  font-size: 1rem;
+  margin: 0;
+}
+
+@media (min-width: 768px) {
+  main div.index-restaurant div#restaurantless-add {
+    height: 15rem;
+    border: 3px dashed #00CCBC;
+  }
+
+  main div.index-restaurant div#restaurantless-add a i {
+    font-size: 3rem;
+  }
+
+  main div.index-restaurant div.restaurant img.restaurant-cover {
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 1rem;
+  }
+
+  main div.index-restaurant div.restaurant div.card_header div.card-title-container {
+    border-top-right-radius: 1rem;
+  }
+
+  main div.index-restaurant div.restaurant div.card-body h3 {
+    font-size: 1.6rem;
+  }
+
+  main div.index-restaurant div.restaurant div.card-body ul.contacts-container li.badges span.badge {
+    font-size: 0.7rem;
+    padding: 0.8em 1.2em;
+  }
+}
+
 * {
   font-family: "IBM Plex Sans", sans-serif;
 }
