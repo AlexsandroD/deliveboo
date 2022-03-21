@@ -24,31 +24,8 @@
 
       <!-- lista piatti  -->
 
-      <div class="row">
-        <div class="col" v-for="dish in restaurant.dishes" :key="dish.id">
-          <div v-if="dish.visible" class="card"  style="width: 18rem;">
-            <div class="card-body">
-              <h5 class="card-title">{{dish.name}}</h5>
-              <img v-if="dish.image" class="card-img-top"  :src="'http://127.0.0.1:8000/storage/' + dish.image" style="width:200px" :alt="dish.name">
-              <img v-else src="https://www.wecanjob.it/moduli/output_immagine.php?id=8444"  style="width:200px" :alt="dish.name">
-              <p class="card-text">{{ dish.description }}</p>
-              <p class="card-text">&euro;{{ dish.price }}</p>
-              <button @click="cartLogic.removeCartItem(dish.id)">meno</button>
-              <span v-if="cartLogic.cart != null">{{cartLogic.cart.filter(e => e.dishId == dish.id).length > 0 ? cartLogic.cart.find(x => x.dishId == dish.id).quantity : 0}}</span>
-              <span v-else>0</span>
-              <button @click="cartLogic.addCartItem(dish.id,dish.name,dish.price,restaurant.id,restaurant.slug,restaurant.name)">piú</button>
-            </div>
-          </div>
-           <div v-else class="card" disabled  style="width: 18rem;">
-            <div class="card-body">
-              <h5 class="card-title">{{dish.name}}</h5>
-              <img v-if="dish.image" class="card-img-top"  :src="'http://127.0.0.1:8000/storage/' + dish.image" style="width:200px" :alt="dish.name">
-              <img v-else src="https://www.wecanjob.it/moduli/output_immagine.php?id=8444"  style="width:200px" :alt="dish.name">
-              <p class="card-text">{{ dish.description }}</p>
-              <p>Terminato</p>
-            </div>
-          </div>
-        </div>
+      <div class="row row  row-cols-1 row-cols-sm-2 row-cols-md-4 row-cols-lg-5 ">
+        <CardDish v-for="dish in restaurant.dishes" :key="dish.id" :dish="dish" :restaurant="restaurant"/>
       </div>
     
         <!-- modale cart  -->
@@ -94,11 +71,13 @@
 <script>
 import Cart from '../sections/Cart.vue';
 import cartLogic from "../../cartLogic";
+import CardDish from "../micro/CardDish.vue";
 
 export default {
     name:"RestaurantMenu",
     components:{
       Cart,
+      CardDish,
     },
     data(){
       return{

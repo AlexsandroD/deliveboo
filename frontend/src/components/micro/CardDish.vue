@@ -1,26 +1,44 @@
 <template>
-    <div class="col my-2">  
-            <router-link class="link" :to="{ name: 'restaurant-menu', params: { slug:restaurant.slug } }">
-                <div class="card h-100">
-                    <div class="overflow-hidden img-wrapper">
-                        <img v-if="restaurant.image_cover" class="card-img-top my_class"  :src="'http://127.0.0.1:8000/storage/' + restaurant.image_cover"  :alt="restaurant.name">
-                        <img v-else src="https://www.wecanjob.it/moduli/output_immagine.php?id=8444" class="card-img-top my_class" :alt="restaurant.name">
-                    </div>
-                    <div class="mcard-body p-2">
-                        <h5 class="card-title fw-bold my-1">{{ restaurant.name }}</h5>
-                        <p>{{restaurant.address}}</p>
-                        <p class="card-text">{{ restaurant.phone }}</p>
-                    </div>
-                </div>
-            </router-link>
+     <div class="col my-2">
+          <div v-if="dish.visible" class="card  h-100">
+            <div class="card-body">
+              <h5 class="card-title">{{dish.name}}</h5>
+              <div class="overflow-hidden img-wrapper">
+                <img v-if="dish.image" class="card-img-top"  :src="'http://127.0.0.1:8000/storage/' + dish.image" :alt="dish.name">
+                <img v-else src="https://www.wecanjob.it/moduli/output_immagine.php?id=8444"  style="width:200px" :alt="dish.name">
+              </div>
+              <p class="card-text">{{ dish.description }}</p>
+              <p class="card-text">&euro;{{ dish.price }}</p>
+              <button @click="cartLogic.removeCartItem(dish.id)">meno</button>
+              <span v-if="cartLogic.cart != null">{{cartLogic.cart.filter(e => e.dishId == dish.id).length > 0 ? cartLogic.cart.find(x => x.dishId == dish.id).quantity : 0}}</span>
+              <span v-else>0</span>
+              <button @click="cartLogic.addCartItem(dish.id,dish.name,dish.price,restaurant.id,restaurant.slug,restaurant.name)">piú</button>
+            </div>
           </div>
+           <div v-else class="card" disabled  style="width: 18rem;">
+            <div class="card-body">
+              <h5 class="card-title">{{dish.name}}</h5>
+              <img v-if="dish.image" class="card-img-top"  :src="'http://127.0.0.1:8000/storage/' + dish.image" style="width:200px" :alt="dish.name">
+              <img v-else src="https://www.wecanjob.it/moduli/output_immagine.php?id=8444"  style="width:200px" :alt="dish.name">
+              <p class="card-text">{{ dish.description }}</p>
+              <p>Terminato</p>
+            </div>
+        </div>
+    </div>
 </template>
 
 <script>
+import cartLogic from "../../cartLogic";
 export default {
-    name:'CardRestaurant',
+    name:'CardDish',
     props:{
-        restaurant:[],
+        dish:{},
+        restaurant:{},
+    },
+    data(){
+        return{
+            cartLogic,
+        }
     }
 
     
