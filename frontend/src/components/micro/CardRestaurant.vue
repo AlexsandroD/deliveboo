@@ -9,7 +9,7 @@
                     <div class="card-body p-2">
                         <h5 class="card-title fw-bold my-1">{{ restaurant.name }}</h5>
                         <p>{{restaurant.address}}</p>
-                        <p class="card-text">{{ restaurant.phone }}</p>
+                        <p v-for="category in restaurant.categories" :key="category.id" class="card-text">{{category.name}}</p>
                     </div>
                 </div>
             </router-link>
