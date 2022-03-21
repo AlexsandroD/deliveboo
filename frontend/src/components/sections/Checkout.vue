@@ -254,7 +254,13 @@ export default {
 }
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
+
+#creditCardNumber,
+#expireDate,
+#cvv {
+    height: 40px;
+}
 
 .braintree_logo {
     font-size: .75rem;
