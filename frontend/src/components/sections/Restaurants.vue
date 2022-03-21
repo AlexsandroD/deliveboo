@@ -1,31 +1,7 @@
 <template>
   <div class="container">
       <div class="row row-cols-5">
-          <div class="col  my-2" v-for="restaurant in restaurants" :key="restaurant.id">
-              
-            <router-link class="link" :to="{ name: 'restaurant-menu', params: { slug:restaurant.slug } }">
-                <!-- <div class="card my-2 d-flex align-items-stretch">
-                <img v-if="restaurant.image_cover" class="card-img-top"  :src="'http://127.0.0.1:8000/storage/' + restaurant.image_cover"  :alt="restaurant.name">
-                <img v-else src="https://www.wecanjob.it/moduli/output_immagine.php?id=8444"   :alt="restaurant.name">
-                    <div class="card-body">
-                        <h5 class="card-title">{{ restaurant.name }}</h5>
-                        <p>{{restaurant.email}}</p>
-                        <p class="card-text">{{ restaurant.phone }}</p>
-                    </div>
-                </div> -->
-                <div class="card h-100">
-                    <div class="overflow-hidden img-wrapper">
-                        <img v-if="restaurant.image_cover" class="card-img-top my_class"  :src="'http://127.0.0.1:8000/storage/' + restaurant.image_cover"  :alt="restaurant.name">
-                        <img v-else src="https://www.wecanjob.it/moduli/output_immagine.php?id=8444" class="card-img-top my_class" :alt="restaurant.name">
-                    </div>
-                    <div class="mcard-body">
-                        <h5 class="card-title fw-bold">{{ restaurant.name }}</h5>
-                        <p>{{restaurant.address}}</p>
-                        <p class="card-text">{{ restaurant.number }}</p>
-                    </div>
-                </div>
-            </router-link>
-          </div>
+          <CardRestaurant v-for="restaurant in restaurants" :key="restaurant.id" :restaurant="restaurant" />
       </div>
       <div class="row">
           <div class="overflow-auto">
@@ -44,11 +20,16 @@
 </template>
 
 <script>
+import CardRestaurant from "../micro/CardRestaurant";
 import variables from "../../variables";
 
 
 export default {
     name:"Restaurants",
+    components:{
+        CardRestaurant,
+
+    },
     data(){
         return{
             variables,
@@ -120,42 +101,7 @@ export default {
 <style lang = "scss" scoped>
 @import '../../assets/style/variables.scss';
 
-.link{
-    text-decoration:none;
-    color: black; 
-    img{
-        width: 100%;
-    }
-}
 
-.card{
-    min-height:300px;
-    transition: 0.2s;
-}
-
-.card:hover{
-    -webkit-box-shadow: 5px 5px 6px -1px rgba(0,0,0,0.4); 
-    box-shadow: 5px 5px 6px -1px rgba(0,0,0,0.4);
-    position:relative;
-    animation: card 0.2s linear forwards;
-    
-   
-}
-
-@keyframes card {
-    from { top: 0px;}
-    to{ top:-10px}
-}
-
-img{
-    transition:ease 0.3s;
-}
-
- .card:hover img{
-    transform:scale(
-        1.5
-    )
-}
 
 
 </style>
