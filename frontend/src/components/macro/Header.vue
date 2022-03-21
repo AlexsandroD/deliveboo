@@ -32,6 +32,7 @@ export default {
 header{
   /* background-image: url('../../assets/images/bg/background_homepage.svg');
   background-size: cover; */
+  width: 100%;
   .categories{
     background-color: white;
     border-radius: 5px;
