@@ -3,7 +3,7 @@
     <div>
 
         <!-- form pagamento -->
-        <form @submit.prevent="payWithCreditCard()" v-if="paymentSuccess == false && paymentError == false">
+        <form @submit.prevent="payWithCreditCard()" v-show="paymentSuccess == false && paymentError == false && showLoader == false">
 
             <!-- carte valide di test
             Visa: 4111 1111 1111 1111
@@ -66,19 +66,25 @@
 
             <input id="nonce" name="payment_method_nonce" hidden>
             <button type="submit" class="btn-gold btn-block mt-4">Conferma e paga</button>
+
+            <div class="text-end mb-2 braintree_logo">
+                <strong class="me-2">Powered by</strong>
+                <img src="../../assets/images/braintree/braintree-logo-black.png" alt="braintree logo">
+            </div>
         </form>
 
         <!-- risposta pagamento -->
-        <div v-else>
+        <div v-show="paymentSuccess == true || paymentError == true || showLoader == true">
             <p v-if="paymentSuccess">Pagamento avvenuto con successo. Riceverai una mail con il riepilogo dell'ordine.</p>
             <p v-if="paymentError">Pagamento fallito, riprovare più tardi.</p>
+            <div v-if="showLoader">
+                <Loader/>
+            </div>
         </div>
+        
 
 
-        <div class="text-end mb-2 braintree_logo">
-            <strong class="me-2">Powered by</strong>
-            <img src="../../assets/images/braintree/braintree-logo-black.png" alt="braintree logo">
-        </div>
+
 
     </div>
 
@@ -87,8 +93,12 @@
 <script>
 import cartLogic from "../../cartLogic";
 import braintree from "braintree-web";
+import Loader from "../micro/Loader.vue";
 export default {
     name:'Checkout',
+    components:{
+        Loader
+    },
     data(){
         return{
             cartLogic,
@@ -107,16 +117,18 @@ export default {
             errorCvv:false,
             paymentSuccess:false,
             paymentError:false,
+            showLoader:false,
         }
     },
 
     created(){
+        this.showLoader = true;
         const axios = require('axios').default;
         axios.get('http://127.0.0.1:8000/api/orders-token')
             .then((response) => {
                 this.token = response.data;
                 this.braintreeInit();
-             })
+            })
     },
 
     methods:{
@@ -148,6 +160,7 @@ export default {
             })
             .then(hostedFieldInstance => {
                 this.hostedFieldInstance = hostedFieldInstance;
+                this.showLoader = false;
             })
             .catch(err => {
                 console.log(err);
@@ -161,7 +174,9 @@ export default {
                     this.nonce = payload.nonce;
                     document.querySelector('#nonce').value = payload.nonce;
                     let form = document.querySelector('#payment-form');
+
                     this.sendOrder();
+                    this.showLoader = true;
 
                     this.errorEmpty = false;
                     this.errorNumber = false;
@@ -188,14 +203,14 @@ export default {
                                 this.errorCvv = true;
                             }
                         }
-                }
+                    }
 
-                if(err.code =="HOSTED_FIELDS_FIELDS_EMPTY"){
-                    err.message = 'The fields are empty. Please enter your payment information. ';
-                    this.errorEmpty = true;
-                }
+                    if(err.code =="HOSTED_FIELDS_FIELDS_EMPTY"){
+                        err.message = 'The fields are empty. Please enter your payment information. ';
+                        this.errorEmpty = true;
+                    }
 
-            })
+                })
 
             
         },
@@ -220,6 +235,7 @@ export default {
                 })
             .then(() => {
 
+                this.showLoader = false;
                 this.paymentSuccess = true;
 
                 this.cartLogic.emptyCart();
@@ -227,6 +243,7 @@ export default {
 
             })
             .catch(() => {
+                this.showLoader = false;
                 this.paymentError = true;
             })
             
