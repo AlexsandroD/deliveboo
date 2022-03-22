@@ -124,32 +124,35 @@
             </ul>
         </div>
 
-        {{-- container bottoni --}}
-        <div id="btn-container">
-            {{-- bottone ristorante --}}
-            <a href="{{ route('restaurants.index') }}" class="text-center restaurant-color">
-                <button class="btn">
-                    <i class="fa-solid fa-house-chimney-user"></i> Ristorante
-                </button>
-            </a>
-            {{-- bottone menu --}}
-            <a href="{{ route('dishes.index') }}" class="text-center menu-color">
-                <button class="btn">
-                    <i class="fas fa-utensils responsive-i" aria-hidden="true"></i> Menù
-                </button>
-            </a>
-            {{-- bottone ordini --}}
-            <a href="{{ route('orders.index') }}" class="text-center orders-color">
-                <button class="btn">
-                    <i class="fa-solid fa-basket-shopping"></i> Ordini
-                </button>
-            </a>
-            {{-- bottone statistiche --}}
-            <a href="#" class="text-center stats-color">
-                <button class="btn">
-                    <i class="fa fa-bar-chart responsive-i" aria-hidden="true"></i> Statistiche
-                </button>
-            </a>
+              {{-- container bottoni --}}
+              <div id="btn-container">
+                  {{-- bottone ristorante --}}
+                  <a href="{{ route('restaurants.index') }}" class="text-center restaurant-color">
+                      <button class="btn">
+                          <i class="fa-solid fa-house-chimney-user"></i> Ristorante
+                      </button>
+                  </a>
+                  {{-- bottone menu --}}
+                  <a href="{{ route('dishes.index') }}" class="text-center menu-color">
+                    <button class="btn">
+                      <i class="fas fa-utensils responsive-i" aria-hidden="true"></i> Menù
+                    </button>
+                </a>
+                  {{-- bottone ordini --}}
+                  <a href="{{ route('orders.index') }}" class="text-center orders-color">
+                      <button class="btn">
+                          <i class="fa-solid fa-basket-shopping"></i> Ordini
+                      </button>
+                  </a>
+                  {{-- bottone statistiche --}}
+                  <a href="{{route('statistics')}}" class="text-center stats-color">
+                      <button class="btn">
+                          <i class="fa fa-bar-chart responsive-i" aria-hidden="true"></i> Statistiche
+                      </button>
+                  </a>
+              </div>
+          </aside>
+          
         </div>
     </aside>
 @endsection
