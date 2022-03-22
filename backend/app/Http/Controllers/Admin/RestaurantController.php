@@ -112,7 +112,7 @@ class RestaurantController extends Controller
             $categories=Category::all();
             return view('admin.restaurants.edit', compact('restaurant', 'categories'));
         }else{
-            return abort(404);
+            return abort(403);
         }
 
     }
