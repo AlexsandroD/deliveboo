@@ -1,0 +1,35 @@
+.orders-container {
+
+  h1 {
+    font-size: 1rem;
+
+    color: $white;
+    background-color: $_cherry;
+
+    padding: .7rem 0;
+    border-radius: 1rem;
+  }
+
+
+  .orderless {
+
+    h3 {
+      max-width: 20rem;
+
+      font-size: 1rem;
+      
+      background-color: $_white;
+      color: $_primary;
+      font-weight: 400;
+
+      margin: 0 auto 1rem;
+      padding: .6rem;
+      border: 1px solid $_primary;
+      border-radius: 1rem;
+    }
+
+    padding: 4rem 1rem;
+    border: 2px dashed $_primary;
+    border-radius: 1rem;
+  }
+}

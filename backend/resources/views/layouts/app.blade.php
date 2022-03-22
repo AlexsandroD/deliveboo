@@ -28,75 +28,76 @@
 <body>
     <div id="app">
         {{-- header --}}
-        <header>
-            <nav class="navbar navbar-light bg-white">
-                <div class="container">
-                    {{-- logo --}}
-                    <a class="navbar-brand" href="http://localhost:8080">
-                        <img src="{{ asset('images/logo-scritta-color.png') }}" alt="logo deliveboo a colori">
-                    </a>
-
-                    @if ($restaurant)
-                        {{-- logout button for md+ screen --}}
-                        <a id="logout_md" href="{{ route('logout') }}"
-                            onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
-                            <button class="btn btn_logout">
-                                <i class="fa-solid fa-right-from-bracket"></i>
-                                Logout
-                            </button>
+        <header class="bg-white">
+            <div class="container">
+                <div class="row">
+                    <nav class="col navbar navbar-light">
+                        {{-- logo --}}
+                        <a class="navbar-brand" href="http://localhost:8080">
+                            <img src="{{ asset('images/logo-scritta-color.png') }}" alt="logo deliveboo a colori">
                         </a>
 
-                        <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                            @csrf
-                        </form>
-
-                        {{-- hamburger button --}}
-                        <button class="navbar-toggler" type="button" data-toggle="collapse"
-                            data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
-                            aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
-                            <i class="fa-solid fa-house-user"></i>
-                        </button>
-                </div>
-                {{-- dropdown menu --}}
-                <div class="container">
-                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                        <div id="dropdown" class="my-navbar-collapse">
-                            {{-- bottone ristorante --}}
-                            <a href="{{ route('restaurants.index') }}" class="text-center restaurant-color">
-                                <button class="btn">
-                                    <i class="fa-solid fa-house-user"></i>
-                                </button>
-                            </a>
-                            {{-- bottone menù --}}
-                            <a href="{{ route('dishes.index') }}" class="text-center menu-color">
-                                <button class="btn">
-                                    <i class="fas fa-utensils responsive-i" aria-hidden="true"></i>
-                                </button>
-                            </a>
-                            {{-- bottone ordini --}}
-                            <a href="{{ route('orders.index') }}" class="text-center orders-color">
-                                <button class="btn">
-                                    <i class="fa-solid fa-basket-shopping"></i>
-                                </button>
-                            </a>
-                            {{-- bottone statistiche --}}
-                            <a href="#" class="text-center stats-color">
-                                <button class="btn">
-                                    <i class="fa fa-bar-chart responsive-i" aria-hidden="true"></i>
-                                </button>
-                            </a>
-                            {{-- bottone logout --}}
-                            <a class="text-center logout-color" href="{{ route('logout') }}"
+                        @if ($restaurant)
+                            {{-- logout button for md+ screen --}}
+                            <a id="logout_md" href="{{ route('logout') }}"
                                 onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
-                                <button class="btn">
+                                <button class="btn btn_logout">
                                     <i class="fa-solid fa-right-from-bracket"></i>
+                                    Logout
                                 </button>
                             </a>
 
-                            <form id="logout-form" action="{{ route('logout') }}" method="POST"
-                                class="d-none">
+                            <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                                 @csrf
                             </form>
+
+                            {{-- hamburger button --}}
+                            <button class="navbar-toggler" type="button" data-toggle="collapse"
+                                data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                                aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
+                                <i class="fa-solid fa-house-user"></i>
+                            </button>
+                            {{-- dropdown menu --}}
+                            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                                <div id="dropdown" class="my-navbar-collapse">
+                                    {{-- bottone ristorante --}}
+                                    <a href="{{ route('restaurants.index') }}" class="text-center restaurant-color">
+                                        <button class="btn">
+                                            <i class="fa-solid fa-house-user"></i>
+                                        </button>
+                                    </a>
+                                    {{-- bottone menù --}}
+                                    <a href="{{ route('dishes.index') }}" class="text-center menu-color">
+                                        <button class="btn">
+                                            <i class="fas fa-utensils responsive-i" aria-hidden="true"></i>
+                                        </button>
+                                    </a>
+                                    {{-- bottone ordini --}}
+                                    <a href="{{ route('orders.index') }}" class="text-center orders-color">
+                                        <button class="btn">
+                                            <i class="fa-solid fa-basket-shopping"></i>
+                                        </button>
+                                    </a>
+                                    {{-- bottone statistiche --}}
+                                    <a href="#" class="text-center stats-color">
+                                        <button class="btn">
+                                            <i class="fa fa-bar-chart responsive-i" aria-hidden="true"></i>
+                                        </button>
+                                    </a>
+                                    {{-- bottone logout --}}
+                                    <a class="text-center logout-color" href="{{ route('logout') }}"
+                                        onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                                        <button class="btn">
+                                            <i class="fa-solid fa-right-from-bracket"></i>
+                                        </button>
+                                    </a>
+
+                                    <form id="logout-form" action="{{ route('logout') }}" method="POST"
+                                        class="d-none">
+                                        @csrf
+                                    </form>
+                                </div>
+                            </div>
                         @else
                             <a href="{{ route('logout') }}"
                                 onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
@@ -110,7 +111,6 @@
                                 class="d-none">
                                 @csrf
                             </form>
-                        </div>
                         @endif
 
 
@@ -128,14 +128,16 @@
                                 @csrf
                             </form>
                         </div>
-                    </div>
+                    </nav>
                 </div>
-            </nav>
+            </div>
         </header>
 
-        {{-- main --}}
-        <main class="py-4">
-            @yield('content')
+        <main class="container">
+            {{-- main --}}
+            <div class="row py-4">
+                @yield('content')
+            </div>
         </main>
     </div>
 </body>

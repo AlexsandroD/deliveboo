@@ -20,7 +20,6 @@ header {
   }
 
   nav.navbar-light {
-    padding: 1rem 0;
 
     #logout_md {
       display: none;
@@ -47,16 +46,12 @@ header {
 
     // dropdown
     #dropdown {
-      display: grid;
-      grid-template-columns: repeat(5, 1fr);
-
-      margin: 0;
-      padding-top: 1.4rem;
+      display: flex;
+      justify-content: space-between;
+      padding: 1.4rem 0;
 
       a {
         border-radius: 1rem;
-        margin: 0 .1rem;
-        padding: .2rem 0;
 
         button.btn {
 
@@ -80,10 +75,33 @@ header {
       #dropdown {
 
         a {
-          margin: 0 .8rem;
-          padding: .4rem 0;
-
+        
           button.btn {
+            padding: .6rem 2rem;
+
+            i {
+              font-size: 1rem;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+// MEDIA QUERIES
+@media screen and (min-width: 768px) {
+
+  header {
+
+    nav.navbar-light {
+
+      #dropdown {
+
+        a {
+        
+          button.btn {
+            padding: .6rem 3rem;
 
             i {
               font-size: 1rem;
@@ -99,7 +117,6 @@ header {
   header {
 
     nav.navbar-light {
-      padding: 1rem 1.2rem;
 
       // icona deliveboo
       a.navbar-brand {
