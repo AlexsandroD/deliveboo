@@ -25,6 +25,14 @@
     <div class="form-group">
         <ul class="edit-container" >
             <li  v-for="category in categories" :key="category.id">
+                <!-- <input class="form-check-input" type="checkbox" v-model="variables.categoriesValue" :id="category.name" :value="category.id">
+                <label class="form-check-label" :for="category.name">{{category.name}}</label> -->
+                
+                <!-- <button type="button" class="btn" data-toggle="tooltip" data-html="true"
+                title="<em>Tooltip</em> <u>with</u> <b>HTML</b>">
+                Tooltip with HTML
+                </button> -->
+
                 <input class="form-check-input" type="checkbox" v-model="variables.categoriesValue" :id="category.name" :value="category.id">
                 <label class="form-check-label" :for="category.name">{{category.name}}</label>
             </li>
@@ -51,24 +59,6 @@ export default {
             this.categories = response.data;
         })
     },
-
-    
-        //     find: function(i) {
-        //     inputIncludes = this.inputIncludes.toLowerCase();
-        //     names = this.categories[i].name.toLowerCase();
-        //     if(names.includes(inputIncludes)){
-        //         return true
-        //     }else{
-        //         return false
-        //     }
-
-        // },
-
-        // find: function(){
-        //     this.categories.forEach(element => {
-        //         element.visible
-        //     });
-        // }
 }
 </script>
 
@@ -76,20 +66,13 @@ export default {
 @import '../../assets/style/variables.scss';
 .container{
     .title{
+        h1{
+            margin-top: -60px;
+        }
         color: $_blue;
         /* text-shadow: 2px 2px 4px black; */
         padding: 20px 0;
     }
-    /* .edit-container{
-        list-style: none;
-        display: flex;
-        flex-direction: column;
-        height: 90px;
-        flex-wrap: wrap;
-        li{
-        display: flex;
-        }
-    } */
 
   p.under-title {
     font-size: 1rem;
@@ -104,12 +87,9 @@ export default {
         ul.edit-container {
         /* @include flex-center; */
         flex-wrap: wrap;
-        
         list-style: none;
-        
         padding: .6rem 0 0;
-        
-        li{
+        /*li{
             display: inline;
             color: $_primary;
             label{
@@ -121,7 +101,7 @@ export default {
         
             margin: 3px 0px;
             padding: 8px 12px;
-            border: 2px solid $_primary;
+             border: 2px solid $_primary;
             border-radius: 25px;
         
             -webkit-touch-callout: none;
@@ -177,8 +157,41 @@ export default {
                 transition: transform .3s ease-in-out;
             }
             }
-        }
+        } */
+        
 
+
+            .form-check-input{
+                display: none;
+                width: 0px;
+            }
+            li{
+            display: inline;
+            color: darkcyan;
+            font-size: bold;
+            label{
+            display: inline-block;
+            width: 8.5rem;
+            user-select: none;
+            white-space: nowrap;
+            margin: 3px 0px;
+            padding: 8px 12px;
+            /* text-transform: uppercase; */
+
+                &:hover{
+                    transition-delay: 0.13s;
+                    background-color: $_brighterPrimaryHover;
+                    color: white;
+                    border-radius: 3px;
+                }
+                &:active{
+                    opacity: 3;
+                }
+                &:focus{
+                    background-color: blue;
+                }
+            }
+        }
     }
     
 }

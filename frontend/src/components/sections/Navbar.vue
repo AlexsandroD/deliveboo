@@ -1,7 +1,7 @@
 <template>
 <!-- <div> -->
 <div class="container">
-  <b-navbar class="hamburgher" toggleable="lg" type="dark" variant="info">
+  <b-navbar id="hamburgher" toggleable="md">
     <b-navbar-brand class="logo" href="http://127.0.0.1:8080/">
         <img src="../../assets/images/logo/deliveboo-logo.svg" alt="logo">
     </b-navbar-brand>
@@ -111,15 +111,27 @@ export default {
     left: 0;
     right: 0;
     /* padding: 20px 2px; */
-
-    .hamburgher{
+            transition: all .2s ease-in-out;
+            &.onScroll {
+            box-shadow: 0 0 10px #aaa;
+            background-color: #fff;
+            }
+    #hamburgher{
         background-color: transparent !important;
         width: 100%;
         height: 100%;
         color: $_primary;
+            /* transition: all .2s ease-in-out;
+            &.onScroll {
+            box-shadow: 0 0 10px #aaa;
+            background-color: #fff;
+            } */
         .toggle{
             background-color: $_primary;
-        }        
+        }
+        .navbar-toggler{
+            color: white !important;
+        }
         .logo{
             color: $_primary;
             height: 100%;
