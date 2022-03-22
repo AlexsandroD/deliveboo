@@ -49,9 +49,16 @@ class OrderController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Order $order)
     {
-        //
+      $restaurant = Restaurant::select('id')->where('user_id', Auth::id())->first();
+      $restaurants_id = $restaurant->id;
+
+      if($order->restaurant_id === $restaurants_id){
+          return view("admin.orders.show", compact("order",'restaurant'));
+      }else{
+          return redirect()->route("orders.index");
+      }
     }
 
     /**
