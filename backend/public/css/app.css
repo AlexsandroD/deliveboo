@@ -21200,6 +21200,10 @@ div.card-body ul.contacts-container li.card-text i {
   }
 }
 
+.orders-container {
+  padding-bottom: 2rem;
+}
+
 .orders-container h1 {
   font-size: 1rem;
   color: #fff;
@@ -21224,6 +21228,172 @@ div.card-body ul.contacts-container li.card-text i {
   padding: 0.6rem;
   border: 1px solid #00CCBC;
   border-radius: 1rem;
+}
+
+.orders-container .orders-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2%;
+}
+
+.orders-container .orders-grid .card {
+  border-radius: 1rem;
+  border: none;
+}
+
+.orders-container .orders-grid .card a {
+  color: #2E3333;
+  border-radius: 1rem;
+  border: 1px solid transparent;
+}
+
+.orders-container .orders-grid .card a:hover {
+  text-decoration: none;
+  border: 1px solid #00CCBC;
+}
+
+.orders-container .orders-grid .card a h6.card_header {
+  color: #FFF;
+  background-color: #00CCBC;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  padding: 0.4rem;
+  margin: 0;
+  border-top-left-radius: 1rem;
+  border-top-right-radius: 1rem;
+}
+
+.orders-container .orders-grid .card a .order-info {
+  padding: 1rem 1.2rem;
+}
+
+.orders-container .orders-grid .card a .order-info div.label {
+  color: #00CCBC;
+}
+
+.orders-container .orders-grid .card a .order-info div.label i {
+  font-size: 0.9rem;
+}
+
+.orders-container .orders-grid .card a .order-info p {
+  font-size: 0.8rem;
+}
+
+@media (min-width: 576px) {
+  .orders-container .orders-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4%;
+  }
+}
+
+@media (min-width: 992px) {
+  .orders-container .orders-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 4%;
+  }
+
+  .orders-container .orders-grid .card a .order-info div.label {
+    font-size: 1rem;
+  }
+
+  .orders-container .orders-grid .card a .order-info div.label i {
+    font-size: 0.9rem;
+  }
+
+  .orders-container .orders-grid .card a .order-info p {
+    font-size: 1rem;
+  }
+}
+
+div.order {
+  border: none;
+  border-top-left-radius: 1rem;
+  border-top-right-radius: 1rem;
+}
+
+div.order div.card_header {
+  background-color: #FFF;
+  border-radius: 1rem;
+}
+
+div.order div.card_header div.card-title-container {
+  background-color: #00CCBC;
+  color: #FFF;
+  padding: 1.2rem 1.25rem;
+  border-top-left-radius: 1rem;
+  border-top-right-radius: 1rem;
+}
+
+div.order div.card_header div.card-title-container h2 {
+  font-size: 1.6rem;
+  margin: 0;
+}
+
+div.order div.order-info {
+  padding: 1.5rem 1.2rem;
+}
+
+div.order div.order-info div.order-description {
+  background-color: #F9FAFA;
+  padding: 1rem;
+  border-radius: 1rem;
+}
+
+div.order div.order-info div.order-description div.label {
+  color: #00CCBC;
+}
+
+div.order div.order-info div.order-description div.label i {
+  font-size: 0.9rem;
+}
+
+div.order div.order-info div.order-description p,
+div.order div.order-info div.order-description span {
+  font-size: 0.8rem;
+}
+
+div.order div.order-info div.order-description h4 {
+  color: #00CCBC;
+  font-size: 1.4rem;
+}
+
+div.order div.order-info div.order-description h4 i {
+  width: 1rem;
+  font-size: 1rem;
+}
+
+div.order div.order-info div.order-description p.description {
+  color: #434848;
+}
+
+@media (min-width: 992px) {
+  div.order div.card_header div.card-title-container {
+    border-top-right-radius: 1rem;
+  }
+
+  div.order div.card_header div.order-info {
+    padding: 2rem 3rem;
+  }
+
+  div.order div.card_header div.order-info div.order-description {
+    padding: 1.4rem;
+  }
+
+  div.order div.card_header div.order-info div.order-description div.label {
+    font-size: 1.1rem;
+  }
+
+  div.order div.card_header div.order-info div.order-description div.label i {
+    font-size: 1rem;
+  }
+
+  div.order div.card_header div.order-info div.order-description p,
+  div.order div.card_header div.order-info div.order-description span {
+    font-size: 1rem;
+  }
 }
 
 * {

@@ -1,4 +1,5 @@
 .orders-container {
+  padding-bottom: 2rem;
 
   h1 {
     font-size: 1rem;
@@ -31,5 +32,104 @@
     padding: 4rem 1rem;
     border: 2px dashed $_primary;
     border-radius: 1rem;
+  }
+
+  .orders-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2%;
+
+    .card {
+      border-radius: 1rem;
+      border: none;
+
+      a {
+        color: $_black;
+
+        border-radius: 1rem;
+        border: 1px solid transparent;
+
+        &:hover {
+          text-decoration: none;
+
+          border: 1px solid $_primary;
+        }
+
+        h6.card_header {
+          color: $_white;
+          background-color: $_primary;
+
+          white-space: nowrap;
+          overflow: hidden;
+          text-overflow: ellipsis;
+
+          padding: .4rem;
+          margin: 0;
+          border-top-left-radius: 1rem;
+          border-top-right-radius: 1rem;
+        }
+
+        .order-info {
+          padding: 1rem 1.2rem;
+
+          div.label {
+            color: $_primary;
+  
+            i {
+              font-size: .9rem;
+            }
+          }
+  
+          p {
+            font-size: .8rem;
+          }
+        }
+      }
+    }
+  }
+}
+
+// MEDIA QUERIES
+@media(min-width:576px) {
+  .orders-container {
+  
+    .orders-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4%;
+    }
+  }
+}
+
+@media(min-width:992px) {
+  .orders-container {
+  
+    .orders-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 4%;
+
+      .card {
+
+        a {
+
+          .order-info {
+    
+            div.label {
+              font-size: 1rem;
+    
+              i {
+                font-size: .9rem;
+              }
+            }
+    
+            p {
+              font-size: 1rem;
+            }
+          }
+        }
+      }
+
+    }
   }
 }

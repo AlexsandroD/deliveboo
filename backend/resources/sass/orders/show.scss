@@ -1,0 +1,101 @@
+// card ordine
+div.order {
+    border: none;
+    border-top-left-radius: 1rem;
+    border-top-right-radius: 1rem;
+
+    div.card_header {
+        background-color: $_white;
+        border-radius: 1rem;
+
+        // info ordine
+
+        div.card-title-container {
+            @include delivebooColors;
+            padding: 1.2rem 1.25rem;
+            border-top-left-radius: 1rem;
+            border-top-right-radius: 1rem;
+
+            h2 {
+                font-size: 1.6rem;
+
+                margin: 0;
+            }
+        }
+    }
+
+    // info-body
+    div.order-info {
+        padding: 1.5rem 1.2rem;
+
+        div.order-description {
+            background-color: $_whiteSmoke;
+
+            padding: 1rem;
+            border-radius: 1rem;
+
+            div.label {
+                color: $_primary;
+
+                i {
+                    font-size: 0.9rem;
+                }
+            }
+
+            p,
+            span {
+                font-size: 0.8rem;
+            }
+
+            h4 {
+                color: $_primary;
+                font-size: 1.4rem;
+
+                i {
+                    width: 1rem;
+
+                    font-size: 1rem;
+                }
+            }
+
+            p.description {
+                color: $_darkGrey;
+            }
+        }
+    }
+}
+
+//00000000 MEDIA QUERIES 00000000
+@media (min-width: 992px) {
+    // card ordine
+    div.order {
+        // info ordine
+        div.card_header {
+            div.card-title-container {
+                border-top-right-radius: 1rem;
+            }
+
+            // info-body
+            div.order-info {
+                padding: 2rem 3rem;
+
+                div.order-description {
+                    padding: 1.4rem;
+
+                    div.label {
+                      font-size: 1.1rem;
+
+                        i {
+                            font-size: 1rem;
+                        }
+                    }
+
+                    p,
+                    span {
+                        font-size: 1rem;
+                    }
+                }
+            }
+        }
+    }
+}
