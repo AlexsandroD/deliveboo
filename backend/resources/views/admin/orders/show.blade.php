@@ -15,29 +15,34 @@
                 <div class="order-info">
                     {{-- order info --}}
                     <div class="order-description">
+                      <div class="d-flex justify-content-between">
+                        <h4 class="mb-2">Informazioni Cliente</h4>
+                        <div class="label"><i class="fa-solid fa-clock"></i> {{ $order->created_at}}</div>
+                      </div>
                       <div class="label"><i class="fa-solid fa-user"></i> Cliente</div>
-                      <p class="mb-2">{{ $order->customer_name }} {{ $order->customer_surname }}</p>
+                      <p class="mb-3">{{ $order->customer_name }} {{ $order->customer_surname }}</p>
                       <div class="label"><i class="fa-solid fa-envelope"></i> Email</div>
-                      <p class="mb-2">{{ $order->customer_email }}</p>
+                      <p class="mb-3">{{ $order->customer_email }}</p>
                       <div class="label"><i class="fa-solid fa-location-dot"></i> Indirizzo</div>
-                      <p class="mb-2">{{ $order->customer_address }}, {{ $order->customer_city }},
+                      <p class="mb-3">{{ $order->customer_address }}, {{ $order->customer_city }},
                           {{ $order->customer_post_code }}, {{ $order->customer_country }}</p>
                       <div class="label"><i class="fa-solid fa-phone"></i> Telefono</div>
-                      <p class="mb-2">{{ $order->customer_phone }}</p>
+                      <p class="mb-3">{{ $order->customer_phone }}</p>
                       <div class="label"><i class="fa-solid fa-comment-dots"></i> Commento</div>
                       @if( $order->customer_comment )
-                      <p class="mb-2">{{ $order->customer_comment }}</p>
+                      <p class="mb-3">{{ $order->customer_comment }}</p>
                       @else 
-                      <p class="mb-2">Nessun commento</p>
+                      <p class="mb-3">Nessun commento</p>
                       @endif
-                      <div class="label"><i class="fa-solid fa-euro-sign"></i> Prezzo</div>
-                      <p class="mb-2">&euro;{{ $order->tot_price }}</p>
-
-                      <h4>Lista piatti</h4>
+                      {{-- lista piatti --}}
+                      <h4 class="mt-3 mb-2">Lista piatti</h4>
                       @foreach ($order->dishes as $dish)
-                          <p>Nome del piatto: {{ $dish->name }}</p>
-                          <p>Quantità: {{ $dish->pivot->quantity }}</p>
+                      <div class="d-flex justify-content-between">
+                        <p>x{{ $dish->pivot->quantity }} {{ $dish->name }}</p>
+                        <span class="ml-2">&euro;{{ $dish->price }} pz.</span>
+                      </div>
                       @endforeach
+                      <div class="label text-right">Totale: &euro;{{ $order->tot_price }}</div>
                     </div>
                 </div>
             </div>

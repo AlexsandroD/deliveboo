@@ -206,24 +206,13 @@
                 {{-- plate cards --}}
                 @foreach ($orders as $order)
                     <div class="card">
-                        <h6 class="card_header text-center">Ordine #{{$order->id}}</h6>
                         <a href="{{ route('orders.show', $order->id) }}">
-                            <div class="label"><i class="fa-solid fa-user"></i> Cliente</div>
-                            <p class="mb-2">{{ $order->customer_name }} {{ $order->customer_surname }}</p>
-                            <div class="label"><i class="fa-solid fa-envelope"></i> Email</div>
-                            <p class="mb-2">{{ $order->customer_email }}</p>
-                            {{-- <p>Indirizzo: {{ $order->customer_address }}, {{ $order->customer_city }},
-                                {{ $order->customer_post_code }}, {{ $order->customer_country }}</p> --}}
-                            <div class="label"><i class="fa-solid fa-phone"></i> Telefono</div>
-                            <p class="mb-2">{{ $order->customer_phone }}</p>
-                            {{-- <p>Commento: {{ $order->customer_comment }}</p> --}}
-                            <div class="label"><i class="fa-solid fa-euro-sign"></i> Prezzo</div>
-                            <p class="mb-2">&euro;{{ $order->tot_price }}</p>
-
-                            {{-- @foreach ($order->dishes as $dish)
-                                <p>Nome del piatto: {{ $dish->name }}</p>
-                                <p>Quantità: {{ $dish->pivot->quantity }}</p>
-                            @endforeach --}}
+                            <h6 class="card_header text-center">Ordine #{{$order->id}}</h6>
+                            <div class="order-info text-center">
+                                <div class="label"><i class="fa-solid fa-user"></i> Cliente</div>
+                                <p class="mb-4">{{ $order->customer_name }} {{ $order->customer_surname }}</p>
+                                <div class="label"><i class="fa-solid fa-clock"></i> {{ $order->created_at}}</div>
+                            </div>
                         </a>
                     </div>
                 @endforeach
