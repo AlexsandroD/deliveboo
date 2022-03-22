@@ -6,7 +6,7 @@
         <img src="../../assets/images/logo/deliveboo-logo.svg" alt="logo">
     </b-navbar-brand>
 
-    <b-navbar-toggle class="toggle" target="nav-collapse"></b-navbar-toggle>
+    <b-navbar-toggle class="toggle " target="nav-collapse"></b-navbar-toggle>
 
     <b-collapse class="buttons" id="nav-collapse" is-nav>
       <b-navbar-nav>
@@ -17,7 +17,7 @@
                 <span>€ {{ cartLogic.totalPrice }}</span>
             </router-link>
         </b-nav-item>
-        <b-nav-item class="btn" href=" http://127.0.0.1:8000/admin" role="button">Utente</b-nav-item>
+        <b-nav-item class="btn" href=" http://127.0.0.1:8000/admin" role="button"><i class="fa-solid fa-user"></i></b-nav-item>
         <!-- <b-nav-item href="#"><a class="btn" href=" http://127.0.0.1:8000/admin" role="button">Utente</a></b-nav-item> -->
         <!-- <b-nav-item href="#" disabled>Disabled</b-nav-item> -->
       </b-navbar-nav>
@@ -142,6 +142,10 @@ export default {
                     text-decoration: none;
                     border-radius: 3px;
                 }
+            }
+            .fa-user{
+                padding-left: 10px;
+                padding-right: 10px;
             }
         }
     }
