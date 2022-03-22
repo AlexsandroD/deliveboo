@@ -3,6 +3,8 @@
 use Illuminate\Database\Seeder;
 use App\Restaurant;
 use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Storage;
+use Faker\Generator as Faker;
 
 class RestaurantsTableSeeder extends Seeder
 {
@@ -11,91 +13,129 @@ class RestaurantsTableSeeder extends Seeder
      *
      * @return void
      */
-    public function run()
+    public function run(Faker $faker)
     {
         $restaurants = [
 
             [
-                'name' => 'La Piadineria',
-                'description' => 'Ordina la tua piadina preferita a casa tua da La Piadineria   grazie alla consegna a domicilio di Deliverboo.',
-                'address' => 'Piazza dei Cinquecento 1, Stazione Termini',
-            ],
-
-            [
-                'name' => 'Panificio Roscioli Pietro',
-                'description' => 'Ordina Pizza e Mortadella direttamente da casa o in ufficio oppure le nostre specialità per la cucina.',
-                'address' => 'Via Buonarroti 44',
+                'name' => 'Mr Kebab Turco',
+                'description' => 'Ordina il tuo piatto preferito a casa tua da MR. Kebab Turco Istanbul grazie alla consegna a domicilio di Deliveroo.',
             ],
             [
-                'name' => 'McDonald\'s',
-                'description' => 'Leggi maggiori informazioni sugli allergeni presenti nei prodotti offerti da questo ristorante.',
-                'address' => 'Via Marsala 25',
+                'name' => 'Gandhi',
+                'description' => 'Ordina il tuo piatto indiano preferito a casa tua da Gandhi 2 grazie alla consegna a domicilio di Deliveroo.',
             ],
             [
-                'name' => 'Namastè - Roma',
-                'description' => 'Ordina il tuo piatto preferito a casa tua da Namastè grazie alla consegna a domicilio di Deliverboo Roma.',
-                'address' => 'Via Raimondo Montecuccoli 8',
-            ],
-            [
-                'name' => 'Maat',
-                'description' => 'Per un brunch o un hamburger in famiglia, scegli Maat e lasciati trasportare a New York!',
-                'address' => 'Via S. Calvino 20',
-            ],
-
-            [
-                'name' => 'KFC',
-                'description' => 'L\'irresistibile pollo fritto del Colonnello finalmente anche a casa tua, o dove vuoi tu!',
-                'address' => 'Via Gioberti, 29',
-            ],
-            [
-                'name' => 'Viva Nachos',
-                'description' => 'Hai delle domande? Chiedi a Viva Nachos informazioni più dettagliate sui metodi di cottura e sugli ingredienti utilizzati.',
-                'address' => '20 Via Raffaele Cadorna',
-            ],
-            [
-                'name' => 'Antico Vinaio',
-                'description' => 'Hai delle domande? Chiedi a All\'Antico Vinaio informazioni più dettagliate sui metodi di cottura e sugli ingredienti utilizzati.',
-                'address' => 'Piazza della Maddalena',
-            ],
-            [
-                'name' => 'The Cheesecake House of Maat Bistrot',
-                'description' => 'Ordina il tuo dolce preferito a casa tua da The Cheesecake House of Maat Bistrot grazie alla consegna a domicilio di Deliverboo.',
-                'address' => '20 Via Sestio Calvino',
-            ],
-            [
-                'name' => 'Insalatona',
-                'description' => 'Insalata, Wrap, Bowl, scegli tu. Grazie alla partnership con Deliveroo puoi gustare il tuo piatto sano, gustoso ed italiano con un super sconto del 50%. Attenzione: se vuoi un\'insalatina-ina-ina, cambia ristorante. Benvenuta/o da Insalatona!',
-                'address' => '4 Via Oreste Salomone',
-            ],
-            [
-                'name' => 'Quadrotto',
-                'description' => 'Ordina il tuo piatto preferito a casa tua Quadrotto Roma grazie alla consegna a domicilio di Deliveroo',
-                'address' => 'Via della lega lombarda 31',
+                'name' => 'Il Caffè Dietro L\'Angolo',
+                'description' => 'Ordina il tuo dolce preferito a casa tua da Il Caffè Dietro L\'Angolo grazie alla consegna a domicilio di Deliveroo.',
             ],
             [
                 'name' => 'Breakfast Rome',
-                'description' => 'Ordina la tua colazione preferita a casa tua da Breakfast Rome grazie alla consegna a domicilio di Deliverboo.',
-                'address' => 'Via Federico Ozanam 86',
+                'description' => 'Ordina la tua colazione preferita a casa tua da Breakfast Rome grazie alla consegna a domicilio di Deliveroo.',
             ],
             [
-                'name' => 'Gelateria Giolitti',
-                'description' => 'Ordina il tuo gelato preferito a casa tua da Gelateria Giolitti grazie alla consegna a domicilio di Deliverboo Roma',
-                'address' => 'Via degli Uffici del Vicario',
+                'name' => 'Mammò - Street Food',
+                'description' => 'Ordina il tuo panino preferito a casa tua da Mammò in Piazza Trilussa grazie alla consegna a domicilio di Deliveroo Roma.',
             ],
             [
-                'name' => 'Il Fornaretto di Trastevere',
-                'description' => 'Ordina il tuo gelato preferito a casa tua da Gelateria Giolitti grazie alla consegna a domicilio di Deliverboo Roma',
-                'address' => 'Viale Trastevere 128',
+                'name' => 'Flower Burger',
+                'description' => 'Ordina il tuo hamburger preferito a casa tua da Flower burger in Turati grazie alla consegna a domicilio di Deliveroo.',
             ],
             [
-                'name' => 'La Casa de Los Burritos',
-                'description' => 'La Casa De Los Burritos ti offre il miglior Burrito a casa tua in qualsiasi momento. In 20 minuti siamo da te, siamo aperti ogni giorno ed al Lockdown ci siamo abituati, ordina subito e ricevi il Burrito dal Professor al 50% di sconto grazie alla partnership con Deliveroo.',
-                'address' => 'Via Raffaele Rossi 23',
+                'name' => 'Burrito\'s Way',
+                'description' => 'Ordina il tuo piatto preferito a casa tua da Burritos Way grazie alla consegna a domicilio di Deliveroo.',
             ],
             [
-                'name' => 'LM Frutta',
-                'description' => 'Ordina il tuo dolce preferito a casa tua da The Cheesecake House of Maat Bistrot grazie alla consegna a domicilio di Deliverboo.',
-                'address' => 'Via degli Avignonesi 23',
+                'name' => 'The Mexican',
+                'description' => 'Ordina il tuo piatto preferito a casa tua da The Mexican grazie alla consegna a domicilio di Deliveroo.',
+            ],
+            [
+                'name' => 'Gelateria La Romana',
+                'description' => 'Ordina il tuo gelato preferito a casa tua da Gelateria la Romana grazie alla consegna a domicilio di Deliveroo.',
+            ],
+            [
+                'name' => 'Dolci Desideri',
+                'description' => 'Ordina il tuo piatto preferito a casa tua da Dolci Desideri grazie alla consegna a domicilio di Deliveroo.',
+            ],
+            [
+                'name' => 'New Delhi - Roma',
+                'description' => 'Ordina il tuo piatto preferito della cucina indiana a casa tua da New Delhi grazie alla consegna a domicilio di Deliveroo Roma.',
+            ],
+            [
+                'name' => 'Alì Babà Indian Food',
+                'description' => 'Ordina il tuo piatto preferito a casa tua da Alì Babà Indian Food grazie alla consegna a domicilio di Deliveroo.',
+            ],
+            [
+                'name' => 'Elleniko',
+                'description' => 'Ordina il tuo piatto greco preferito a casa tua da Elleniko grazie alla consegna a domicilio di Deliveroo Roma.',
+            ],
+            [
+                'name' => 'Sparta',
+                'description' => 'Ordina il tuo piatto preferito della cucina greca a casa tua da Sparta grazie alla consegna a domicilio di Deliveroo.',
+            ],
+            [
+                'name' => 'Cody Pokè Sushi',
+                'description' => '-',
+            ],
+            [
+                'name' => 'Sushi Sensei',
+                'description' => 'Ordina il tuo piatto preferito a casa tua da Sushi Sensei grazie alla consegna a domicilio di Deliveroo.',
+            ],
+            [
+                'name' => 'Piccola Hong Kong',
+                'description' => 'Ordina il tuo piatto preferito della cucina cinese a casa tua da Piccola Hong Kong grazie alla consegna a domicilio di Deliveroo.',
+            ],
+            [
+                'name' => 'Dim Sum Fine Asian Cusine',
+                'description' => 'Ordina il tuo piatto della cucina cinese preferito a casa tua da Dim Sum Fine Asian Cucine grazie alla consegna a domicilio di Deliveroo Roma.',
+            ],
+            [
+                'name' => 'Mandaloun - Lebanese Food',
+                'description' => 'Ordina il tuo piatto preferito della cucina libanese a casa tua da Mandaloun in Via Veneto grazie alla consegna a domicilio di Deliveroo Roma.',
+            ],
+            [
+                'name' => 'Il Libanese',
+                'description' => 'Ordina il tuo piatto preferito a casa tua dal libanese con Deliveroo.',
+            ],
+            [
+                'name' => 'KFC',
+                'description' => 'L\'irresistibile pollo fritto del Colonnello finalmente anche a casa tua, o dove vuoi tu!',
+            ],
+            [
+                'name' => 'Hard Rock Cafe Roma',
+                'description' => 'Ordina il tuo hamburger preferito a casa tua da Hard Rock Cafe Roma grazie alla consegna a domicilio di Deliveroo.',
+            ],
+            [
+                'name' => 'All\'Antico Vinaio',
+                'description' => 'Ordina la tua schiacciata preferita dall\'Antico Vinaio grazie alla consegna a domicilio di Deliveroo.',
+            ],
+            [
+                'name' => 'Panino Giusto',
+                'description' => 'Ordina il tuo panino preferito a casa tua da Panino Giusto e grazie alla consegna a domicilio di Deliveroo Roma.',
+            ],
+            [
+                'name' => 'Kung Fu Restaurant',
+                'description' => 'Ordina il tuo piatto preferito a casa tua da Kung Fu Restaurant con Deliveroo.',
+            ],
+            [
+                'name' => 'Odoroki',
+                'description' => 'Ordina il tuo piatto preferito della cucina thailandese a casa tua grazie alla consegna a domicilio di Deliveroo.',
+            ],
+            [
+                'name' => 'Sushiko',
+                'description' => 'Ordina il tuo piatto preferito a casa tua da Sushiko grazie alla consegna a domicilio di Deliveroo.',
+            ],
+            [
+                'name' => 'Sushi Snob',
+                'description' => 'Ordina il tuo sushi preferito a casa tua da Sushi Snob Parioli grazie alla consegna a domicilio di Deliveroo.',
+            ],
+            [
+                'name' => 'Voglia Di Pizza',
+                'description' => 'Ordina i tuoi piatti preferiti anche con opzioni senza glutine, puoi trovare pizza, pasta, dolci e antipasti fatti in casa e Gluten Free',
+            ],
+            [
+                'name' => 'PizzaRè',
+                'description' => 'Ordina la tua pizza preferita a casa tua da PizzaRè grazie alla consegna a domicilio di Deliveroo.',
             ],
 
 
@@ -116,19 +156,14 @@ class RestaurantsTableSeeder extends Seeder
             $newRestaurant = new Restaurant;
             $newRestaurant->user_id = $key + 1;
             $newRestaurant->name = $restaurant['name'];
-
-            // questo metodo serve a sostituire tutti i caratteri non desidarati
-            $newRestaurant->slug = Str::of(strtr( $restaurant['name'].' '.$restaurant['address'], $unwanted_array ))->slug('-');
-            // ***
             $newRestaurant->description = $restaurant['description'];
-            // questo metodo serve a sostituire tutti i caratteri non desidarati e in piú converte to the lower case ed elimina gli spazi.
             $newRestaurant->email = str_replace(' ','',strtolower(strtr( $restaurant['name'].'@gmail.com', $unwanted_array)));
-            // ***
-            $newRestaurant->address = $restaurant['address'];
+            $newRestaurant->address = $faker->sentence(6);
             $newRestaurant->city = 'Roma';
             $newRestaurant->country = 'Italia';
             $newRestaurant->post_code = '00100';
             $newRestaurant->phone = '06'.rand(1000,9999).rand(1000,9999);
+            $newRestaurant->slug = Str::of(strtr( $restaurant['name'].' '.$newRestaurant->address, $unwanted_array ))->slug('-');
             $newRestaurant->save();
             
         }
@@ -137,7 +172,3 @@ class RestaurantsTableSeeder extends Seeder
 
 
 }
-
-
-
-
