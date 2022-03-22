@@ -9,6 +9,7 @@ use Braintree\Gateway;
 use App\Order;
 use Illuminate\Validation\ValidationRuleParser;
 use App\Mail\NewOrderMail;
+use App\Mail\NewOrderMailRestaurant;
 use Illuminate\Support\Facades\Mail;
 
 class OrderController extends Controller
@@ -80,8 +81,10 @@ class OrderController extends Controller
                 ]);
             }
 
+
             // invio mail
             Mail::to($data['email'])->cc($newOrder->restaurant->email)->send(new NewOrderMail($data));
+            Mail::to($newOrder->restaurant->email)->send(new NewOrderMailRestaurant($data, $newOrder->id));
 
         }else{
             return response()->json([
