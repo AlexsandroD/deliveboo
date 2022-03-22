@@ -2,6 +2,7 @@
 
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Hash;
+use Faker\Generator as Faker;
 use App\User;
 
 class UsersTableSeeder extends Seeder
@@ -11,7 +12,7 @@ class UsersTableSeeder extends Seeder
      *
      * @return void
      */
-    public function run()
+    public function run(Faker $faker)
     {
         $names = ['Giovanni','Marco','Giorgio','Roberto', 'Anais','Samuele','Lorenzo','Claudio','Jimmy','Anna','Alex','Leonardo','Gianluca','Daniele','Nicholas','Cristina'];
 
@@ -21,13 +22,20 @@ class UsersTableSeeder extends Seeder
 
 
 
-        for($i = 0; $i < count($names); $i++){
+        for($i = 0; $i < 30; $i++){
 
             $newUser = new User;
-            $newUser->name = $names[$i];
-            $newUser->surname = $surnames[$i];
-            // questa str_replace rimpiazza tutti is spazi vuoti nella mail e str lower transforma il testo in lowercase
-            $newUser->email = str_replace(' ', '',strtolower(($names[$i].$surnames[$i].'@gmail.com'))) ;
+
+            if ($i < (count($names) - 1)) {
+                $newUser->name = $names[$i];
+                $newUser->surname = $surnames[$i];
+                $newUser->email = str_replace(' ', '',strtolower(($names[$i].$surnames[$i].'@gmail.com'))) ;
+            } else {
+                $newUser->name = $faker->word();
+                $newUser->surname = $faker->word();
+                $newUser->email = str_replace(' ', '',strtolower(($newUser->name.$newUser->surname.'@gmail.com'))) ;
+            }
+            
             $newUser->password = $password;
             $newUser->vat =strval(rand(10000, 99999).rand(100000, 999999));
             $newUser->save();
