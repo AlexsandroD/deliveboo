@@ -91,7 +91,7 @@ class DishController extends Controller
         if($dish->restaurant_id === $restaurants_id && $dish->deleted == false){
             return view("admin.dishes.show", compact("dish",'restaurant'));
         }else{
-            return redirect()->route("dishes.index");
+            return abort(403);
         }
     }
 
@@ -109,7 +109,7 @@ class DishController extends Controller
         if($dish->restaurant_id === $restaurants_id && $dish->deleted == false){
             return view("admin.dishes.edit", compact("dish","restaurant"));
         }else{
-            return redirect()->route("dishes.index");
+            return abort(403);
         }
 
     }
