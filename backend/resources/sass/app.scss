@@ -31,8 +31,8 @@
 @import '/components/buttons';
 @import '/components/categories-checks';
 @import '/components/form-inputs';
+@import '/components/looking-peas';
 @import '/components/modal-delete';
-
 
 // auth
 @import '/auth/register_login';
@@ -45,9 +45,11 @@
 @import '/dishes/index';
 @import '/dishes/show';
 
+// orders
+@import '/orders/index';
+
 // statistics
 @import '/statistics/index';
-
 // ------------------------------------------------
 
 // COMMONS

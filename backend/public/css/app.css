@@ -20210,10 +20210,6 @@ header .dropdown_menu i {
   color: #FFF;
 }
 
-header nav.navbar-light {
-  padding: 1rem 0;
-}
-
 header nav.navbar-light #logout_md {
   display: none;
 }
@@ -20234,16 +20230,13 @@ header nav.navbar-light button.navbar-toggler i {
 }
 
 header nav.navbar-light #dropdown {
-  display: grid;
-  grid-template-columns: repeat(5, 1fr);
-  margin: 0;
-  padding-top: 1.4rem;
+  display: flex;
+  justify-content: space-between;
+  padding: 1.4rem 0;
 }
 
 header nav.navbar-light #dropdown a {
   border-radius: 1rem;
-  margin: 0 0.1rem;
-  padding: 0.2rem 0;
 }
 
 header nav.navbar-light #dropdown a button.btn i {
@@ -20252,9 +20245,18 @@ header nav.navbar-light #dropdown a button.btn i {
 }
 
 @media screen and (min-width: 576px) {
-  header nav.navbar-light #dropdown a {
-    margin: 0 0.8rem;
-    padding: 0.4rem 0;
+  header nav.navbar-light #dropdown a button.btn {
+    padding: 0.6rem 2rem;
+  }
+
+  header nav.navbar-light #dropdown a button.btn i {
+    font-size: 1rem;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  header nav.navbar-light #dropdown a button.btn {
+    padding: 0.6rem 3rem;
   }
 
   header nav.navbar-light #dropdown a button.btn i {
@@ -20263,10 +20265,6 @@ header nav.navbar-light #dropdown a button.btn i {
 }
 
 @media screen and (min-width: 992px) {
-  header nav.navbar-light {
-    padding: 1rem 1.2rem;
-  }
-
   header nav.navbar-light a.navbar-brand img {
     width: 9rem;
   }
@@ -20634,6 +20632,77 @@ ul.edit-container li input[type=checkbox]:checked + label::before {
   box-shadow: none;
 }
 
+.peas {
+  width: 150px;
+}
+
+.pea-1 .body,
+.pea-1 .cheek {
+  fill: #6BC566;
+}
+
+.pea-2 .body,
+.pea-2 .cheek {
+  fill: #B9EA77;
+}
+
+.pea-3 .body,
+.pea-3 .cheek {
+  fill: #89D770;
+}
+
+.cheek {
+  transition: transform 0.3s;
+}
+
+.pea:hover .cheek {
+  transform: translateY(-1.5px);
+}
+
+.mouth,
+.pupil {
+  fill: #002B3E;
+}
+
+.tongue {
+  fill: #CE4C59;
+}
+
+.eye {
+  fill: #FFFFFF;
+}
+
+.base-bottom {
+  fill: #007E61;
+}
+
+.base-top {
+  fill: #00905F;
+}
+
+.pea-1 .pupil {
+  transition: transform 0.4s linear;
+}
+
+.pea-2 .pupil {
+  transition: transform 0.15s linear;
+}
+
+.pea-3 .pupil {
+  transition: transform 0.7s linear;
+}
+
+.test {
+  width: 4px;
+  height: 4px;
+  background: red;
+  border-radius: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  transform: translate(-50%, -50%);
+}
+
 .modal-dialog {
   margin: 20vh auto;
 }
@@ -20690,37 +20759,13 @@ ul.edit-container li input[type=checkbox]:checked + label::before {
   padding: 1rem 1.4rem;
 }
 
-main div.index-restaurant div#restaurantless-add {
-  width: 100%;
-  height: 15rem;
-  border: 2px dashed #00CCBC;
-  border-radius: 1rem;
-}
-
-main div.index-restaurant div#restaurantless-add a {
-  width: 100%;
-  height: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-main div.index-restaurant div#restaurantless-add a i {
-  font-size: 2rem;
-  color: #00CCBC;
-}
-
-main div.index-restaurant div#restaurantless-add a i:hover {
-  color: #00C2B3;
-}
-
-main div.index-restaurant div.restaurant {
+main div.restaurant {
   border: none;
   border-top-left-radius: 1rem;
   border-top-right-radius: 1rem;
 }
 
-main div.index-restaurant div.restaurant div.benvenuto {
+main div.restaurant div.benvenuto {
   color: #FFF;
   background-color: #FF8100;
   padding: 0.8rem 1.25rem;
@@ -20728,12 +20773,36 @@ main div.index-restaurant div.restaurant div.benvenuto {
   border-radius: 1rem;
 }
 
-main div.index-restaurant div.restaurant div.benvenuto h3 {
+main div.restaurant div.benvenuto h3 {
   font-size: 1rem;
   margin: 0;
 }
 
-main div.index-restaurant div.restaurant img.restaurant-cover {
+main div.restaurant div#restaurantless-add {
+  width: 100%;
+  height: 15rem;
+  border: 2px dashed #00CCBC;
+  border-radius: 1rem;
+}
+
+main div.restaurant div#restaurantless-add a {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+main div.restaurant div#restaurantless-add a i {
+  font-size: 2rem;
+  color: #00CCBC;
+}
+
+main div.restaurant div#restaurantless-add a i:hover {
+  color: #00C2B3;
+}
+
+main div.restaurant img.restaurant-cover {
   width: 100%;
   height: 100%;
   max-height: 12rem;
@@ -20743,12 +20812,12 @@ main div.index-restaurant div.restaurant img.restaurant-cover {
   border-top-right-radius: 1rem;
 }
 
-main div.index-restaurant div.restaurant div.card_header {
+main div.restaurant div.card_header {
   background-color: #FFF;
   border-radius: 1rem;
 }
 
-main div.index-restaurant div.restaurant div.card_header div.restaurant-name {
+main div.restaurant div.card_header div.restaurant-name {
   background-color: #FFF;
   color: #2E3333;
   padding: 0;
@@ -20756,89 +20825,89 @@ main div.index-restaurant div.restaurant div.card_header div.restaurant-name {
   border-top-right-radius: 1rem;
 }
 
-main div.index-restaurant div.restaurant div.card_header div.restaurant-name div.card-title-container {
+main div.restaurant div.card_header div.restaurant-name div.card-title-container {
   background-color: #00CCBC;
   color: #FFF;
   padding: 1.2rem 1.25rem;
 }
 
-main div.index-restaurant div.restaurant div.card_header div.restaurant-name div.card-title-container h2 {
+main div.restaurant div.card_header div.restaurant-name div.card-title-container h2 {
   font-size: 1.6rem;
   margin: 0;
 }
 
-main div.index-restaurant div.restaurant div.card_header div.restaurant-name div.restaurant-description {
+main div.restaurant div.card_header div.restaurant-name div.restaurant-description {
   padding: 1.25rem 1rem 0;
 }
 
-main div.index-restaurant div.restaurant div.card_header div.restaurant-name div.restaurant-description p.description {
+main div.restaurant div.card_header div.restaurant-name div.restaurant-description p.description {
   color: #434848;
 }
 
-main div.index-restaurant div.restaurant div.card-body {
+main div.restaurant div.card-body {
   background-color: #FFF;
   padding: 2rem;
   border-bottom-left-radius: 1rem;
   border-bottom-right-radius: 1rem;
 }
 
-main div.index-restaurant div.restaurant div.card-body h3 {
+main div.restaurant div.card-body h3 {
   font-size: 1.2rem;
 }
 
-main div.index-restaurant div.restaurant div.card-body ul.contacts-container {
+main div.restaurant div.card-body ul.contacts-container {
   background-color: #F9FAFA;
   padding: 0.4rem 0.8rem;
   border-radius: 1rem;
 }
 
-main div.index-restaurant div.restaurant div.card-body ul.contacts-container li.badges {
+main div.restaurant div.card-body ul.contacts-container li.badges {
   padding: 0.2rem 0;
   list-style: none;
 }
 
-main div.index-restaurant div.restaurant div.card-body ul.contacts-container li.badges span.badge {
+main div.restaurant div.card-body ul.contacts-container li.badges span.badge {
   background-color: #FFF;
   color: #00CCBC;
   padding: 0.6em 1em;
   border: 1px solid #00CCBC;
 }
 
-main div.index-restaurant div.restaurant div.card-body ul.contacts-container li.card-text {
+main div.restaurant div.card-body ul.contacts-container li.card-text {
   list-style: none;
   padding: 0.6rem 0;
 }
 
-main div.index-restaurant div.restaurant div.card-body ul.contacts-container li.card-text i {
+main div.restaurant div.card-body ul.contacts-container li.card-text i {
   width: 1.6rem;
   font-size: 1rem;
   color: #00CCBC;
 }
 
 @media (min-width: 768px) {
-  main div.index-restaurant div#restaurantless-add {
+  main div.restaurant div#restaurantless-add {
     height: 15rem;
     border: 3px dashed #00CCBC;
   }
 
-  main div.index-restaurant div#restaurantless-add a i {
+  main div.restaurant div#restaurantless-add a i {
     font-size: 3rem;
   }
 
-  main div.index-restaurant div.restaurant img.restaurant-cover {
+  main div.restaurant img.restaurant-cover {
     border-top-right-radius: 0;
     border-bottom-right-radius: 1rem;
   }
 
-  main div.index-restaurant div.restaurant div.card_header div.card-title-container {
+  main div.restaurant div.card_header div.card-title-container {
     border-top-right-radius: 1rem;
   }
 
-  main div.index-restaurant div.restaurant div.card-body h3 {
+  main div.restaurant div.card-body h3 {
     font-size: 1.6rem;
   }
 
-  main div.index-restaurant div.restaurant div.card-body ul.contacts-container li.badges span.badge {
+  main div.restaurant div.card-body ul.contacts-container li.badges span.badge {
     font-size: 0.7rem;
     padding: 0.8em 1.2em;
   }
@@ -20988,9 +21057,9 @@ div.dish {
   border-top-right-radius: 1rem;
 }
 
-div.dish .image_container img.dish-cover {
+div.dish .image_container img.dish_cover {
   width: 100%;
-  height: 100%;
+  height: 12rem;
   -o-object-fit: cover;
      object-fit: cover;
   border-top-left-radius: 1rem;
@@ -21099,9 +21168,12 @@ div.card-body ul.contacts-container li.card-text i {
 }
 
 @media (min-width: 992px) {
-  div.dish .image_container img.dish-cover {
+  div.dish .image_container img.dish_cover {
+    height: 100%;
+    min-height: 12rem;
+    max-height: 20.875rem;
     border-top-right-radius: 0;
-    border-bottom-left-radius: 1rem;
+    border-bottom-right-radius: 1rem;
   }
 
   div.dish div.card_header div.card-title-container {
@@ -21128,52 +21200,30 @@ div.card-body ul.contacts-container li.card-text i {
   }
 }
 
-div.index-statistics div.statistic {
-  border: none;
-  border-top-left-radius: 1rem;
-  border-top-right-radius: 1rem;
-}
-
-div.index-statistics div.statistic div.benvenuto-statistic {
-  color: #FFF;
-  background-color: #007E8A;
-  padding: 0.8rem 1.25rem;
-  border: none;
+.orders-container h1 {
+  font-size: 1rem;
+  color: #fff;
+  background-color: #C01D64;
+  padding: 0.7rem 0;
   border-radius: 1rem;
 }
 
-div.index-statistics div.statistic div.benvenuto-statistic h1 {
-  font-size: 1rem;
-  margin: 0;
+.orders-container .orderless {
+  padding: 4rem 1rem;
+  border: 2px dashed #00CCBC;
+  border-radius: 1rem;
 }
 
-@media (min-width: 768px) {
-  main div.index-restaurant div#restaurantless-add {
-    height: 15rem;
-    border: 3px dashed #00CCBC;
-  }
-
-  main div.index-restaurant div#restaurantless-add a i {
-    font-size: 3rem;
-  }
-
-  main div.index-restaurant div.restaurant img.restaurant-cover {
-    border-top-right-radius: 0;
-    border-bottom-right-radius: 1rem;
-  }
-
-  main div.index-restaurant div.restaurant div.card_header div.card-title-container {
-    border-top-right-radius: 1rem;
-  }
-
-  main div.index-restaurant div.restaurant div.card-body h3 {
-    font-size: 1.6rem;
-  }
-
-  main div.index-restaurant div.restaurant div.card-body ul.contacts-container li.badges span.badge {
-    font-size: 0.7rem;
-    padding: 0.8em 1.2em;
-  }
+.orders-container .orderless h3 {
+  max-width: 20rem;
+  font-size: 1rem;
+  background-color: #FFF;
+  color: #00CCBC;
+  font-weight: 400;
+  margin: 0 auto 1rem;
+  padding: 0.6rem;
+  border: 1px solid #00CCBC;
+  border-radius: 1rem;
 }
 
 * {

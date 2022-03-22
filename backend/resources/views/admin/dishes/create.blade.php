@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="container create-container">
+    <div class="col create-container">
 
         <h1 class="m-0">Crea un nuovo piatto</h1>
         <p class="under-title mb-3">( I campi segnalati con * sono obbligatori )</p>
