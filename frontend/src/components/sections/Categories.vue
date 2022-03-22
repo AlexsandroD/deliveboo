@@ -67,7 +67,11 @@ export default {
 .container{
     .title{
         h1{
-            margin-top: -60px;
+            margin-top: -50px;
+            position: absolute;
+            background-color: $_cherry;
+            color: white;
+            padding: 0.4rem 1rem;
         }
         color: $_blue;
         /* text-shadow: 2px 2px 4px black; */

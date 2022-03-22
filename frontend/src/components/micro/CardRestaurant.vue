@@ -8,8 +8,8 @@
                     </div>
                     <div class="card-body p-2">
                         <h5 class="card-title fw-bold my-1">{{ restaurant.name }}</h5>
-                        <p>{{restaurant.address}}</p>
-                        <p v-for="category in restaurant.categories" :key="category.id" class="card-text">{{category.name}}</p>
+                        <p class="text">{{restaurant.address}}</p>
+                        <p v-for="category in restaurant.categories" :key="category.id" class="card-text badge bg-info">{{category.name}}</p>
                     </div>
                 </div>
             </router-link>
@@ -44,6 +44,16 @@ export default {
     min-width: 100px;
     min-height:300px;
     transition: 0.2s;
+    position: relative;
+    .text{
+        margin-bottom: 25px;
+
+    }
+    .badge{
+        position: absolute;
+        bottom: 0.7rem;
+        left: 0.5rem;
+    }
 }
 
 .card:hover{
