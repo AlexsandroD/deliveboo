@@ -1,42 +1,47 @@
 <template>
-  <header>
+  <header  :class="{change_color: scrollPosition > 300}">
     <Navbar />
-    <Hero />
   </header>
 </template>
 
 <script>
 // import cartLogic from "../../cartLogic";
 import Navbar from "../sections/Navbar.vue";
-import Hero from "../sections/Hero.vue";
 
 export default {
     name: 'Header',
     components:{
       Navbar,
-      Hero,
     },
-    // data(){
-    //   return{
-    //     cartLogic,
-    //   }
-    // },
-    // mounted(){
-    //     this.cartLogic.mountedCart();
-    // }
+    data() {
+      return {
+        scrollPosition: null,
+      };
+    },
+    methods: {
+      updateScroll() {
+        this.scrollPosition = window.scrollY;
+      }
+    },
+    mounted() {
+      window.addEventListener('scroll', this.updateScroll);
+    },
 }
 </script>
 
 <style lang = "scss" scoped>
 @import '../../assets/style/variables.scss';
 header{
-  /* background-image: url('../../assets/images/bg/background_homepage.svg');
-  background-size: cover; */
-  width: 100%;
-  .categories{
-    background-color: white;
-    border-radius: 5px;
-    box-shadow: 1px 1px gray;
-  }
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1;
+    
+    transition: background-color .3s linear;
+}
+
+.change_color {
+    background-color: $_white;
 }
 </style>

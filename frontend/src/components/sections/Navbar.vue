@@ -1,166 +1,179 @@
 <template>
-<!-- <div> -->
-<div class="container">
-  <b-navbar id="hamburgher" toggleable="md">
-    <b-navbar-brand class="logo" href="http://127.0.0.1:8080/">
-        <img src="../../assets/images/logo/deliveboo-logo.svg" alt="logo">
-    </b-navbar-brand>
+  <div class="container">
+    <b-navbar id="hamburgher" toggleable="md">
+      <b-navbar-brand class="logo" href="http://127.0.0.1:8080/">
+        <img src="../../assets/images/logo/deliveboo-logo.svg" alt="logo" />
+      </b-navbar-brand>
 
-    <b-navbar-toggle class="toggle " target="nav-collapse"></b-navbar-toggle>
+      <b-navbar-toggle class="toggle" target="nav-collapse">
+        <div class="plate plate4" onclick="this.classList.toggle('active')">
+          <svg
+            class="burger"
+            version="1.1"
+            height="100"
+            width="100"
+            viewBox="0 0 100 100"
+          >
+            <path class="line line1" d="M 50,35 H 30" />
+            <path class="line line2" d="M 50,35 H 70" />
+            <path class="line line3" d="M 50,50 H 30" />
+            <path class="line line4" d="M 50,50 H 70" />
+            <path class="line line5" d="M 50,65 H 30" />
+            <path class="line line6" d="M 50,65 H 70" />
+          </svg>
+        </div>
+      </b-navbar-toggle>
 
-    <b-collapse class="buttons" id="nav-collapse" is-nav>
-      <b-navbar-nav>
-        <b-nav-item class="btn" href="#">
+      <b-collapse class="buttons" id="nav-collapse" is-nav>
+        <b-navbar-nav>
+          <b-nav-item class="btn" href="#">
             <i class="fas fa-shopping-cart"></i>
-            <router-link 
-                :to="{ name: 'restaurant-menu', params: { slug:cartLogic.restaurantSlug } }">
-                <span>€ {{ cartLogic.totalPrice }}</span>
+            <router-link
+              :to="{
+                name: 'restaurant-menu',
+                params: { slug: cartLogic.restaurantSlug },
+              }"
+            >
+              <span>€ {{ cartLogic.totalPrice }}</span>
             </router-link>
-        </b-nav-item>
-        <b-nav-item class="btn" href=" http://127.0.0.1:8000/admin" role="button"><i class="fa-solid fa-user"></i></b-nav-item>
-        <!-- <b-nav-item href="#"><a class="btn" href=" http://127.0.0.1:8000/admin" role="button">Utente</a></b-nav-item> -->
-        <!-- <b-nav-item href="#" disabled>Disabled</b-nav-item> -->
-      </b-navbar-nav>
-
-    </b-collapse>
-  </b-navbar>
-    <!-- <div class="logo">
-        <a href="http://127.0.0.1:8080/">
-            <img src="../../assets/images/logo/deliveboo-logo.svg" alt="logo">
-        </a>
-    </div>
-    <div class="buttons">
-        <a class="btn" href="./Cart.vue"><i class="fas fa-shopping-cart"></i>
-        
-            <router-link 
-            :to="{ name: 'restaurant-menu', params: { slug:cartLogic.restaurantSlug } }">
-                <span>€ {{ cartLogic.totalPrice }}</span>
-            </router-link>
-        </a>
-    <a class="btn" href=" http://127.0.0.1:8000/admin" role="button">Admin</a>
-    </div> -->
-</div>
-
-<!-- </div> -->
+          </b-nav-item>
+          <b-nav-item
+            class="btn"
+            href=" http://127.0.0.1:8000/admin"
+            role="button"
+            ><i class="fa-solid fa-user"></i
+          ></b-nav-item>
+        </b-navbar-nav>
+      </b-collapse>
+    </b-navbar>
+  </div>
 </template>
 
 <script>
 import cartLogic from "../../cartLogic";
 export default {
-    name:"Navbar",
-    data(){
-      return{
-        cartLogic,
-        // navbar,
-      }
-    },
-    mounted(){
-        this.cartLogic.mountedCart();
-    },
-
-}
+  name: "Navbar",
+  data() {
+    return {
+      cartLogic,
+      scrollPosition: null,
+    };
+  },
+  methods: {
+    updateScroll() {
+      this.scrollPosition = window.scrollY;
+      console.log('ciao');
+    }
+  },
+  mounted() {
+    this.cartLogic.mountedCart();
+    window.addEventListener('scroll', this.updateScroll);
+  },
+};
 </script>
 
 <style lang = "scss" scoped>
-@import '../../assets/style/variables.scss';
-/* .container{
-    box-shadow: inset 0px 67px 53px -33px rgba(50, 50, 50, 0.75);
-    z-index: 1;
-    display: flex;
-    height: 80px;
-    align-items: center;
-    justify-content: space-between;
-    padding: 20px 2px;
-    top: 0;
-    left: 0;
-    right: 0;
-    position: fixed;
-    .logo{
-        color: $_primary;
-        height: 100%;
-        img{
-            height: 100%;
-        }
+@import "../../assets/style/variables.scss";
+
+svg {
+  height: 2.6rem;
+  width: 2.6rem;
+}
+
+.line {
+  fill: none;
+  stroke: $_white;
+  stroke-width: 6px;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  transform-origin: 50%;
+  transition: stroke-dasharray 500ms 200ms, stroke-dashoffset 500ms 200ms,
+    transform 500ms 200ms;
+}
+
+.plate4 .line {
+  transform-origin: 50%;
+  transition: transform 400ms 100ms;
+}
+
+.active.plate4 .line1 {
+  transform: translateX(18px) translateY(-3px) rotate(-45deg) scale(0.7);
+}
+
+.active.plate4 .line2 {
+  transform: translateX(-18px) translateY(-3px) rotate(45deg) scale(0.7);
+}
+
+.active.plate4 .line3 {
+  transform: translateY(0px) rotate(45deg) scale(0.7);
+}
+
+.active.plate4 .line4 {
+  transform: translateY(0px) rotate(-45deg) scale(0.7);
+}
+
+.active.plate4 .line5 {
+  transform: translateX(18px) translateY(3px) rotate(45deg) scale(0.7);
+}
+
+.active.plate4 .line6 {
+  transform: translateX(-18px) translateY(3px) rotate(-45deg) scale(0.7);
+}
+
+.active.plate4 .x {
+  transition: transform 400ms 100ms;
+  transform: scale(1);
+}
+
+.container {
+  height: 80px;
+  z-index: 1;
+
+  #hamburgher {
+    width: 100%;
+    height: 100%;
+    color: $_primary;
+
+    .toggle {
+      background-color: $_primary;
     }
-    .buttons{
-        border: none;
-        a{
-            color: white;
-            text-decoration: none;
-            margin-left: 15px;
-            background-color: $_primary;
-            span{
-                background-color: $_primary;
-                padding: 3px;
-                text-decoration: none;
-                border-radius: 3px;
-            }
-        }
+
+    .navbar-toggler {
+      padding: 0 0.4rem;
     }
-} */
-.container{
-    padding: 0;
-    margin: 0 auto;
-    z-index: 1;
-    height: 80px;
-    /* display: flex;
-    align-items: center;
-    justify-content: space-between; */
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    /* padding: 20px 2px; */
-            transition: all .2s ease-in-out;
-            &.onScroll {
-            box-shadow: 0 0 10px #aaa;
-            background-color: #fff;
-            }
-    #hamburgher{
-        background-color: transparent !important;
-        width: 100%;
-        height: 100%;
-        color: $_primary;
-            /* transition: all .2s ease-in-out;
-            &.onScroll {
-            box-shadow: 0 0 10px #aaa;
-            background-color: #fff;
-            } */
-        .toggle{
-            background-color: $_primary;
-        }
-        .navbar-toggler{
-            color: white !important;
-        }
-        .logo{
-            color: $_primary;
-            height: 100%;
-            img{
-                height: 95%;
-            }
-        }
-        .buttons{
-        flex-flow: row-reverse;
-        border: none;
-            a{
-                border-radius: 5px;
-                color: white;
-                text-decoration: none;
-                margin-left: 13px;
-                background-color: $_primary;
-                span{
-                    background-color: $_primary;
-                    padding: 3px;
-                    text-decoration: none;
-                    border-radius: 3px;
-                }
-            }
-            .fa-user{
-                padding-left: 10px;
-                padding-right: 10px;
-            }
-        }
+
+    .logo {
+      color: $_primary;
+      height: 100%;
+      img {
+        height: 95%;
+      }
     }
-    
+
+    .buttons {
+      flex-flow: row-reverse;
+      border: none;
+
+      a {
+        border-radius: 5px;
+        color: white;
+        text-decoration: none;
+        margin-left: 13px;
+        background-color: $_primary;
+
+        span {
+          background-color: $_primary;
+          padding: 3px;
+          text-decoration: none;
+          border-radius: 3px;
+        }
+      }
+
+      .fa-user {
+        padding-left: 10px;
+        padding-right: 10px;
+      }
+    }
+  }
 }
 </style>
