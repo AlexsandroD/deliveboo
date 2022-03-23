@@ -96,6 +96,7 @@ footer{
             text-decoration: none;
             font-weight: thin;
             line-height: 25px;
+            transition-delay: 0.1s;
             img{
               width: 135px;
             }
@@ -111,6 +112,7 @@ footer{
     color: $_white;
     margin-right: 20px;
     font-size: 24px;
+    transition-delay: 0.1s;
   }
   .fa-facebook:hover{
     color: $_blue;

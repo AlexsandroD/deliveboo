@@ -2,7 +2,7 @@
   <div class="col">
         
      
-      <div class="text">
+      <div class="text pb-4">
           <h2>Hai giá la nostra App?</h2>
           <p>Scaricala ora - disponibile su Apple store e Google Play!</p>
         <ul>

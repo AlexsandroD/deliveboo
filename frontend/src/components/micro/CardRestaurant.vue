@@ -21,11 +21,11 @@
         </div>
         <div class="card-body p-2">
           <h5 class="card-title fw-bold my-1">{{ restaurant.name }}</h5>
-          <p>{{ restaurant.address }}</p>
+          <p class="mb">{{ restaurant.address }}</p>
           <p
             v-for="category in restaurant.categories"
             :key="category.id"
-            class="card-text"
+            class="card-text badge"
           >
             {{ category.name }}
           </p>
@@ -59,6 +59,16 @@ export default {
   min-width: 100px;
   transition: 0.2s;
   height: 100%;
+  position: relative;
+  .mb{
+    margin-bottom: 33px;
+  }
+  .badge{
+    background-color: $_darkGrey;
+    position: absolute;
+    bottom: 0.7rem;
+    left: 0.5rem;
+  }
 }
 
 .my_card:hover {
