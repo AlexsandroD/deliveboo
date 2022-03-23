@@ -3,7 +3,7 @@
     <div>
         
 
-        <b-modal id="payment-modal" size="lg" @show="onOpen()" hide-footer header-class="bgc_primary">
+        <b-modal id="payment-modal" size="lg" @show="onOpen()" hide-footer header-class="header_primary">
             <template #modal-header="{ close }">
                 <div class="d-flex justify-content-between p-sm-3 w-100">
                     <h2>Procedi con il pagamento</h2>
@@ -102,8 +102,8 @@
 
                 <!-- risposta pagamento -->
                 <div v-show="paymentSuccess == true || paymentError == true || showLoader == true">
-                    <p class="fs-5 p-sm-3" v-if="paymentSuccess">Pagamento avvenuto con successo. Riceverai una mail con il riepilogo dell'ordine!</p>
-                    <p class="fs-5 p-sm-3" v-if="paymentError">Pagamento fallito, riprovare più tardi.</p>
+                    <p class="fs-4 p-sm-3" v-if="paymentSuccess">Pagamento avvenuto con successo. Riceverai una mail con il riepilogo dell'ordine!</p>
+                    <p class="fs-4 p-sm-3 payment_error" v-if="paymentError">Pagamento fallito, riprovare più tardi.</p>
                     <div v-if="showLoader">
                         <!-- <Loader/> -->
                         <BicycleLoader class="mb-5"/>
@@ -306,7 +306,11 @@ export default {
     color: $_primary;
 }
 
-.bgc_primary {
+.payment_error{
+    color: $_tomato;
+}
+
+.header_primary {
     color: #fff;
     background-color: $_primary;
 }
