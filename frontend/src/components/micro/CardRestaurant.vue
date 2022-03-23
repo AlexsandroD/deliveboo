@@ -9,7 +9,7 @@
                     <div class="card-body p-2">
                         <h5 class="card-title fw-bold my-1">{{ restaurant.name }}</h5>
                         <p class="text">{{restaurant.address}}</p>
-                        <p v-for="category in restaurant.categories" :key="category.id" class="card-text badge bg-info">{{category.name}}</p>
+                        <p v-for="category in restaurant.categories" :key="category.id" class="card-text badge">{{category.name}}</p>
                     </div>
                 </div>
             </router-link>
@@ -53,6 +53,7 @@ export default {
         position: absolute;
         bottom: 0.7rem;
         left: 0.5rem;
+        background-color: $_darkGrey;
     }
 }
 
