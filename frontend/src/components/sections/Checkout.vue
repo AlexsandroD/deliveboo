@@ -12,26 +12,38 @@
             CVV: uno qualsiasi
             Data scadenza: entro i prossimi 180 anni -->
 
+            <div class="row row-cols-1 row-cols-sm-2">
+                <div class="col">
+                    <!-- nome -->
+                    <label for="name" class="ps-2"><i class="fa-solid fa-user color_primary"></i> Nome *</label>
+                    <input v-model="name" type="text" id="name" class="form-control ms_form-control mb-3" placeholder="Inserisci il tuo nome" required maxlength="80">
+                </div>
+                <div class="col">
+                    <!-- cognome -->
+                    <label for="surname" class="ps-2"><i class="fa-solid fa-user color_primary"></i> Cognome *</label>
+                    <input v-model="surname" type="text" id="surname" class="form-control ms_form-control mb-3" placeholder="Inserisci il tuo cognome" required maxlength="80">
+                </div>
+            </div>
 
-            <!-- nome -->
-            <label for="name" class="ps-2"><i class="fa-solid fa-user color_primary"></i> Nome *</label>
-            <input v-model="name" type="text" id="name" class="form-control ms_form-control mb-3" placeholder="Inserisci il tuo nome" required maxlength="80">
-
-            <!-- cognome -->
-            <label for="surname" class="ps-2"><i class="fa-solid fa-user color_primary"></i> Cognome *</label>
-            <input v-model="surname" type="text" id="surname" class="form-control ms_form-control mb-3" placeholder="Inserisci il tuo cognome" required maxlength="80">
 
             <!-- email -->
             <label for="email" class="ps-2"><i class="fa-solid fa-envelope color_primary"></i> Email *</label>
             <input v-model="email" type="email" id="email" class="form-control ms_form-control mb-3" placeholder="Inserisci la tua email" required maxlength="100">
 
-            <!-- indirizzo -->
-            <label for="address" class="ps-2"><i class="fa-solid fa-location-dot color_primary"></i> Indirizzo *</label>
-            <input v-model="address" type="text" id="address" class="form-control ms_form-control mb-3" placeholder="Inserisci il tuo indirizzo" required maxlength="255">
+            <div class="row">
+                <div class="col-12 col-lg-8">
+                    <!-- indirizzo -->
+                    <label for="address" class="ps-2"><i class="fa-solid fa-location-dot color_primary"></i> Indirizzo *</label>
+                    <input v-model="address" type="text" id="address" class="form-control ms_form-control mb-3" placeholder="Inserisci il tuo indirizzo" required maxlength="255">
+                </div>
+                <div class="col-12 col-lg-4">
+                    <!-- telefono -->
+                    <label for="phone" class="ps-2"><i class="fa-solid fa-phone color_primary"></i> Telefono *</label>
+                    <input v-model="phone" type="tel" id="phone" class="form-control ms_form-control mb-3" placeholder="Inserisci il tuo numero di telefono" pattern="[0-9]{10,15}" minlength="10" maxlength="15" required>
+                </div>
+            </div>
 
-            <!-- telefono -->
-            <label for="phone" class="ps-2"><i class="fa-solid fa-phone color_primary"></i> Telefono *</label>
-            <input v-model="phone" type="tel" id="phone" class="form-control ms_form-control mb-3" placeholder="Inserisci il tuo numero di telefono" pattern="[0-9]{10,15}" minlength="10" maxlength="15" required>
+
 
             <!-- commento -->
             <label for="comment" class="form-label ps-2"><i class="fa-solid fa-comment-dots color_primary"></i> Commento</label>
@@ -52,7 +64,7 @@
             <div id="creditCardNumber" class="form-control ms_form-control mb-3" required></div>
             <div v-if="errorNumber">Numero carta non valido</div>
 
-            <div class="row row-cols-1">
+            <div class="row row-cols-1 row-cols-sm-2">
                 <div class="col">
                     <!-- data scadenza -->
                     <label class="ps-2">Data scadenza *</label>
@@ -70,7 +82,8 @@
             <div v-if="errorEmpty">Campi carta vuoti!</div>
 
             <input id="nonce" name="payment_method_nonce" hidden>
-            <button type="submit" class="btn-gold btn-block mt-4">Conferma e paga</button>
+
+            <button type="submit" class="btn btn_submit mt-4">Conferma e paga</button>
 
         </form>
 
@@ -278,6 +291,18 @@ export default {
     &:focus {
         border-color: $_cherry;
         box-shadow: 0 0 0 0.15rem rgba(192, 29, 100, .50);
+    }
+}
+
+.btn_submit {
+    color: #fff;
+    background-color: $_primary;
+    border: 1px solid $_primary;
+    transition: all .2s;
+
+    &:hover {
+        color: #fff;
+        background-color: $_darkerPrimaryHover;
     }
 }
 
