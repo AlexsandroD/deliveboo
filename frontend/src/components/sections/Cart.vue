@@ -32,14 +32,14 @@
             <div class="col-12 col-lg-9">
               <div class="row row-cols-1 row-cols-lg-2">
                 <div class="col">
+                  <span class="">{{ dish.quantity }}</span> X
                   {{ dish.name }}
                 </div>
                 <div class="col">
-                  <a @click="cartLogic.removeCartItem(dish.dishId)"
+                  <a class="my_button" @click="cartLogic.removeCartItem(dish.dishId)"
                     ><i class="fa-solid fa-minus"></i>
-                    <span class="m-2">{{ dish.quantity }}</span>
                   </a>
-                  <a
+                  <a class="my_button"
                     @click="
                       cartLogic.addCartItem(
                         dish.dishId,
@@ -289,5 +289,9 @@ img {
   position: absolute;
   height: 20px;
   width: 20px;
+}
+
+.my_button{
+  wid
 }
 </style>
