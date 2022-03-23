@@ -16,7 +16,7 @@
                 <form class="p-sm-3" @submit.prevent="payWithCreditCard()" v-show="paymentSuccess == false && paymentError == false && showLoader == false">
 
                     <!-- carte valide di test
-                    Visa: 4111 1111 1111 1111
+                    Visa: c
                     Mastercard: 5555 5555 5555 4444
                     Amex: 3714 496353 9843
                     CVV: uno qualsiasi
