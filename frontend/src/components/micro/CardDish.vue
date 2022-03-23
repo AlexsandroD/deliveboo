@@ -1,89 +1,137 @@
 <template>
-     <div class="col my-2">
-          <div v-if="dish.visible" class="card  h-100">
-            <div class="card-body">
-              <h5 class="card-title">{{dish.name}}</h5>
-              <div class="overflow-hidden img-wrapper">
-                <img v-if="dish.image" class="card-img-top"  :src="'http://127.0.0.1:8000/storage/' + dish.image" :alt="dish.name">
-                <img v-else src="https://www.wecanjob.it/moduli/output_immagine.php?id=8444"  style="width:200px" :alt="dish.name">
-              </div>
-              <p class="card-text">{{ dish.description }}</p>
-              <p class="card-text">&euro;{{ dish.price }}</p>
-              <button @click="cartLogic.removeCartItem(dish.id)">meno</button>
-              <span v-if="cartLogic.cart != null">{{cartLogic.cart.filter(e => e.dishId == dish.id).length > 0 ? cartLogic.cart.find(x => x.dishId == dish.id).quantity : 0}}</span>
-              <span v-else>0</span>
-              <button @click="cartLogic.addCartItem(dish.id,dish.name,dish.price,restaurant.id,restaurant.slug,restaurant.name)">piú</button>
-            </div>
+  <div v-if="dish.visible" class="card h-100">
+    <div class="row h-100">
+      <div class="col-6">
+        <div class="card-block h-100 p-3">
+          <!--           <h4 class="card-title">Small card</h4> -->
+          <h4 class="my-2">{{ dish.name }}</h4>
+          <p>{{ dish.description }}</p>
+          <p class="my-2 fw-bold">&euro; {{ dish.price }}</p>
+          <div class="my_buttons">
+            <a
+              class="btn btn-primary rounded-circle p-2"
+              @click="cartLogic.removeCartItem(dish.id)"
+              ><i class="fa-solid fa-minus"></i
+            ></a>
+            <span id="number" class="mx-2" v-if="cartLogic.cart != null">{{
+              cartLogic.cart.filter((e) => e.dishId == dish.id).length > 0
+                ? cartLogic.cart.find((x) => x.dishId == dish.id).quantity
+                : 0
+            }}</span>
+            <span class="mx-2" v-else>0</span>
+            <a
+              class="btn btn-primary rounded-circle p-2"
+              @click="
+                cartLogic.addCartItem(
+                  dish.id,
+                  dish.name,
+                  dish.price,
+                  restaurant.id,
+                  restaurant.slug,
+                  restaurant.name
+                )
+              "
+              ><i class="fa-solid fa-plus"></i>
+            </a>
           </div>
-           <div v-else class="card" disabled  style="width: 18rem;">
-            <div class="card-body">
-              <h5 class="card-title">{{dish.name}}</h5>
-              <img v-if="dish.image" class="card-img-top"  :src="'http://127.0.0.1:8000/storage/' + dish.image" style="width:200px" :alt="dish.name">
-              <img v-else src="https://www.wecanjob.it/moduli/output_immagine.php?id=8444"  style="width:200px" :alt="dish.name">
-              <p class="card-text">{{ dish.description }}</p>
-              <p>Terminato</p>
-            </div>
         </div>
+      </div>
+      <div class="col-6">
+        <div class="my_img_container h-100">
+          <img
+            class="h-100"
+            v-if="dish.image"
+            :src="'http://127.0.0.1:8000/storage/' + dish.image"
+            :alt="dish.name"
+          />
+          <img
+            class="h-100"
+            v-else
+            src="../../assets/images/bg/placeholder.svg"
+            :alt="dish.name"
+          />
+        </div>
+      </div>
     </div>
+  </div>
+  <div v-else class="card h-100" disabled>
+    <div class="row h-100">
+      <div class="col-6">
+        <div class="card-block h-100 p-3">
+          <!--           <h4 class="card-title">Small card</h4> -->
+          <h4 class="my-2">{{ dish.name }}</h4>
+          <p>&euro; {{ dish.price }}</p>
+          <p>Prodotto esaurito</p>
+        </div>
+      </div>
+      <div class="col-6">
+        <div class="my_img_container h-100">
+          <img
+            class="h-100"
+            v-if="dish.image"
+            :src="'http://127.0.0.1:8000/storage/' + dish.image"
+            :alt="dish.name"
+          />
+          <img
+            class="h-100"
+            v-else
+            src="../../assets/images/bg/placeholder.svg"
+            :alt="dish.name"
+          />
+        </div>
+      </div>
+    </div>
+  </div>
 </template>
 
 <script>
 import cartLogic from "../../cartLogic";
 export default {
-    name:'CardDish',
-    props:{
-        dish:{},
-        restaurant:{},
-    },
-    data(){
-        return{
-            cartLogic,
-        }
-    }
-
-    
-}
+  name: "CardDish",
+  props: {
+    dish: {},
+    restaurant: {},
+  },
+  data() {
+    return {
+      cartLogic,
+    };
+  },
+};
 </script>
 
 <style lang = "scss" scoped>
-@import '../../assets/style/variables.scss';
-
-
-
-.link{
-    text-decoration:none;
-    color: black; 
-    img{
-        width: 100%;
+@import "../../assets/style/global.scss";
+.my_img_container {
+  overflow: hidden;
+  width: 100%;
+  height: 100%;
+}
+img {
+  width: 100%;
+  object-fit: cover;
+  padding: 10px;
+}
+.card {
+  transition: 0.2s;
+}
+.card:hover {
+  -webkit-box-shadow: -5px 28px 31px -8px rgba(0, 0, 0, 0.35);
+  box-shadow: -5px 28px 31px -8px rgba(0, 0, 0, 0.35);
+}
+.my_buttons {
+  a {
+    background-color: $_primary;
+    border: none;
+    &:active {
+      transform: scale(0.98);
     }
+  }
 }
 
-.card{
-    min-width: 100px;
-    min-height:300px;
-    transition: 0.2s;
-}
-
-.card:hover{
-    -webkit-box-shadow: 5px 5px 6px -1px rgba(0,0,0,0.4); 
-    box-shadow: 5px 5px 6px -1px rgba(0,0,0,0.4);
-    position:relative;
-    animation: card 0.2s linear forwards;
-}
-
-@keyframes card {
-    from { top: 0px;}
-    to{ top:-10px}
-}
-
-img{
-    transition:ease 0.3s;
-    min-height: 160px;
-}
-
- .card:hover img{
-    transform:scale(
-        1.5
-    )
+#number {
+  background-color: red;
+  color: green;
+  width: 200px;
 }
 </style>
