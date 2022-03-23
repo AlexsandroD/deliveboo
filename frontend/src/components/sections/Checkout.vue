@@ -1,7 +1,7 @@
 <template>
 
     <div>
-
+        
         <!-- form pagamento -->
         <form @submit.prevent="payWithCreditCard()" v-show="paymentSuccess == false && paymentError == false && showLoader == false">
 
@@ -78,12 +78,10 @@
             <p v-if="paymentSuccess">Pagamento avvenuto con successo. Riceverai una mail con il riepilogo dell'ordine.</p>
             <p v-if="paymentError">Pagamento fallito, riprovare più tardi.</p>
             <div v-if="showLoader">
-                <Loader/>
+                <!-- <Loader/> -->
+                <BicycleLoader/>
             </div>
         </div>
-        
-
-
 
 
     </div>
@@ -93,11 +91,13 @@
 <script>
 import cartLogic from "../../cartLogic";
 import braintree from "braintree-web";
-import Loader from "../micro/Loader.vue";
+// import Loader from "../micro/Loader.vue";
+import BicycleLoader from "../micro/BicycleLoader.vue";
 export default {
     name:'Checkout',
     components:{
-        Loader
+        // Loader,
+        BicycleLoader,
     },
     data(){
         return{
