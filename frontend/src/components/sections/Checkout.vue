@@ -3,7 +3,7 @@
     <div>
         
 
-        <b-modal id="payment-modal" size="lg" @show="onOpen()" hide-footer header-class="header_primary">
+        <b-modal id="payment-modal" size="lg" @show="onOpen()" hide-footer :header-bg-variant="headerBgVariant">
             <template #modal-header="{ close }">
                 <div class="d-flex justify-content-between p-sm-3 w-100">
                     <h2>Procedi con il pagamento</h2>
@@ -150,11 +150,13 @@ export default {
             paymentSuccess:false,
             paymentError:false,
             showLoader:false,
+            headerBgVariant:"header_primary",
         }
     },
     methods:{
 
         onOpen() {
+            this.headerBgVariant = 'header_primary';
             this.paymentSuccess=false;
             this.paymentError=false;
             this.showLoader = true;
@@ -288,6 +290,7 @@ export default {
 
             })
             .catch(() => {
+                this.headerBgVariant = 'header_error';
                 this.showLoader = false;
                 this.paymentError = true;
             })
@@ -310,9 +313,14 @@ export default {
     color: $_tomato;
 }
 
-.header_primary {
+.bg-header_primary {
     color: #fff;
     background-color: $_primary;
+}
+
+.bg-header_error {
+    color: #fff;
+    background-color: $_tomato;
 }
 
 .ms_close-button {
