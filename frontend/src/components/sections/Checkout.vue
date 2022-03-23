@@ -3,7 +3,7 @@
     <div>
         
 
-        <b-modal id="payment-modal" size="lg" @show="onOpen()" hide-footer>
+        <b-modal id="payment-modal" size="lg" @show="onOpen()" hide-footer header-class="bgc_primary">
             <template #modal-header="{ close }">
                 <div class="d-flex justify-content-between p-sm-3 w-100">
                     <h2>Procedi con il pagamento</h2>
@@ -70,22 +70,22 @@
                     </div>
 
                     <!-- numero carta -->
-                    <label class="ps-2"><i class="fa-solid fa-credit-card color_primary"></i> Numero carta di credito *</label>
-                    <div id="creditCardNumber" class="form-control ms_form-control mb-3" required></div>
-                    <div v-if="errorNumber">Numero carta non valido</div>
+                    <label class="ps-2 mt-3 mb-1"><i class="fa-solid fa-credit-card color_primary"></i> Numero carta di credito *</label>
+                    <div id="creditCardNumber" class="form-control ms_form-control" required></div>
+                    <div class="mt-2 ms-2 card_error" v-if="errorNumber">Numero carta non valido</div>
 
                     <div class="row row-cols-1 row-cols-sm-2">
                         <div class="col">
                             <!-- data scadenza -->
-                            <label class="ps-2"><i class="fa-solid fa-calendar-day color_primary"></i> Data scadenza *</label>
-                            <div id="expireDate" class="form-control ms_form-control mb-3"></div>
-                            <div v-if="errorExpirationDate">Data scadenza non valida</div>
+                            <label class="ps-2 mt-3 mb-1"><i class="fa-solid fa-calendar-day color_primary"></i> Data scadenza *</label>
+                            <div id="expireDate" class="form-control ms_form-control"></div>
+                            <div class="mt-2 ms-2 card_error" v-if="errorExpirationDate">Data scadenza non valida</div>
                         </div>
                         <div class="col">
                             <!-- cvv -->
-                            <label class="ps-2"><i class="fa-solid fa-lock color_primary"></i> CVV *</label>
-                            <div id="cvv" class="form-control ms_form-control mb-3"></div>
-                            <div v-if="errorCvv">CVV non valido</div>
+                            <label class="ps-2 mt-3 mb-1"><i class="fa-solid fa-lock color_primary"></i> CVV *</label>
+                            <div id="cvv" class="form-control ms_form-control"></div>
+                            <div class="mt-2 ms-2 card_error" v-if="errorCvv">CVV non valido</div>
                         </div>
                     </div>
 
@@ -102,8 +102,8 @@
 
                 <!-- risposta pagamento -->
                 <div v-show="paymentSuccess == true || paymentError == true || showLoader == true">
-                    <p v-if="paymentSuccess">Pagamento avvenuto con successo. Riceverai una mail con il riepilogo dell'ordine.</p>
-                    <p v-if="paymentError">Pagamento fallito, riprovare più tardi.</p>
+                    <p class="fs-5 p-sm-3" v-if="paymentSuccess">Pagamento avvenuto con successo. Riceverai una mail con il riepilogo dell'ordine!</p>
+                    <p class="fs-5 p-sm-3" v-if="paymentError">Pagamento fallito, riprovare più tardi.</p>
                     <div v-if="showLoader">
                         <!-- <Loader/> -->
                         <BicycleLoader class="mb-5"/>
@@ -155,6 +155,8 @@ export default {
     methods:{
 
         onOpen() {
+            this.paymentSuccess=false;
+            this.paymentError=false;
             this.showLoader = true;
             const axios = require('axios').default;
             axios.get('http://127.0.0.1:8000/api/orders-token')
@@ -274,6 +276,12 @@ export default {
 
                 this.showLoader = false;
                 this.paymentSuccess = true;
+                this.name = '';
+                this.surname = '';
+                this.email = '';
+                this.address = '';
+                this.phone = '';
+                this.comment = '';
 
                 this.cartLogic.emptyCart();
 
@@ -296,6 +304,11 @@ export default {
 
 .color_primary {
     color: $_primary;
+}
+
+.bgc_primary {
+    color: #fff;
+    background-color: $_primary;
 }
 
 .ms_form-control {
@@ -357,6 +370,10 @@ hr {
     img{
         width: 100px;
     }
+}
+
+.card_error {
+    color: red;
 }
 
 </style>
