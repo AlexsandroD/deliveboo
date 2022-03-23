@@ -29,39 +29,38 @@
           :key="dish.dishId"
           class="list-group-item d-flex justify-content-between px-0 my-2"
         >
-          <div>
-            <span class="my-2">
+          <div class="row d-flex justify-content-between w-100">
+            <div class="col-9">
               {{ dish.name }}
-            </span>
-            <a @click="cartLogic.removeCartItem(dish.dishId)"
-              ><i class="fa-solid fa-minus"></i
-            ></a>
-            <span class="m-2">{{ dish.quantity }}</span>
-            <a
-              @click="
-                cartLogic.addCartItem(
-                  dish.dishId,
-                  dish.name,
-                  dish.price,
-                  cartLogic.restaurantId,
-                  cartLogic.restaurantSlug,
-                  cartLogic.restaurantName
-                )
-              "
+              <a @click="cartLogic.removeCartItem(dish.dishId)"
+                ><i class="fa-solid fa-minus"></i>
+                <span class="m-2">{{ dish.quantity }}</span>
+              </a>
+              <a
+                @click="
+                  cartLogic.addCartItem(
+                    dish.dishId,
+                    dish.name,
+                    dish.price,
+                    cartLogic.restaurantId,
+                    cartLogic.restaurantSlug,
+                    cartLogic.restaurantName
+                  )
+                "
+              >
+                <i class="fa-solid fa-plus"></i>
+              </a>
+            </div>
+            <span id="price_item" class="col-3"
+              >&euro; {{ returnDishTotal(dish.dishPrice, dish.quantity) }}</span
             >
-              <i class="fa-solid fa-plus"></i>
-            </a>
           </div>
-
-          <span
-            >&euro; {{ returnDishTotal(dish.dishPrice, dish.quantity) }}</span
-          >
         </li>
       </ul>
 
       <button
         type="button"
-        class="my_btn btn btn-success p-1 my-3"
+        class="my_btn btn btn-success p-2 my-3"
         v-if="
           cartLogic.restaurantId == cartLogic.newRestaurantId &&
           cartLogic.cart.length > 0
@@ -144,7 +143,7 @@ img {
 }
 
 .my_card {
-  border-radius: 10px;
+  border-radius: 0.4rem;
 }
 
 .my_btn {
@@ -159,12 +158,16 @@ img {
   background-color: $_primary !important;
   color: white;
   border: none !important;
-  border-radius: 10px;
+  border-radius: 0.4rem;
 }
 .my_payment {
   background-color: $_darkGrey !important;
   border: none !important;
   width: 100% !important;
-  border-radius: 10px;
+  border-radius: 0.4rem;
+}
+
+#price_item {
+  text-align: right !important;
 }
 </style>
