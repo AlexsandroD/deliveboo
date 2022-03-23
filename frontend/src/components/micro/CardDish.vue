@@ -2,44 +2,50 @@
   <div v-if="dish.visible" class="card h-100">
     <div class="row h-100">
       <div class="col-6">
-        <div class="card-block h-100 p-3 text-left">
+        <div class="card-block h-100 p-1 text-start">
           <!--           <h4 class="card-title">Small card</h4> -->
           <h4 class="my-2">{{ dish.name }}</h4>
           <p>{{ dish.description }}</p>
-          <div class="my_buttons">
-            <p class="my-2 fw-bold">&euro; {{ dish.price }}</p>
-            <!-- <a
-              class="btn btn-primary rounded-circle p-2"
-              @click="cartLogic.removeCartItem(dish.id)"
-              ><i class="fa-solid fa-minus"></i
-            ></a> -->
-
-            <div class="qty">
-              <span
-                class="minus bg-dark"
-                @click="cartLogic.removeCartItem(dish.id)"
-                >-</span
-              >
-              <span class="count" name="qty" v-if="cartLogic.cart != null">{{
-                cartLogic.cart.filter((e) => e.dishId == dish.id).length > 0
-                  ? cartLogic.cart.find((x) => x.dishId == dish.id).quantity
-                  : 0
-              }}</span>
-              <span class="count" name="qty" v-else>0</span>
-              <span
-                class="plus bg-dark"
-                @click="
-                  cartLogic.addCartItem(
-                    dish.id,
-                    dish.name,
-                    dish.price,
-                    restaurant.id,
-                    restaurant.slug,
-                    restaurant.name
-                  )
-                "
-                >+</span
-              >
+          <div
+            class="
+              row row-cols-2
+              my-2
+              d-flex
+              justify-content-between
+              align-baseline
+            "
+          >
+            <div class="col">
+              <p class="fw-bold">&euro; {{ dish.price }}</p>
+            </div>
+            <div class="col">
+              <div class="qty d-flex">
+                <span
+                  class="minus bg-dark"
+                  @click="cartLogic.removeCartItem(dish.id)"
+                  >-</span
+                >
+                <span class="count" name="qty" v-if="cartLogic.cart != null">{{
+                  cartLogic.cart.filter((e) => e.dishId == dish.id).length > 0
+                    ? cartLogic.cart.find((x) => x.dishId == dish.id).quantity
+                    : 0
+                }}</span>
+                <span class="count" name="qty" v-else>0</span>
+                <span
+                  class="plus bg-dark"
+                  @click="
+                    cartLogic.addCartItem(
+                      dish.id,
+                      dish.name,
+                      dish.price,
+                      restaurant.id,
+                      restaurant.slug,
+                      restaurant.name
+                    )
+                  "
+                  >+</span
+                >
+              </div>
             </div>
           </div>
         </div>
@@ -127,16 +133,9 @@ img {
   -webkit-box-shadow: -5px 28px 31px -8px rgba(0, 0, 0, 0.35);
   box-shadow: -5px 28px 31px -8px rgba(0, 0, 0, 0.35);
 }
-.my_buttons {
-  a {
-    background-color: $_primary;
-    border: none;
-    &:active {
-      transform: scale(0.98);
-    }
-  }
+.qty {
+  transition: 0.2s;
 }
-
 .qty .count {
   color: $_primary;
   display: inline-block;
@@ -145,8 +144,8 @@ img {
   font-weight: 700;
   line-height: 30px;
   padding: 0 2px;
-  min-width: 35px;
   text-align: center;
+  margin: 0 5px;
 }
 .qty .plus {
   cursor: pointer;
@@ -171,6 +170,7 @@ img {
   border-radius: 10px;
   background-clip: padding-box;
 }
+
 div {
   text-align: center;
 }
@@ -179,6 +179,12 @@ div {
 }
 .plus:hover {
   background-color: $_primary !important;
+}
+.minus:active {
+  transform: scale(0.98) !important;
+}
+.plus:active {
+  transform: scale(0.98) !important;
 }
 /*Prevent text selection*/
 span {
