@@ -1,0 +1,87 @@
+@import 'mixins.scss';
+@import 'variables.scss';
+
+// BUTTONS
+.btn:hover {
+  color: $_white;
+}
+
+.btn:focus {
+  box-shadow: none;
+}
+
+.btn_border {
+  @include delivebooColors2;
+  border: 1px solid $_primary;
+
+  transition: .2s linear;
+  outline: none;
+
+  &:hover {
+    @include delivebooColors;
+  }
+}
+
+.btn_filled {
+  @include delivebooColors;
+  border: 1px solid $_primary;
+
+  user-select: none;
+  transition: .2s linear;
+
+  &:hover {
+    background-color: $_darkerPrimaryHover;
+    color: $_white;
+  }
+}
+
+.btn_logout {
+  background-color: $_black;
+  color: $_white;
+
+  user-select: none;
+  transition: .2s linear;
+
+  &:hover {
+    background-color: $_darkGrey;
+    color: $_white;
+  }
+}
+
+.btn_delete {
+  background-color: $_tomato;
+  color: $_white;
+
+  user-select: none;
+  transition: .2s linear;
+
+  &:hover {
+    color: $_white;
+  }
+}
+
+.restaurant-color {
+  background-color: $_orange;
+  color: $_white;
+}
+
+.menu-color {
+  background-color: $_tomato;
+  color: $_white;
+}
+
+.orders-color {
+  background-color: $_cherry;
+  color: $_white;
+}
+
+.stats-color {
+  background-color: $_avgRating;
+  color: $_white;
+}
+
+.logout-color {
+  background-color: $_black;
+  color: $_white;
+}
+
