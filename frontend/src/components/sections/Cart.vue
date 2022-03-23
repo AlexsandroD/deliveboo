@@ -21,7 +21,6 @@
             my-3
           "
         >
-          Restauant
           <span class="fw-bold">{{ cartLogic.restaurantName }}</span>
         </li>
         <li
@@ -30,28 +29,34 @@
           class="list-group-item d-flex justify-content-between px-0 my-2"
         >
           <div class="row d-flex justify-content-between w-100">
-            <div class="col-9">
-              {{ dish.name }}
-              <a @click="cartLogic.removeCartItem(dish.dishId)"
-                ><i class="fa-solid fa-minus"></i>
-                <span class="m-2">{{ dish.quantity }}</span>
-              </a>
-              <a
-                @click="
-                  cartLogic.addCartItem(
-                    dish.dishId,
-                    dish.name,
-                    dish.price,
-                    cartLogic.restaurantId,
-                    cartLogic.restaurantSlug,
-                    cartLogic.restaurantName
-                  )
-                "
-              >
-                <i class="fa-solid fa-plus"></i>
-              </a>
+            <div class="col-12 col-lg-9">
+              <div class="row row-cols-1 row-cols-lg-2">
+                <div class="col">
+                  {{ dish.name }}
+                </div>
+                <div class="col">
+                  <a @click="cartLogic.removeCartItem(dish.dishId)"
+                    ><i class="fa-solid fa-minus"></i>
+                    <span class="m-2">{{ dish.quantity }}</span>
+                  </a>
+                  <a
+                    @click="
+                      cartLogic.addCartItem(
+                        dish.dishId,
+                        dish.name,
+                        dish.price,
+                        cartLogic.restaurantId,
+                        cartLogic.restaurantSlug,
+                        cartLogic.restaurantName
+                      )
+                    "
+                  >
+                    <i class="fa-solid fa-plus"></i>
+                  </a>
+                </div>
+              </div>
             </div>
-            <span id="price_item" class="col-3"
+            <span id="price_item" class="col-12 col-lg-3"
               >&euro; {{ returnDishTotal(dish.dishPrice, dish.quantity) }}</span
             >
           </div>
@@ -165,9 +170,5 @@ img {
   border: none !important;
   width: 100% !important;
   border-radius: 0.4rem;
-}
-
-#price_item {
-  text-align: right !important;
 }
 </style>
