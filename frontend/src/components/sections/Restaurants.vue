@@ -10,8 +10,9 @@
       </div>
       <div class="row">
         <div class="overflow-auto">
-          <div class="mt-3">
+          <div class="d-flex justify-content-center mt-4">
             <b-pagination
+              class="customPagination"
               v-model="variables.page"
               :total-rows="variables.totalPages"
               :per-page="1"
@@ -98,10 +99,33 @@ export default {
 };
 </script>
 
-<style lang = "scss" scoped>
+<style lang = "scss">
 @import "../../assets/style/variables.scss";
 
 .my_container {
   background-color: $_pink;
 }
+
+.customPagination > .page-item {
+
+  & > .page-link {
+    color: $_primary;
+
+    &:focus {
+      box-shadow: 0 0 0 0.25rem rgba(0, 204, 188, .25);
+    }
+  }
+
+  &.active > .page-link {
+    color: #fff;
+    background-color: $_primary;
+    border: 1px solid $_primary;
+
+    &:focus {
+      box-shadow: 0 0 0 0.25rem rgba(0, 204, 188, .25);
+    }
+  }
+
+}
+
 </style>
