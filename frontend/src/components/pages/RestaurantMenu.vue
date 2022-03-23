@@ -6,15 +6,14 @@
         <div class="col-md-4">
           <img
             v-if="restaurant.image_cover"
-            class="card-img-top"
+            class="card-img-top w-100"
             :src="'http://127.0.0.1:8000/storage/' + restaurant.image_cover"
-            style="width: 200px"
             :alt="restaurant.name"
           />
           <img
             v-else
             src="https://www.wecanjob.it/moduli/output_immagine.php?id=8444"
-            style="width: 200px"
+            class="card-img-top w-100"
             :alt="restaurant.name"
           />
         </div>
@@ -36,7 +35,7 @@
     <!-- lista piatti  -->
 
     <div class="row d-flex justify-content-between">
-      <div class="col-9">
+      <div class="col-sm-7 col-md-9">
         <div class="row row-cols-1 row-cols-md-1 row-cols-lg-2">
           <div
             class="col gy-4"
@@ -47,7 +46,7 @@
           </div>
         </div>
       </div>
-      <div class="col-3">
+      <div class="col-sm-5 col-md-3 d-none d-sm-block">
         <div v-if="cartLogic.cartError">
           <transition name="modal">
             <div class="modal-mask">
@@ -102,18 +101,10 @@
             </div>
           </transition>
         </div>
-        <router-link :to="{ name: 'home' }">
-          <button type="button" class="btn btn-secondary">
-            Torna all'elenco Ristoranti
-          </button>
-        </router-link>
-        <!-- cart  -->
-        <Cart />
         <!-- // cart  -->
+        <Cart />
       </div>
     </div>
-
-    <!-- modale cart  -->
   </div>
 </template>
 

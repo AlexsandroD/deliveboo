@@ -55,27 +55,10 @@ export default {
   }
 }
 
-<<<<<<< HEAD
 .my_card {
   min-width: 100px;
   transition: 0.2s;
   height: 100%;
-=======
-.card{
-    min-width: 100px;
-    min-height:300px;
-    transition: 0.2s;
-    position: relative;
-    .text{
-        margin-bottom: 25px;
-
-    }
-    .badge{
-        position: absolute;
-        bottom: 0.7rem;
-        left: 0.5rem;
-    }
->>>>>>> 23f6261fb9caeefe886eccfb7a58e92c87f36e01
 }
 
 .my_card:hover {
@@ -95,12 +78,12 @@ export default {
 }
 
 img {
-  transition: ease 0.3s;
+  transition: ease 0.6s;
   height: 200px;
   object-fit: cover;
 }
 
 .card:hover img {
-  transform: scale(1.5);
+  transform: scale(1.3);
 }
 </style>
