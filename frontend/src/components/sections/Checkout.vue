@@ -60,20 +60,20 @@
             </div>
 
             <!-- numero carta -->
-            <label class="ps-2">Numero carta di credito *</label>
+            <label class="ps-2"><i class="fa-solid fa-credit-card color_primary"></i> Numero carta di credito *</label>
             <div id="creditCardNumber" class="form-control ms_form-control mb-3" required></div>
             <div v-if="errorNumber">Numero carta non valido</div>
 
             <div class="row row-cols-1 row-cols-sm-2">
                 <div class="col">
                     <!-- data scadenza -->
-                    <label class="ps-2">Data scadenza *</label>
+                    <label class="ps-2"><i class="fa-solid fa-calendar-day color_primary"></i> Data scadenza *</label>
                     <div id="expireDate" class="form-control ms_form-control mb-3"></div>
                     <div v-if="errorExpirationDate">Data scadenza non valida</div>
                 </div>
                 <div class="col">
                     <!-- cvv -->
-                    <label class="ps-2">CVV *</label>
+                    <label class="ps-2"><i class="fa-solid fa-lock color_primary"></i> CVV *</label>
                     <div id="cvv" class="form-control ms_form-control mb-3"></div>
                     <div v-if="errorCvv">CVV non valido</div>
                 </div>
