@@ -103,7 +103,18 @@
         </template>
       </b-modal>
     </div>
-    <div class="card-body" v-else></div>
+    <div class="card-body" v-else>
+      <!-- <div class="box">
+        <div class="wrapper">
+          <div class="inner-box-1">
+            <div class="left" :style="left" />
+          </div>
+          <div class="inner-box-2">
+            <div class="right" :style="right" />
+          </div>
+        </div>
+      </div> -->
+    </div>
     <b-button
       v-if="
         cartLogic.restaurantId == cartLogic.newRestaurantId &&
@@ -130,12 +141,63 @@ export default {
   data() {
     return {
       cartLogic,
+      x: 0,
+      y: 0,
+      viewportHeight: 1,
+      viewportWidth: 1,
     };
+  },
+
+  created() {
+    this.updateViewportSize();
+  },
+
+  mounted() {
+    document.addEventListener("mousemove", this.onMouseMove);
+    window.addEventListener("resize", this.updateViewportSize);
+  },
+
+  unmounted() {
+    document.removeEventListener("mousemove", this.onMouseMove);
+    window.removeEventListener("resize", this.updateViewportSize);
+  },
+
+  computed: {
+    left() {
+      return {
+        left: percent(this.x, this.viewportWidth),
+        top: percent(this.y, this.viewportHeight),
+      };
+
+      function percent(value, total) {
+        return Math.round((value * 60) / total) + "%";
+      }
+    },
+    right() {
+      return {
+        left: percent(this.x, this.viewportWidth),
+        top: percent(this.y, this.viewportHeight),
+      };
+
+      function percent(value, total) {
+        return Math.round((value * 60) / total) + "%";
+      }
+    },
   },
 
   methods: {
     returnDishTotal(price, quantity) {
       return (price * quantity).toFixed(2);
+    },
+
+    onMouseMove(ev) {
+      this.x = ev.clientX;
+      this.y = ev.clientY;
+    },
+
+    updateViewportSize() {
+      this.viewportHeight = window.innerHeight;
+      this.viewportWidth = window.innerWidth;
     },
   },
 };
@@ -170,5 +232,62 @@ img {
   border: none !important;
   width: 100% !important;
   border-radius: 0.4rem;
+}
+
+/* animation section  */
+
+.box {
+  width: 100%;
+  height: 50px;
+  position: relative;
+}
+.wrapper {
+}
+
+.inner-box-1 {
+  background-color: #fafafa;
+  width: 50px;
+  height: 50px;
+  border-radius: 40%;
+  position: absolute;
+  top: 0;
+  bottom: 0px;
+  left: 40%;
+  right: 50%;
+  padding: 15px;
+  margin: 0 20px;
+  border: solid 1px black;
+}
+.inner-box-2 {
+  background-color: #fafafa;
+  width: 50px;
+  height: 50px;
+  border-radius: 40%;
+  position: absolute;
+  top: 0;
+  bottom: 10px;
+  left: 10%;
+  right: 10%;
+  padding: 15px;
+  margin: 0 20px;
+  border: solid 1px black;
+}
+
+.left {
+  background: $_primary;
+  border-radius: 50%;
+  position: absolute;
+  border: solid 1px black;
+
+  height: 20px;
+  width: 20px;
+}
+.right {
+  background: $_primary;
+  border-radius: 50%;
+  border: solid 1px black;
+  position: absolute;
+  height: 20px;
+  width: 20px;
 }
 </style>
