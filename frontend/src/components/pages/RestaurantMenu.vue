@@ -44,7 +44,7 @@
 
     <!-- lista piatti  -->
 
-    <div class="row d-flex justify-content-between">
+    <div class="row d-flex justify-content-between mb-5">
       <div class="col-sm-7 col-md-9">
         <div class="row row-cols-1 row-cols-md-1 row-cols-lg-2">
           <div

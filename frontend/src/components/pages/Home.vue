@@ -1,7 +1,7 @@
 <template>
     <div>
         <Hero/>
-        <div class="container-fluid">
+        <div class="container-fluid ms_max-width">
             <div class="row">
                 <div class="col-12 col-lg-3">
                     <Categories />
@@ -38,6 +38,10 @@ export default {
 }
 </script>
 
-<style>
+<style lang="scss" scoped>
+
+.ms_max-width {
+    max-width: 1800px;
+}
 
 </style>
