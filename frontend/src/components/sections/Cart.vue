@@ -21,7 +21,6 @@
             my-3
           "
         >
-          Restauant
           <span class="fw-bold">{{ cartLogic.restaurantName }}</span>
         </li>
         <li

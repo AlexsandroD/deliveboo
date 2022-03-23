@@ -1,12 +1,12 @@
 <template>
-  <div class="container mb-5">
+  <div class="container-fluid mb-4 p-5">
     <!-- parte dati ristorante -->
     <div class="card mb-3">
       <div class="row g-0">
         <div class="col-md-4">
           <img
             v-if="restaurant.image_cover"
-            class="card-img-top w-100"
+            class="card-img-top w-100 p-3"
             :src="'http://127.0.0.1:8000/storage/' + restaurant.image_cover"
             :alt="restaurant.name"
           />
@@ -18,15 +18,15 @@
           />
         </div>
         <div class="col-md-8">
-          <div class="card-body">
+          <div class="card-body my_text p-4">
             <h5 class="card-title">{{ restaurant.name }}</h5>
             <p class="card-text">{{ restaurant.description }}</p>
-            <p class="card-text">{{ restaurant.email }}</p>
+            <p class="card-text">email: {{ restaurant.email }}</p>
             <p class="card-text">
-              {{ restaurant.address }}, {{ restaurant.city }},
+              Indirizzo: {{ restaurant.address }}, {{ restaurant.city }},
               {{ restaurant.post_code }}, {{ restaurant.country }}
             </p>
-            <p class="card-text">{{ restaurant.phone }}</p>
+            <p class="card-text">Telefono: {{ restaurant.phone }}</p>
           </div>
         </div>
       </div>

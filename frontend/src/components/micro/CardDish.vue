@@ -2,19 +2,19 @@
   <div v-if="dish.visible" class="card h-100">
     <div class="row h-100">
       <div class="col-6">
-        <div class="card-block h-100 p-3">
+        <div class="card-block h-100 p-3 text-left">
           <!--           <h4 class="card-title">Small card</h4> -->
           <h4 class="my-2">{{ dish.name }}</h4>
           <p>{{ dish.description }}</p>
-          <p class="my-2 fw-bold">&euro; {{ dish.price }}</p>
           <div class="my_buttons">
+            <p class="my-2 fw-bold">&euro; {{ dish.price }}</p>
             <!-- <a
               class="btn btn-primary rounded-circle p-2"
               @click="cartLogic.removeCartItem(dish.id)"
               ><i class="fa-solid fa-minus"></i
             ></a> -->
 
-            <div class="qty mt-5">
+            <div class="qty">
               <span
                 class="minus bg-dark"
                 @click="cartLogic.removeCartItem(dish.id)"
