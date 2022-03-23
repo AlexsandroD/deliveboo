@@ -6,27 +6,37 @@
         <div class="col-md-4">
           <img
             v-if="restaurant.image_cover"
-            class="card-img-top w-100 p-3"
+            class="card-img-top w-100 h-100 p-3 my_img"
             :src="'http://127.0.0.1:8000/storage/' + restaurant.image_cover"
             :alt="restaurant.name"
           />
           <img
             v-else
             src="https://www.wecanjob.it/moduli/output_immagine.php?id=8444"
-            class="card-img-top w-100"
+            class="card-img-top w-100 h-100 my_img"
             :alt="restaurant.name"
           />
         </div>
         <div class="col-md-8">
-          <div class="card-body my_text p-4">
-            <h5 class="card-title">{{ restaurant.name }}</h5>
-            <p class="card-text">{{ restaurant.description }}</p>
-            <p class="card-text">email: {{ restaurant.email }}</p>
-            <p class="card-text">
-              Indirizzo: {{ restaurant.address }}, {{ restaurant.city }},
-              {{ restaurant.post_code }}, {{ restaurant.country }}
+          <div class="card-body p-4">
+            <h3 class="card-title text-bold">{{ restaurant.name }}</h3>
+            <p class="card-text description">
+              🛵{{ restaurant.description }}🥂
             </p>
-            <p class="card-text">Telefono: {{ restaurant.phone }}</p>
+            <p class="card-text">
+              <i class="fa-solid fa-envelope my_icon"></i>:
+              {{ restaurant.email }}
+            </p>
+            <p class="card-text">
+              <i class="fa-solid fa-signs-post my_icon"></i>:
+              {{ restaurant.address }}, {{ restaurant.city }},
+              {{ restaurant.post_code }},
+              {{ restaurant.country }}
+            </p>
+            <strong class="card-text"
+              ><i class="fa-solid fa-phone my_icon"></i>:
+              {{ restaurant.phone }}</strong
+            >
           </div>
         </div>
       </div>
@@ -161,12 +171,16 @@ export default {
   display: table-cell;
   vertical-align: middle;
 }
+.card-text.description {
+  font-size: 1.2rem;
+  color: $_darkGrey;
+}
+.my_icon {
+  margin: 0 5px;
+  color: $_primary !important;
+}
 
-.main_container {
-  display: flex;
-
-  .my_col {
-    width: 400px;
-  }
+.my_img {
+  object-fit: cover !important;
 }
 </style>
