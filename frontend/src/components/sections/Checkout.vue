@@ -7,7 +7,7 @@
             <template #modal-header="{ close }">
                 <div class="d-flex justify-content-between p-sm-3 w-100">
                     <h2>Procedi con il pagamento</h2>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" @click="close()"></button>
+                    <button type="button" class="btn-close ms_close-button" data-bs-dismiss="modal" aria-label="Close" @click="close()"></button>
                 </div>
             </template>
 
@@ -309,6 +309,12 @@ export default {
 .bgc_primary {
     color: #fff;
     background-color: $_primary;
+}
+
+.ms_close-button {
+    filter: invert(1);
+    opacity: 1;
+    transition: all .4s;
 }
 
 .ms_form-control {
