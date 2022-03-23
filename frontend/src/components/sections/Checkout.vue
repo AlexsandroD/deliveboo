@@ -14,50 +14,55 @@
 
 
             <!-- nome -->
-            <label for="name" class="text-gold">Nome *</label>
-            <input v-model="name" type="text" id="name" class="form-control" placeholder="Inserisci il tuo nome" required maxlength="80">
+            <label for="name" class="ps-2"><i class="fa-solid fa-user color_primary"></i> Nome *</label>
+            <input v-model="name" type="text" id="name" class="form-control ms_form-control mb-3" placeholder="Inserisci il tuo nome" required maxlength="80">
 
             <!-- cognome -->
-            <label for="surname" class="text-gold">Cognome *</label>
-            <input v-model="surname" type="text" id="surname" class="form-control" placeholder="Inserisci il tuo cognome" required maxlength="80">
+            <label for="surname" class="ps-2"><i class="fa-solid fa-user color_primary"></i> Cognome *</label>
+            <input v-model="surname" type="text" id="surname" class="form-control ms_form-control mb-3" placeholder="Inserisci il tuo cognome" required maxlength="80">
 
             <!-- email -->
-            <label for="email" class="text-gold">Email *</label>
-            <input v-model="email" type="email" id="email" class="form-control" placeholder="Inserisci la tua email" required maxlength="100">
+            <label for="email" class="ps-2"><i class="fa-solid fa-envelope color_primary"></i> Email *</label>
+            <input v-model="email" type="email" id="email" class="form-control ms_form-control mb-3" placeholder="Inserisci la tua email" required maxlength="100">
 
             <!-- indirizzo -->
-            <label for="address" class="text-gold">Indirizzo *</label>
-            <input v-model="address" type="text" id="address" class="form-control" placeholder="Inserisci il tuo indirizzo" required maxlength="255">
+            <label for="address" class="ps-2"><i class="fa-solid fa-location-dot color_primary"></i> Indirizzo *</label>
+            <input v-model="address" type="text" id="address" class="form-control ms_form-control mb-3" placeholder="Inserisci il tuo indirizzo" required maxlength="255">
 
             <!-- telefono -->
-            <label for="phone" class="text-gold">Telefono *</label>
-            <input v-model="phone" type="tel" id="phone" class="form-control" placeholder="Inserisci il tuo numero di telefono" pattern="[0-9]{10,15}" minlength="10" maxlength="15" required>
+            <label for="phone" class="ps-2"><i class="fa-solid fa-phone color_primary"></i> Telefono *</label>
+            <input v-model="phone" type="tel" id="phone" class="form-control ms_form-control mb-3" placeholder="Inserisci il tuo numero di telefono" pattern="[0-9]{10,15}" minlength="10" maxlength="15" required>
 
             <!-- commento -->
-            <label for="comment" class="form-label">Commento</label>
-            <textarea v-model="comment" class="form-control" id="comment" rows="3" placeholder="Inserisci un commento"></textarea>
+            <label for="comment" class="form-label ps-2"><i class="fa-solid fa-comment-dots color_primary"></i> Commento</label>
+            <textarea v-model="comment" class="form-control ms_form-control mb-3" id="comment" rows="3" placeholder="Inserisci un commento"></textarea>
 
             <!-- prezzo totale -->
-            <label for="total_price" class="text-gold my-2">Prezzo totale: &euro;{{cartLogic.totalPrice}}</label>
+            <label for="total_price" class="ps-2 my-2">Prezzo totale: <strong>&euro;{{cartLogic.totalPrice}}</strong></label>
 
             <hr>
 
+            <div class="text-center text-md-end mb-2 braintree_logo">
+                <strong class="me-2">Powered by</strong>
+                <img src="../../assets/images/braintree/braintree-logo-black.png" alt="braintree logo">
+            </div>
+
             <!-- numero carta -->
-            <label class="text-gold col-12 p-0">Numero carta di credito *</label>
-            <div id="creditCardNumber" class="form-control" required></div>
+            <label class="ps-2">Numero carta di credito *</label>
+            <div id="creditCardNumber" class="form-control ms_form-control mb-3" required></div>
             <div v-if="errorNumber">Numero carta non valido</div>
 
-            <div class="row my-2">
-                <div class="col-6">
+            <div class="row row-cols-1">
+                <div class="col">
                     <!-- data scadenza -->
-                    <label class="text-gold">Data scadenza *</label>
-                    <div id="expireDate" class="form-control"></div>
+                    <label class="ps-2">Data scadenza *</label>
+                    <div id="expireDate" class="form-control ms_form-control mb-3"></div>
                     <div v-if="errorExpirationDate">Data scadenza non valida</div>
                 </div>
-                <div class="col-6">
+                <div class="col">
                     <!-- cvv -->
-                    <label class="text-gold">CVV *</label>
-                    <div id="cvv" class="form-control"></div>
+                    <label class="ps-2">CVV *</label>
+                    <div id="cvv" class="form-control ms_form-control mb-3"></div>
                     <div v-if="errorCvv">CVV non valido</div>
                 </div>
             </div>
@@ -67,10 +72,6 @@
             <input id="nonce" name="payment_method_nonce" hidden>
             <button type="submit" class="btn-gold btn-block mt-4">Conferma e paga</button>
 
-            <div class="text-end mb-2 braintree_logo">
-                <strong class="me-2">Powered by</strong>
-                <img src="../../assets/images/braintree/braintree-logo-black.png" alt="braintree logo">
-            </div>
         </form>
 
         <!-- risposta pagamento -->
@@ -140,6 +141,11 @@ export default {
 
                 let options = {
                     client: clientInstance,
+                    styles:{
+                        '::placeholder':{
+                            'font-size':'.9rem'
+                        }
+                    },
                     fields: {
                         number: {
                             selector: '#creditCardNumber',
@@ -255,11 +261,39 @@ export default {
 </script>
 
 <style lang="scss">
+@import "../../assets/style/_variables.scss";
+
+.color_primary {
+    color: $_primary;
+}
+
+.ms_form-control {
+    border: 1px solid $_primary;
+    border-radius: 1rem;
+
+    &::placeholder {
+        font-size: .9rem;
+    }
+
+    &:focus {
+        border-color: $_cherry;
+        box-shadow: 0 0 0 0.15rem rgba(192, 29, 100, .50);
+    }
+}
+
+hr {
+    border: 1px solid $_cherry;
+}
 
 #creditCardNumber,
 #expireDate,
 #cvv {
     height: 40px;
+}
+
+.braintree-hosted-fields-focused {
+    border-color: $_cherry;
+    box-shadow: 0 0 0 0.15rem rgba(192, 29, 100, .50);
 }
 
 .braintree_logo {

@@ -24,7 +24,7 @@
 
             <b-modal id="payment-modal" size="lg">
                 <template #modal-header="{ close }">
-                    <h5>Procedi con il pagamento</h5>
+                    <h2>Procedi con il pagamento</h2>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" @click="close()"></button>
                 </template>
 
