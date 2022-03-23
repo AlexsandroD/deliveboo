@@ -8,31 +8,39 @@
           <p>{{ dish.description }}</p>
           <p class="my-2 fw-bold">&euro; {{ dish.price }}</p>
           <div class="my_buttons">
-            <a
+            <!-- <a
               class="btn btn-primary rounded-circle p-2"
               @click="cartLogic.removeCartItem(dish.id)"
               ><i class="fa-solid fa-minus"></i
-            ></a>
-            <span id="number" class="mx-2" v-if="cartLogic.cart != null">{{
-              cartLogic.cart.filter((e) => e.dishId == dish.id).length > 0
-                ? cartLogic.cart.find((x) => x.dishId == dish.id).quantity
-                : 0
-            }}</span>
-            <span class="mx-2" v-else>0</span>
-            <a
-              class="btn btn-primary rounded-circle p-2"
-              @click="
-                cartLogic.addCartItem(
-                  dish.id,
-                  dish.name,
-                  dish.price,
-                  restaurant.id,
-                  restaurant.slug,
-                  restaurant.name
-                )
-              "
-              ><i class="fa-solid fa-plus"></i>
-            </a>
+            ></a> -->
+
+            <div class="qty mt-5">
+              <span
+                class="minus bg-dark"
+                @click="cartLogic.removeCartItem(dish.id)"
+                >-</span
+              >
+              <span class="count" name="qty" v-if="cartLogic.cart != null">{{
+                cartLogic.cart.filter((e) => e.dishId == dish.id).length > 0
+                  ? cartLogic.cart.find((x) => x.dishId == dish.id).quantity
+                  : 0
+              }}</span>
+              <span class="count" name="qty" v-else>0</span>
+              <span
+                class="plus bg-dark"
+                @click="
+                  cartLogic.addCartItem(
+                    dish.id,
+                    dish.name,
+                    dish.price,
+                    restaurant.id,
+                    restaurant.slug,
+                    restaurant.name
+                  )
+                "
+                >+</span
+              >
+            </div>
           </div>
         </div>
       </div>
@@ -129,9 +137,53 @@ img {
   }
 }
 
-#number {
-  background-color: red;
-  color: green;
-  width: 200px;
+.qty .count {
+  color: $_primary;
+  display: inline-block;
+  vertical-align: top;
+  font-size: 25px;
+  font-weight: 700;
+  line-height: 30px;
+  padding: 0 2px;
+  min-width: 35px;
+  text-align: center;
+}
+.qty .plus {
+  cursor: pointer;
+  display: inline-block;
+  vertical-align: top;
+  color: white;
+  width: 30px;
+  height: 30px;
+  font: 30px/1 Arial, sans-serif;
+  text-align: center;
+  border-radius: 10px;
+}
+.qty .minus {
+  cursor: pointer;
+  display: inline-block;
+  vertical-align: top;
+  color: white;
+  width: 30px;
+  height: 30px;
+  font: 30px/1 Arial, sans-serif;
+  text-align: center;
+  border-radius: 10px;
+  background-clip: padding-box;
+}
+div {
+  text-align: center;
+}
+.minus:hover {
+  background-color: $_primary !important;
+}
+.plus:hover {
+  background-color: $_primary !important;
+}
+/*Prevent text selection*/
+span {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
 }
 </style>

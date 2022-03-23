@@ -88,12 +88,12 @@ export default {
 }
 
 img {
-  transition: ease 0.3s;
+  transition: ease 0.6s;
   height: 200px;
   object-fit: cover;
 }
 
 .card:hover img {
-  transform: scale(1.5);
+  transform: scale(1.3);
 }
 </style>
