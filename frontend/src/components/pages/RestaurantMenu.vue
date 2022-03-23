@@ -102,11 +102,11 @@
             </div>
           </transition>
         </div>
-        <router-link :to="{ name: 'home' }">
+        <!-- <router-link :to="{ name: 'home' }">
           <button type="button" class="btn btn-secondary">
             Torna all'elenco Ristoranti
           </button>
-        </router-link>
+        </router-link> -->
         <!-- cart  -->
         <Cart />
         <!-- // cart  -->

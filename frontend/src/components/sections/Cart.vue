@@ -1,73 +1,81 @@
 <template>
-  <div class="cart">
-    <h2>Il tuo Carrello</h2>
-    <h5 v-if="cartLogic.restaurantId == cartLogic.newRestaurantId">
-      {{ cartLogic.restaurantName }}
-    </h5>
-    <ul v-if="cartLogic.restaurantId == cartLogic.newRestaurantId">
-      <li v-for="dish in cartLogic.cart" :key="dish.dishId">
-        <div>
-          <span class="my-2">
-            {{ dish.name }}
-          </span>
-          <a @click="cartLogic.removeCartItem(dish.dishId)"
-            ><i class="fa-solid fa-minus"></i
-          ></a>
-          <span class="m-2">{{ dish.quantity }}</span>
-          <a
-            @click="
-              cartLogic.addCartItem(
-                dish.dishId,
-                dish.name,
-                dish.price,
-                cartLogic.restaurantId,
-                cartLogic.restaurantSlug,
-                cartLogic.restaurantName
-              )
-            "
-          >
-            <i class="fa-solid fa-plus"></i>
-          </a>
-        </div>
-
-        {{ returnDishTotal(dish.dishPrice, dish.quantity) }}
-      </li>
-    </ul>
-    <button
-      type="button"
-      class="btn btn-success p-1 my-3"
-      v-if="
-        cartLogic.restaurantId == cartLogic.newRestaurantId &&
-        cartLogic.cart.length > 0
-      "
-      @click="cartLogic.emptyCart()"
-    >
-      Svuota carrello
-    </button>
-    <p v-if="cartLogic.restaurantId == cartLogic.newRestaurantId">
-      totale:{{ cartLogic.totalPrice }}
-    </p>
-
-    <span v-else>icona carrello</span>
-    <p v-if="cartLogic.qtyError">
-      Il totale massimo consentito deve essere inferiore 9999.99
-    </p>
+  <div class="my_card card h-100 my-4 mb-4">
+    <div class="card-header my_header py-3">
+      <h5 class="my_text text-center"><i class="fas fa-shopping-cart"></i></h5>
+    </div>
 
     <div
-      v-if="
-        cartLogic.restaurantId == cartLogic.newRestaurantId &&
-        cartLogic.cart.length > 0
-      "
+      class="card-body p-2"
+      v-if="cartLogic.restaurantId == cartLogic.newRestaurantId"
     >
-      <!-- pagamento -->
-      <b-button
-        type="button"
-        class="btn btn-primary p-3 my-3"
-        v-b-modal.payment-modal
-        ok-disabled.false
-        >Paga</b-button
-      >
+      <ul class="list-group list-group-flush">
+        <li
+          class="
+            list-group-item
+            d-flex
+            justify-content-between
+            align-items-center
+            border-0
+            px-0
+            pb-0
+            my-3
+          "
+        >
+          Restauant
+          <span class="fw-bold">{{ cartLogic.restaurantName }}</span>
+        </li>
+        <li
+          v-for="dish in cartLogic.cart"
+          :key="dish.dishId"
+          class="list-group-item d-flex justify-content-between px-0 my-2"
+        >
+          <div>
+            <span class="my-2">
+              {{ dish.name }}
+            </span>
+            <a @click="cartLogic.removeCartItem(dish.dishId)"
+              ><i class="fa-solid fa-minus"></i
+            ></a>
+            <span class="m-2">{{ dish.quantity }}</span>
+            <a
+              @click="
+                cartLogic.addCartItem(
+                  dish.dishId,
+                  dish.name,
+                  dish.price,
+                  cartLogic.restaurantId,
+                  cartLogic.restaurantSlug,
+                  cartLogic.restaurantName
+                )
+              "
+            >
+              <i class="fa-solid fa-plus"></i>
+            </a>
+          </div>
 
+          <span
+            >&euro; {{ returnDishTotal(dish.dishPrice, dish.quantity) }}</span
+          >
+        </li>
+      </ul>
+
+      <button
+        type="button"
+        class="my_btn btn btn-success p-1 my-3"
+        v-if="
+          cartLogic.restaurantId == cartLogic.newRestaurantId &&
+          cartLogic.cart.length > 0
+        "
+        @click="cartLogic.emptyCart()"
+      >
+        Svuota carrello
+      </button>
+      <p
+        class="fw-bold d-flex justify-content-between"
+        v-if="cartLogic.restaurantId == cartLogic.newRestaurantId"
+      >
+        <span>totale:</span><span>&euro; {{ cartLogic.totalPrice }}</span>
+      </p>
       <b-modal id="payment-modal" size="lg">
         <template #modal-header="{ close }">
           <h5>Procedi con il pagamento</h5>
@@ -91,8 +99,21 @@
         </template>
       </b-modal>
     </div>
+    <div class="card-body" v-else></div>
+    <b-button
+      v-if="
+        cartLogic.restaurantId == cartLogic.newRestaurantId &&
+        cartLogic.cart.length > 0
+      "
+      type="button"
+      class="my_payment btn btn-primary p-2"
+      v-b-modal.payment-modal
+      ok-disabled.false
+      >Paga</b-button
+    >
   </div>
 </template>
+
 
 <script>
 import Checkout from "./Checkout.vue";
@@ -118,11 +139,32 @@ export default {
 
 <style lang = "scss" scoped>
 @import "../../assets/style/global.scss";
-.cart {
-  ul {
-    li {
-      list-style: none;
-    }
+img {
+  object-fit: cover;
+}
+
+.my_card {
+  border-radius: 10px;
+}
+
+.my_btn {
+  background-color: $_primary !important;
+  border: none !important;
+  &:hover {
+    background-color: $_darkerPrimaryHover !important;
   }
+}
+
+.my_header {
+  background-color: $_primary !important;
+  color: white;
+  border: none !important;
+  border-radius: 10px;
+}
+.my_payment {
+  background-color: $_darkGrey !important;
+  border: none !important;
+  width: 100% !important;
+  border-radius: 10px;
 }
 </style>
