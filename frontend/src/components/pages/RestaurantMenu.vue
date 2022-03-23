@@ -1,5 +1,5 @@
 <template>
-  <div class="container-fluid mb-4 p-5">
+  <div class="container-fluid mb-4 max_width_fluid">
     <!-- parte dati ristorante -->
     <div class="card mb-3">
       <div class="row g-0">
@@ -154,6 +154,11 @@ export default {
 
 <style lang="scss" scoped>
 @import "../../assets/style/_variables.scss";
+
+.max_width_fluid {
+  max-width: 1800px;
+  margin-top: 100px;
+}
 
 .modal-mask {
   position: fixed;

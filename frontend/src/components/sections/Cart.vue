@@ -62,21 +62,38 @@
           </div>
         </li>
       </ul>
-      <button v-if="cartLogic.restaurantId == cartLogic.newRestaurantId || cartLogic.cart.length > 0" @click="cartLogic.emptyCart()">Svuota carrello</button>
-      <p v-if="cartLogic.restaurantId == cartLogic.newRestaurantId">totale:{{cartLogic.totalPrice}}</p>
-      <p v-else>carrello vuoto</p>
-      <p v-if="cartLogic.qtyError">Il totale massimo consentito deve essere inferiore 9999.99</p>
 
-        <!-- pagamento -->
-        <div>
-            <b-button v-b-modal.payment-modal ok-disabled.false v-if="cartLogic.restaurantId == cartLogic.newRestaurantId || cartLogic.cart.length > 0">Paga</b-button>
-
-            <Checkout/>
-            
-        </div>
-      </div>
+      <button
+        type="button"
+        class="my_btn btn btn-success p-2 my-3"
+        v-if="
+          cartLogic.restaurantId == cartLogic.newRestaurantId &&
+          cartLogic.cart.length > 0
+        "
+        @click="cartLogic.emptyCart()"
+      >
+        Svuota carrello
+      </button>
+      <p
+        class="fw-bold d-flex justify-content-between"
+        v-if="cartLogic.restaurantId == cartLogic.newRestaurantId"
+      >
+        <span>totale:</span><span>&euro; {{ cartLogic.totalPrice }}</span>
+      </p>
     </div>
-    <!-- <b-button
+    <div class="card-body" v-else>
+      <!-- <div class="box">
+        <div class="wrapper">
+          <div class="inner-box-1">
+            <div class="left" :style="left" />
+          </div>
+          <div class="inner-box-2">
+            <div class="right" :style="right" />
+          </div>
+        </div>
+      </div> -->
+    </div>
+    <b-button
       v-if="
         cartLogic.restaurantId == cartLogic.newRestaurantId &&
         cartLogic.cart.length > 0
@@ -86,8 +103,9 @@
       v-b-modal.payment-modal
       ok-disabled.false
       >Paga</b-button
-    > -->
-  <!-- </div> -->
+    >
+    <Checkout/>
+  </div>
 </template>
 
 
