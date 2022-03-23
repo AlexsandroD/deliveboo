@@ -10,34 +10,33 @@
             <label class="search-btn" for="search" @click="find()"><i class="fas fa-search"></i></label>
             <input id="search" class="search" type="text" v-model="inputIncludes" @click.enter="find()" placeholder=" Cerca o inizia una nuova chat">
         </div> -->
-    <!-- <h2 class="d-block">Cosa stai cercando?</h2> -->
 
-    <!-- <b-form-group>
+    <b-form-group>
         <ul class="edit-container">
             <li v-for="category in categories" :key="category.id">
                 <input class="form-check-input" type="checkbox" v-model="variables.categoriesValue" :id="category.name" :value="category.id">
                 <label class="form-check-label" :for="category.name">{{category.name}}</label>
             </li>
         </ul>
-    </b-form-group> -->
+    </b-form-group>
 
     <!-- categories checkbox -->
-    <div class="form-group">
+    <!-- <div class="form-group">
         <ul class="edit-container" >
             <li  v-for="category in categories" :key="category.id">
-                <!-- <input class="form-check-input" type="checkbox" v-model="variables.categoriesValue" :id="category.name" :value="category.id">
-                <label class="form-check-label" :for="category.name">{{category.name}}</label> -->
+                <input class="form-check-input" type="checkbox" v-model="variables.categoriesValue" :id="category.name" :value="category.id">
+                <label class="form-check-label" :for="category.name">{{category.name}}</label>
                 
-                <!-- <button type="button" class="btn" data-toggle="tooltip" data-html="true"
+                <button type="button" class="btn" data-toggle="tooltip" data-html="true"
                 title="<em>Tooltip</em> <u>with</u> <b>HTML</b>">
                 Tooltip with HTML
-                </button> -->
+                </button>
 
                 <input class="form-check-input" type="checkbox" v-model="variables.categoriesValue" :id="category.name" :value="category.id">
                 <label class="form-check-label" :for="category.name">{{category.name}}</label>
             </li>
-        </ul>
-    </div>
+        </ul> -->
+    <!-- </div> -->
 </div>
 </template>
 
@@ -87,15 +86,18 @@ export default {
     .edit-container{
         display: flex;
         justify-content: center;
+        margin: 30px 0 27px 0;
     }
         ul.edit-container {
         /* @include flex-center; */
         flex-wrap: wrap;
         list-style: none;
         padding: .6rem 0 0;
-        /*li{
+        li{
             display: inline;
-            color: $_primary;
+            /* color: $_primary; */
+            color: #fff;
+
             label{
             display: inline-block;
             width: 8.5rem;
@@ -103,10 +105,14 @@ export default {
             user-select: none;
             white-space: nowrap;
         
-            margin: 3px 0px;
             padding: 8px 12px;
-             border: 2px solid $_primary;
-            border-radius: 25px;
+            border: 2px solid $_primary;
+            background-color: $_primary;
+
+
+            margin: 3px;
+            border-radius: 0.4rem;
+            font-weight: 500;
         
             -webkit-touch-callout: none;
             -webkit-user-select: none;
@@ -130,24 +136,27 @@ export default {
                 font-size: 12px;
                 content: "\f067";
             
-                color: $_primary;
+                /* color: $_primary; */
+                color: #fff;
             
                 padding: 2px 6px 2px 2px;
             
                 transition: transform .3s ease-in-out;
                 }
             }
-        
+            
             input[type="checkbox"] {
             display: absolute;
             position: absolute;
             opacity: 0;
             
             &:checked + label {
-                background-color: $_primary;
+                /* background-color: $_primary; */
+                background-color: $_cherry;
                 color: #fff;
             
-                border: 2px solid $_darkerPrimaryHover;
+                /* border: 2px solid $_darkerPrimaryHover; */
+                border: 2px solid $_cherry;
                 
                 transition: all .2s;
             }
@@ -161,11 +170,11 @@ export default {
                 transition: transform .3s ease-in-out;
             }
             }
-        } */
+        }
         
 
 
-            .form-check-input{
+            /* .form-check-input{
                 display: none;
                 width: 0px;
             }
@@ -180,7 +189,6 @@ export default {
             white-space: nowrap;
             margin: 3px 0px;
             padding: 8px 12px;
-            /* text-transform: uppercase; */
 
                 &:hover{
                     transition-delay: 0.13s;
@@ -195,7 +203,7 @@ export default {
                     background-color: blue;
                 }
             }
-        }
+        } */
     }
     
 }
