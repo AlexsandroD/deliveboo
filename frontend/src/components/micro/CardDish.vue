@@ -1,71 +1,195 @@
 <template>
-    <div class="col my-2">  
-            <router-link class="link" :to="{ name: 'restaurant-menu', params: { slug:restaurant.slug } }">
-                <div class="card h-100">
-                    <div class="overflow-hidden img-wrapper">
-                        <img v-if="restaurant.image_cover" class="card-img-top my_class"  :src="'http://127.0.0.1:8000/storage/' + restaurant.image_cover"  :alt="restaurant.name">
-                        <img v-else src="https://www.wecanjob.it/moduli/output_immagine.php?id=8444" class="card-img-top my_class" :alt="restaurant.name">
-                    </div>
-                    <div class="mcard-body p-2">
-                        <h5 class="card-title fw-bold my-1">{{ restaurant.name }}</h5>
-                        <p>{{restaurant.address}}</p>
-                        <p class="card-text">{{ restaurant.phone }}</p>
-                    </div>
-                </div>
-            </router-link>
+  <div v-if="dish.visible" class="card h-100">
+    <div class="row h-100">
+      <div class="col-6">
+        <div class="card-block h-100 p-1 text-start">
+          <!--           <h4 class="card-title">Small card</h4> -->
+          <h4 class="my-2">{{ dish.name }}</h4>
+          <p>{{ dish.description }}</p>
+          <div
+            class="
+              row row-cols-2
+              my-2
+              d-flex
+              justify-content-between
+              align-baseline
+            "
+          >
+            <div class="col">
+              <p class="fw-bold">&euro; {{ dish.price }}</p>
+            </div>
+            <div class="col">
+              <div class="qty d-flex">
+                <span
+                  class="minus bg-dark"
+                  @click="cartLogic.removeCartItem(dish.id)"
+                  >-</span
+                >
+                <span class="count" name="qty" v-if="cartLogic.cart != null">{{
+                  cartLogic.cart.filter((e) => e.dishId == dish.id).length > 0
+                    ? cartLogic.cart.find((x) => x.dishId == dish.id).quantity
+                    : 0
+                }}</span>
+                <span class="count" name="qty" v-else>0</span>
+                <span
+                  class="plus bg-dark"
+                  @click="
+                    cartLogic.addCartItem(
+                      dish.id,
+                      dish.name,
+                      dish.price,
+                      restaurant.id,
+                      restaurant.slug,
+                      restaurant.name
+                    )
+                  "
+                  >+</span
+                >
+              </div>
+            </div>
           </div>
+        </div>
+      </div>
+      <div class="col-6">
+        <div class="my_img_container h-100">
+          <img
+            class="h-100"
+            v-if="dish.image"
+            :src="'http://127.0.0.1:8000/storage/' + dish.image"
+            :alt="dish.name"
+          />
+          <img
+            class="h-100"
+            v-else
+            src="../../assets/images/bg/placeholder.svg"
+            :alt="dish.name"
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+  <div v-else class="card h-100" disabled>
+    <div class="row h-100">
+      <div class="col-6">
+        <div class="card-block h-100 p-3">
+          <!--           <h4 class="card-title">Small card</h4> -->
+          <h4 class="my-2">{{ dish.name }}</h4>
+          <p>&euro; {{ dish.price }}</p>
+          <p>Prodotto esaurito</p>
+        </div>
+      </div>
+      <div class="col-6">
+        <div class="my_img_container h-100">
+          <img
+            class="h-100"
+            v-if="dish.image"
+            :src="'http://127.0.0.1:8000/storage/' + dish.image"
+            :alt="dish.name"
+          />
+          <img
+            class="h-100"
+            v-else
+            src="../../assets/images/bg/placeholder.svg"
+            :alt="dish.name"
+          />
+        </div>
+      </div>
+    </div>
+  </div>
 </template>
 
 <script>
+import cartLogic from "../../cartLogic";
 export default {
-    name:'CardRestaurant',
-    props:{
-        restaurant:[],
-    }
-
-    
-}
+  name: "CardDish",
+  props: {
+    dish: {},
+    restaurant: {},
+  },
+  data() {
+    return {
+      cartLogic,
+    };
+  },
+};
 </script>
 
 <style lang = "scss" scoped>
-@import '../../assets/style/variables.scss';
-
-
-
-.link{
-    text-decoration:none;
-    color: black; 
-    img{
-        width: 100%;
-    }
+@import "../../assets/style/global.scss";
+.my_img_container {
+  overflow: hidden;
+  width: 100%;
+  height: 100%;
+}
+img {
+  width: 100%;
+  object-fit: cover;
+  padding: 10px;
+}
+.card {
+  transition: 0.2s;
+}
+.card:hover {
+  -webkit-box-shadow: -5px 28px 31px -8px rgba(0, 0, 0, 0.35);
+  box-shadow: -5px 28px 31px -8px rgba(0, 0, 0, 0.35);
+}
+.qty {
+  transition: 0.2s;
+}
+.qty .count {
+  color: $_primary;
+  display: inline-block;
+  vertical-align: top;
+  font-size: 25px;
+  font-weight: 700;
+  line-height: 30px;
+  padding: 0 2px;
+  text-align: center;
+  margin: 0 5px;
+}
+.qty .plus {
+  cursor: pointer;
+  display: inline-block;
+  vertical-align: top;
+  color: white;
+  width: 30px;
+  height: 30px;
+  font: 30px/1 Arial, sans-serif;
+  text-align: center;
+  border-radius: 10px;
+}
+.qty .minus {
+  cursor: pointer;
+  display: inline-block;
+  vertical-align: top;
+  color: white;
+  width: 30px;
+  height: 30px;
+  font: 30px/1 Arial, sans-serif;
+  text-align: center;
+  border-radius: 10px;
+  background-clip: padding-box;
 }
 
-.card{
-    min-width: 100px;
-    min-height:300px;
-    transition: 0.2s;
+div {
+  text-align: center;
 }
-
-.card:hover{
-    -webkit-box-shadow: 5px 5px 6px -1px rgba(0,0,0,0.4); 
-    box-shadow: 5px 5px 6px -1px rgba(0,0,0,0.4);
-    position:relative;
-    animation: card 0.2s linear forwards;
+.minus:hover {
+  background-color: $_primary !important;
 }
-
-@keyframes card {
-    from { top: 0px;}
-    to{ top:-10px}
+.plus:hover {
+  background-color: $_primary !important;
 }
-
-img{
-    transition:ease 0.3s;
-    min-height: 160px;
+.minus:active {
+  transform: scale(0.98) !important;
 }
-
- .card:hover img{
-    transform:scale(
-        1.5
-    )
+.plus:active {
+  transform: scale(0.98) !important;
+}
+/*Prevent text selection*/
+span {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
 }
 </style>

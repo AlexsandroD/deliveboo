@@ -5,12 +5,9 @@
 </template>
 
 <script>
+
 export default {
     name: 'Main',
-    components:{
-    //   Hero,
-    //   Categories,
-    },
 }
 </script>
 

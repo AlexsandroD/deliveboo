@@ -1,14 +1,15 @@
 <template>
     <div>
+        <Hero/>
         <Categories />
         <Restaurants />
         <News />
         <WorkWith />
-
     </div>
 </template>
 
 <script>
+import Hero from "../sections/Hero.vue";
 import Categories from '../sections/Categories.vue';
 import Restaurants from '../sections/Restaurants.vue';
 import News from '../sections/News.vue';
@@ -18,6 +19,7 @@ export default {
     name: 'Home',
     components:{
 
+        Hero,
         Categories,
         Restaurants,
         News,

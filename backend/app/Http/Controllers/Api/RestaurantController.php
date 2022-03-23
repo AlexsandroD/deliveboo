@@ -13,7 +13,7 @@ use Illuminate\Pagination\LengthAwarePaginator as Paginator;
 class RestaurantController extends Controller
 {
     public function index(){
-        $restaurants = Restaurant::paginate(10);
+        $restaurants = Restaurant::with('categories')->paginate(10);
         return response()->json($restaurants);
     }
 
@@ -24,6 +24,7 @@ class RestaurantController extends Controller
         ->join('category_restaurant','restaurants.id','=','category_restaurant.restaurant_id')
         ->whereIn('category_restaurant.category_id',$data['categories'])
         ->distinct()
+        ->with('categories')
         ->get();
 
         $total = count($totalRestaurants);
