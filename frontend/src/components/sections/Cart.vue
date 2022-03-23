@@ -32,14 +32,17 @@
             <div class="col-12 col-lg-9">
               <div class="row row-cols-1 row-cols-lg-2">
                 <div class="col">
+                  <span class="">{{ dish.quantity }}</span> X
                   {{ dish.name }}
                 </div>
-                <div class="col">
-                  <a @click="cartLogic.removeCartItem(dish.dishId)"
+                <div class="col d-flex">
+                  <span
+                    class="my_minus"
+                    @click="cartLogic.removeCartItem(dish.dishId)"
                     ><i class="fa-solid fa-minus"></i>
-                    <span class="m-2">{{ dish.quantity }}</span>
-                  </a>
-                  <a
+                  </span>
+                  <span
+                    class="my_plus"
                     @click="
                       cartLogic.addCartItem(
                         dish.dishId,
@@ -52,7 +55,7 @@
                     "
                   >
                     <i class="fa-solid fa-plus"></i>
-                  </a>
+                  </span>
                 </div>
               </div>
             </div>
@@ -104,7 +107,7 @@
       ok-disabled.false
       >Paga</b-button
     >
-    <Checkout/>
+    <Checkout />
   </div>
 </template>
 
@@ -268,5 +271,29 @@ img {
   position: absolute;
   height: 20px;
   width: 20px;
+}
+.my_minus,
+.my_plus {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 20px;
+  height: 20px;
+  color: $_white;
+  background-color: $_primary;
+  border-radius: 50%;
+  margin: 0 5px;
+  transition: 0.3s;
+  padding: 15px;
+}
+
+.my_minus:active,
+.my_plus:active {
+  transform: scale(1.5);
+}
+
+.my_minus:hover,
+.my_plus:hover {
+  background-color: $_darkerPrimaryHover;
 }
 </style>
