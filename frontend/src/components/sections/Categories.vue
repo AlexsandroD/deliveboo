@@ -1,16 +1,8 @@
 <template>
-<div class="container">
+<div>
     <div class="title">
         <h1>Cosa stai cercando?</h1>
     </div>
-    <!-- Check boxes  -->
-    <!-- <div class="form-group"> -->
-    
-        <!-- <div class="cont-search">
-            <label class="search-btn" for="search" @click="find()"><i class="fas fa-search"></i></label>
-            <input id="search" class="search" type="text" v-model="inputIncludes" @click.enter="find()" placeholder=" Cerca o inizia una nuova chat">
-        </div> -->
-
     <b-form-group>
         <ul class="edit-container">
             <li v-for="category in categories" :key="category.id">
@@ -63,7 +55,7 @@ export default {
 
 <style lang = "scss" scoped>
 @import '../../assets/style/variables.scss';
-.container{
+.container-fluid{
     .title{
         h1{
             margin-top: -50px;
@@ -110,7 +102,7 @@ export default {
             background-color: $_primary;
 
 
-            margin: 3px;
+            margin: 3px 4px;
             border-radius: 0.4rem;
             font-weight: 500;
         
@@ -122,6 +114,7 @@ export default {
             transition: all .2s;
             
             cursor: pointer;
+            text-align: center;
         
             &::before {
                 width: 1.2rem;

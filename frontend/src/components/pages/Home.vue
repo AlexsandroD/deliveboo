@@ -1,8 +1,16 @@
 <template>
     <div>
         <Hero/>
-        <Categories />
-        <Restaurants />
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-12 col-lg-3">
+                    <Categories />
+                </div>
+                <div class="col-12 col-lg-9 mt-lg-5">
+                    <Restaurants />
+                </div>
+            </div>
+        </div>
         <News />
         <WorkWith />
     </div>
