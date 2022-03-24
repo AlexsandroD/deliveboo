@@ -177,8 +177,11 @@ export default {
         }
     }
 }
+
+/* media queries */
+
 @media screen and (max-width: 329px) {
-    .my_container{
+    .my_container-categories{
         margin-top: 15px;
         ul.edit-container{
             margin: 30px 0 0 0;
@@ -188,12 +191,33 @@ export default {
             li{
                 margin: 0;
                 padding: 0;
+                font-size: 13px;
                 label {
-                    margin: 1px;
-                    padding: 0.2rem 0;
+                    margin: 2px 1px;
+                    padding: 0.4rem 0;
 
                     font-weight: 400;
                     width: 7.3rem;
+                }                
+            }
+        }
+    }
+}
+@media screen and (max-width: 1264px) and (min-width: 992px) {
+    .my_container-categories{
+        /* margin-top: 15px; */
+        ul.edit-container{
+            /* margin: 30px 0 0 0; */
+            padding: 0;
+            /* justify-content: flex-start; */
+
+            li{
+                label {
+                    /* margin: 2px 1px; */
+                    /* padding: 0.4rem 0; */
+                    font-size: 10;
+                    font-weight: 500;
+                    width: 7.9rem;
                 }                
             }
         }
