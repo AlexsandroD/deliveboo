@@ -104,6 +104,7 @@ export default {
 
 .my_container {
   background-color: $_pink;
+  border-radius: 0.4rem;
 }
 
 .customPagination > .page-item {
