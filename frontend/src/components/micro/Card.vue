@@ -146,7 +146,7 @@ export default {
 
 .before-enter-3 {
   opacity: 0;
-  transform: translateX(10%);
+  transform: translateX(100%);
   transition: all 0.5s ease-in-out;
 }
 
