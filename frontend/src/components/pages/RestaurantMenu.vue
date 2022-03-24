@@ -137,6 +137,8 @@ export default {
   },
 
   created() {
+    window.scrollTo(0,0);
+
     const axios = require("axios").default;
     axios
       .get(`http://127.0.0.1:8000/api/restaurants/${this.$route.params.slug}`)

@@ -1,5 +1,5 @@
 <template>
-  <header  :class="{change_color: scrollPosition > 50}">
+  <header  :class="{change_color: scrollPosition > 300}">
     <Navbar />
   </header>
 </template>
@@ -32,17 +32,17 @@ export default {
 <style lang = "scss" scoped>
 @import '../../assets/style/variables.scss';
 header{
-    height: 70px;
     position: fixed;
     top: 0;
     left: 0;
     right: 0;
-    z-index: 1;
+    z-index: 99;
     
     transition: background-color .3s linear;
 }
 
 .change_color {
-    background-color: $_white;
+  background-color: $_white;
+  box-shadow: 0px 1px 10px #999;
 }
 </style>
