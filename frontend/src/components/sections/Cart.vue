@@ -103,7 +103,7 @@
         alt=""
       />
       <div class="box d-none d-xl-block">
-        <div class="wrapper">
+        <div class="wrapper p-4">
           <div class="inner-box-1">
             <div class="left" :style="left" />
           </div>
@@ -210,6 +210,7 @@ img {
 
 .my_card {
   border-radius: 0.4rem;
+  min-height: 300px;
 }
 
 .my_btn {
