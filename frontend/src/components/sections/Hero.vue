@@ -17,17 +17,37 @@ export default {
 <style lang = "scss" scoped>
 @import '../../assets/style/variables.scss';
 .hero{
-    margin: 0 auto;
-    max-width: 1800px;
-    /* -webkit-clip-path: polygon(0 0, 100% 0, 100% 85%, 0% 100%); */
-    /* clip-path: polygon(50% 0%, 100% 0, 100% 76%, 88% 80%, 29% 95%, 0 78%, 0 0); */
-    clip-path: polygon(0 0, 100% 0, 100% 71%, 0 100%);
-    padding: 0;
-    video{
-        width: 100%;
-        margin-bottom: -10px;
-        z-index: -1;
-        position: relative;
-    }
+  max-width: 1800px;
+
+  margin: 0 auto;
+  padding: 0;
+
+  video{
+      width: 100%;
+      height: 300px;
+
+      object-fit: cover;
+      position: relative;
+  }
+}
+
+//00000000 MEDIA QUERIES 00000000
+@media (min-width: 768px) {
+.hero{
+  max-width: 1800px;
+
+  clip-path: polygon(0 0, 100% 0, 100% 70%, 0 100%);
+
+  margin: 0 auto;
+  padding: 0;
+
+  video{
+      width: 100%;
+      height: 300px;
+
+      object-fit: cover;
+      position: relative;
+  }
+}
 }
 </style>
