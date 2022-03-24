@@ -11,24 +11,6 @@
             </li>
         </ul>
     </b-form-group>
-
-    <!-- categories checkbox -->
-    <!-- <div class="form-group">
-        <ul class="edit-container" >
-            <li  v-for="category in categories" :key="category.id">
-                <input class="form-check-input" type="checkbox" v-model="variables.categoriesValue" :id="category.name" :value="category.id">
-                <label class="form-check-label" :for="category.name">{{category.name}}</label>
-                
-                <button type="button" class="btn" data-toggle="tooltip" data-html="true"
-                title="<em>Tooltip</em> <u>with</u> <b>HTML</b>">
-                Tooltip with HTML
-                </button>
-
-                <input class="form-check-input" type="checkbox" v-model="variables.categoriesValue" :id="category.name" :value="category.id">
-                <label class="form-check-label" :for="category.name">{{category.name}}</label>
-            </li>
-        </ul> -->
-    <!-- </div> -->
 </div>
 </template>
 
@@ -69,135 +51,101 @@ export default {
         padding: 20px 0;
     }
 
-  p.under-title {
-    font-size: 1rem;
-    font-weight: 400;
-    color: $_primary;
-  }
-/* lista categories */
+    p.under-title {
+        font-size: 1rem;
+        font-weight: 400;
+        color: $_primary;
+    }
+    /* lista categories */
     .edit-container{
         display: flex;
         justify-content: center;
         margin: 30px 0 27px 0;
     }
-        ul.edit-container {
+    ul.edit-container {
         /* @include flex-center; */
         flex-wrap: wrap;
         list-style: none;
         padding: .6rem 0 0;
+
         li{
             display: inline;
             /* color: $_primary; */
             color: #fff;
 
             label{
-            display: inline-block;
-            width: 8.5rem;
-            
-            user-select: none;
-            white-space: nowrap;
-        
-            padding: 8px 12px;
-            border: 2px solid $_primary;
-            background-color: $_primary;
-
-
-            margin: 3px 4px;
-            border-radius: 0.4rem;
-            font-weight: 500;
-        
-            -webkit-touch-callout: none;
-            -webkit-user-select: none;
-            -moz-user-select: none;
-            -ms-user-select: none;
-            -webkit-tap-highlight-color: transparent;
-            transition: all .2s;
-            
-            cursor: pointer;
-            text-align: center;
-        
-            &::before {
-                width: 1.2rem;
                 display: inline-block;
+                width: 8.5rem;
+                
+                user-select: none;
+                white-space: nowrap;
             
-                font-style: normal;
-                font-variant: normal;
-                text-rendering: auto;
-                -webkit-font-smoothing: antialiased;
-                font-family: "Font Awesome 6 Free";
-                font-weight: 900;
-                font-size: 12px;
-                content: "\f067";
+                padding: 8px 12px;
+                border: 2px solid $_primary;
+                background-color: $_primary;
+
+                margin: 3px 4px;
+                border-radius: 0.4rem;
+                font-weight: 500;
             
-                /* color: $_primary; */
-                color: #fff;
+                -webkit-touch-callout: none;
+                -webkit-user-select: none;
+                -moz-user-select: none;
+                -ms-user-select: none;
+                -webkit-tap-highlight-color: transparent;
+                transition: all .2s;
+                
+                cursor: pointer;
+                text-align: center;
             
-                padding: 2px 6px 2px 2px;
-            
-                transition: transform .3s ease-in-out;
+                &::before {
+                    width: 1.2rem;
+                    display: inline-block;
+                
+                    font-style: normal;
+                    font-variant: normal;
+                    text-rendering: auto;
+                    -webkit-font-smoothing: antialiased;
+                    font-family: "Font Awesome 6 Free";
+                    font-weight: 900;
+                    font-size: 12px;
+                    content: "\f067";
+                
+                    /* color: $_primary; */
+                    color: #fff;
+                
+                    padding: 2px 6px 2px 2px;
+                
+                    transition: transform .3s ease-in-out;
                 }
             }
-            
-            input[type="checkbox"] {
-            display: absolute;
-            position: absolute;
-            opacity: 0;
-            
-            &:checked + label {
-                /* background-color: $_primary; */
-                background-color: $_cherry;
-                color: #fff;
-            
-                /* border: 2px solid $_darkerPrimaryHover; */
-                border: 2px solid $_cherry;
                 
-                transition: all .2s;
-            }
-        
-            &:checked + label::before {
-                content: "\f00c";
+            input[type="checkbox"]{
+                display: absolute;
+                position: absolute;
+                opacity: 0;
+                
+                &:checked + label {
+                    /* background-color: $_primary; */
+                    background-color: $_cherry;
+                    color: #fff;
+                
+                    /* border: 2px solid $_darkerPrimaryHover; */
+                    border: 2px solid $_cherry;
+                    
+                    transition: all .2s;
+                }
             
-                color: $_white;
-            
-                transform: rotate(-360deg);
-                transition: transform .3s ease-in-out;
-            }
+                &:checked + label::before {
+                    content: "\f00c";
+                
+                    color: $_white;
+                
+                    transform: rotate(-360deg);
+                    transition: transform .3s ease-in-out;
+                }
             }
         }
-        
-
-
-            /* .form-check-input{
-                display: none;
-                width: 0px;
-            }
-            li{
-            display: inline;
-            color: darkcyan;
-            font-size: bold;
-            label{
-            display: inline-block;
-            width: 8.5rem;
-            user-select: none;
-            white-space: nowrap;
-            margin: 3px 0px;
-            padding: 8px 12px;
-
-                &:hover{
-                    transition-delay: 0.13s;
-                    background-color: $_brighterPrimaryHover;
-                    color: white;
-                    border-radius: 3px;
-                }
-                &:active{
-                    opacity: 3;
-                }
-                &:focus{
-                    background-color: blue;
-                }
-            }
-        } */
     }
-    
 }
 </style>

@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Restaurant;
 use App\Order;
+use DateTime;
 use Illuminate\Support\Facades\DB;
 
 class StatisticController extends Controller
@@ -15,20 +16,24 @@ class StatisticController extends Controller
         $restaurant = Restaurant::select('id')->where('user_id', Auth::id())->first();
         $restaurants_id = $restaurant->id;
 
+        $date = new DateTime();
+        $lastDay = $date->format('Y-m-t');
+        $dateMinus12 = $date->modify('-11 months')->format('Y-m-01');
+
         $ordersRevenue = Order::where('restaurant_id', $restaurants_id)
-        ->where(DB::raw("YEAR(created_at)"), date("Y"))
+        ->whereBetween('created_at', [$dateMinus12, $lastDay])
         ->selectRaw("SUM(tot_price) AS total")
-        ->selectRaw("YEAR(created_at) AS year")
-        ->selectRaw("MONTH(created_at) AS month")
-        ->groupby("year","month")
+        ->selectRaw("DATE_FORMAT(created_at, '%Y-%m') AS date")
+        ->groupby("date")
+        ->orderBy("date", "DESC")
         ->get();
 
         $ordersCount = Order::where('restaurant_id', $restaurants_id)
-        ->where(DB::raw("YEAR(created_at)"), date("Y"))
+        ->whereBetween('created_at', [$dateMinus12, $lastDay])
         ->selectRaw("COUNT(restaurant_id) AS orderTotal")
-        ->selectRaw("YEAR(created_at) AS year")
-        ->selectRaw("MONTH(created_at) AS month")
-        ->groupby("year","month")
+        ->selectRaw("DATE_FORMAT(created_at, '%Y-%m') AS date")
+        ->groupby("date")
+        ->orderBy("date", "DESC")
         ->get();
 
         $dishesRank = Order::select('dishes.name','dishes.deleted',DB::raw("SUM(dish_order.quantity) as total"))

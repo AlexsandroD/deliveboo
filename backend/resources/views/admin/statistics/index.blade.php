@@ -93,21 +93,6 @@
 
 <script>
 
-    const labels = [
-      'Gennaio',
-      'Febbraio',
-      'Marzo',
-      'Aprile',
-      'Maggio',
-      'Giugno',
-      'Luglio',
-      'Agosto',
-      'Settembre',
-      'Ottobre',
-      'Novembre',
-      'Dicembre'
-    ];
-
     let checkPush = false;
 
     // ////////////////////////
@@ -116,32 +101,38 @@
     let revenueOrders = {!! json_encode($ordersRevenue) !!};
 
     let revenueData = [];
+    let revenueLabels = [];
+    
+    for(let i = 0; i < 12; i++) {
+      let today = new Date();
+      today.setMonth(today.getMonth() - i);
 
-    for(let i = 1; i < 13; i++) {
+      date = today.getFullYear() + '-' + ('0' + (today.getMonth()+1)).slice(-2)
 
-        checkPush = false;
+      checkPush = false;
 
-        revenueOrders.forEach(order => {
-            if (order.month == i) {
-                revenueData.push(order.total);
-                checkPush = true;
-            }
-        });
-
-        if (!checkPush) {
-            revenueData.push(0);
+      revenueOrders.forEach(elm => {
+        if (elm.date == date) {
+          revenueData.push(elm.total);
+          revenueLabels.push(date);
+          checkPush = true;
         }
+      });
 
+      if (!checkPush) {
+        revenueData.push(0);
+        revenueLabels.push(date);
+      }
     }
 
     const dataRevenue = {
-        labels: labels,
+        labels: revenueLabels.reverse(),
         datasets: [
             {
-                label: 'Fatturato anno corrente',
+                label: 'Fatturato ultimi 12 mesi',
                 backgroundColor: '#00CCBC',
                 borderColor: '#00CCBC',
-                data: revenueData,
+                data: revenueData.reverse(),
             },
         ]
     };
@@ -165,32 +156,38 @@
     let countOrders = {!! json_encode($ordersCount) !!};
 
     let ordersCountData = [];
+    let ordersLabels = [];
+    
+    for(let i = 0; i < 12; i++) {
+      let today = new Date();
+      today.setMonth(today.getMonth() - i);
 
-    for(let i = 1; i < 13; i++) {
+      date = today.getFullYear() + '-' + ('0' + (today.getMonth()+1)).slice(-2)
 
-        checkPush = false;
+      checkPush = false;
 
-        countOrders.forEach(order => {
-            if (order.month == i) {
-                ordersCountData.push(order.orderTotal);
-                checkPush = true;
-            }
-        });
-
-        if (!checkPush) {
-            ordersCountData.push(0);
+      countOrders.forEach(elm => {
+        if (elm.date == date) {
+          ordersCountData.push(elm.orderTotal);
+          ordersLabels.push(date);
+          checkPush = true;
         }
+      });
 
+      if (!checkPush) {
+        ordersCountData.push(0);
+        ordersLabels.push(date);
+      }
     }
 
     const dataOrder = {
-        labels: labels,
+        labels: ordersLabels.reverse(),
         datasets: [
             {
-                label: 'Numero ordini anno corrente',
+                label: 'Numero ordini ultimi 12 mesi',
                 backgroundColor: '#D0EB99',
                 borderColor: '#D0EB99',
-                data: ordersCountData,
+                data: ordersCountData.reverse(),
             },
 
         ]

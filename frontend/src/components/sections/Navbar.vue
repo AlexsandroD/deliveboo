@@ -8,7 +8,7 @@
       
       <div class="navbar-right d-flex">
         <button class="btn btn_cart_sm" @click="showCart = !showCart">
-            <i class="fa-solid fa-cart-shopping"></i>
+          <i class="fa-solid fa-cart-shopping"></i>
         </button>
 
         <div class="cart_dropdown" v-if="showCart">
@@ -35,18 +35,17 @@
         
         <!-- admin btn -->
         <a class="ms-3" href="http://127.0.0.1:8000/admin">
-            <div class="btn">
-                <i class="fa-solid fa-user"></i>
-            </div>
+          <div class="btn">
+            <i class="fa-solid fa-user"></i>
+          </div>
         </a>
       </div>
-
     </nav>
   </div>
 </template>
 
 <script>
-import NavCart from "../sections/NavCart.vue";
+// import NavCart from "../sections/NavCart.vue";
 import cartLogic from "../../cartLogic";
 
 export default {
@@ -77,12 +76,11 @@ export default {
 @import "../../assets/style/variables.scss";
 
 .container {
-
   nav {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    
+
     padding: 1rem 0;
 
     /* icona deliveboo */
@@ -98,7 +96,6 @@ export default {
 
     /* bottoni a destra */
     .navbar-right {
-
       .btn {
         background-color: $_primary;
         color: $_white;

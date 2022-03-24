@@ -45,7 +45,7 @@
     <!-- lista piatti  -->
 
     <div class="row d-flex justify-content-between mb-5">
-      <div class="col-sm-7 col-md-9">
+      <div class="col-sm-12 col-md-12 col-lg-9">
         <div class="row row-cols-1 row-cols-md-1 row-cols-lg-2">
           <div
             class="col gy-4"
@@ -56,7 +56,7 @@
           </div>
         </div>
       </div>
-      <div class="col-sm-5 col-md-3 d-none d-sm-block">
+      <div class="col-sm-5 col-md-3 d-none d-lg-block">
         <div v-if="cartLogic.cartError">
           <transition name="modal">
             <div class="modal-mask">
