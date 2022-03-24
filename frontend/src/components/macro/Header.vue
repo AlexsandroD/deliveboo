@@ -1,5 +1,5 @@
 <template>
-  <header  :class="{change_color: scrollPosition > 300}">
+  <header  :class="{change_color: scrollPosition > 100}">
     <Navbar />
   </header>
 </template>
