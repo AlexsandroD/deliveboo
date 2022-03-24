@@ -31,8 +31,8 @@
           <div class="row d-flex justify-content-between w-100">
             <div class="col-12 col-lg-9">
               <div class="row row-cols-1 row-cols-lg-2">
-                <div class="col">
-                  <span class="">{{ dish.quantity }}</span> X
+                <div class="col d-flex align-items-center">
+                  <span class="count">{{ dish.quantity }}</span>
                   {{ dish.name }}
                 </div>
                 <div class="col d-flex">
@@ -295,5 +295,17 @@ img {
 .my_minus:hover,
 .my_plus:hover {
   background-color: $_darkerPrimaryHover;
+}
+
+.count {
+  color: $_primary;
+  display: inline-block;
+  vertical-align: top;
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 30px;
+  padding: 0 2px;
+  text-align: center;
+  margin: 0 5px;
 }
 </style>
