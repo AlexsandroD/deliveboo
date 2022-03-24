@@ -2,19 +2,38 @@
   <div class="container">
     <nav>
       <!-- logo -->
-      <b-navbar-brand class="logo" href="http://127.0.0.1:8080/">
+      <b-navbar-brand class="logo me-0" href="http://127.0.0.1:8080/">
         <img src="../../assets/images/logo/logo-scritta-color.png" alt="logo" />
       </b-navbar-brand>
       
-      <div class="navbar-right">
+      <div class="navbar-right d-flex">
         <button class="btn btn_cart_sm" @click="showCart = !showCart">
             <i class="fa-solid fa-cart-shopping"></i>
         </button>
 
-        <div class="cart_dropdown" v-if="!showCart">
-          <NavCart />
+        <div class="cart_dropdown" v-if="showCart">
+          <div class="dropdown_container">
+            <div class="dropdown_header">
+              <h2>Il tuo Carrello</h2>
+              <div @click="showCart = !showCart">
+                <i class="fa-solid fa-xmark"></i>
+              </div>
+            </div>
+            <NavCart />
+          </div>
         </div>
+
+        <!-- cart btn md -->
+        <a v-if="cartLogic.totalPrice == 0" class="btn btn_cart_md ms-3">
+          <i class="fas fa-shopping-cart"></i>
+          <span class="ms-2">€ {{ cartLogic.totalPrice }}</span>
+        </a>
+        <router-link v-else class="btn btn_cart_md ms-3" :to="{ name: 'restaurant-menu', params: { slug: cartLogic.restaurantSlug }}">
+          <i class="fas fa-shopping-cart"></i>
+          <span class="ms-2">€ {{ cartLogic.totalPrice }}</span>
+        </router-link>
         
+        <!-- admin btn -->
         <a class="ms-3" href="http://127.0.0.1:8000/admin">
             <div class="btn">
                 <i class="fa-solid fa-user"></i>
@@ -23,47 +42,6 @@
       </div>
 
     </nav>
-      <!-- hamburger button -->
-      <!-- <b-navbar-toggle class="toggle" target="nav-collapse">
-        <div class="plate plate4" onclick="this.classList.toggle('active')">
-          <svg
-            class="burger"
-            version="1.1"
-            height="100"
-            width="100"
-            viewBox="0 0 100 100"
-          >
-            <path class="line line1" d="M 50,35 H 30" />
-            <path class="line line2" d="M 50,35 H 70" />
-            <path class="line line3" d="M 50,50 H 30" />
-            <path class="line line4" d="M 50,50 H 70" />
-            <path class="line line5" d="M 50,65 H 30" />
-            <path class="line line6" d="M 50,65 H 70" />
-          </svg>
-        </div>
-      </b-navbar-toggle>
-
-      <b-collapse class="buttons" id="nav-collapse" is-nav>
-        <b-navbar-nav> -->
-
-          <!-- tile carrello -->
-          <!-- <b-nav-text>
-            <router-link class="nav-link" :to="{ name: 'restaurant-menu', params: { slug: cartLogic.restaurantSlug }}">
-              <i class="fas fa-shopping-cart"></i>
-              <span class="ms-2">€ {{ cartLogic.totalPrice }}</span>
-            </router-link>
-          </b-nav-text> -->
-
-          <!-- tile user backoffice -->
-          <!-- <b-nav-text>
-            <a class="nav-link" href="http://127.0.0.1:8000/admin">
-              <i class="fa-solid fa-user"></i>
-            </a>
-          </b-nav-text>
-
-
-        </b-navbar-nav>
-      </b-collapse> -->
   </div>
 </template>
 
@@ -81,7 +59,7 @@ export default {
     };
   },
   components: {
-    NavCart
+    NavCart,
   },
   methods: {
     updateScroll() {
@@ -101,8 +79,6 @@ export default {
 .container {
 
   nav {
-    position: relative;
-
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -120,8 +96,9 @@ export default {
       }
     }
 
+    /* bottoni a destra */
     .navbar-right {
-      
+
       .btn {
         background-color: $_primary;
         color: $_white;
@@ -130,122 +107,99 @@ export default {
           box-shadow: none;
         }
       }
-      
+
+      .btn_cart_md {
+        display: none;
+      }
+
       .cart_dropdown {
-        position: absolute;
-        top: 5rem;
-        left: 0;
+        position: fixed;
+        inset: 0;
+        z-index: 100;
 
-        width: 100%;
-      }
-    }
+        background-color: $_white;
+        opacity: 1;
 
-
-
-
-
-
-
-
-
-
-    /* hamburger button */
-    .navbar-toggler.toggle {
-      background-color: $_primary;
-
-      padding: 0;
-      border: none;
-
-      &:focus {
-        box-shadow: none;
+        animation: pop-in 0.5s;
+        -webkit-animation: pop-in 0.5s;
+        -moz-animation: pop-in 0.5s;
+        -ms-animation: pop-in 0.5s;
       }
 
-      /* hamburger icon animation */
-      /* svg {
-        height: 2.4rem;
-        width: 2.4rem;
-        margin: 0 0.4rem;
+      @-webkit-keyframes pop-in {
+        0% { opacity: 0; -webkit-transform: scale(0.5); }
+        100% { opacity: 1; -webkit-transform: scale(1); }
+      }
+      @-moz-keyframes pop-in {
+        0% { opacity: 0; -moz-transform: scale(0.5); }
+        100% { opacity: 1; -moz-transform: scale(1); }
+      }
+      @keyframes pop-in {
+        0% { opacity: 0; transform: scale(0.5); }
+        100% { opacity: 1; transform: scale(1); }
       }
 
-      .line {
-        fill: none;
-        stroke: $_white;
-        stroke-width: 6px;
-        stroke-linecap: round;
-        stroke-linejoin: round;
-        transform-origin: 50%;
-        transition: stroke-dasharray 500ms 200ms, stroke-dashoffset 500ms 200ms,
-          transform 500ms 200ms;
-      }
+      .dropdown_container {
+        background-color: $_white;
 
-      .plate4 .line {
-        transform-origin: 50%;
-        transition: transform 400ms 100ms;
-      }
+        border-radius: 0.4rem;
 
-      .active.plate4 .line1 {
-        transform: translateX(18px) translateY(-3px) rotate(-45deg) scale(0.7);
-      }
-
-      .active.plate4 .line2 {
-        transform: translateX(-18px) translateY(-3px) rotate(45deg) scale(0.7);
-      }
-
-      .active.plate4 .line3 {
-        transform: translateY(0px) rotate(45deg) scale(0.7);
-      }
-
-      .active.plate4 .line4 {
-        transform: translateY(0px) rotate(-45deg) scale(0.7);
-      }
-
-      .active.plate4 .line5 {
-        transform: translateX(18px) translateY(3px) rotate(45deg) scale(0.7);
-      }
-
-      .active.plate4 .line6 {
-        transform: translateX(-18px) translateY(3px) rotate(-45deg) scale(0.7);
-      }
-
-      .active.plate4 .x {
-        transition: transform 400ms 100ms;
-        transform: scale(1);
-      } */
-    }
-
-    /* .navbar-collapse.buttons {
-      justify-content: flex-end;
-      border: none;
-
-      .navbar-text {
-        padding: 1rem 0 0;
-
-        a.nav-link {
-          height: 2.25rem;
-
+        .dropdown_header {
           display: flex;
-          justify-content: center;
-          align-items: center;
+          justify-content: space-between;
 
           background-color: $_primary;
           color: $_white;
+          padding: 1rem 2rem;
 
-          padding: 0;
-          border-radius: .4rem;
-
-          span {
-            font-size: .9rem;
-            font-weight: 900;
-
-            text-decoration: none;
+          h2 {
+            margin: 0;
           }
-          
-          i {
-            font-size: .9rem;
+
+          svg.fa-xmark {
+            font-size: 1.4rem;
           }
         }
       }
-    } */
+    }
+  }
+}
+
+//00000000 MEDIA QUERIES 00000000
+@media (min-width: 768px) {
+  .container {
+
+    nav {
+    padding: 1.1rem 0;
+
+      /* icona deliveboo */
+      a.navbar-brand.logo {
+        height: 100%;
+
+        img {
+          height: 2.6rem;
+        }
+      }
+
+      .navbar-right {
+
+        .btn {
+          padding: .6rem 1rem;
+        }
+
+        svg {
+          font-size: 1rem;
+        }
+
+        .btn_cart_sm {
+          display: none;
+        }
+  
+        .btn_cart_md {
+          display: block;
+        }
+      }
+    }
   }
 }
 </style>

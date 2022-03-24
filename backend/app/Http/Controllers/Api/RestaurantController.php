@@ -13,7 +13,7 @@ use Illuminate\Pagination\LengthAwarePaginator as Paginator;
 class RestaurantController extends Controller
 {
     public function index(){
-        $restaurants = Restaurant::with('categories')->paginate(10);
+        $restaurants = Restaurant::with('categories')->paginate(12);
         return response()->json($restaurants);
     }
 
@@ -28,7 +28,7 @@ class RestaurantController extends Controller
         ->get();
 
         $total = count($totalRestaurants);
-        $per_page = 10;
+        $per_page = 12;
         $current_page = $data['page'];
 
         $starting_point = ($current_page * $per_page) - $per_page;
