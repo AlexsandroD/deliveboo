@@ -108,8 +108,8 @@ export default {
 
 .before-enter {
   opacity: 0;
-  transform: translateX(80%);
-  transition: all 0.5s ease-in-out;
+  transform: translateX(20%);
+  transition: all 1s ease-in-out;
 }
 
 .enter {

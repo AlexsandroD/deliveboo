@@ -1,5 +1,5 @@
 <template>
-  <div class="col">
+  <div class="col overflow-hidden">
     <div v-scrollanimation class="card--tomato">
       <div class="top_image--image-1"></div>
       <div class="text">
@@ -125,7 +125,7 @@ export default {
 .before-enter {
   opacity: 0;
   transform: translateX(-80%);
-  transition: all 0.5s ease-in-out;
+  transition: all 1s ease-in-out;
 }
 
 .enter {
@@ -136,7 +136,7 @@ export default {
 .before-enter-2 {
   opacity: 0;
   transform: translateY(-250px);
-  transition: all 0.5s ease-in-out;
+  transition: all 1s ease-in-out;
 }
 
 .enter-2 {
@@ -147,7 +147,7 @@ export default {
 .before-enter-3 {
   opacity: 0;
   transform: translateX(100%);
-  transition: all 0.5s ease-in-out;
+  transition: all 1s ease-in-out;
 }
 
 .enter-3 {

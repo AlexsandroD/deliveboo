@@ -134,7 +134,7 @@ img {
   background-color: $_blue !important;
 }
 .thailandese {
-  background-color: Yellow !important;
+  background-color: rgba(255, 153, 0, 0.863) !important;
 }
 .sushi {
   background-color: $_lightBlue !important;
