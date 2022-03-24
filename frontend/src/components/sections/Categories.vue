@@ -1,7 +1,10 @@
 <template>
-<div>
+<div class="my_container-categories">
     <div class="title">
         <h1>Cosa stai cercando?</h1>
+    </div>
+    <div class="ms_serch-bar px-4 mt-2">
+        <input class="w-100" type="text" v-model="variables.search" placeholder="Cerca ristorante">
     </div>
     <b-form-group>
         <ul class="edit-container">
@@ -37,7 +40,7 @@ export default {
 
 <style lang = "scss" scoped>
 @import '../../assets/style/variables.scss';
-.container-fluid{
+.my_container-categories{
     .title{
         h1{
             margin-top: -50px;
@@ -45,10 +48,32 @@ export default {
             background-color: $_cherry;
             color: white;
             padding: 0.4rem 1rem;
+            clip-path: polygon(0 10%, 97% 0, 100% 100%, 0% 100%);
+            /* text-transform: uppercase; */
         }
         color: $_blue;
         /* text-shadow: 2px 2px 4px black; */
         padding: 20px 0;
+        
+    }
+
+    .ms_serch-bar > input {
+        border: 1px solid $_primary;
+        border-radius: .4rem;
+        padding: 5px 0 5px 10px;
+
+        &::placeholder {
+            font-size: 1.1rem;
+        }
+
+        &:focus {
+            border-color: $_cherry;
+            box-shadow: 0 0 0 0.15rem rgba(192, 29, 100, .50);
+        }
+
+        &:focus-visible {
+            outline:none;
+        }
     }
 
     p.under-title {
@@ -60,13 +85,13 @@ export default {
     .edit-container{
         display: flex;
         justify-content: center;
-        margin: 30px 0 27px 0;
+        margin: 15px 0 27px 0;
     }
     ul.edit-container {
         /* @include flex-center; */
         flex-wrap: wrap;
         list-style: none;
-        padding: .6rem 0 0;
+        padding: 0 0 0;
 
         li{
             display: inline;
@@ -124,6 +149,10 @@ export default {
                 display: absolute;
                 position: absolute;
                 opacity: 0;
+                &:hover + label{
+                    background-color: $_cherry;
+                    border: 1.5px solid $_cherry;
+                }
                 
                 &:checked + label {
                     /* background-color: $_primary; */
@@ -144,6 +173,28 @@ export default {
                     transform: rotate(-360deg);
                     transition: transform .3s ease-in-out;
                 }
+            }
+        }
+    }
+}
+@media screen and (max-width: 329px) {
+    .my_container{
+        margin-top: 15px;
+        ul.edit-container{
+            margin: 30px 0 0 0;
+            padding: 0;
+            /* justify-content: flex-start; */
+
+            li{
+                margin: 0;
+                padding: 0;
+                label {
+                    margin: 1px;
+                    padding: 0.2rem 0;
+
+                    font-weight: 400;
+                    width: 7.3rem;
+                }                
             }
         }
     }
