@@ -8,17 +8,17 @@
           <p>{{ dish.description }}</p>
           <div
             class="
-              row row-cols-2
+              row row-cols-lg-2
               my-2
               d-flex
               justify-content-between
               align-baseline
             "
           >
-            <div class="col">
+            <div class="col-4">
               <p class="fw-bold">&euro; {{ dish.price }}</p>
             </div>
-            <div class="col">
+            <div class="col-8">
               <div class="qty d-flex">
                 <span
                   class="my_minus"
@@ -133,20 +133,18 @@ img {
   -webkit-box-shadow: -5px 28px 31px -8px rgba(0, 0, 0, 0.35);
   box-shadow: -5px 28px 31px -8px rgba(0, 0, 0, 0.35);
 }
-.qty {
-  transition: 0.2s;
-}
-.qty .count {
+.count {
   color: $_primary;
   display: inline-block;
   vertical-align: top;
-  font-size: 25px;
+  font-size: 20px;
   font-weight: 700;
   line-height: 30px;
   padding: 0 2px;
   text-align: center;
-  margin: 0 5px;
+  transition: 0.2s;
 }
+
 .my_minus,
 .my_plus {
   display: flex;

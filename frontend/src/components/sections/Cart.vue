@@ -303,6 +303,8 @@ img {
 }
 
 /* ///animation section   */
+
+/* minu and plu buttons section  */
 .my_minus,
 .my_plus {
   display: flex;
@@ -339,4 +341,5 @@ img {
   text-align: center;
   margin: 0 5px;
 }
+/*//// minu and plu buttons section  */
 </style>
