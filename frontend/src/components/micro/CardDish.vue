@@ -1,5 +1,5 @@
 <template>
-  <div v-if="dish.visible" class="card h-100 p-2">
+  <div v-if="dish.visible" class="card h-100">
     <div class="row h-100">
       <div class="col-6">
         <div class="card-block h-100 p-1 text-start">
@@ -22,9 +22,9 @@
               <div class="qty d-flex">
                 <span
                   class="my_minus"
-                  @click="cartLogic.removeCartItem(dish.dishId)"
-                  ><i class="fa-solid fa-minus"></i>
-                </span>
+                  @click="cartLogic.removeCartItem(dish.id)"
+                  >-</span
+                >
                 <span class="count" name="qty" v-if="cartLogic.cart != null">{{
                   cartLogic.cart.filter((e) => e.dishId == dish.id).length > 0
                     ? cartLogic.cart.find((x) => x.dishId == dish.id).quantity
@@ -35,17 +35,16 @@
                   class="my_plus"
                   @click="
                     cartLogic.addCartItem(
-                      dish.dishId,
+                      dish.id,
                       dish.name,
                       dish.price,
-                      cartLogic.restaurantId,
-                      cartLogic.restaurantSlug,
-                      cartLogic.restaurantName
+                      restaurant.id,
+                      restaurant.slug,
+                      restaurant.name
                     )
                   "
+                  >+</span
                 >
-                  <i class="fa-solid fa-plus"></i>
-                </span>
               </div>
             </div>
           </div>
@@ -117,31 +116,6 @@ export default {
 
 <style lang = "scss" scoped>
 @import "../../assets/style/global.scss";
-.my_minus,
-.my_plus {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 20px;
-  height: 20px;
-  color: $_white;
-  background-color: $_darkGrey;
-  border-radius: 0.4rem;
-  margin: 0 5px;
-  transition: 0.3s;
-  padding: 15px;
-}
-
-.my_minus:active,
-.my_plus:active {
-  transform: scale(1.5);
-}
-
-.my_minus:hover,
-.my_plus:hover {
-  background-color: $_primary;
-}
-
 .my_img_container {
   overflow: hidden;
   width: 100%;
@@ -173,8 +147,30 @@ img {
   text-align: center;
   margin: 0 5px;
 }
-.qty .plus,
+.my_minus,
+.my_plus {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 20px;
+  height: 20px;
+  color: $_white;
+  background-color: $_darkGrey;
+  border-radius: 0.4rem;
+  margin: 0 5px;
+  transition: 0.3s;
+  padding: 15px;
+}
 
+.my_minus:active,
+.my_plus:active {
+  transform: scale(1.5);
+}
+
+.my_minus:hover,
+.my_plus:hover {
+  background-color: $_primary;
+}
 /*Prevent text selection*/
 span {
   -webkit-user-select: none;

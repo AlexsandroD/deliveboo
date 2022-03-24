@@ -31,7 +31,7 @@
           <div
             class="row d-flex justify-content-between w-100 align-items-center"
           >
-            <div class="col-12 col-lg-8 col-xl-8">
+            <div class="col-12 col-lg-6 col-xl-7">
               <div class="row d-flex">
                 <div
                   class="col col-lg-12 col-xl-9 d-flex align-items-center my-3"
@@ -71,7 +71,7 @@
                 </div>
               </div>
             </div>
-            <span class="col-12 col-lg-4 col-xl-4 text-end"
+            <span class="col-12 col-lg-4 col-xl-3 text-end"
               >&euro; {{ returnDishTotal(dish.dishPrice, dish.quantity) }}</span
             >
           </div>
