@@ -96,8 +96,9 @@
         <span>totale:</span><span>&euro; {{ cartLogic.totalPrice }}</span>
       </p>
     </div>
-    <div class="card-body" v-else>
-      <img
+    <div class="card-body my_display" v-else>
+      <img src="../../assets/images/cards/download.png" alt="epsty cart" />
+      <!-- <img
         class="animation_img d-none d-xl-block"
         src="../../assets/images/cards/avocado.svg"
         alt=""
@@ -111,7 +112,7 @@
             <div class="right" :style="right" />
           </div>
         </div>
-      </div>
+      </div> -->
     </div>
     <b-button
       v-if="
@@ -204,13 +205,19 @@ export default {
 
 <style lang = "scss" scoped>
 @import "../../assets/style/global.scss";
+
+.my_display {
+  display: grid;
+  place-items: center;
+}
+
 img {
+  width: 70%;
   object-fit: cover;
 }
 
 .my_card {
   border-radius: 0.4rem;
-  min-height: 300px;
 }
 
 .my_btn {
