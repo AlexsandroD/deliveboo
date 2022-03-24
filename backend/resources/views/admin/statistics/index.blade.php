@@ -184,7 +184,7 @@
         labels: ordersLabels.reverse(),
         datasets: [
             {
-                label: 'Numero ordini anno corrente',
+                label: 'Numero ordini ultimi 12 mesi',
                 backgroundColor: '#D0EB99',
                 borderColor: '#D0EB99',
                 data: ordersCountData.reverse(),
