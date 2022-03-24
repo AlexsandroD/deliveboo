@@ -69,6 +69,7 @@ export default {
         .get("http://127.0.0.1:8000/api/filters", {
           params: {
             categories: this.variables.categoriesValue,
+            search: this.variables.search,
             page: this.variables.page,
           },
         })
@@ -82,24 +83,24 @@ export default {
   watch: {
     "variables.categoriesValue"() {
       this.variables.pages = 1;
-      if (this.variables.categoriesValue.length > 0) {
+      if (this.variables.categoriesValue.length > 0 || this.variables.search != '') {
         this.restaurantsFilter();
       } else {
         this.getRestaurant();
       }
     },
     "variables.page"() {
-      if (this.variables.categoriesValue.length > 0) {
+      if (this.variables.categoriesValue.length > 0 || this.variables.search != '') {
         this.restaurantsFilter();
       } else {
         this.getRestaurant();
       }
     },
     "variables.search"(){
-        if (this.variables.categoriesValue.length > 0 || this.variables.search != null) {
-        this.restaurantsFilter();
+      if (this.variables.categoriesValue.length > 0 || this.variables.search != '') {
+          this.restaurantsFilter();
         } else {
-        this.getRestaurant();
+          this.getRestaurant();
       }
     },
   },

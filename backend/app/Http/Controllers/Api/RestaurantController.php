@@ -20,12 +20,23 @@ class RestaurantController extends Controller
     public function filterCategory(Request $request){
         $data = $request->all();
 
-        $totalRestaurants = Restaurant::select('address','city','country','description','email','image_cover','name','phone','post_code','restaurant_id as id','slug')
-        ->join('category_restaurant','restaurants.id','=','category_restaurant.restaurant_id')
-        ->whereIn('category_restaurant.category_id',$data['categories'])
-        ->distinct()
-        ->with('categories')
-        ->get();
+        if (isset($data['categories'])) {
+            $totalRestaurants = Restaurant::select('address','city','country','description','email','image_cover','name','phone','post_code','restaurant_id as id','slug')
+            ->join('category_restaurant','restaurants.id','=','category_restaurant.restaurant_id')
+            ->whereIn('category_restaurant.category_id',$data['categories'])
+            ->Where('name','like','%'.$data['search'].'%')
+            ->distinct()
+            ->with('categories')
+            ->get();
+        } else {
+            $totalRestaurants = Restaurant::select('address','city','country','description','email','image_cover','name','phone','post_code','restaurant_id as id','slug')
+            ->join('category_restaurant','restaurants.id','=','category_restaurant.restaurant_id')
+            ->Where('name','like','%'.$data['search'].'%')
+            ->distinct()
+            ->with('categories')
+            ->get();
+        }
+
 
         $total = count($totalRestaurants);
         $per_page = 10;
