@@ -5,7 +5,7 @@
     </div>
 
     <div
-      class="card-body p-2"
+      class="card-body p-3"
       v-if="cartLogic.restaurantId == cartLogic.newRestaurantId"
     >
       <ul class="list-group list-group-flush">
@@ -311,7 +311,7 @@ img {
   height: 20px;
   color: $_white;
   background-color: $_primary;
-  border-radius: 50%;
+  border-radius: 0.4rem;
   margin: 0 5px;
   transition: 0.3s;
   padding: 15px;
