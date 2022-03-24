@@ -5,7 +5,7 @@
     </div>
 
     <div
-      class="card-body p-2"
+      class="card-body p-3"
       v-if="cartLogic.restaurantId == cartLogic.newRestaurantId"
     >
       <ul class="list-group list-group-flush">
@@ -21,21 +21,33 @@
             my-3
           "
         >
-          <span class="fw-bold">{{ cartLogic.restaurantName }}</span>
+          <h3 class="fw-bold">{{ cartLogic.restaurantName }}</h3>
         </li>
         <li
           v-for="dish in cartLogic.cart"
           :key="dish.dishId"
           class="list-group-item d-flex justify-content-between px-0 my-2"
         >
-          <div class="row d-flex justify-content-between w-100">
-            <div class="col-12 col-lg-9">
-              <div class="row row-cols-1 row-cols-lg-2">
-                <div class="col d-flex align-items-center">
+          <div
+            class="row d-flex justify-content-between w-100 align-items-center"
+          >
+            <div class="col-12 col-lg-6 col-xl-7">
+              <div class="row d-flex">
+                <div
+                  class="col col-lg-12 col-xl-9 d-flex align-items-center my-3"
+                >
                   <span class="count">{{ dish.quantity }}</span>
                   {{ dish.name }}
                 </div>
-                <div class="col d-flex">
+                <div
+                  class="
+                    col col-lg-12 col-xl-3
+                    text-lg-center
+                    d-flex
+                    align-items-center
+                    mb-2
+                  "
+                >
                   <span
                     class="my_minus"
                     @click="cartLogic.removeCartItem(dish.dishId)"
@@ -59,7 +71,7 @@
                 </div>
               </div>
             </div>
-            <span id="price_item" class="col-12 col-lg-3"
+            <span class="col-12 col-lg-4 col-xl-3 text-end"
               >&euro; {{ returnDishTotal(dish.dishPrice, dish.quantity) }}</span
             >
           </div>
@@ -85,8 +97,13 @@
       </p>
     </div>
     <div class="card-body" v-else>
-      <!-- <div class="box">
-        <div class="wrapper">
+      <img
+        class="animation_img d-none d-xl-block"
+        src="../../assets/images/cards/avocado.svg"
+        alt=""
+      />
+      <div class="box d-none d-xl-block">
+        <div class="wrapper p-4">
           <div class="inner-box-1">
             <div class="left" :style="left" />
           </div>
@@ -94,7 +111,7 @@
             <div class="right" :style="right" />
           </div>
         </div>
-      </div> -->
+      </div>
     </div>
     <b-button
       v-if="
@@ -193,6 +210,7 @@ img {
 
 .my_card {
   border-radius: 0.4rem;
+  min-height: 300px;
 }
 
 .my_btn {
@@ -222,14 +240,16 @@ img {
   width: 100%;
   height: 50px;
   position: relative;
+  top: 25%;
+  left: 5%;
 }
 .wrapper {
 }
 
 .inner-box-1 {
   background-color: #fafafa;
-  width: 50px;
-  height: 50px;
+  width: 30px;
+  height: 30px;
   border-radius: 40%;
   position: absolute;
   top: 0;
@@ -242,14 +262,14 @@ img {
 }
 .inner-box-2 {
   background-color: #fafafa;
-  width: 50px;
-  height: 50px;
+  width: 30px;
+  height: 30px;
   border-radius: 40%;
   position: absolute;
   top: 0;
   bottom: 10px;
-  left: 10%;
-  right: 10%;
+  left: 32%;
+  right: 32%;
   padding: 15px;
   margin: 0 20px;
   border: solid 1px black;
@@ -261,17 +281,30 @@ img {
   position: absolute;
   border: solid 1px black;
 
-  height: 20px;
-  width: 20px;
+  height: 15px;
+  width: 15px;
 }
 .right {
   background: $_primary;
   border-radius: 50%;
   border: solid 1px black;
   position: absolute;
-  height: 20px;
-  width: 20px;
+  height: 15px;
+  width: 15px;
 }
+
+.animation_img {
+  width: 60%;
+  position: absolute;
+  top: 20%;
+  bottom: 0;
+  right: 0;
+  left: 20%;
+}
+
+/* ///animation section   */
+
+/* minu and plu buttons section  */
 .my_minus,
 .my_plus {
   display: flex;
@@ -281,7 +314,7 @@ img {
   height: 20px;
   color: $_white;
   background-color: $_primary;
-  border-radius: 50%;
+  border-radius: 0.4rem;
   margin: 0 5px;
   transition: 0.3s;
   padding: 15px;
@@ -308,4 +341,5 @@ img {
   text-align: center;
   margin: 0 5px;
 }
+/*//// minu and plu buttons section  */
 </style>

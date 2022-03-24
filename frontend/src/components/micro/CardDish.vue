@@ -1,5 +1,5 @@
 <template>
-  <div v-if="dish.visible" class="card h-100">
+  <div v-if="dish.visible" class="card h-100 p-2">
     <div class="row h-100">
       <div class="col-6">
         <div class="card-block h-100 p-1 text-start">
@@ -8,20 +8,20 @@
           <p>{{ dish.description }}</p>
           <div
             class="
-              row row-cols-2
+              row row-cols-lg-2
               my-2
               d-flex
               justify-content-between
               align-baseline
             "
           >
-            <div class="col">
+            <div class="col-4">
               <p class="fw-bold">&euro; {{ dish.price }}</p>
             </div>
-            <div class="col">
+            <div class="col-8">
               <div class="qty d-flex">
                 <span
-                  class="minus bg-dark"
+                  class="my_minus"
                   @click="cartLogic.removeCartItem(dish.id)"
                   >-</span
                 >
@@ -32,7 +32,7 @@
                 }}</span>
                 <span class="count" name="qty" v-else>0</span>
                 <span
-                  class="plus bg-dark"
+                  class="my_plus"
                   @click="
                     cartLogic.addCartItem(
                       dish.id,
@@ -133,58 +133,41 @@ img {
   -webkit-box-shadow: -5px 28px 31px -8px rgba(0, 0, 0, 0.35);
   box-shadow: -5px 28px 31px -8px rgba(0, 0, 0, 0.35);
 }
-.qty {
-  transition: 0.2s;
-}
-.qty .count {
+.count {
   color: $_primary;
   display: inline-block;
   vertical-align: top;
-  font-size: 25px;
+  font-size: 20px;
   font-weight: 700;
   line-height: 30px;
   padding: 0 2px;
   text-align: center;
-  margin: 0 5px;
-}
-.qty .plus {
-  cursor: pointer;
-  display: inline-block;
-  vertical-align: top;
-  color: white;
-  width: 30px;
-  height: 30px;
-  font: 30px/1 Arial, sans-serif;
-  text-align: center;
-  border-radius: 10px;
-}
-.qty .minus {
-  cursor: pointer;
-  display: inline-block;
-  vertical-align: top;
-  color: white;
-  width: 30px;
-  height: 30px;
-  font: 30px/1 Arial, sans-serif;
-  text-align: center;
-  border-radius: 10px;
-  background-clip: padding-box;
+  transition: 0.2s;
 }
 
-div {
-  text-align: center;
+.my_minus,
+.my_plus {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 20px;
+  height: 20px;
+  color: $_white;
+  background-color: $_darkGrey;
+  border-radius: 0.4rem;
+  margin: 0 5px;
+  transition: 0.3s;
+  padding: 15px;
 }
-.minus:hover {
-  background-color: $_primary !important;
+
+.my_minus:active,
+.my_plus:active {
+  transform: scale(1.5);
 }
-.plus:hover {
-  background-color: $_primary !important;
-}
-.minus:active {
-  transform: scale(0.98) !important;
-}
-.plus:active {
-  transform: scale(0.98) !important;
+
+.my_minus:hover,
+.my_plus:hover {
+  background-color: $_primary;
 }
 /*Prevent text selection*/
 span {

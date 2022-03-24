@@ -57,13 +57,13 @@ export default {
 
 .my_card {
   min-width: 100px;
-  transition: 0.2s;
+  transition: 0.6s;
   height: 100%;
   position: relative;
-  .mb{
+  .mb {
     margin-bottom: 33px;
   }
-  .badge{
+  .badge {
     background-color: $_darkGrey;
     position: absolute;
     bottom: 0.7rem;
@@ -72,10 +72,10 @@ export default {
 }
 
 .my_card:hover {
-  -webkit-box-shadow: 5px 5px 6px -1px rgba(0, 0, 0, 0.4);
-  box-shadow: 5px 5px 6px -1px rgba(0, 0, 0, 0.4);
+  -webkit-box-shadow: -5px 28px 31px -8px rgba(0, 0, 0, 0.35);
+  box-shadow: -5px 28px 31px -8px rgba(0, 0, 0, 0.35);
   position: relative;
-  animation: card 0.2s linear forwards;
+  animation: card 0.4s linear forwards;
 }
 
 @keyframes card {

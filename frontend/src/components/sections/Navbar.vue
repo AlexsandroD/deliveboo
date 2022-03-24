@@ -5,26 +5,25 @@
       <b-navbar-brand class="logo" href="http://127.0.0.1:8080/">
         <img src="../../assets/images/logo/logo-scritta-color.png" alt="logo" />
       </b-navbar-brand>
-      
+
       <div class="navbar-right">
         <button class="btn btn_cart_sm" @click="showCart = !showCart">
-            <i class="fa-solid fa-cart-shopping"></i>
+          <i class="fa-solid fa-cart-shopping"></i>
         </button>
 
-        <div class="cart_dropdown" v-if="!showCart">
-          <NavCart />
+        <div class="cart_dropdown" v-if="showCart">
+          <!-- <NavCart /> -->
         </div>
-        
+
         <a class="ms-3" href="http://127.0.0.1:8000/admin">
-            <div class="btn">
-                <i class="fa-solid fa-user"></i>
-            </div>
+          <div class="btn">
+            <i class="fa-solid fa-user"></i>
+          </div>
         </a>
       </div>
-
     </nav>
-      <!-- hamburger button -->
-      <!-- <b-navbar-toggle class="toggle" target="nav-collapse">
+    <!-- hamburger button -->
+    <!-- <b-navbar-toggle class="toggle" target="nav-collapse">
         <div class="plate plate4" onclick="this.classList.toggle('active')">
           <svg
             class="burger"
@@ -46,16 +45,16 @@
       <b-collapse class="buttons" id="nav-collapse" is-nav>
         <b-navbar-nav> -->
 
-          <!-- tile carrello -->
-          <!-- <b-nav-text>
+    <!-- tile carrello -->
+    <!-- <b-nav-text>
             <router-link class="nav-link" :to="{ name: 'restaurant-menu', params: { slug: cartLogic.restaurantSlug }}">
               <i class="fas fa-shopping-cart"></i>
               <span class="ms-2">€ {{ cartLogic.totalPrice }}</span>
             </router-link>
           </b-nav-text> -->
 
-          <!-- tile user backoffice -->
-          <!-- <b-nav-text>
+    <!-- tile user backoffice -->
+    <!-- <b-nav-text>
             <a class="nav-link" href="http://127.0.0.1:8000/admin">
               <i class="fa-solid fa-user"></i>
             </a>
@@ -68,7 +67,7 @@
 </template>
 
 <script>
-import NavCart from "../sections/NavCart.vue";
+// import NavCart from "../sections/NavCart.vue";
 import cartLogic from "../../cartLogic";
 
 export default {
@@ -81,7 +80,7 @@ export default {
     };
   },
   components: {
-    NavCart
+    // NavCart
   },
   methods: {
     updateScroll() {
@@ -99,14 +98,13 @@ export default {
 @import "../../assets/style/variables.scss";
 
 .container {
-
   nav {
     position: relative;
 
     display: flex;
     justify-content: space-between;
     align-items: center;
-    
+
     padding: 1rem 0;
 
     /* icona deliveboo */
@@ -121,7 +119,6 @@ export default {
     }
 
     .navbar-right {
-      
       .btn {
         background-color: $_primary;
         color: $_white;
@@ -130,7 +127,7 @@ export default {
           box-shadow: none;
         }
       }
-      
+
       .cart_dropdown {
         position: absolute;
         top: 5rem;
@@ -139,15 +136,6 @@ export default {
         width: 100%;
       }
     }
-
-
-
-
-
-
-
-
-
 
     /* hamburger button */
     .navbar-toggler.toggle {
