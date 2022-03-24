@@ -45,7 +45,7 @@
 </template>
 
 <script>
-// import NavCart from "../sections/NavCart.vue";
+import NavCart from "../sections/NavCart.vue";
 import cartLogic from "../../cartLogic";
 
 export default {
