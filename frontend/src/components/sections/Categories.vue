@@ -3,6 +3,10 @@
     <div class="title">
         <h1>Cosa stai cercando?</h1>
     </div>
+    <div class="serch-bar">
+        <input type="text" v-model="variables.search">
+        <label for=""></label>
+    </div>
     <b-form-group>
         <ul class="edit-container">
             <li v-for="category in categories" :key="category.id">

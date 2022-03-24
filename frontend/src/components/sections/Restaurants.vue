@@ -95,6 +95,13 @@ export default {
         this.getRestaurant();
       }
     },
+    "variables.search"(){
+        if (this.variables.categoriesValue.length > 0 || this.variables.search != null) {
+        this.restaurantsFilter();
+        } else {
+        this.getRestaurant();
+      }
+    },
   },
 };
 </script>
