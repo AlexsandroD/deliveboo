@@ -1,6 +1,8 @@
 <template>
-  <div class="my_container p-4">
-    <div>
+  <div class="my_container p-4 h-100">
+
+    <div v-if="restaurants.length > 0">
+
       <div class="row row-cols-1 row-cols-sm-2 row-cols-md-4 row-cols-lg-3 row-cols-xl-4">
         <CardRestaurant
           v-for="restaurant in restaurants"
@@ -8,6 +10,7 @@
           :restaurant="restaurant"
         />
       </div>
+
       <div class="row">
         <div class="overflow-auto">
           <div class="d-flex justify-content-center mt-4">
@@ -22,7 +25,14 @@
           </div>
         </div>
       </div>
+
     </div>
+
+    <div v-else class="d-flex flex-column justify-content-center align-items-center h-100">
+      <img class="w-25" src="../../assets/images/restaurant/sad-restaurant.png" alt="sad restaurant">
+      <h3 class="fw-bold mt-2">Ops... Nessun risultato</h3>
+    </div>
+
   </div>
 </template>
 
@@ -113,6 +123,7 @@ export default {
 .my_container {
   background-color: $_pink;
   border-radius: 0.4rem;
+  min-height: 400px;
 }
 
 .customPagination > .page-item {
