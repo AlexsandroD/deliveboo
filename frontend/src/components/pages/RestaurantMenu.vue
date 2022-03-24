@@ -56,7 +56,7 @@
           </div>
         </div>
       </div>
-      <div class="col-sm-5 col-md-3 d-none d-sm-block">
+      <div class="col-sm-5 col-md-3 d-none d-md-block">
         <div v-if="cartLogic.cartError">
           <transition name="modal">
             <div class="modal-mask">
