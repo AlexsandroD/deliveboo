@@ -60,12 +60,17 @@
     <!-- totale piatti -->
     <div
       class="order_total text-end mb-4"
-      v-if="cartLogic.restaurantId == cartLogic.newRestaurantId &&
-          cartLogic.cart.length > 0"
+      v-if="
+        cartLogic.restaurantId == cartLogic.newRestaurantId &&
+        cartLogic.cart.length > 0
+      "
     >
       Totale &euro;{{ cartLogic.totalPrice }}
     </div>
-    <h4 class="empty_cart" v-else>Non hai ancora aggiunto piatti</h4>
+    <!-- <h4 class="empty_cart" v-else>Non hai ancora aggiunto piatti</h4> -->
+    <div v-else class="my_display">
+      <img src="../../assets/images/cards/download.png" alt="carrello vuoto" />
+    </div>
 
     <!-- svuota carrello -->
     <div class="d-flex justify-content-end">
@@ -160,7 +165,6 @@ export default {
       }
 
       .buttons {
-
         .btn_add_minum {
           width: 1.6rem;
           height: 1.6rem;
@@ -193,5 +197,16 @@ export default {
 
 //00000000 MEDIA QUERIES 00000000
 @media (min-width: 768px) {
+}
+
+.my_display {
+  display: grid;
+  place-items: center;
+  width: 100%;
+
+  img {
+    width: 70%;
+    object-fit: cover;
+  }
 }
 </style>
