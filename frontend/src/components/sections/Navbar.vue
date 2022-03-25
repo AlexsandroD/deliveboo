@@ -3,10 +3,18 @@
     <nav>
       <!-- logo -->
       <b-navbar-brand class="logo me-0" href="http://127.0.0.1:8080/">
-        <img v-if="scrollPosition < 100" src="../../assets/images/logo/logo-scritta-white.png" alt="logo" />
-        <img v-else src="../../assets/images/logo/logo-scritta-color.png" alt="logo" />
+        <img
+          v-if="scrollPosition < 100"
+          src="../../assets/images/logo/logo-scritta-white.png"
+          alt="logo"
+        />
+        <img
+          v-else
+          src="../../assets/images/logo/logo-scritta-color.png"
+          alt="logo"
+        />
       </b-navbar-brand>
-      
+
       <!-- btn cart sm -->
       <div class="navbar-right d-flex">
         <button class="btn btn_cart_sm" @click="showCart = !showCart">
@@ -31,11 +39,18 @@
           <i class="fas fa-shopping-cart"></i>
           <span class="ms-2">€ {{ cartLogic.totalPrice }}</span>
         </a>
-        <router-link v-else class="btn btn_cart_md ms-3" :to="{ name: 'restaurant-menu', params: { slug: cartLogic.restaurantSlug }}">
+        <router-link
+          v-else
+          class="btn btn_cart_md ms-3"
+          :to="{
+            name: 'restaurant-menu',
+            params: { slug: cartLogic.restaurantSlug },
+          }"
+        >
           <i class="fas fa-shopping-cart"></i>
           <span class="ms-2">€ {{ cartLogic.totalPrice }}</span>
         </router-link>
-        
+
         <!-- admin btn -->
         <a class="ms-3" href="http://127.0.0.1:8000/admin">
           <div class="btn">
@@ -99,19 +114,18 @@ export default {
 
     /* bottoni a destra */
     .navbar-right {
-
       .btn {
         background-color: $_primary;
         color: $_white;
 
-        padding: .2rem .6rem;
+        padding: 0.2rem 0.6rem;
 
         &:focus {
           box-shadow: none;
         }
 
         svg {
-          font-size: .8rem;
+          font-size: 0.8rem;
         }
       }
 
@@ -134,16 +148,34 @@ export default {
       }
 
       @-webkit-keyframes pop-in {
-        0% { opacity: 0; -webkit-transform: scale(0.5); }
-        100% { opacity: 1; -webkit-transform: scale(1); }
+        0% {
+          opacity: 0;
+          -webkit-transform: scale(0.5);
+        }
+        100% {
+          opacity: 1;
+          -webkit-transform: scale(1);
+        }
       }
       @-moz-keyframes pop-in {
-        0% { opacity: 0; -moz-transform: scale(0.5); }
-        100% { opacity: 1; -moz-transform: scale(1); }
+        0% {
+          opacity: 0;
+          -moz-transform: scale(0.5);
+        }
+        100% {
+          opacity: 1;
+          -moz-transform: scale(1);
+        }
       }
       @keyframes pop-in {
-        0% { opacity: 0; transform: scale(0.5); }
-        100% { opacity: 1; transform: scale(1); }
+        0% {
+          opacity: 0;
+          transform: scale(0.5);
+        }
+        100% {
+          opacity: 1;
+          transform: scale(1);
+        }
       }
 
       .dropdown_container {
@@ -173,11 +205,10 @@ export default {
 }
 
 //00000000 MEDIA QUERIES 00000000
-@media (min-width: 768px) {
+@media (min-width: 992px) {
   .container {
-
     nav {
-    padding: 1.1rem 0;
+      padding: 1.1rem 0;
 
       /* icona deliveboo */
       a.navbar-brand.logo {
@@ -189,14 +220,13 @@ export default {
       }
 
       .navbar-right {
-
         .btn {
-          padding: .6rem 1rem;
+          padding: 0.6rem 1rem;
 
           &.btn_cart_sm {
             display: none;
           }
-    
+
           &.btn_cart_md {
             display: block;
           }

@@ -59,7 +59,7 @@
           </div>
         </div>
 
-        <div class="col-sm-5 col-md-3 d-none d-lg-block">
+        <div v-if="width >= 992" class="col-sm-5 col-md-3">
           <!-- // cart  -->
           <Cart />
         </div>
@@ -146,12 +146,13 @@ export default {
     return {
       restaurant: {},
       cartLogic,
+      width: 0,
     };
   },
 
   created() {
     window.scrollTo({ top: 0, behavior: "smooth" });
-
+    window.addEventListener("resize", this.onResize);
     const axios = require("axios").default;
     axios
       .get(`http://127.0.0.1:8000/api/restaurants/${this.$route.params.slug}`)
@@ -159,6 +160,11 @@ export default {
         this.restaurant = response.data;
         this.cartLogic.newRestaurantId = this.restaurant.id;
       });
+  },
+  methods: {
+    onResize() {
+      this.width = window.innerWidth;
+    },
   },
 
   mounted() {
