@@ -4,7 +4,7 @@
       <!-- logo -->
       <b-navbar-brand class="logo me-0" href="http://127.0.0.1:8080/">
         <img
-          v-if="scrollPosition < 100"
+          v-if="scrollPosition < 105"
           src="../../assets/images/logo/logo-scritta-white.png"
           alt="logo"
         />
@@ -41,6 +41,7 @@
         </a>
         <router-link
           v-else
+          :class="scrollPosition < 105 ? 'box_shadow' : ''"
           class="btn btn_cart_md ms-3"
           :to="{
             name: 'restaurant-menu',
@@ -53,7 +54,7 @@
 
         <!-- admin btn -->
         <a class="ms-3" href="http://127.0.0.1:8000/admin">
-          <div class="btn">
+          <div :class="scrollPosition < 105 ? 'box_shadow' : ''" class="btn">
             <i class="fa-solid fa-user"></i>
           </div>
         </a>
@@ -92,6 +93,11 @@ export default {
 
 <style lang = "scss" scoped>
 @import "../../assets/style/variables.scss";
+
+.box_shadow {
+  -webkit-box-shadow: 5px 4px 16px -2px rgba(0, 0, 0, 0.53);
+  box-shadow: 5px 4px 16px -2px rgba(0, 0, 0, 0.53);
+}
 
 .container {
   nav {

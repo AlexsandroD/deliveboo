@@ -8,8 +8,8 @@
           Diventa un rider: flessibilità, ottimi guadagni e un mondo di vantaggi
           per te.
         </p>
-        <a class="btn" href="">Unisciti a noi</a>
       </div>
+      <a class="btn" href="">Unisciti a noi</a>
     </div>
 
     <div v-scrollanimation2 class="card--orange">
@@ -21,8 +21,8 @@
           occupiamo noi della consegna, così che la tua unica preoccupazione sia
           continuare a preparare il miglior cibo.
         </p>
-        <a class="btn" href="">Diventa nostro partner</a>
       </div>
+      <a class="btn" href="">Diventa nostro partner</a>
     </div>
 
     <div v-scrollanimation3 class="card--grey">
@@ -34,8 +34,8 @@
           un obiettivo ambizioso, come noi, e ci servono persone che ci aiutino
           a raggiungerlo.
         </p>
-        <a class="btn" href="">Scopri di piú</a>
       </div>
+      <a class="btn" href="">Scopri di piú</a>
     </div>
   </div>
 </template>
@@ -56,6 +56,8 @@ export default {
 
   .card {
     overflow: hidden;
+    display: flex;
+    flex-direction: column;
     &--tomato {
       @extend .card;
       background-color: $_tomato;
@@ -94,7 +96,7 @@ export default {
       flex-direction: column;
       justify-content: center;
       color: $_white;
-      padding: 30px;
+      padding: 20px;
 
       h2 {
         font-size: 2rem;
@@ -108,13 +110,14 @@ export default {
     }
 
     .btn {
+      align-self: start;
       text-align: center;
       width: 200px;
       border-radius: 5px;
       background-color: $_primary;
       color: $_white;
-      padding: 15px 5px;
-      margin-top: 10px;
+      padding: 10px 5px;
+      margin: 15px 15px;
       &:hover {
         background-color: $_darkerPrimaryHover;
       }
