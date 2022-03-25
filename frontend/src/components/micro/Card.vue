@@ -163,7 +163,7 @@ export default {
   }
 }
 
-@media screen and (min-width: 576px) {
+@media screen and (min-width: 768px) {
   .before-enter {
     opacity: 0;
     transform: translateX(-80%);
