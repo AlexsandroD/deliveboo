@@ -1,35 +1,32 @@
 <template>
-  <div  v-if="dish.visible" class="card h-100 p-2">
+  <div v-if="dish.visible" class="card h-100 p-2">
     <div class="row h-100">
       <div class="col-6">
         <div class="card-block h-100 p-1 text-start">
           <!--           <h4 class="card-title">Small card</h4> -->
           <h4 class="my-2">{{ dish.name }}</h4>
           <p>{{ dish.description }}</p>
-          <div
-            class="
-              row row-cols-lg-2
-              my-2
-              d-flex
-              justify-content-between
-              align-baseline
-            "
-          >
-            <div class="col-4">
+          <div class="row my-2 d-flex align-items-center">
+            <div class="col-5">
               <p class="fw-bold">&euro; {{ dish.price }}</p>
             </div>
-            <div class="col-8">
+            <div class="col-6">
               <div class="qty d-flex">
                 <span
                   class="my_minus"
                   @click="cartLogic.removeCartItem(dish.id)"
                   >-</span
                 >
-                <span class="count" name="qty" v-if="cartLogic.cart != null">{{
-                  cartLogic.cart.filter((e) => e.dishId == dish.id).length > 0
-                    ? cartLogic.cart.find((x) => x.dishId == dish.id).quantity
-                    : 0
-                }}</span>
+                <span
+                  class="count px-1"
+                  name="qty"
+                  v-if="cartLogic.cart != null"
+                  >{{
+                    cartLogic.cart.filter((e) => e.dishId == dish.id).length > 0
+                      ? cartLogic.cart.find((x) => x.dishId == dish.id).quantity
+                      : 0
+                  }}</span
+                >
                 <span class="count" name="qty" v-else>0</span>
                 <span
                   class="my_plus"
@@ -134,15 +131,14 @@ img {
   box-shadow: -5px 28px 31px -8px rgba(0, 0, 0, 0.35);
 }
 .count {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   color: $_primary;
-  display: inline-block;
-  vertical-align: top;
   font-size: 20px;
   font-weight: 700;
-  line-height: 30px;
-  padding: 0 2px;
-  text-align: center;
   transition: 0.2s;
+  padding: 0 3px;
 }
 
 .my_minus,
@@ -155,14 +151,14 @@ img {
   color: $_white;
   background-color: $_darkGrey;
   border-radius: 0.4rem;
-  margin: 0 5px;
   transition: 0.3s;
   padding: 15px;
+  font-size: 1.1rem;
 }
 
 .my_minus:active,
 .my_plus:active {
-  transform: scale(1.5);
+  transform: scale(1.3);
 }
 
 .my_minus:hover,
