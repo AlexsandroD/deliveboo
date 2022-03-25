@@ -8,14 +8,14 @@
           <div class="col-md-4">
             <img
               v-if="restaurant.image_cover"
-              class="card-img-top w-100 h-100 p-3 my_img"
+              class="card-img-top w-100 h-100 p-0 p-lg-3 my_img"
               :src="'http://127.0.0.1:8000/storage/' + restaurant.image_cover"
               :alt="restaurant.name"
             />
             <img
               v-else
               src="https://www.wecanjob.it/moduli/output_immagine.php?id=8444"
-              class="card-img-top w-100 h-100 my_img"
+              class="card-img-top w-100 h-100 my_img p-0 p-lg-3"
               :alt="restaurant.name"
             />
           </div>
