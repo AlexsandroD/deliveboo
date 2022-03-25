@@ -135,7 +135,7 @@ export default {
 
 .before-enter-2 {
   opacity: 0;
-  transform: translateY(-250px);
+  transform: translateX(100%);
   transition: all 1s ease-in-out;
 }
 
@@ -146,7 +146,7 @@ export default {
 
 .before-enter-3 {
   opacity: 0;
-  transform: translateX(100%);
+  transform: translateX(-80%);
   transition: all 1s ease-in-out;
 }
 
@@ -160,6 +160,41 @@ export default {
     display: grid;
     grid: auto-flow / 1fr 1fr 1fr;
     column-gap: 20px;
+  }
+}
+
+@media screen and (min-width: 576px) {
+  .before-enter {
+    opacity: 0;
+    transform: translateX(-80%);
+    transition: all 1s ease-in-out;
+  }
+
+  .enter {
+    opacity: 1;
+    transform: translateX(0);
+  }
+
+  .before-enter-2 {
+    opacity: 0;
+    transform: translateY(-250px);
+    transition: all 1s ease-in-out;
+  }
+
+  .enter-2 {
+    opacity: 1;
+    transform: translateY(0px);
+  }
+
+  .before-enter-3 {
+    opacity: 0;
+    transform: translateX(100%);
+    transition: all 1s ease-in-out;
+  }
+
+  .enter-3 {
+    opacity: 1;
+    transform: translateX(0px);
   }
 }
 </style>
