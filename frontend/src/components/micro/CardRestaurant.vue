@@ -26,6 +26,7 @@
             v-for="category in restaurant.categories"
             :key="category.id"
             class="card-text badge"
+            :class="category.name.toLowerCase()"
           >
             {{ category.name }}
           </p>
@@ -95,5 +96,50 @@ img {
 
 .card:hover img {
   transform: scale(1.3);
+}
+.halal {
+  background-color: pink !important;
+}
+.colazione {
+  background-color: orange !important;
+}
+.vegetariano {
+  background-color: green !important;
+}
+.messicano {
+  background-color: red !important;
+}
+.dessert {
+  background-color: purple !important;
+}
+.indiano {
+  background-color: brown !important;
+}
+.greco {
+  background-color: indigo !important;
+}
+.giapponese {
+  background-color: mediumseagreen !important;
+}
+.cinese {
+  background-color: rgb(118, 119, 168) !important;
+}
+.libanese {
+  background-color: $_darkGrey !important;
+}
+.americano {
+  background-color: turquoise !important;
+}
+.italiano {
+  background-color: $_blue !important;
+}
+.thailandese {
+  background-color: rgba(255, 153, 0, 0.863) !important;
+}
+.sushi {
+  background-color: $_lightBlue !important;
+}
+.pizza {
+  background-color: orchid !important;
 }
 </style>

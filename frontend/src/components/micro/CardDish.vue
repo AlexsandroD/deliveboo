@@ -1,5 +1,5 @@
 <template>
-  <div v-if="dish.visible" class="card h-100 p-2">
+  <div  v-if="dish.visible" class="card h-100 p-2">
     <div class="row h-100">
       <div class="col-6">
         <div class="card-block h-100 p-1 text-start">
