@@ -39,9 +39,9 @@ export default {
     height: 250px;
 
     img {
-      width: 60%;
+      width: 80%;
 
-      bottom: -7px;
+      bottom: -9px;
     }
   }
 }
@@ -50,7 +50,9 @@ export default {
   .hero-restaurant{
 
     img {
-      bottom: -9px;
+      width: 70%;
+
+      bottom: -11px;
     }
   }
 }

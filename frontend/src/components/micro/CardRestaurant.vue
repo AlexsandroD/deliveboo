@@ -97,6 +97,14 @@ img {
 .card:hover img {
   transform: scale(1.3);
 }
+
+.card-title {
+  font-family: 'Poppins', sans-serif;
+  color: $_black;
+}
+
+
+/* categories badge */
 .halal {
   background-color: pink !important;
 }

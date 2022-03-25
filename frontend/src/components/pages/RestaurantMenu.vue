@@ -1,9 +1,8 @@
 <template>
   <div>
     <HeroRestaurant />
-  <div class="container-fluid mb-4 max_width_fluid">
+  <div class="container-fluid mb-4 ">
     <!-- parte dati ristorante -->
-    <div class="card mb-3">
       <div class="row g-0">
         <div class="col-md-4">
           <img
@@ -106,9 +105,6 @@
           </div>
         </transition>
       </div>
-
-
-    </div>
   </div>
   </div>
 </template>
@@ -165,7 +161,7 @@ export default {
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: $_whiteSmoke;
   display: table;
   transition: opacity 0.3s ease;
 }

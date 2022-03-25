@@ -1,7 +1,7 @@
 <template>
 <div class="hero">
     <video autoplay muted loop>
-        <source src="../../assets/video/video-cibo-buono-hd.mp4" type="video/mp4">
+        <source src="../../assets/video/video-2k.mp4" type="video/mp4">
         <source src="movie.ogg" type="video/ogg">
         Your browser does not support the video tag.
     </video>
