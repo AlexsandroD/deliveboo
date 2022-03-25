@@ -56,64 +56,56 @@
           </div>
         </div>
       </div>
+      
       <div class="col-sm-5 col-md-3 d-none d-lg-block">
-        <div v-if="cartLogic.cartError">
-          <transition name="modal">
-            <div class="modal-mask">
-              <div class="modal-wrapper">
-                <div class="modal-dialog" role="document">
-                  <div class="modal-content">
-                    <div class="modal-header">
-                      <h5 class="modal-title">
-                        Vuoi creare un nuovo carrello?
-                      </h5>
-                      <button
-                        type="button"
-                        class="btn-close"
-                        data-bs-dismiss="modal"
-                        @click="cartLogic.cartError = false"
-                        aria-label="Close"
-                      ></button>
-                    </div>
-                    <div class="modal-body">
-                      <p>
-                        Il carrello già esistente da
-                        <strong>{{ cartLogic.restaurantName }}</strong> verrà
-                        eliminato.
-                      </p>
-                    </div>
-                    <div class="modal-footer">
-                      <router-link
-                        :to="{
-                          name: 'restaurant-menu',
-                          params: { slug: cartLogic.restaurantSlug },
-                        }"
-                      >
-                        <button
-                          type="button"
-                          class="btn btn-secondary"
-                          @click="cartLogic.cartError = false"
-                        >
-                          Vai al carrello
-                        </button>
-                      </router-link>
-                      <button
-                        type="button"
-                        class="btn btn-primary"
-                        @click="cartLogic.emptyCart()"
-                      >
-                        Svuota carrello
+        <!-- // cart  -->
+        <Cart />
+      </div>
+
+      <!-- cart modal error -->
+      <div v-if="cartLogic.cartError" class="cart_modal_error">
+        <transition name="modal">
+          <div class="modal-mask">
+            <div class="modal-wrapper">
+              <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title">
+                      Vuoi creare un nuovo carrello?
+                    </h5>
+                    <button
+                      type="button"
+                      class="btn-close"
+                      data-bs-dismiss="modal"
+                      @click="cartLogic.cartError = false"
+                      aria-label="Close"
+                    ></button>
+                  </div>
+                  <div class="modal-body">
+                    <p class="m-0 py-3">
+                      Il carrello già esistente da
+                      <strong>{{ cartLogic.restaurantName }}</strong> verrà
+                      eliminato.
+                    </p>
+                  </div>
+                  <div class="modal-footer justify-content-center justify-content-sm-end">
+                    <router-link :to="{name: 'restaurant-menu', params: { slug: cartLogic.restaurantSlug },}">
+                      <button type="button" class="btn btn_cart" @click="cartLogic.cartError = false">
+                        Vai al carrello
                       </button>
-                    </div>
+                    </router-link>
+                      <button type="button" class="btn btn_delete" @click="cartLogic.emptyCart()">
+                        Elimina carrello
+                      </button>
                   </div>
                 </div>
               </div>
             </div>
-          </transition>
-        </div>
-        <!-- // cart  -->
-        <Cart />
+          </div>
+        </transition>
       </div>
+
+
     </div>
   </div>
 </template>
@@ -190,4 +182,52 @@ export default {
 .my_img {
   object-fit: cover !important;
 }
+
+.cart_modal_error {
+
+  .modal-content {
+    border-radius: .4rem;
+  }
+
+  .modal-header {
+    color: #fff;
+    background-color: $_cherry;
+
+    button {
+      filter: invert(1);
+      opacity: 1;
+    }
+  }
+
+  .modal-body {
+    font-size: 1.1rem;
+  }
+
+  .modal-footer {
+    .btn_cart {
+          color: #fff;
+          background-color: $_cherry;
+          border: 1px solid $_cherry;
+          transition: all .2s;
+
+          &:hover {
+              background-color: #a31251;
+          }
+    }
+
+    .btn_delete {
+      color: #fff;
+      background-color: $_darkGrey;
+      border: 1px solid $_darkGrey;
+      transition: all .2s;
+
+      &:hover {
+        // color: #fff;
+        background-color: $_black;
+      }
+    }
+  }
+
+}
+
 </style>
