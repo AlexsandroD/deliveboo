@@ -41,21 +41,22 @@ export default {
 <style lang = "scss" scoped>
 @import '../../assets/style/variables.scss';
 .my_container-categories{
-    .title{
-        h1{
-            margin-top: -50px;
-            position: absolute;
-            background-color: $_cherry;
-            color: white;
-            padding: 0.4rem 1rem;
-            clip-path: polygon(0 10%, 97% 0, 100% 100%, 0% 100%);
-            /* text-transform: uppercase; */
-        }
-        color: $_blue;
-        /* text-shadow: 2px 2px 4px black; */
-        padding: 20px 0;
-        
-    }
+
+  h1.title {
+    position: absolute;
+    top: 100px;
+
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.4rem;
+
+    background-color: $_cherry;
+    color: white;
+
+    margin: 0;
+    padding: .4rem 1.2rem .4rem .6rem;
+    clip-path: polygon(0 10%, 97% 0, 100% 100%, 0% 100%);
+  }
+}
 
     .ms_serch-bar > input {
         border: 1px solid $_primary;
@@ -176,7 +177,7 @@ export default {
             }
         }
     }
-}
+    
 @media screen and (max-width: 329px) {
     .my_container{
         margin-top: 15px;
