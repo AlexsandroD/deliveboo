@@ -56,64 +56,68 @@
           </div>
         </div>
       </div>
+      
       <div class="col-sm-5 col-md-3 d-none d-lg-block">
-        <div v-if="cartLogic.cartError">
-          <transition name="modal">
-            <div class="modal-mask">
-              <div class="modal-wrapper">
-                <div class="modal-dialog" role="document">
-                  <div class="modal-content">
-                    <div class="modal-header">
-                      <h5 class="modal-title">
-                        Vuoi creare un nuovo carrello?
-                      </h5>
+        <!-- // cart  -->
+        <Cart />
+      </div>
+
+      <div v-if="cartLogic.cartError">
+        <transition name="modal">
+          <div class="modal-mask">
+            <div class="modal-wrapper">
+              <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title">
+                      Vuoi creare un nuovo carrello?
+                    </h5>
+                    <button
+                      type="button"
+                      class="btn-close"
+                      data-bs-dismiss="modal"
+                      @click="cartLogic.cartError = false"
+                      aria-label="Close"
+                    ></button>
+                  </div>
+                  <div class="modal-body">
+                    <p>
+                      Il carrello già esistente da
+                      <strong>{{ cartLogic.restaurantName }}</strong> verrà
+                      eliminato.
+                    </p>
+                  </div>
+                  <div class="modal-footer">
+                    <router-link
+                      :to="{
+                        name: 'restaurant-menu',
+                        params: { slug: cartLogic.restaurantSlug },
+                      }"
+                    >
                       <button
                         type="button"
-                        class="btn-close"
-                        data-bs-dismiss="modal"
+                        class="btn btn-secondary"
                         @click="cartLogic.cartError = false"
-                        aria-label="Close"
-                      ></button>
-                    </div>
-                    <div class="modal-body">
-                      <p>
-                        Il carrello già esistente da
-                        <strong>{{ cartLogic.restaurantName }}</strong> verrà
-                        eliminato.
-                      </p>
-                    </div>
-                    <div class="modal-footer">
-                      <router-link
-                        :to="{
-                          name: 'restaurant-menu',
-                          params: { slug: cartLogic.restaurantSlug },
-                        }"
                       >
-                        <button
-                          type="button"
-                          class="btn btn-secondary"
-                          @click="cartLogic.cartError = false"
-                        >
-                          Vai al carrello
-                        </button>
-                      </router-link>
-                      <button
-                        type="button"
-                        class="btn btn-primary"
-                        @click="cartLogic.emptyCart()"
-                      >
-                        Svuota carrello
+                        Vai al carrello
                       </button>
-                    </div>
+                    </router-link>
+                    <button
+                      type="button"
+                      class="btn btn-primary"
+                      @click="cartLogic.emptyCart()"
+                    >
+                      Svuota carrello
+                    </button>
                   </div>
                 </div>
               </div>
             </div>
-          </transition>
-        </div>
-        <!-- // cart  -->
-        <Cart />
+          </div>
+        </transition>
       </div>
+
+
     </div>
   </div>
 </template>
