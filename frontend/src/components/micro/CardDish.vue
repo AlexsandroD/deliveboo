@@ -17,11 +17,16 @@
                   @click="cartLogic.removeCartItem(dish.id)"
                   >-</span
                 >
-                <span class="count" name="qty" v-if="cartLogic.cart != null">{{
-                  cartLogic.cart.filter((e) => e.dishId == dish.id).length > 0
-                    ? cartLogic.cart.find((x) => x.dishId == dish.id).quantity
-                    : 0
-                }}</span>
+                <span
+                  class="count px-1"
+                  name="qty"
+                  v-if="cartLogic.cart != null"
+                  >{{
+                    cartLogic.cart.filter((e) => e.dishId == dish.id).length > 0
+                      ? cartLogic.cart.find((x) => x.dishId == dish.id).quantity
+                      : 0
+                  }}</span
+                >
                 <span class="count" name="qty" v-else>0</span>
                 <span
                   class="my_plus"
@@ -153,7 +158,7 @@ img {
 
 .my_minus:active,
 .my_plus:active {
-  transform: scale(1.5);
+  transform: scale(1.3);
 }
 
 .my_minus:hover,
