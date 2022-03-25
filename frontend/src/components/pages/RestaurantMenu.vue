@@ -151,6 +151,7 @@ export default {
   },
 
   created() {
+    this.width = window.innerWidth;
     window.scrollTo({ top: 0, behavior: "smooth" });
     window.addEventListener("resize", this.onResize);
     const axios = require("axios").default;

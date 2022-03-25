@@ -89,7 +89,7 @@
                         </div>
                     </div>
 
-                    <div v-if="errorEmpty">Campi carta vuoti!</div>
+                    <div class="mt-2 ms-2 card_error" v-if="errorEmpty">Campi carta vuoti!</div>
 
                     <input id="nonce" name="payment_method_nonce" hidden>
 

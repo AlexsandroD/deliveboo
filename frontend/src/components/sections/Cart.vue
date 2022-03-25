@@ -95,6 +95,7 @@
       >
         <span>totale:</span><span>&euro; {{ cartLogic.totalPrice }}</span>
       </p>
+      <p v-if="cartLogic.qtyError" class="text-danger mt-2">Limite massimo prezzo raggiunto</p>
     </div>
     <div class="card-body my_display" v-else>
       <img src="../../assets/images/cards/download.png" alt="epsty cart" />
