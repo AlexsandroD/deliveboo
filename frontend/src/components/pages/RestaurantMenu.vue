@@ -1,115 +1,131 @@
 <template>
   <div>
     <HeroRestaurant />
-  <div class="container-fluid mb-4 max_width_fluid">
-    <!-- parte dati ristorante -->
-    <div class="card mb-3">
-      <div class="row g-0">
-        <div class="col-md-4">
-          <img
-            v-if="restaurant.image_cover"
-            class="card-img-top w-100 h-100 p-3 my_img"
-            :src="'http://127.0.0.1:8000/storage/' + restaurant.image_cover"
-            :alt="restaurant.name"
-          />
-          <img
-            v-else
-            src="https://www.wecanjob.it/moduli/output_immagine.php?id=8444"
-            class="card-img-top w-100 h-100 my_img"
-            :alt="restaurant.name"
-          />
+    <div class="container-fluid mb-4 max_width_fluid">
+      <!-- parte dati ristorante -->
+      <div class="card mb-3">
+        <div class="row g-0">
+          <div class="col-md-4">
+            <img
+              v-if="restaurant.image_cover"
+              class="card-img-top w-100 h-100 p-3 my_img"
+              :src="'http://127.0.0.1:8000/storage/' + restaurant.image_cover"
+              :alt="restaurant.name"
+            />
+            <img
+              v-else
+              src="https://www.wecanjob.it/moduli/output_immagine.php?id=8444"
+              class="card-img-top w-100 h-100 my_img"
+              :alt="restaurant.name"
+            />
+          </div>
+          <div class="col-md-8">
+            <div class="card-body p-4">
+              <h3 class="card-title text-bold">{{ restaurant.name }}</h3>
+              <p class="card-text description">
+                🛵{{ restaurant.description }}🥂
+              </p>
+              <p class="card-text">
+                <i class="fa-solid fa-envelope my_icon"></i>:
+                {{ restaurant.email }}
+              </p>
+              <p class="card-text">
+                <i class="fa-solid fa-signs-post my_icon"></i>:
+                {{ restaurant.address }}, {{ restaurant.city }},
+                {{ restaurant.post_code }},
+                {{ restaurant.country }}
+              </p>
+              <strong class="card-text"
+                ><i class="fa-solid fa-phone my_icon"></i>:
+                {{ restaurant.phone }}</strong
+              >
+            </div>
+          </div>
         </div>
-        <div class="col-md-8">
-          <div class="card-body p-4">
-            <h3 class="card-title text-bold">{{ restaurant.name }}</h3>
-            <p class="card-text description">
-              🛵{{ restaurant.description }}🥂
-            </p>
-            <p class="card-text">
-              <i class="fa-solid fa-envelope my_icon"></i>:
-              {{ restaurant.email }}
-            </p>
-            <p class="card-text">
-              <i class="fa-solid fa-signs-post my_icon"></i>:
-              {{ restaurant.address }}, {{ restaurant.city }},
-              {{ restaurant.post_code }},
-              {{ restaurant.country }}
-            </p>
-            <strong class="card-text"
-              ><i class="fa-solid fa-phone my_icon"></i>:
-              {{ restaurant.phone }}</strong
+      </div>
+
+      <!-- lista piatti  -->
+
+      <div class="row d-flex justify-content-between mb-5">
+        <div class="col-sm-12 col-md-12 col-lg-9">
+          <div class="row row-cols-1 row-cols-md-1 row-cols-lg-2">
+            <div
+              class="col gy-4"
+              v-for="dish in restaurant.dishes"
+              :key="dish.id"
             >
+              <CardDish :dish="dish" :restaurant="restaurant" />
+            </div>
           </div>
         </div>
-      </div>
-    </div>
 
-    <!-- lista piatti  -->
-
-    <div class="row d-flex justify-content-between mb-5">
-      <div class="col-sm-12 col-md-12 col-lg-9">
-        <div class="row row-cols-1 row-cols-md-1 row-cols-lg-2">
-          <div
-            class="col gy-4"
-            v-for="dish in restaurant.dishes"
-            :key="dish.id"
-          >
-            <CardDish :dish="dish" :restaurant="restaurant" />
-          </div>
+        <div class="col-sm-5 col-md-3 d-none d-lg-block">
+          <!-- // cart  -->
+          <Cart />
         </div>
-      </div>
-      
-      <div class="col-sm-5 col-md-3 d-none d-lg-block">
-        <!-- // cart  -->
-        <Cart />
-      </div>
 
-      <!-- cart modal error -->
-      <div v-if="cartLogic.cartError" class="cart_modal_error">
-        <transition name="modal">
-          <div class="modal-mask">
-            <div class="modal-wrapper">
-              <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                  <div class="modal-header">
-                    <h5 class="modal-title">
-                      Vuoi creare un nuovo carrello?
-                    </h5>
-                    <button
-                      type="button"
-                      class="btn-close"
-                      data-bs-dismiss="modal"
-                      @click="cartLogic.cartError = false"
-                      aria-label="Close"
-                    ></button>
-                  </div>
-                  <div class="modal-body">
-                    <p class="m-0 py-3">
-                      Il carrello già esistente da
-                      <strong>{{ cartLogic.restaurantName }}</strong> verrà
-                      eliminato.
-                    </p>
-                  </div>
-                  <div class="modal-footer justify-content-center justify-content-sm-end">
-                    <router-link :to="{name: 'restaurant-menu', params: { slug: cartLogic.restaurantSlug },}">
-                      <button type="button" class="btn btn_cart" @click="cartLogic.cartError = false">
-                        Vai al carrello
-                      </button>
-                    </router-link>
-                      <button type="button" class="btn btn_delete" @click="cartLogic.emptyCart()">
+        <!-- cart modal error -->
+        <div v-if="cartLogic.cartError" class="cart_modal_error">
+          <transition name="modal">
+            <div class="modal-mask">
+              <div class="modal-wrapper">
+                <div class="modal-dialog" role="document">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h5 class="modal-title">
+                        Vuoi creare un nuovo carrello?
+                      </h5>
+                      <button
+                        type="button"
+                        class="btn-close"
+                        data-bs-dismiss="modal"
+                        @click="cartLogic.cartError = false"
+                        aria-label="Close"
+                      ></button>
+                    </div>
+                    <div class="modal-body">
+                      <p class="m-0 py-3">
+                        Il carrello già esistente da
+                        <strong>{{ cartLogic.restaurantName }}</strong> verrà
+                        eliminato.
+                      </p>
+                    </div>
+                    <div
+                      class="
+                        modal-footer
+                        justify-content-center justify-content-sm-end
+                      "
+                    >
+                      <router-link
+                        :to="{
+                          name: 'restaurant-menu',
+                          params: { slug: cartLogic.restaurantSlug },
+                        }"
+                      >
+                        <button
+                          type="button"
+                          class="btn btn_cart"
+                          @click="cartLogic.cartError = false"
+                        >
+                          Vai al carrello
+                        </button>
+                      </router-link>
+                      <button
+                        type="button"
+                        class="btn btn_delete"
+                        @click="cartLogic.emptyCart()"
+                      >
                         Elimina carrello
                       </button>
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
-          </div>
-        </transition>
+          </transition>
+        </div>
       </div>
-
-
     </div>
-  </div>
   </div>
 </template>
 
@@ -124,7 +140,7 @@ export default {
   components: {
     HeroRestaurant,
     Cart,
-    CardDish
+    CardDish,
   },
   data() {
     return {
@@ -134,7 +150,7 @@ export default {
   },
 
   created() {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    window.scrollTo({ top: 0, behavior: "smooth" });
 
     const axios = require("axios").default;
     axios
@@ -185,12 +201,12 @@ export default {
 
 .my_img {
   object-fit: cover !important;
+  max-height: 300px;
 }
 
 .cart_modal_error {
-
   .modal-content {
-    border-radius: .4rem;
+    border-radius: 0.4rem;
   }
 
   .modal-header {
@@ -209,21 +225,21 @@ export default {
 
   .modal-footer {
     .btn_cart {
-          color: #fff;
-          background-color: $_cherry;
-          border: 1px solid $_cherry;
-          transition: all .2s;
+      color: #fff;
+      background-color: $_cherry;
+      border: 1px solid $_cherry;
+      transition: all 0.2s;
 
-          &:hover {
-              background-color: #a31251;
-          }
+      &:hover {
+        background-color: #a31251;
+      }
     }
 
     .btn_delete {
       color: #fff;
       background-color: $_darkGrey;
       border: 1px solid $_darkGrey;
-      transition: all .2s;
+      transition: all 0.2s;
 
       &:hover {
         // color: #fff;
@@ -231,7 +247,5 @@ export default {
       }
     }
   }
-
 }
-
 </style>
