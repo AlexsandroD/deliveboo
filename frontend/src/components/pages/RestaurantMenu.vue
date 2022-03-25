@@ -62,7 +62,8 @@
         <Cart />
       </div>
 
-      <div v-if="cartLogic.cartError">
+      <!-- cart modal error -->
+      <div v-if="cartLogic.cartError" class="cart_modal_error">
         <transition name="modal">
           <div class="modal-mask">
             <div class="modal-wrapper">
@@ -81,34 +82,21 @@
                     ></button>
                   </div>
                   <div class="modal-body">
-                    <p>
+                    <p class="m-0 py-3">
                       Il carrello già esistente da
                       <strong>{{ cartLogic.restaurantName }}</strong> verrà
                       eliminato.
                     </p>
                   </div>
-                  <div class="modal-footer">
-                    <router-link
-                      :to="{
-                        name: 'restaurant-menu',
-                        params: { slug: cartLogic.restaurantSlug },
-                      }"
-                    >
-                      <button
-                        type="button"
-                        class="btn btn-secondary"
-                        @click="cartLogic.cartError = false"
-                      >
+                  <div class="modal-footer justify-content-center justify-content-sm-end">
+                    <router-link :to="{name: 'restaurant-menu', params: { slug: cartLogic.restaurantSlug },}">
+                      <button type="button" class="btn btn_cart" @click="cartLogic.cartError = false">
                         Vai al carrello
                       </button>
                     </router-link>
-                    <button
-                      type="button"
-                      class="btn btn-primary"
-                      @click="cartLogic.emptyCart()"
-                    >
-                      Svuota carrello
-                    </button>
+                      <button type="button" class="btn btn_delete" @click="cartLogic.emptyCart()">
+                        Elimina carrello
+                      </button>
                   </div>
                 </div>
               </div>
@@ -194,4 +182,52 @@ export default {
 .my_img {
   object-fit: cover !important;
 }
+
+.cart_modal_error {
+
+  .modal-content {
+    border-radius: .4rem;
+  }
+
+  .modal-header {
+    color: #fff;
+    background-color: $_cherry;
+
+    button {
+      filter: invert(1);
+      opacity: 1;
+    }
+  }
+
+  .modal-body {
+    font-size: 1.1rem;
+  }
+
+  .modal-footer {
+    .btn_cart {
+          color: #fff;
+          background-color: $_cherry;
+          border: 1px solid $_cherry;
+          transition: all .2s;
+
+          &:hover {
+              background-color: #a31251;
+          }
+    }
+
+    .btn_delete {
+      color: #fff;
+      background-color: $_darkGrey;
+      border: 1px solid $_darkGrey;
+      transition: all .2s;
+
+      &:hover {
+        // color: #fff;
+        background-color: $_black;
+      }
+    }
+  }
+
+}
+
 </style>
