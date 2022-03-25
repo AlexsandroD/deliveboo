@@ -2,6 +2,9 @@
 node_modules
 /dist
 
+# videos
+video.mp4
+video-2k.mp4
 
 # local env files
 .env.local
