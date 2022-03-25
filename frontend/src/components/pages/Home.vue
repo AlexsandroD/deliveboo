@@ -26,15 +26,15 @@ import WorkWith from '../sections/WorkWith.vue';
 export default {
     name: 'Home',
     components:{
-
         Hero,
         Categories,
         Restaurants,
         News,
         WorkWith,
-
-        
-    }
+    },
+  // created(){
+  //   window.scrollTo({ top: 0, behavior: 'smooth' });
+  // }
 }
 </script>
 

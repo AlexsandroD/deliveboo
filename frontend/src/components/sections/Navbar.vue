@@ -3,14 +3,17 @@
     <nav>
       <!-- logo -->
       <b-navbar-brand class="logo me-0" href="http://127.0.0.1:8080/">
-        <img src="../../assets/images/logo/logo-scritta-color.png" alt="logo" />
+        <img v-if="scrollPosition < 100" src="../../assets/images/logo/logo-scritta-white.png" alt="logo" />
+        <img v-else src="../../assets/images/logo/logo-scritta-color.png" alt="logo" />
       </b-navbar-brand>
       
+      <!-- btn cart sm -->
       <div class="navbar-right d-flex">
         <button class="btn btn_cart_sm" @click="showCart = !showCart">
           <i class="fa-solid fa-cart-shopping"></i>
         </button>
 
+        <!-- cart dropdown sm -->
         <div class="cart_dropdown" v-if="showCart">
           <div class="dropdown_container">
             <div class="dropdown_header">
@@ -96,12 +99,19 @@ export default {
 
     /* bottoni a destra */
     .navbar-right {
+
       .btn {
         background-color: $_primary;
         color: $_white;
 
+        padding: .2rem .6rem;
+
         &:focus {
           box-shadow: none;
+        }
+
+        svg {
+          font-size: .8rem;
         }
       }
 
@@ -182,18 +192,18 @@ export default {
 
         .btn {
           padding: .6rem 1rem;
-        }
 
-        svg {
-          font-size: 1rem;
-        }
+          &.btn_cart_sm {
+            display: none;
+          }
+    
+          &.btn_cart_md {
+            display: block;
+          }
 
-        .btn_cart_sm {
-          display: none;
-        }
-  
-        .btn_cart_md {
-          display: block;
+          svg {
+            font-size: 1rem;
+          }
         }
       }
     }

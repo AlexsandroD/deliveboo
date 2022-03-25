@@ -1,7 +1,7 @@
 <template>
 <div class="hero">
     <video autoplay muted loop>
-        <source src="../../assets/video/output11.mp4" type="video/mp4">
+        <source src="../../assets/video/video-cibo-buono-hd.mp4" type="video/mp4">
         <source src="movie.ogg" type="video/ogg">
         Your browser does not support the video tag.
     </video>
@@ -17,17 +17,28 @@ export default {
 <style lang = "scss" scoped>
 @import '../../assets/style/variables.scss';
 .hero{
-    margin: 0 auto;
-    max-width: 1800px;
-    /* -webkit-clip-path: polygon(0 0, 100% 0, 100% 85%, 0% 100%); */
-    /* clip-path: polygon(50% 0%, 100% 0, 100% 76%, 88% 80%, 29% 95%, 0 78%, 0 0); */
-    clip-path: polygon(0 0, 100% 0, 100% 71%, 0 100%);
-    padding: 0;
+
+  margin: 0 auto;
+  padding: 0;
+
+  video{
+    width: 100%;
+    height: 200px;
+
+    object-fit: cover;
+
+    background: rgb(0,204,188);
+    background: linear-gradient(355deg, rgba(208,235,153,1) 60%, rgba(0,204,188,1) 60%);
+  }
+}
+
+//00000000 MEDIA QUERIES 00000000
+@media (min-width: 768px) {
+  .hero{
+
     video{
-        width: 100%;
-        margin-bottom: -10px;
-        z-index: -1;
-        position: relative;
+        height: 300px;
     }
+  }
 }
 </style>

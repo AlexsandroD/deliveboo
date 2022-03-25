@@ -2,7 +2,7 @@
 
 @section('content')
     {{-- dish col --}}
-    <div class="col-lg-9 dish-container">
+    <div class="col-lg-9 dish-container pb-4">
         <h1 class="text-center mb-3">Menù</h1>
 
         {{-- card add plate --}}
@@ -35,7 +35,7 @@
                                 </div>
                             @endif
                         </figure>
-                        <div class="card-body py-3">
+                        <div class="card_body">
                             <h5 class="card-title mb-2">{{ $dish->name }}</h5>
                             <p class="card-text description mb-2">
                                 @if ($dish->description)

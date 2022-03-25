@@ -20933,7 +20933,7 @@ main div.restaurant div.card-body ul.contacts-container li.card-text i {
 
 .dish-container .dishes-grid {
   display: grid;
-  grid-template-columns: repeat(2, 49%);
+  grid-template-columns: 1fr;
   gap: 2%;
 }
 
@@ -21017,7 +21017,12 @@ main div.restaurant div.card-body ul.contacts-container li.card-text i {
   background-color: #434848;
 }
 
-.dish-container .dishes-grid div.card a h5.card-title {
+.dish-container .dishes-grid div.card a .card_body {
+  padding: 0.6rem 1rem;
+}
+
+.dish-container .dishes-grid div.card a .card_body h5.card-title {
+  font-size: 1rem;
   overflow: hidden;
   text-overflow: ellipsis;
   display: -webkit-box;
@@ -21027,7 +21032,7 @@ main div.restaurant div.card-body ul.contacts-container li.card-text i {
   -webkit-box-orient: vertical;
 }
 
-.dish-container .dishes-grid div.card a p.description {
+.dish-container .dishes-grid div.card a .card_body p.description {
   height: 2.5rem;
   font-size: 0.8rem;
   color: #BAC3C3;
@@ -21040,13 +21045,37 @@ main div.restaurant div.card-body ul.contacts-container li.card-text i {
   -webkit-box-orient: vertical;
 }
 
-.dish-container .dishes-grid div.card a span.price {
+.dish-container .dishes-grid div.card a .card_body span.price {
+  font-size: 0.8rem;
   color: #00CCBC;
+}
+
+@media (min-width: 576px) {
+  .dish-container .dishes-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2%;
+  }
+
+  .dish-container .dishes-grid div.card a .card_body {
+    padding: 1rem 1.2rem;
+  }
+
+  .dish-container .dishes-grid div.card a .card_body h5.card-title {
+    font-size: 1.2rem;
+  }
+
+  .dish-container .dishes-grid div.card a .card_body p.description {
+    font-size: 0.8rem;
+  }
+
+  .dish-container .dishes-grid div.card a .card_body span.price {
+    font-size: 1rem;
+  }
 }
 
 @media (min-width: 992px) {
   .dish-container .dishes-grid {
-    grid-template-columns: repeat(3, 32%);
+    grid-template-columns: repeat(3, 1fr);
     gap: 2%;
   }
 }

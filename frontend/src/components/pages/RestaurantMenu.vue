@@ -1,4 +1,6 @@
 <template>
+  <div>
+    <HeroRestaurant />
   <div class="container-fluid mb-4 max_width_fluid">
     <!-- parte dati ristorante -->
     <div class="card mb-3">
@@ -108,18 +110,21 @@
 
     </div>
   </div>
+  </div>
 </template>
 
 <script>
 import Cart from "../sections/Cart.vue";
+import HeroRestaurant from "../sections/HeroRestaurant.vue";
 import cartLogic from "../../cartLogic";
 import CardDish from "../micro/CardDish.vue";
 
 export default {
   name: "RestaurantMenu",
   components: {
+    HeroRestaurant,
     Cart,
-    CardDish,
+    CardDish
   },
   data() {
     return {
@@ -129,7 +134,7 @@ export default {
   },
 
   created() {
-    window.scrollTo(0,0);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
 
     const axios = require("axios").default;
     axios
@@ -151,7 +156,6 @@ export default {
 
 .max_width_fluid {
   max-width: 1800px;
-  margin-top: 100px;
 }
 
 .modal-mask {
