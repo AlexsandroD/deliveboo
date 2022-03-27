@@ -61,6 +61,7 @@ export default {
   transition: 0.6s;
   height: 100%;
   position: relative;
+
   .mb {
     margin-bottom: 33px;
   }
@@ -73,8 +74,8 @@ export default {
 }
 
 .my_card:hover {
-  -webkit-box-shadow: -5px 28px 31px -8px rgba(0, 0, 0, 0.35);
-  box-shadow: -5px 28px 31px -8px rgba(0, 0, 0, 0.35);
+  -webkit-box-shadow: -10px 20px 12px -8px rgba(0, 0, 0, 0.25);
+  box-shadow: -10px 20px 12px -8px rgba(0, 0, 0, 0.25);
   position: relative;
   animation: card 0.4s linear forwards;
 }
@@ -84,13 +85,13 @@ export default {
     top: 0px;
   }
   to {
-    top: -10px;
+    top: -6px;
   }
 }
 
 img {
   transition: ease 0.6s;
-  height: 200px;
+  height: 160px;
   object-fit: cover;
 }
 
@@ -106,48 +107,48 @@ img {
 
 /* categories badge */
 .halal {
-  background-color: pink !important;
+  background-color: #693231 !important;
 }
 .colazione {
-  background-color: orange !important;
+  background-color: #ffc300 !important;
 }
 .vegetariano {
-  background-color: green !important;
+  background-color: #43aa8b !important;
 }
 .messicano {
-  background-color: red !important;
+  background-color: #8f2d56 !important;
 }
 .dessert {
-  background-color: purple !important;
+  background-color: #b8b8ff !important;
 }
 .indiano {
-  background-color: brown !important;
+  background-color: #ca6702 !important;
 }
 .greco {
-  background-color: indigo !important;
+  background-color: #4895ef !important;
 }
 .giapponese {
-  background-color: mediumseagreen !important;
+  background-color: #25693b !important;
 }
 .cinese {
-  background-color: rgb(118, 119, 168) !important;
+  background-color: #ff8800 !important;
 }
 .libanese {
-  background-color: $_darkGrey !important;
+  background-color: #ff206e !important;
 }
 .americano {
-  background-color: turquoise !important;
+  background-color: #10139b !important;
 }
 .italiano {
   background-color: $_blue !important;
 }
 .thailandese {
-  background-color: rgba(255, 153, 0, 0.863) !important;
+  background-color: #80b918 !important;
 }
 .sushi {
-  background-color: $_lightBlue !important;
+  background-color: #f07167 !important;
 }
 .pizza {
-  background-color: orchid !important;
+  background-color: #ba181b !important;
 }
 </style>

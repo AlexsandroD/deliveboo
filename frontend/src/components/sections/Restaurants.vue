@@ -3,7 +3,7 @@
 
     <div v-if="restaurants.length > 0">
 
-      <div class="row row-cols-1 row-cols-sm-2 row-cols-md-4 row-cols-lg-3 row-cols-xl-4">
+      <div class="row row-cols-1 row-cols-sm-2 row-cols-md-2 row-cols-lg-2 row-cols-xl-3">
         <CardRestaurant
           v-for="restaurant in restaurants"
           :key="restaurant.id"
