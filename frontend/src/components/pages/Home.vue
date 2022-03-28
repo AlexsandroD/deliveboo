@@ -1,7 +1,7 @@
 <template>
     <div>
         <Hero/>
-        <div class="container">
+        <div class="container-fluid ms_max-width">
             <div class="row">
                 <div class="col-12 col-lg-3 mt-sm-5 mb-sm3">
                     <Categories />
@@ -9,10 +9,8 @@
                 <div class="col-12 col-lg-9 mt-lg-5 mb-sm-3">
                     <Restaurants />
                 </div>
-                <div class="col">
-                  <News />
-                  <WorkWith />
-                </div>
+              <News />
+              <WorkWith />
             </div>
         </div>
     </div>
