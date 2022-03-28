@@ -1,9 +1,11 @@
 <template>
   <div class="my_container p-4 h-100">
-
     <div v-if="restaurants.length > 0">
-
-      <div class="row row-cols-1 row-cols-sm-2 row-cols-md-2 row-cols-lg-2 row-cols-xl-3">
+      <div
+        class="
+          row row-cols-1 row-cols-sm-2 row-cols-md-2 row-cols-lg-2 row-cols-xl-3
+        "
+      >
         <CardRestaurant
           v-for="restaurant in restaurants"
           :key="restaurant.id"
@@ -25,14 +27,19 @@
           </div>
         </div>
       </div>
-
     </div>
 
-    <div v-else class="d-flex flex-column justify-content-center align-items-center h-100">
-      <img class="w-25" src="../../assets/images/restaurant/sad-restaurant.png" alt="sad restaurant">
+    <div
+      v-else
+      class="d-flex flex-column justify-content-center align-items-center h-100"
+    >
+      <img
+        class="w-25"
+        src="../../assets/images/restaurant/sad-restaurant.png"
+        alt="sad restaurant"
+      />
       <h3 class="fw-bold mt-2">Ops... Nessun risultato</h3>
     </div>
-
   </div>
 </template>
 
@@ -92,25 +99,35 @@ export default {
 
   watch: {
     "variables.categoriesValue"() {
-      this.variables.pages = 1;
-      if (this.variables.categoriesValue.length > 0 || this.variables.search != '') {
+      this.variables.page = 1;
+      if (
+        this.variables.categoriesValue.length > 0 ||
+        this.variables.search != ""
+      ) {
         this.restaurantsFilter();
       } else {
         this.getRestaurant();
       }
     },
     "variables.page"() {
-      if (this.variables.categoriesValue.length > 0 || this.variables.search != '') {
+      if (
+        this.variables.categoriesValue.length > 0 ||
+        this.variables.search != ""
+      ) {
         this.restaurantsFilter();
       } else {
         this.getRestaurant();
       }
     },
-    "variables.search"(){
-      if (this.variables.categoriesValue.length > 0 || this.variables.search != '') {
-          this.restaurantsFilter();
-        } else {
-          this.getRestaurant();
+    "variables.search"() {
+      this.variables.page = 1;
+      if (
+        this.variables.categoriesValue.length > 0 ||
+        this.variables.search != ""
+      ) {
+        this.restaurantsFilter();
+      } else {
+        this.getRestaurant();
       }
     },
   },
@@ -127,12 +144,11 @@ export default {
 }
 
 .customPagination > .page-item {
-
   & > .page-link {
     color: $_primary;
 
     &:focus {
-      box-shadow: 0 0 0 0.25rem rgba(0, 204, 188, .25);
+      box-shadow: 0 0 0 0.25rem rgba(0, 204, 188, 0.25);
     }
   }
 
@@ -142,10 +158,8 @@ export default {
     border: 1px solid $_primary;
 
     &:focus {
-      box-shadow: 0 0 0 0.25rem rgba(0, 204, 188, .25);
+      box-shadow: 0 0 0 0.25rem rgba(0, 204, 188, 0.25);
     }
   }
-
 }
-
 </style>
