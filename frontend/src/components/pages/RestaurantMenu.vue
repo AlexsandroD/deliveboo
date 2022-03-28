@@ -23,22 +23,21 @@
             <div class="card-body p-4">
               <h3 class="card-title text-bold">{{ restaurant.name }}</h3>
               <p class="card-text description">
-                🛵{{ restaurant.description }}🥂
+                {{ restaurant.description }} 🛵 🥂
               </p>
               <p class="card-text">
-                <i class="fa-solid fa-envelope my_icon"></i>:
+                <i class="fa-solid fa-envelope my_icon"></i> 
                 {{ restaurant.email }}
               </p>
               <p class="card-text">
-                <i class="fa-solid fa-signs-post my_icon"></i>:
+                <i class="fa-solid fa-location-dot my_icon"></i>
                 {{ restaurant.address }}, {{ restaurant.city }},
                 {{ restaurant.post_code }},
                 {{ restaurant.country }}
               </p>
-              <strong class="card-text"
-                ><i class="fa-solid fa-phone my_icon"></i>:
-                {{ restaurant.phone }}</strong
-              >
+              <span class="card-text"
+                ><i class="fa-solid fa-phone my_icon"></i> 
+                {{ restaurant.phone }}</span>
             </div>
           </div>
         </div>

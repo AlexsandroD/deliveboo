@@ -17,7 +17,7 @@
 
       <!-- btn cart sm -->
       <div class="navbar-right d-flex">
-        <button class="btn btn_cart_sm" @click="showCart = !showCart">
+        <button class="btn btn_cart_sm" @click="showCart = !showCart" :class="scrollPosition < 105 ? 'box_shadow' : ''">
           <i class="fa-solid fa-cart-shopping"></i>
         </button>
 
@@ -35,13 +35,12 @@
         </div>
 
         <!-- cart btn md -->
-        <a v-if="cartLogic.totalPrice == 0" class="btn btn_cart_md ms-3">
+        <a v-if="cartLogic.totalPrice == 0" class="btn btn_cart_md ms-3" :class="scrollPosition < 105 ? 'box_shadow' : ''">
           <i class="fas fa-shopping-cart"></i>
           <span class="ms-2">€ {{ cartLogic.totalPrice }}</span>
         </a>
         <router-link
           v-else
-          :class="scrollPosition < 105 ? 'box_shadow' : ''"
           class="btn btn_cart_md ms-3"
           :to="{
             name: 'restaurant-menu',
