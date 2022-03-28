@@ -43,7 +43,7 @@
                                 onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
                                 <button class="btn btn_logout">
                                     <i class="fa-solid fa-right-from-bracket"></i>
-                                    Logout
+                                    Esci
                                 </button>
                             </a>
 
@@ -103,7 +103,7 @@
                                 onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
                                 <button class="btn btn_logout">
                                     <i class="fa-solid fa-right-from-bracket"></i>
-                                    Logout
+                                    Esci
                                 </button>
                             </a>
 
@@ -119,7 +119,7 @@
                                 onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
                                 <button class="btn btn_logout">
                                     <i class="fa-solid fa-right-from-bracket"></i>
-                                    Logout
+                                    Esci
                                 </button>
                             </a>
 

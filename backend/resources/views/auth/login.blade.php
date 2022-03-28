@@ -66,7 +66,7 @@
                           </a>
                           @endif
                           <button type="submit" class="btn btn_filled ml-2">
-                              {{ __('Login') }}
+                              Accedi
                           </button>
                         </div>
                     </form>

@@ -23,7 +23,8 @@
             <div class="card-body p-4">
               <h3 class="card-title text-bold">{{ restaurant.name }}</h3>
               <p class="card-text description">
-                {{ restaurant.description }} 🛵 🥂
+                {{ restaurant.description }} 
+                <!-- 🛵 🥂 -->
               </p>
               <p class="card-text">
                 <i class="fa-solid fa-envelope my_icon"></i> 
@@ -187,7 +188,7 @@ export default {
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: $_whiteSmoke;
+  background-color: rgba(0, 0, 0, 0.5);
   display: table;
   transition: opacity 0.3s ease;
 }

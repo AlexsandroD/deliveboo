@@ -1,16 +1,27 @@
 <template>
-  <div v-if="dish.visible" class="card h-100 p-2">
+  <div v-if="dish.visible" class="card p-2">
     <div class="row h-100">
       <div class="col-6">
-        <div class="card-block h-100 p-1 text-start">
+        <div class="card-block p-1 text-start">
           <h4 class="my-2">{{ dish.name }}</h4>
-          <p>{{ dish.description }}</p>
-          <div class="row my-2 d-flex align-items-center">
-            <div class="col-5">
-              <p class="fw-bold">&euro; {{ dish.price }}</p>
-            </div>
-            <div class="col-6">
-              <div class="qty d-flex">
+          <p class="description">{{ dish.description }}</p>
+        </div>
+      </div>
+      <div class="col-6">
+        <div class="my_img_container d-flex flex-column justify-content-between">
+          <img
+            v-if="dish.image"
+            :src="'http://127.0.0.1:8000/storage/' + dish.image"
+            :alt="dish.name"
+          />
+          <img
+            v-else
+            src="../../assets/images/bg/placeholder.svg"
+            :alt="dish.name"
+          />
+          <div class="row p-2 d-flex align-items-center">
+            <div class="col-12 col-sm-6">
+              <div class="qty d-flex justify-content-end justify-content-sm-start mb-2 mb-sm-0">
                 <span
                   class="my_minus"
                   @click="cartLogic.removeCartItem(dish.id)"
@@ -43,31 +54,18 @@
                 >
               </div>
             </div>
+            <div class="col-12 col-sm-6">
+              <p class="fw-bold fs-6 text-end">&euro; {{ dish.price }}</p>
+            </div>
           </div>
-        </div>
-      </div>
-      <div class="col-6">
-        <div class="my_img_container h-100">
-          <img
-            class="h-100"
-            v-if="dish.image"
-            :src="'http://127.0.0.1:8000/storage/' + dish.image"
-            :alt="dish.name"
-          />
-          <img
-            class="h-100"
-            v-else
-            src="../../assets/images/bg/placeholder.svg"
-            :alt="dish.name"
-          />
         </div>
       </div>
     </div>
   </div>
-  <div v-else class="card h-100" disabled>
-    <div class="row h-100">
+  <div v-else class="card" disabled>
+    <div class="row">
       <div class="col-6">
-        <div class="card-block h-100 p-3">
+        <div class="card-block p-3">
           <!--           <h4 class="card-title">Small card</h4> -->
           <h4 class="my-2">{{ dish.name }}</h4>
           <p>&euro; {{ dish.price }}</p>
@@ -75,15 +73,13 @@
         </div>
       </div>
       <div class="col-6">
-        <div class="my_img_container h-100">
+        <div class="my_img_container">
           <img
-            class="h-100"
             v-if="dish.image"
             :src="'http://127.0.0.1:8000/storage/' + dish.image"
             :alt="dish.name"
           />
           <img
-            class="h-100"
             v-else
             src="../../assets/images/bg/placeholder.svg"
             :alt="dish.name"
@@ -119,7 +115,7 @@ export default {
 }
 img {
   width: 100%;
-  max-height: 145px;
+  height: 145px;
   object-fit: cover;
   padding: 10px;
 }
@@ -140,6 +136,15 @@ img {
   transition: 0.2s;
   padding: 0 3px;
 }
+
+/* .description {
+  overflow: scroll;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 4; 
+  line-clamp: 4;
+  -webkit-box-orient: vertical;
+} */
 
 .my_minus,
 .my_plus {
@@ -170,5 +175,6 @@ span {
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
+  user-select: none;
 }
 </style>

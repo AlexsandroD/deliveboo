@@ -16,7 +16,7 @@ export default {
 .hero-restaurant{
   position: relative;
 
-  height: 160px;
+  height: 150px;
 
   margin: 0 auto;
   padding: 0;
@@ -36,7 +36,7 @@ export default {
 //00000000 MEDIA QUERIES 00000000
 @media (min-width: 576px) {
   .hero-restaurant{
-    height: 250px;
+    height: 200px;
 
     img {
       width: 80%;
@@ -48,6 +48,7 @@ export default {
 
 @media (min-width: 768px) {
   .hero-restaurant{
+    height: 230px;
 
     img {
       width: 70%;
@@ -59,12 +60,13 @@ export default {
 
 @media (min-width: 992px) {
   .hero-restaurant{
-    height: 300px;
+    height: 260px;
 
     img {
       width: 40rem;
 
       bottom: -13px;
+      right: 10%;
     }
   }
 }

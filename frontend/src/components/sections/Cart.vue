@@ -251,8 +251,6 @@ img {
   top: 25%;
   left: 5%;
 }
-.wrapper {
-}
 
 .inner-box-1 {
   background-color: #fafafa;
