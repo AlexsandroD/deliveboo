@@ -168,23 +168,22 @@ export default {
         &:hover + label {
           background-color: $_cherry;
         }
-      }
+        &:checked + label {
+          /* background-color: $_primary; */
+          background-color: $_cherry;
+          color: #fff;
 
-      &:checked + label {
-        /* background-color: $_primary; */
-        background-color: $_cherry;
-        color: #fff;
+          transition: all 0.2s;
+        }
 
-        transition: all 0.2s;
-      }
+        &:checked + label::before {
+          content: "\f00c";
 
-      &:checked + label::before {
-        content: "\f00c";
+          color: $_white;
 
-        color: $_white;
-
-        transform: rotate(-360deg);
-        transition: transform 0.3s ease-in-out;
+          transform: rotate(-360deg);
+          transition: transform 0.3s ease-in-out;
+        }
       }
     }
   }
