@@ -1,5 +1,5 @@
 <template>
-  <div v-if="dish.visible" class="card p-2">
+  <div v-if="dish.visible" class="card my_card p-2">
     <div class="row h-100">
       <div class="col-6">
         <div class="card-block p-1 text-start">
@@ -8,7 +8,9 @@
         </div>
       </div>
       <div class="col-6">
-        <div class="my_img_container d-flex flex-column justify-content-between">
+        <div
+          class="my_img_container d-flex flex-column justify-content-between"
+        >
           <img
             v-if="dish.image"
             :src="'http://127.0.0.1:8000/storage/' + dish.image"
@@ -21,7 +23,14 @@
           />
           <div class="row p-2 d-flex align-items-center">
             <div class="col-12 col-sm-6">
-              <div class="qty d-flex justify-content-end justify-content-sm-start mb-2 mb-sm-0">
+              <div
+                class="
+                  qty
+                  d-flex
+                  justify-content-end justify-content-sm-start
+                  mb-2 mb-sm-0
+                "
+              >
                 <span
                   class="my_minus"
                   @click="cartLogic.removeCartItem(dish.id)"
@@ -62,18 +71,18 @@
       </div>
     </div>
   </div>
-  <div v-else class="card" disabled>
-    <div class="row">
+  <div v-else class="card p-2 my_filter" disabled>
+    <div class="row h-100">
       <div class="col-6">
-        <div class="card-block p-3">
-          <!--           <h4 class="card-title">Small card</h4> -->
+        <div class="card-block p-1 text-start">
           <h4 class="my-2">{{ dish.name }}</h4>
-          <p>&euro; {{ dish.price }}</p>
-          <p>Prodotto esaurito</p>
+          <p class="description">{{ dish.description }}</p>
         </div>
       </div>
       <div class="col-6">
-        <div class="my_img_container">
+        <div
+          class="my_img_container d-flex flex-column justify-content-between"
+        >
           <img
             v-if="dish.image"
             :src="'http://127.0.0.1:8000/storage/' + dish.image"
@@ -84,6 +93,11 @@
             src="../../assets/images/bg/placeholder.svg"
             :alt="dish.name"
           />
+          <div class="row p-2 d-flex align-items-center">
+            <div class="col">
+              <p class="fw-bold fs-5 text-end">Prodotto esaurito</p>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -119,13 +133,18 @@ img {
   object-fit: cover;
   padding: 10px;
 }
-.card {
+
+.my_filter {
+  filter: grayscale(80%);
+}
+.my_card {
   transition: 0.2s;
 }
-.card:hover {
+.my_card:hover {
   -webkit-box-shadow: -5px 28px 31px -8px rgba(0, 0, 0, 0.35);
   box-shadow: -5px 28px 31px -8px rgba(0, 0, 0, 0.35);
 }
+
 .count {
   display: flex;
   justify-content: center;
