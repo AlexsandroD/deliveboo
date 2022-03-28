@@ -21,15 +21,15 @@
         </div>
         <div class="card-body p-2">
           <h5 class="card-title fw-bold my-1">{{ restaurant.name }}</h5>
-          <p class="mb">{{ restaurant.address }}</p>
-          <p
+          <p class="description">{{ restaurant.address }}</p>
+          <span
             v-for="category in restaurant.categories"
             :key="category.id"
             class="card-text badge"
             :class="category.name.toLowerCase()"
           >
             {{ category.name }}
-          </p>
+          </span>
         </div>
       </div>
     </router-link>
@@ -51,59 +51,71 @@ export default {
 .link {
   text-decoration: none;
   color: black;
+
   img {
+    transition: ease 0.6s;
     width: 100%;
+    height: 160px;
+    object-fit: cover;
+  }
+
+  .card:hover img {
+    transform: scale(1.2);
+  }
+
+  .my_card {
+    position: relative;
+    height: 100%;
+    min-width: 100px;
+
+    transition: 0.6s;
+
+    &:hover {
+      -webkit-box-shadow: -10px 20px 12px -8px rgba(0, 0, 0, 0.25);
+      box-shadow: -10px 20px 12px -8px rgba(0, 0, 0, 0.25);
+      position: relative;
+      animation: card 0.4s linear forwards;
+    }
+
+    @keyframes card {
+      from {
+        top: 0px;
+      }
+      to {
+        top: -6px;
+      }
+    }
+
+    .card-title {
+      font-family: "Poppins", sans-serif;
+      color: $_black;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      display: -webkit-box;
+      -webkit-line-clamp: 1; /* number of lines to show */
+      line-clamp: 1;
+      -webkit-box-orient: vertical;
+    }
+
+    .description {
+      min-height: 50px;
+
+      overflow: hidden;
+      text-overflow: ellipsis;
+      display: -webkit-box;
+      -webkit-line-clamp: 2; /* number of lines to show */
+      line-clamp: 2;
+      -webkit-box-orient: vertical;
+    }
+
+    .badge {
+      background-color: $_darkGrey;
+      /* position: absolute;
+      bottom: 0.7rem;
+      left: 0.5rem; */
+    }
   }
 }
-
-.my_card {
-  min-width: 100px;
-  transition: 0.6s;
-  height: 100%;
-  position: relative;
-
-  .mb {
-    margin-bottom: 33px;
-  }
-  .badge {
-    background-color: $_darkGrey;
-    position: absolute;
-    bottom: 0.7rem;
-    left: 0.5rem;
-  }
-}
-
-.my_card:hover {
-  -webkit-box-shadow: -10px 20px 12px -8px rgba(0, 0, 0, 0.25);
-  box-shadow: -10px 20px 12px -8px rgba(0, 0, 0, 0.25);
-  position: relative;
-  animation: card 0.4s linear forwards;
-}
-
-@keyframes card {
-  from {
-    top: 0px;
-  }
-  to {
-    top: -6px;
-  }
-}
-
-img {
-  transition: ease 0.6s;
-  height: 160px;
-  object-fit: cover;
-}
-
-.card:hover img {
-  transform: scale(1.3);
-}
-
-.card-title {
-  font-family: 'Poppins', sans-serif;
-  color: $_black;
-}
-
 
 /* categories badge */
 .halal {

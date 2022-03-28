@@ -3,7 +3,6 @@
     <div class="row h-100">
       <div class="col-6">
         <div class="card-block h-100 p-1 text-start">
-          <!--           <h4 class="card-title">Small card</h4> -->
           <h4 class="my-2">{{ dish.name }}</h4>
           <p>{{ dish.description }}</p>
           <div
@@ -123,6 +122,7 @@ export default {
 }
 img {
   width: 100%;
+  max-height: 145px;
   object-fit: cover;
   padding: 10px;
 }
