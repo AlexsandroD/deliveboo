@@ -59,7 +59,7 @@
                         {{-- categories --}}
                         <li class="badges">
                             @foreach ($restaurant->categories as $category)
-                                <span class="badge rounded-pill">{{ $category->name }}</span>
+                                <span class="badge rounded-pill mb-1">{{ $category->name }}</span>
                             @endforeach
                         </li>
                         <li class="card-text">
