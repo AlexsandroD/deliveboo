@@ -42,6 +42,7 @@
         <router-link
           v-else
           class="btn btn_cart_md ms-3"
+          :class="scrollPosition < 105 ? 'box_shadow' : ''"
           :to="{
             name: 'restaurant-menu',
             params: { slug: cartLogic.restaurantSlug },
